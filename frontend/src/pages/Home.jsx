@@ -54,17 +54,18 @@ export default function Home() {
         ]}
       />
 
-      {/* § 01 — Hero */}
+      {/* § 01 — Hero. Lloyds-grade brevity: single headline, short
+          subhead, two CTAs. The compliance disclosure that used to sit
+          under the CTAs has moved into the global TrustRibbon at § 08
+          where it belongs. */}
       <PageHero
         eyebrow="§ 01 · Bard Santner Markets Inc"
         headline="Built for the African enterprise."
-        italicTail="Built to international standards."
-        body="A modern African financial platform. Banking, wealth, markets and advisory — engineered around the customer, governed to the standards correspondent banks expect, and warmed by the conversation African banking has always deserved."
+        body="A modern African financial platform. Banking, wealth, markets and advisory, built to international standards."
         primaryCTA={{ to: "/personal", label: "Open an account" }}
         secondaryCTA={{ to: "/group", label: "Meet the Group" }}
         image="/images/hero/home.jpg"
         overlayTint="navy"
-        noteUnderCTA="Account opening is subject to status. Eligibility criteria apply."
       />
 
       {/* § 02 — Quick actions */}

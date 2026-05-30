@@ -161,10 +161,12 @@ export default function PageHero({
         style={{ backgroundImage: image ? `url(${image})` : undefined }}
       />
       <div className={`absolute inset-0 bg-gradient-to-t ${tints[overlayTint] || tints.navy}`} />
-      {/* Full-bleed hero — one-viewport-minus-nav height so the hero +
-          its CTA stack fit cleanly above the fold on any screen, with
-          the next section just barely peeking in on tall viewports. */}
-      <div className="relative container-bank min-h-[calc(100svh-160px)] md:min-h-[calc(100svh-180px)] flex flex-col justify-end pt-24 pb-12 md:pb-16">
+      {/* Full-bleed hero — capped to one viewport minus nav. Padding
+          tightened (pt-20 / pb-10-14) so the breathing room belongs
+          to content, not to chrome. On laptop viewports (~768 tall)
+          this leaves enough vertical room for an eyebrow, a 1-2 line
+          headline, 2 lines of body and a CTA stack. */}
+      <div className="relative container-bank min-h-[calc(100svh-160px)] md:min-h-[calc(100svh-180px)] max-h-[calc(100svh-100px)] flex flex-col justify-end pt-20 md:pt-24 pb-10 md:pb-14">
         <div className={`max-w-3xl ${align === "center" ? "mx-auto text-center" : ""}`}>
           {eyebrow && (
             <motion.p
@@ -197,13 +199,13 @@ export default function PageHero({
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.25 }}
-              className="mt-10 text-white/85 max-w-xl text-[18px] md:text-[20px] leading-relaxed"
+              className="mt-7 md:mt-9 text-white/85 max-w-xl text-[17px] md:text-[19px] leading-relaxed"
             >
               {body}
             </motion.p>
           )}
           {(primaryCTA || secondaryCTA) && (
-            <div className="mt-10 flex flex-wrap items-center gap-3">
+            <div className="mt-8 md:mt-10 flex flex-wrap items-center gap-3">
               {primaryCTA && (
                 <Link to={primaryCTA.to} className="btn btn-primary">
                   {primaryCTA.label}
