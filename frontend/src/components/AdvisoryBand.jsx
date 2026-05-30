@@ -1,17 +1,31 @@
 import { Link } from "react-router-dom";
 import { PhoneIcon, EnvelopeSimpleIcon, ArrowRightIcon } from "@phosphor-icons/react";
+import { ART } from "../data/images.js";
 
 /**
  * Advisory band — the "speak to a banker" institutional CTA module.
- * Echoes the Lloyds "Help and guidance" and Investec "Partner with
- * Investec" sections.
  *
- * Two-column: editorial copy left, contact channels right.
+ * Now uses a refined gallery photograph as the section backdrop per
+ * the brand direction "even art paintings can be put strategically
+ * in CTAs." The image is overlaid with a strong bone-100/95 gradient
+ * so the content stays legible; the gallery interior reads as an
+ * institutional whisper underneath the headline.
  */
 export default function AdvisoryBand() {
   return (
-    <section className="bg-bone-100 border-t-2 border-orange-500">
-      <div className="container-bank section">
+    <section className="relative bg-bone-100 border-t-2 border-orange-500 overflow-hidden">
+      {/* Art backdrop — strategic placement, low opacity, behind a strong
+          tint so it functions as an institutional whisper, not a flood. */}
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage: `url(${ART.advisoryHallway})`,
+          filter: "saturate(0.55) brightness(0.92) contrast(1.05)",
+        }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-bone-100/97 via-bone-100/88 to-bone-100/70" />
+
+      <div className="relative container-bank section">
         <div className="grid grid-cols-12 gap-8 md:gap-12 items-center">
           <div className="col-span-12 md:col-span-7">
             <p className="eyebrow mb-4">§ 06 · Advisory</p>
@@ -29,7 +43,7 @@ export default function AdvisoryBand() {
             </p>
           </div>
           <div className="col-span-12 md:col-span-5">
-            <div className="bg-white rounded-xl p-8 md:p-10 shadow-[var(--shadow-card)]">
+            <div className="bg-white rounded-xl p-8 md:p-10 shadow-[var(--shadow-card-lift)]">
               <p className="eyebrow mb-5">Open a conversation</p>
               <div className="space-y-4">
                 <a
