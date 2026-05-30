@@ -28,9 +28,9 @@ export default function PageHero({
     return (
       <section className="bg-white">
         <div className="container-bank pt-6 md:pt-10 pb-0">
-          {/* Split hero — colour panel + photo. Sized so the section
-              below sits within the same first viewport. */}
-          <div className="grid grid-cols-12 gap-0 rounded-xl overflow-hidden min-h-[calc(100svh-280px)] md:min-h-[calc(100svh-260px)]">
+          {/* Split hero — panel + photo sized so its bottom hits the
+              viewport edge. */}
+          <div className="grid grid-cols-12 gap-0 rounded-xl overflow-hidden min-h-[calc(100svh-160px)] md:min-h-[calc(100svh-180px)]">
             <div className="col-span-12 md:col-span-6 bg-navy-600 text-white p-10 md:p-14 lg:p-16 flex flex-col justify-center">
               {eyebrow && <p className="eyebrow eyebrow-on-dark mb-6">{eyebrow}</p>}
               <h1 className="display-xl text-white">
@@ -85,9 +85,8 @@ export default function PageHero({
   if (variant === "editorial") {
     return (
       <section className="bg-bone-50">
-        {/* Editorial hero — generous whitespace, no overlay photography.
-            min-h carries the floor; no max-h so long content expands. */}
-        <div className="container-bank min-h-[calc(100svh-280px)] md:min-h-[calc(100svh-260px)] flex flex-col justify-center py-12 md:py-16">
+        {/* Editorial hero — bottom pinned to viewport edge. */}
+        <div className="container-bank min-h-[calc(100svh-110px)] md:min-h-[calc(100svh-130px)] flex flex-col justify-center py-12 md:py-16">
           <div className="grid grid-cols-12 gap-10 md:gap-14 items-center">
             <div className="col-span-12 md:col-span-8">
               {eyebrow && <p className="eyebrow mb-6">{eyebrow}</p>}
@@ -209,12 +208,12 @@ export default function PageHero({
 
       {/* Layer 5 — top dim under the nav */}
       <div className="absolute inset-0 bg-gradient-to-b from-ink/50 via-transparent to-transparent" />
-      {/* Full-bleed hero — min-h sized so hero + QuickActionStrip share
-          one viewport (nav 124px + strip 96px + breathing 36px = 260
-          subtraction). No max-h cap; if content needs more room the
-          hero expands rather than clipping the top. Governing brevity
-          happens at the page level — keep hero copy Lloyds-short. */}
-      <div className="relative container-bank min-h-[calc(100svh-280px)] md:min-h-[calc(100svh-260px)] flex flex-col justify-end pt-20 md:pt-24 pb-10 md:pb-14">
+      {/* Full-bleed hero — bottom pinned to the viewport edge.
+          Only the nav is subtracted (audience strip 44 + brand row 80 ≈
+          124 desktop, 108 mobile). The QuickActionStrip falls naturally
+          below the fold, which is the institutional pattern — hero is
+          the first screen, the rest is the second. */}
+      <div className="relative container-bank min-h-[calc(100svh-110px)] md:min-h-[calc(100svh-130px)] flex flex-col justify-end pt-20 md:pt-24 pb-10 md:pb-14">
         <div className={`max-w-4xl lg:max-w-5xl ${align === "center" ? "mx-auto text-center" : ""}`}>
           {eyebrow && (
             <motion.p
