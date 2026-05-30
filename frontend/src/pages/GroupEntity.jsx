@@ -3,7 +3,6 @@ import PageTransition from "../components/PageTransition.jsx";
 import AdvisoryBand from "../components/AdvisoryBand.jsx";
 import TrustRibbon from "../components/TrustRibbon.jsx";
 import SEO, { breadcrumbJsonLd } from "../components/SEO.jsx";
-import Monogram from "../components/Monogram.jsx";
 import { findEntity, GROUP_ENTITIES } from "../data/group.js";
 import { ArrowRightIcon } from "@phosphor-icons/react";
 import NotFound from "./NotFound.jsx";
@@ -12,6 +11,11 @@ export default function GroupEntity() {
   const { slug } = useParams();
   const e = findEntity(slug);
   if (!e) return <NotFound />;
+
+  // Index of this entity within the Group so the hero shows "01 / 05",
+  // matching the GroupRibbon card grammar.
+  const idx = GROUP_ENTITIES.findIndex((g) => g.id === e.id);
+  const total = GROUP_ENTITIES.length;
   const others = GROUP_ENTITIES.filter((g) => g.id !== e.id);
 
   return (
@@ -27,25 +31,35 @@ export default function GroupEntity() {
         ])]}
       />
 
-      {/* Hero */}
+      {/* Hero — clean, no fake mark.
+          Top accent rule (1px), header (index · role), name, tagline, body, CTAs. */}
       <section className="bg-ink text-white relative monogram-bg">
         <div
-          className="absolute top-0 left-0 right-0 h-[4px]"
+          className="absolute top-0 left-0 right-0 h-[1px]"
           style={{ background: e.accent }}
         />
-        <div className="container-bank section-lg">
+        <div className="container-bank min-h-[calc(100svh-280px)] md:min-h-[calc(100svh-260px)] flex flex-col justify-center py-20 md:py-24">
           <div className="max-w-3xl">
-            <p className="eyebrow eyebrow-on-dark mb-6">{e.role}</p>
-            <div className="flex items-start gap-6 mb-8">
-              <Monogram size={56} color={e.accent} />
+            <div className="flex items-center gap-3 mb-8">
+              <span className="font-mono text-[11px] tracking-[0.22em] text-white/35">
+                {String(idx + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+              </span>
+              <span className="text-white/20">·</span>
+              <span
+                className="font-mono text-[11px] tracking-[0.18em] uppercase"
+                style={{ color: e.accent }}
+              >
+                {e.role}
+              </span>
             </div>
-            <h1 className="display-hero text-white mb-6 text-balance">
+            <h1 className="display-hero text-white mb-7 text-balance leading-[0.95]">
               {e.name}
             </h1>
-            <p className="font-display text-[20px] md:text-[24px] text-white/85 mb-8 max-w-2xl">
+            <div className="h-[1px] w-16 bg-white/20 mb-7" />
+            <p className="font-display text-[20px] md:text-[22px] text-white/85 mb-7 max-w-2xl leading-snug">
               {e.tagline}
             </p>
-            <p className="text-[16px] md:text-[17px] text-white/80 leading-relaxed max-w-2xl mb-10">
+            <p className="text-[16px] md:text-[17px] text-white/75 leading-relaxed max-w-2xl mb-10">
               {e.body}
             </p>
             <div className="flex flex-wrap gap-3">
@@ -60,24 +74,55 @@ export default function GroupEntity() {
         </div>
       </section>
 
-      {/* Other entities */}
+      {/* Sister institutions — same card grammar as GroupRibbon, light theme */}
       <section className="bg-white section">
         <div className="container-bank">
           <p className="eyebrow mb-4">§ Sister institutions</p>
-          <h2 className="display-lg text-navy-600 mb-10">
+          <h2 className="display-lg text-navy-600 mb-12">
             Four others on the same shelf.
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {others.map((o) => (
-              <Link key={o.id} to={o.href} className="group block p-6 rounded-xl border border-bone-200 hover:border-orange-500 transition-colors">
-                <Monogram size={28} color={o.accent} className="mb-5" />
-                <p className="font-display text-[18px] text-navy-600 mb-2">{o.short}</p>
-                <p className="text-[13px] text-bone-600 leading-relaxed mb-4">{o.tagline}</p>
-                <span className="inline-flex items-center gap-2 text-[12px] font-medium text-orange-600">
-                  {o.cta} <ArrowRightIcon size={12} weight="bold" />
-                </span>
-              </Link>
-            ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {others.map((o) => {
+              const oIdx = GROUP_ENTITIES.findIndex((g) => g.id === o.id);
+              return (
+                <Link
+                  key={o.id}
+                  to={o.href}
+                  className="group block bg-white border border-bone-200 hover:border-bone-400 transition-colors flex flex-col"
+                >
+                  <div
+                    className="h-[1px] w-full"
+                    style={{ backgroundColor: o.accent }}
+                  />
+                  <div className="px-7 pt-7 pb-5">
+                    <div className="flex items-center gap-3">
+                      <span className="font-mono text-[11px] tracking-[0.22em] text-bone-500">
+                        {String(oIdx + 1).padStart(2, "0")}
+                      </span>
+                      <span className="text-bone-300">·</span>
+                      <span
+                        className="font-mono text-[11px] tracking-[0.18em] uppercase"
+                        style={{ color: o.accent }}
+                      >
+                        {o.role}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="mx-7 h-[1px] bg-bone-200" />
+                  <div className="px-7 pt-6 pb-8 flex-1 flex flex-col">
+                    <p className="font-display text-[20px] text-navy-600 mb-3 leading-tight">
+                      {o.short}
+                    </p>
+                    <p className="text-[14px] text-bone-600 leading-relaxed mb-7 flex-1">
+                      {o.tagline}
+                    </p>
+                    <span className="inline-flex items-center gap-2 text-[13px] font-medium text-orange-600 group-hover:text-orange-700">
+                      {o.cta} <ArrowRightIcon size={12} weight="bold" />
+                    </span>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
