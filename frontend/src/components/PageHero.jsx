@@ -28,10 +28,9 @@ export default function PageHero({
     return (
       <section className="bg-white">
         <div className="container-bank pt-6 md:pt-10 pb-0">
-          {/* Split hero — colour panel + photo. Sized to fit one viewport
-              below the nav (44px audience strip + 80px brand row = 124px).
-              min-h via svh + calc keeps content visible without scroll. */}
-          <div className="grid grid-cols-12 gap-0 rounded-xl overflow-hidden min-h-[calc(100svh-160px)] md:min-h-[calc(100svh-180px)]">
+          {/* Split hero — colour panel + photo. Sized so the section
+              below sits within the same first viewport. */}
+          <div className="grid grid-cols-12 gap-0 rounded-xl overflow-hidden min-h-[calc(100svh-280px)] md:min-h-[calc(100svh-260px)]">
             <div className="col-span-12 md:col-span-6 bg-navy-600 text-white p-10 md:p-14 lg:p-16 flex flex-col justify-center">
               {eyebrow && <p className="eyebrow eyebrow-on-dark mb-6">{eyebrow}</p>}
               <h1 className="display-xl text-white">
@@ -87,9 +86,9 @@ export default function PageHero({
     return (
       <section className="bg-bone-50">
         {/* Editorial hero — generous whitespace, no overlay photography.
-            Capped at one viewport minus nav so it always fits at first
-            paint, then the next section appears as the user scrolls. */}
-        <div className="container-bank min-h-[calc(100svh-160px)] md:min-h-[calc(100svh-180px)] flex flex-col justify-center py-16 md:py-20">
+            Capped so the next-section preview sits in the same first
+            viewport. */}
+        <div className="container-bank min-h-[calc(100svh-280px)] md:min-h-[calc(100svh-260px)] flex flex-col justify-center py-12 md:py-16">
           <div className="grid grid-cols-12 gap-10 md:gap-14 items-center">
             <div className="col-span-12 md:col-span-7">
               {eyebrow && <p className="eyebrow mb-6">{eyebrow}</p>}
@@ -161,12 +160,12 @@ export default function PageHero({
         style={{ backgroundImage: image ? `url(${image})` : undefined }}
       />
       <div className={`absolute inset-0 bg-gradient-to-t ${tints[overlayTint] || tints.navy}`} />
-      {/* Full-bleed hero — capped to one viewport minus nav. Padding
-          tightened (pt-20 / pb-10-14) so the breathing room belongs
-          to content, not to chrome. On laptop viewports (~768 tall)
-          this leaves enough vertical room for an eyebrow, a 1-2 line
-          headline, 2 lines of body and a CTA stack. */}
-      <div className="relative container-bank min-h-[calc(100svh-160px)] md:min-h-[calc(100svh-180px)] max-h-[calc(100svh-100px)] flex flex-col justify-end pt-20 md:pt-24 pb-10 md:pb-14">
+      {/* Full-bleed hero — capped so the QuickActionStrip directly below
+          fits inside the same first viewport. Nav = 124px (44 strip + 80
+          brand row). QuickActionStrip ≈ 96-180px (96 desktop one-row,
+          180 mobile two-row). So hero = viewport − nav − strip − ~36px
+          breathing = svh-260 desktop, svh-280 mobile. */}
+      <div className="relative container-bank min-h-[calc(100svh-280px)] md:min-h-[calc(100svh-260px)] max-h-[calc(100svh-220px)] flex flex-col justify-end pt-20 md:pt-24 pb-10 md:pb-14">
         <div className={`max-w-3xl ${align === "center" ? "mx-auto text-center" : ""}`}>
           {eyebrow && (
             <motion.p
