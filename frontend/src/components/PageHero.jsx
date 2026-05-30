@@ -43,7 +43,7 @@ export default function PageHero({
                 )}
               </h1>
               {body && (
-                <p className="mt-6 text-white/80 max-w-md text-[15px] md:text-[16px] leading-relaxed">
+                <p className="mt-7 text-white/80 max-w-md text-[16.5px] md:text-[18px] leading-relaxed">
                   {body}
                 </p>
               )}
@@ -104,7 +104,7 @@ export default function PageHero({
                 )}
               </motion.h1>
               {body && (
-                <p className="mt-8 text-[17px] md:text-[18px] text-[color:var(--color-bone-600)] max-w-xl leading-relaxed">
+                <p className="mt-10 text-[18px] md:text-[20px] text-[color:var(--color-bone-600)] max-w-xl leading-relaxed">
                   {body}
                 </p>
               )}
@@ -188,7 +188,7 @@ export default function PageHero({
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.25 }}
-              className="mt-8 text-white/85 max-w-xl text-[16px] md:text-[18px] leading-relaxed"
+              className="mt-10 text-white/85 max-w-xl text-[18px] md:text-[20px] leading-relaxed"
             >
               {body}
             </motion.p>

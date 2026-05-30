@@ -63,7 +63,7 @@ export default function Contact() {
               const Icon = c.icon;
               const Comp = c.href.startsWith("http") || c.href.startsWith("tel:") || c.href.startsWith("mailto:") ? "a" : "a";
               return (
-                <a key={c.title} href={c.href} className="block p-6 rounded-xl border border-[color:var(--color-bone-200)] hover:border-[color:var(--color-orange-500)] hover:shadow-[var(--shadow-card)] transition-all">
+                <a key={c.title} href={c.href} className="block p-8 md:p-9 rounded-xl border border-[color:var(--color-bone-200)] hover:border-[color:var(--color-orange-500)] hover:shadow-[var(--shadow-card)] transition-all">
                   <div className="w-11 h-11 rounded-lg bg-[color:var(--color-orange-50)] flex items-center justify-center mb-5">
                     <Icon size={20} weight="regular" className="text-[color:var(--color-orange-600)]" />
                   </div>
@@ -114,7 +114,7 @@ export default function Contact() {
                   </p>
                 </div>
               ) : (
-                <form onSubmit={onSubmit} className="p-7 md:p-8 rounded-xl bg-[color:var(--color-bone-50)] border border-[color:var(--color-bone-200)] space-y-5">
+                <form onSubmit={onSubmit} className="p-8 md:p-10 rounded-xl bg-[color:var(--color-bone-50)] border border-[color:var(--color-bone-200)] space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <Field label="Full name" value={form.name} onChange={(v) => update("name", v)} required />
                     <Field label="Email" type="email" value={form.email} onChange={(v) => update("email", v)} required />
@@ -126,7 +126,7 @@ export default function Contact() {
                       <select
                         value={form.audience}
                         onChange={(e) => update("audience", e.target.value)}
-                        className="w-full px-4 py-2.5 text-[14.5px] bg-white border border-[color:var(--color-bone-300)] rounded-md focus:outline-none focus:border-[color:var(--color-orange-500)]"
+                        className="w-full px-5 py-3.5 text-[15.5px] bg-white border border-[color:var(--color-bone-300)] rounded-md focus:outline-none focus:border-[color:var(--color-orange-500)]"
                       >
                         {AUDIENCES.map((a) => (
                           <option key={a.id} value={a.id}>{a.label_full}</option>
@@ -141,7 +141,7 @@ export default function Contact() {
                       onChange={(e) => update("message", e.target.value)}
                       rows={5}
                       required
-                      className="w-full px-4 py-2.5 text-[14.5px] bg-white border border-[color:var(--color-bone-300)] rounded-md focus:outline-none focus:border-[color:var(--color-orange-500)] resize-none"
+                      className="w-full px-5 py-3.5 text-[15.5px] bg-white border border-[color:var(--color-bone-300)] rounded-md focus:outline-none focus:border-[color:var(--color-orange-500)] resize-none"
                       placeholder="What product, what stage, what timeline. The more we know, the better the first call."
                     />
                   </div>
@@ -172,7 +172,7 @@ function Field({ label, value, onChange, type = "text", required = false }) {
         value={value}
         onChange={(e) => onChange(e.target.value)}
         required={required}
-        className="w-full px-4 py-2.5 text-[14.5px] bg-white border border-[color:var(--color-bone-300)] rounded-md focus:outline-none focus:border-[color:var(--color-orange-500)]"
+        className="w-full px-5 py-3.5 text-[15.5px] bg-white border border-[color:var(--color-bone-300)] rounded-md focus:outline-none focus:border-[color:var(--color-orange-500)]"
       />
     </div>
   );

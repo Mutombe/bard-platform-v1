@@ -49,9 +49,9 @@ export default function AudienceTiles({ heading = "Banking experiences" }) {
                   }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[color:var(--color-ink)]/90 via-[color:var(--color-ink)]/40 to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 p-5 md:p-6">
-                  <p className="eyebrow eyebrow-on-dark mb-3">{a.label}</p>
-                  <p className="font-display text-[18px] md:text-[20px] text-white leading-snug">
+                <div className="absolute inset-x-0 bottom-0 p-7 md:p-8">
+                  <p className="eyebrow eyebrow-on-dark mb-4">{a.label}</p>
+                  <p className="font-display text-[20px] md:text-[22px] text-white leading-snug">
                     Banking for{" "}
                     <span className="italic-accent text-[color:var(--color-orange-300)] font-light">
                       {a.id === "personal" && "you"}
@@ -61,9 +61,9 @@ export default function AudienceTiles({ heading = "Banking experiences" }) {
                       {a.id === "institutional" && "institutions"}
                     </span>
                   </p>
-                  <span className="mt-4 inline-flex items-center gap-2 text-[12px] text-white/80 group-hover:text-white">
+                  <span className="mt-5 inline-flex items-center gap-2 text-[13px] text-white/80 group-hover:text-white">
                     Open the door
-                    <ArrowRightIcon size={12} weight="bold" />
+                    <ArrowRightIcon size={13} weight="bold" />
                   </span>
                 </div>
               </Link>

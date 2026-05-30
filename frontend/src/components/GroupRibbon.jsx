@@ -42,28 +42,28 @@ export default function GroupRibbon({ vertical = false }) {
             <Link
               key={e.id}
               to={e.href}
-              className="group relative block rounded-xl overflow-hidden bg-[color:var(--color-navy-800)] border border-white/5 hover:border-white/20 transition-colors p-6 lg:p-7 min-h-[260px] flex flex-col"
+              className="group relative block rounded-xl overflow-hidden bg-[color:var(--color-navy-800)] border border-white/5 hover:border-white/20 transition-colors p-8 lg:p-10 min-h-[300px] flex flex-col"
             >
               {/* Accent rule */}
               <div
                 className="absolute top-0 left-0 right-0 h-[3px]"
                 style={{ background: e.accent }}
               />
-              <div className="flex items-start justify-between mb-6">
-                <Monogram size={28} color={e.accent} />
-                <span className="text-[10px] tracking-[0.18em] uppercase text-white/40">
+              <div className="flex items-start justify-between mb-8">
+                <Monogram size={32} color={e.accent} />
+                <span className="text-[11px] tracking-[0.18em] uppercase text-white/40">
                   {e.role}
                 </span>
               </div>
-              <p className="font-display text-[18px] md:text-[19px] text-white mb-2 leading-tight">
+              <p className="font-display text-[20px] md:text-[22px] text-white mb-3 leading-tight">
                 {e.name}
               </p>
-              <p className="text-[13px] text-white/70 leading-relaxed mb-6 flex-1">
+              <p className="text-[14px] text-white/70 leading-relaxed mb-8 flex-1">
                 {e.tagline}
               </p>
-              <span className="inline-flex items-center gap-2 text-[12px] font-medium text-white group-hover:text-[color:var(--color-orange-300)] transition-colors">
+              <span className="inline-flex items-center gap-2 text-[13px] font-medium text-white group-hover:text-[color:var(--color-orange-300)] transition-colors">
                 {e.cta}
-                <ArrowRightIcon size={12} weight="bold" />
+                <ArrowRightIcon size={13} weight="bold" />
               </span>
             </Link>
           ))}

@@ -106,7 +106,7 @@ export default function Insights() {
                       style={{ backgroundImage: it.image ? `url(${it.image})` : undefined }}
                     />
                   </Link>
-                  <div className="p-6 flex-1 flex flex-col">
+                  <div className="p-8 md:p-9 flex-1 flex flex-col">
                     <p className="eyebrow eyebrow-accent mb-2">{it.eyebrow}</p>
                     <h3 className="font-display text-[20px] text-[color:var(--color-navy-600)] mb-3 leading-tight">
                       <Link to={`/insights/${it.slug}`} className="hover:text-[color:var(--color-orange-600)] transition-colors">

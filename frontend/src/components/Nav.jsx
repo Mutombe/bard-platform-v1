@@ -51,7 +51,7 @@ export default function Nav() {
       {/* ─── Audience strip (top tier, dark) ──────────────────────── */}
       <div className="bg-[color:var(--color-navy-700)] text-white relative z-50">
         <div className="container-bank">
-          <div className="flex items-stretch h-10 overflow-x-auto no-scrollbar">
+          <div className="flex items-stretch h-11 overflow-x-auto no-scrollbar">
             {AUDIENCES.map((a) => {
               const isActive = activeAudienceId === a.id;
               return (
@@ -59,7 +59,7 @@ export default function Nav() {
                   key={a.id}
                   to={a.path}
                   className={() =>
-                    `flex items-center px-4 md:px-5 text-[12px] tracking-[0.06em] font-medium transition-colors whitespace-nowrap ${
+                    `flex items-center px-5 md:px-6 text-[13px] tracking-[0.06em] font-medium transition-colors whitespace-nowrap ${
                       isActive
                         ? "bg-white text-[color:var(--color-navy-700)]"
                         : "text-white/80 hover:text-white"
@@ -70,7 +70,7 @@ export default function Nav() {
                 </NavLink>
               );
             })}
-            <div className="ml-auto flex items-center gap-5 text-[12px] text-white/70 pr-1">
+            <div className="ml-auto flex items-center gap-6 text-[13px] text-white/70 pr-1">
               <Link to="/locations" className="hover:text-white hidden md:inline">
                 Locations
               </Link>
@@ -107,13 +107,13 @@ export default function Nav() {
             </Link>
 
             {/* Primary nav */}
-            <nav className="hidden lg:flex items-center gap-7">
+            <nav className="hidden lg:flex items-center gap-8">
               {PRIMARY_NAV.map((l) => (
                 <NavLink
                   key={l.to}
                   to={l.to}
                   className={({ isActive }) =>
-                    `text-[14px] font-medium transition-colors relative py-2 ${
+                    `text-[15px] font-medium transition-colors relative py-2 ${
                       isActive
                         ? "text-[color:var(--color-orange-600)]"
                         : "text-[color:var(--color-navy-600)] hover:text-[color:var(--color-orange-600)]"
@@ -135,7 +135,7 @@ export default function Nav() {
               </button>
               <a
                 href="https://online.bardsantnerbank.com"
-                className="btn btn-navy text-[13.5px] py-2.5 px-4"
+                className="btn btn-navy text-[14px] py-3 px-5"
               >
                 <LockIcon size={14} weight="bold" />
                 Log in
