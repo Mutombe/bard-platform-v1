@@ -42,8 +42,8 @@ export default function GroupEntity() {
             <h1 className="display-hero text-white mb-6 text-balance">
               {e.name}
             </h1>
-            <p className="font-display italic-accent text-[20px] md:text-[24px] text-white/85 mb-8 max-w-2xl">
-              "{e.tagline}"
+            <p className="font-display text-[20px] md:text-[24px] text-white/85 mb-8 max-w-2xl">
+              {e.tagline}
             </p>
             <p className="text-[16px] md:text-[17px] text-white/80 leading-relaxed max-w-2xl mb-10">
               {e.body}

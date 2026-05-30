@@ -175,7 +175,10 @@
   .display-lg   { font-family: var(--font-display); font-size: var(--text-display-lg);   line-height: 1.08; letter-spacing: -0.018em; font-weight: 500; }
   .display-md   { font-family: var(--font-display); font-size: var(--text-display-md);   line-height: 1.12; letter-spacing: -0.014em; font-weight: 500; }
 
-  .italic-accent { font-style: italic; font-feature-settings: "ss01"; }
+  /* No-op kept for backwards-compatibility; italics removed sitewide
+     per institutional brief — Lloyds, AfrAsia and Investec do not use
+     italic emphasis in their canonical headlines. */
+  .italic-accent { font-style: normal; }
 
   .eyebrow { font-family: var(--font-mono); font-size: 0.6875rem; line-height: 1; letter-spacing: 0.22em; text-transform: uppercase; color: var(--color-bone-500); font-weight: 500; }
   .eyebrow-on-dark { color: rgba(255,255,255,0.55); }

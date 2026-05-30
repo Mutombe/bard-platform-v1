@@ -20,7 +20,7 @@ export default function GroupRibbon({ vertical = false }) {
           <p className="eyebrow eyebrow-on-dark mb-4">§ 03 · The Group</p>
           <h2 className="display-xl text-white">
             Five institutions.{" "}
-            <span className="italic-accent text-orange-300 font-light">
+            <span className="text-white">
               One discipline.
             </span>
           </h2>
