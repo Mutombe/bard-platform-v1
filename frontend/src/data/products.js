@@ -1,9 +1,14 @@
-// Product catalogue. Each product has:
-//   - audience: which audience(s) it serves (drives segment landing pages)
-//   - category: how it groups inside the audience page
-//   - slug: route under /products/:slug
+// Product catalogue. Symmetry-engineered — every entry follows the
+// same character-count discipline so cards lay up in matching rhythms
+// across the site:
 //
-// Order matters — the order here is the order on the home page product grid.
+//   eyebrow   1–2 words           e.g. "Business banking"
+//   name      2–3 words           e.g. "Working Capital"
+//   summary   14–18 words / 2 sentences, lands in 2-3 lines at 14px
+//   features  4 bullets, 6–10 words each
+//   audience  array of audience ids
+//
+// Order matters — this is the order on the home page product grid.
 
 export const PRODUCTS = [
   // ─── Personal ───────────────────────────────────────────────────
@@ -13,12 +18,13 @@ export const PRODUCTS = [
     audience: ["personal"],
     category: "Current accounts",
     eyebrow: "Current account",
-    summary: "Salary in, bills out, debit card in pocket. Day-to-day banking with no monthly fee for the first twelve months.",
+    summary:
+      "Salary in, bills out, debit card in pocket. No monthly fee for the first twelve months.",
     image: "/images/products/everyday-account.jpg",
     accent: "var(--color-orange-500)",
     features: [
       "No monthly fee for the first 12 months",
-      "Debit card with contactless and biometric authorisation",
+      "Debit card with contactless and biometric login",
       "Free transfers between BSMFB accounts",
       "Mobile and internet banking included",
     ],
@@ -29,14 +35,15 @@ export const PRODUCTS = [
     audience: ["personal"],
     category: "Savings",
     eyebrow: "Savings",
-    summary: "Tiered-interest savings with monthly compounding. No notice required for everyday balances; preferential rates for committed balances.",
+    summary:
+      "Tiered interest, compounded monthly. Preferential rates on committed balances, no notice for the everyday.",
     image: "/images/products/savings.jpg",
     accent: "var(--color-orange-500)",
     features: [
       "Tiered interest, paid monthly",
-      "No minimum balance",
+      "No minimum balance to open",
       "Preferential rates on committed balances",
-      "Goal-based savings sub-pots",
+      "Goal-based sub-pots for projects and trips",
     ],
   },
   {
@@ -45,14 +52,15 @@ export const PRODUCTS = [
     audience: ["personal"],
     category: "Borrowing",
     eyebrow: "Mortgage",
-    summary: "First-home, second-home, refinance. Twenty-year tenors with fixed and variable options. A real conversation with a real mortgage banker.",
+    summary:
+      "First-home, second-home, refinance. Twenty-year tenors, fixed or variable, decided with a real banker.",
     image: "/images/products/home-loan.jpg",
     accent: "var(--color-orange-500)",
     features: [
       "Up to 20-year tenor",
       "Fixed, variable or split-rate options",
       "Decision in principle within 48 hours",
-      "Dedicated mortgage banker for the life of the loan",
+      "A dedicated banker for the life of the loan",
     ],
   },
   // ─── Business ───────────────────────────────────────────────────
@@ -62,30 +70,32 @@ export const PRODUCTS = [
     audience: ["business"],
     category: "Operating accounts",
     eyebrow: "Business banking",
-    summary: "An operating account that doesn't punish the growing SME. Multi-user access, integrations, and a relationship banker from day one.",
+    summary:
+      "An operating account that doesn't punish the growing SME. Multi-user access and a banker from day one.",
     image: "/images/products/business-account.jpg",
     accent: "var(--color-navy-600)",
     features: [
       "Multi-user roles and approval workflows",
       "Free transfers between BSMFB business accounts",
       "API access for accounting integrations",
-      "Dedicated relationship banker",
+      "A dedicated relationship banker from day one",
     ],
   },
   {
     slug: "working-capital",
-    name: "Working Capital Facility",
+    name: "Working Capital",
     audience: ["business"],
     category: "Credit",
     eyebrow: "Business credit",
-    summary: "Revolving facility for the rhythm of the trading cycle. Drawdown, repay, drawdown again. Priced honestly and reviewed annually.",
+    summary:
+      "Revolving facility for the trading cycle. Drawdown, repay, drawdown again. Priced honestly, reviewed annually.",
     image: "/images/products/working-capital.jpg",
     accent: "var(--color-navy-600)",
     features: [
-      "Revolving credit limit up to your turnover ratio",
+      "Revolving credit up to your turnover ratio",
       "Annual review, not quarterly anxiety",
-      "Multi-currency drawdown",
-      "Direct line to a credit officer",
+      "Multi-currency drawdown across major pairs",
+      "Direct line to a named credit officer",
     ],
   },
   {
@@ -94,31 +104,33 @@ export const PRODUCTS = [
     audience: ["business", "international", "institutional"],
     category: "Trade",
     eyebrow: "Trade finance",
-    summary: "Letters of credit, documentary collections, supplier finance and the correspondent banking relationships that move African goods through the world's ports.",
+    summary:
+      "Letters of credit, documentary collections, supplier finance. The rails that move African goods through the world's ports.",
     image: "/images/products/trade-finance.jpg",
     accent: "var(--color-navy-600)",
     features: [
       "Letters of credit (sight, usance, standby)",
       "Documentary collections",
       "Pre-shipment and post-shipment finance",
-      "Correspondent banking across 40+ jurisdictions",
+      "Correspondent banking in 40+ jurisdictions",
     ],
   },
   // ─── Private ────────────────────────────────────────────────────
   {
     slug: "private-current",
-    name: "Private Current Account",
+    name: "Private Current",
     audience: ["private"],
     category: "Private banking",
     eyebrow: "Private banking",
-    summary: "A current account with a private banker on call. Multi-currency, multi-channel, with a fee structure designed not to surprise.",
+    summary:
+      "A current account with a private banker on call. Multi-currency, multi-channel, no fee surprises.",
     image: "/images/products/private-current.jpg",
     accent: "var(--color-warn)",
     features: [
       "Multi-currency (USD, EUR, GBP, ZAR, ZWG)",
-      "Dedicated private banker",
-      "Concierge banking access",
-      "Bespoke fee arrangement",
+      "A dedicated private banker on the line",
+      "Concierge banking access on weekends",
+      "A bespoke fee arrangement, agreed once",
     ],
   },
   {
@@ -127,12 +139,13 @@ export const PRODUCTS = [
     audience: ["private"],
     category: "Wealth",
     eyebrow: "Wealth",
-    summary: "Discretionary portfolios constructed around your goals, not someone else's product list. Reviewed in person, in private, and on a rhythm you set.",
+    summary:
+      "Discretionary portfolios built around your goals, not our product list. Reviewed in person, on your rhythm.",
     image: "/images/products/wealth.jpg",
     accent: "var(--color-warn)",
     features: [
       "Discretionary and advisory mandates",
-      "Cross-border asset allocation",
+      "Cross-border asset allocation by default",
       "Annual in-person review at minimum",
       "Succession and intergenerational planning",
     ],
@@ -143,14 +156,15 @@ export const PRODUCTS = [
     audience: ["private", "institutional"],
     category: "Credit",
     eyebrow: "Structured credit",
-    summary: "Asset-backed, off-balance-sheet, syndicated. Where standard credit ends, structured credit begins. Bespoke by definition.",
+    summary:
+      "Asset-backed, off-balance-sheet, syndicated. Where standard credit ends, structured credit begins.",
     image: "/images/products/structured-credit.jpg",
     accent: "var(--color-warn)",
     features: [
-      "Asset-backed financing",
+      "Asset-backed and receivables financing",
       "Off-balance-sheet structures",
-      "Syndicated facilities",
-      "Cross-border counsel built in",
+      "Syndicated and club facilities",
+      "Cross-border counsel built into the deal",
     ],
   },
   // ─── International ─────────────────────────────────────────────
@@ -160,14 +174,15 @@ export const PRODUCTS = [
     audience: ["international"],
     category: "Diaspora",
     eyebrow: "Diaspora banking",
-    summary: "A home-country account that opens before you arrive home. Open in the UK, US, Australia or South Africa. Move money in, settle in.",
+    summary:
+      "A home-country account opened before you arrive. UK, US, Australia, South Africa. Move money, settle in.",
     image: "/images/products/diaspora.jpg",
     accent: "var(--color-success)",
     features: [
       "Open from abroad, fund on arrival",
-      "Multi-currency holdings",
-      "Property-purchase, school-fee and remittance flows",
-      "Dedicated diaspora desk",
+      "Multi-currency holdings as standard",
+      "Property, school-fee, remittance flows",
+      "A dedicated diaspora desk by region",
     ],
   },
   {
@@ -176,13 +191,14 @@ export const PRODUCTS = [
     audience: ["international", "business", "institutional"],
     category: "Markets",
     eyebrow: "FX",
-    summary: "Spot, forward, swap. Priced from the desk that runs the book. Not the desk that re-prices what someone else quoted yesterday.",
+    summary:
+      "Spot, forward, swap. Priced from the desk that runs the book, not the one re-pricing yesterday's quote.",
     image: "/images/products/fx.jpg",
     accent: "var(--color-success)",
     features: [
-      "Spot, forward, swap",
-      "12 major currency pairs",
-      "Hedging programme design",
+      "Spot, forward, swap on major pairs",
+      "Twelve currency pairs traded daily",
+      "Hedging programme design on request",
       "Direct dealing line for institutional clients",
     ],
   },
@@ -193,7 +209,8 @@ export const PRODUCTS = [
     audience: ["institutional", "business"],
     category: "Treasury",
     eyebrow: "Treasury",
-    summary: "Liquidity management, payments, collections, custody. The plumbing on which a serious treasury operates. Documented, reconciled, audited.",
+    summary:
+      "Liquidity, payments, collections, custody. The plumbing on which a serious treasury operates.",
     image: "/images/products/treasury.jpg",
     accent: "var(--color-navy-600)",
     features: [
@@ -209,14 +226,15 @@ export const PRODUCTS = [
     audience: ["institutional"],
     category: "Capital markets",
     eyebrow: "DCM",
-    summary: "Bond origination, syndication and distribution. Sovereign, sub-sovereign, corporate. Listed and unlisted. Local and cross-border.",
+    summary:
+      "Bond origination, syndication and distribution. Sovereign, sub-sovereign, corporate. Local and cross-border.",
     image: "/images/products/dcm.jpg",
     accent: "var(--color-navy-600)",
     features: [
       "Sovereign and sub-sovereign issuance",
-      "Corporate bond origination",
+      "Corporate bond origination by sector",
       "Listed and private placement structures",
-      "Cross-border syndication",
+      "Cross-border syndication across the region",
     ],
   },
 ];
