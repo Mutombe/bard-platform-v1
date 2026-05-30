@@ -72,7 +72,7 @@ const LOCATIONS = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[color:var(--color-ink)] text-white">
+    <footer className="bg-ink text-white">
       {/* ─── Top — brand row + four columns ─── */}
       <div className="container-bank pt-16 md:pt-24 pb-12">
         <div className="grid grid-cols-12 gap-10 md:gap-14">

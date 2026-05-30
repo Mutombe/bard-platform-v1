@@ -51,14 +51,14 @@ export default function ProductDetail() {
       />
 
       {/* Breadcrumb */}
-      <div className="bg-white border-b border-[color:var(--color-bone-200)]">
+      <div className="bg-white border-b border-bone-200">
         <div className="container-bank py-4">
-          <nav className="text-[12.5px] text-[color:var(--color-bone-500)] flex items-center gap-2">
-            <Link to="/" className="hover:text-[color:var(--color-navy-600)]">Home</Link>
+          <nav className="text-[12.5px] text-bone-500 flex items-center gap-2">
+            <Link to="/" className="hover:text-navy-600">Home</Link>
             <span className="opacity-50">/</span>
-            <Link to="/banking" className="hover:text-[color:var(--color-navy-600)]">Banking</Link>
+            <Link to="/banking" className="hover:text-navy-600">Banking</Link>
             <span className="opacity-50">/</span>
-            <span className="text-[color:var(--color-navy-600)]">{p.name}</span>
+            <span className="text-navy-600">{p.name}</span>
           </nav>
         </div>
       </div>
@@ -69,7 +69,7 @@ export default function ProductDetail() {
           <div className="grid grid-cols-12 gap-8 md:gap-12 items-start">
             <div className="col-span-12 md:col-span-7">
               <div
-                className="aspect-[5/4] rounded-xl bg-[color:var(--color-bone-200)] bg-cover bg-center mb-6"
+                className="aspect-[5/4] rounded-xl bg-bone-200 bg-cover bg-center mb-6"
                 style={{ backgroundImage: p.image ? `url(${p.image})` : undefined }}
               />
             </div>
@@ -80,8 +80,8 @@ export default function ProductDetail() {
               >
                 {p.eyebrow}
               </p>
-              <h1 className="display-xl text-[color:var(--color-navy-600)] mb-6">{p.name}</h1>
-              <p className="text-[17px] text-[color:var(--color-bone-600)] leading-relaxed mb-8">
+              <h1 className="display-xl text-navy-600 mb-6">{p.name}</h1>
+              <p className="text-[17px] text-bone-600 leading-relaxed mb-8">
                 {p.summary}
               </p>
               <div className="flex flex-wrap items-center gap-3 mb-6">
@@ -92,7 +92,7 @@ export default function ProductDetail() {
                   Speak to a banker
                 </Link>
               </div>
-              <p className="text-[11.5px] text-[color:var(--color-bone-500)]">
+              <p className="text-[11.5px] text-bone-500">
                 Subject to status. Eligibility criteria apply. Terms in the product disclosure.
               </p>
             </div>
@@ -103,12 +103,12 @@ export default function ProductDetail() {
       <hr className="hairline" />
 
       {/* What's included */}
-      <section className="bg-[color:var(--color-bone-50)] section">
+      <section className="bg-bone-50 section">
         <div className="container-bank">
           <div className="grid grid-cols-12 gap-8 mb-10">
             <div className="col-span-12 md:col-span-4">
               <p className="eyebrow mb-4">§ What's included</p>
-              <h2 className="display-lg text-[color:var(--color-navy-600)]">
+              <h2 className="display-lg text-navy-600">
                 The features that travel with this product.
               </h2>
             </div>
@@ -116,10 +116,10 @@ export default function ProductDetail() {
               <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-5">
                 {p.features.map((f, i) => (
                   <li key={i} className="flex items-start gap-3">
-                    <span className="mt-1 w-5 h-5 rounded-full bg-[color:var(--color-orange-500)] flex items-center justify-center shrink-0">
+                    <span className="mt-1 w-5 h-5 rounded-full bg-orange-500 flex items-center justify-center shrink-0">
                       <CheckIcon size={12} weight="bold" className="text-white" />
                     </span>
-                    <span className="text-[15px] text-[color:var(--color-bone-700)] leading-relaxed">
+                    <span className="text-[15px] text-bone-700 leading-relaxed">
                       {f}
                     </span>
                   </li>
@@ -136,7 +136,7 @@ export default function ProductDetail() {
           <div className="grid grid-cols-12 gap-8 mb-10">
             <div className="col-span-12 md:col-span-4">
               <p className="eyebrow mb-4">§ How to apply</p>
-              <h2 className="display-lg text-[color:var(--color-navy-600)]">
+              <h2 className="display-lg text-navy-600">
                 Three steps, no theatre.
               </h2>
             </div>
@@ -148,12 +148,12 @@ export default function ProductDetail() {
                   { n: "03", title: "We open the account.", body: "Welcome pack, card despatch, online and mobile banking activation, introduction to your banker if applicable." },
                 ].map((s) => (
                   <li key={s.n} className="grid grid-cols-12 gap-4">
-                    <span className="col-span-2 md:col-span-1 font-mono text-[13px] text-[color:var(--color-orange-600)] pt-1">
+                    <span className="col-span-2 md:col-span-1 font-mono text-[13px] text-orange-600 pt-1">
                       {s.n}
                     </span>
                     <div className="col-span-10 md:col-span-11">
-                      <p className="font-display text-[20px] text-[color:var(--color-navy-600)] mb-1">{s.title}</p>
-                      <p className="text-[14.5px] text-[color:var(--color-bone-600)] leading-relaxed">{s.body}</p>
+                      <p className="font-display text-[20px] text-navy-600 mb-1">{s.title}</p>
+                      <p className="text-[14.5px] text-bone-600 leading-relaxed">{s.body}</p>
                     </div>
                   </li>
                 ))}
@@ -173,19 +173,19 @@ export default function ProductDetail() {
 
       {/* Related products */}
       {related.length > 0 && (
-        <section className="bg-[color:var(--color-bone-50)] section">
+        <section className="bg-bone-50 section">
           <div className="container-bank">
             <p className="eyebrow mb-4">§ Continue exploring</p>
-            <h2 className="display-lg text-[color:var(--color-navy-600)] mb-10">
+            <h2 className="display-lg text-navy-600 mb-10">
               Other products on the same shelf.
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
               {related.map((r) => (
                 <Link key={r.slug} to={`/products/${r.slug}`} className="bank-card flex flex-col p-6">
                   <p className="eyebrow mb-2" style={{ color: r.accent }}>{r.eyebrow}</p>
-                  <h3 className="font-display text-[20px] text-[color:var(--color-navy-600)] mb-3">{r.name}</h3>
-                  <p className="text-[14px] text-[color:var(--color-bone-600)] leading-relaxed mb-4 flex-1">{r.summary}</p>
-                  <span className="inline-flex items-center gap-2 text-[13px] font-medium text-[color:var(--color-orange-600)]">
+                  <h3 className="font-display text-[20px] text-navy-600 mb-3">{r.name}</h3>
+                  <p className="text-[14px] text-bone-600 leading-relaxed mb-4 flex-1">{r.summary}</p>
+                  <span className="inline-flex items-center gap-2 text-[13px] font-medium text-orange-600">
                     Explore <ArrowRightIcon size={12} weight="bold" />
                   </span>
                 </Link>

@@ -87,35 +87,35 @@ export default function Locations() {
             {LOCATIONS.map((loc) => (
               <article key={loc.city} className="bank-card p-8 md:p-10 flex flex-col">
                 <div className="flex items-start justify-between mb-4">
-                  <h2 className="font-display text-[24px] text-[color:var(--color-navy-600)]">{loc.city}</h2>
+                  <h2 className="font-display text-[24px] text-navy-600">{loc.city}</h2>
                   <span className={`text-[10px] tracking-[0.18em] uppercase px-2 py-1 rounded ${
                     loc.status === "Open"
-                      ? "bg-[color:var(--color-orange-50)] text-[color:var(--color-orange-700)]"
-                      : "bg-[color:var(--color-bone-100)] text-[color:var(--color-bone-500)]"
+                      ? "bg-orange-50 text-orange-700"
+                      : "bg-bone-100 text-bone-500"
                   }`}>
                     {loc.status}
                   </span>
                 </div>
-                <p className="text-[12px] tracking-[0.12em] uppercase text-[color:var(--color-bone-500)] mb-5">
+                <p className="text-[12px] tracking-[0.12em] uppercase text-bone-500 mb-5">
                   {loc.type}
                 </p>
 
-                <div className="space-y-3 text-[13.5px] text-[color:var(--color-bone-600)] flex-1">
+                <div className="space-y-3 text-[13.5px] text-bone-600 flex-1">
                   <p className="flex items-start gap-2.5">
-                    <MapPinIcon size={16} weight="regular" className="text-[color:var(--color-orange-600)] mt-0.5 shrink-0" />
+                    <MapPinIcon size={16} weight="regular" className="text-orange-600 mt-0.5 shrink-0" />
                     <span className="leading-relaxed">{loc.address}</span>
                   </p>
                   <p className="flex items-start gap-2.5">
-                    <PhoneIcon size={16} weight="regular" className="text-[color:var(--color-orange-600)] mt-0.5 shrink-0" />
+                    <PhoneIcon size={16} weight="regular" className="text-orange-600 mt-0.5 shrink-0" />
                     <span>{loc.phone}</span>
                   </p>
                   <p className="flex items-start gap-2.5">
-                    <ClockIcon size={16} weight="regular" className="text-[color:var(--color-orange-600)] mt-0.5 shrink-0" />
+                    <ClockIcon size={16} weight="regular" className="text-orange-600 mt-0.5 shrink-0" />
                     <span>{loc.hours}</span>
                   </p>
                 </div>
 
-                <p className="mt-5 pt-5 border-t border-[color:var(--color-bone-200)] text-[12.5px] text-[color:var(--color-bone-500)] leading-relaxed">
+                <p className="mt-5 pt-5 border-t border-bone-200 text-[12.5px] text-bone-500 leading-relaxed">
                   {loc.note}
                 </p>
               </article>

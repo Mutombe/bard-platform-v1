@@ -34,7 +34,7 @@ export default function Insights() {
       />
 
       {/* Filter bar */}
-      <section className="bg-white border-b border-[color:var(--color-bone-200)] sticky top-[64px] md:top-[80px] z-30">
+      <section className="bg-white border-b border-bone-200 sticky top-[64px] md:top-[80px] z-30">
         <div className="container-bank py-4 overflow-x-auto no-scrollbar">
           <div className="flex items-center gap-2">
             {FILTERS.map((f) => (
@@ -43,8 +43,8 @@ export default function Insights() {
                 onClick={() => setFilter(f.id)}
                 className={`px-4 py-2 rounded-full text-[13px] font-medium transition-colors whitespace-nowrap ${
                   filter === f.id
-                    ? "bg-[color:var(--color-navy-600)] text-white"
-                    : "bg-[color:var(--color-bone-100)] text-[color:var(--color-navy-600)] hover:bg-[color:var(--color-bone-200)]"
+                    ? "bg-navy-600 text-white"
+                    : "bg-bone-100 text-navy-600 hover:bg-bone-200"
                 }`}
               >
                 {f.label}
@@ -61,23 +61,23 @@ export default function Insights() {
             <Link to={`/insights/${lead.slug}`} className="group grid grid-cols-12 gap-8 md:gap-12 items-center">
               <div className="col-span-12 md:col-span-7">
                 <div
-                  className="aspect-[16/10] rounded-lg bg-cover bg-center bg-[color:var(--color-bone-200)]"
+                  className="aspect-[16/10] rounded-lg bg-cover bg-center bg-bone-200"
                   style={{ backgroundImage: lead.image ? `url(${lead.image})` : undefined }}
                 />
               </div>
               <div className="col-span-12 md:col-span-5">
                 <p className="eyebrow eyebrow-accent mb-3">{lead.eyebrow} · Featured</p>
-                <h2 className="display-lg text-[color:var(--color-navy-600)] mb-5 group-hover:text-[color:var(--color-orange-600)] transition-colors">
+                <h2 className="display-lg text-navy-600 mb-5 group-hover:text-orange-600 transition-colors">
                   {lead.title}
                 </h2>
-                <p className="text-[16px] text-[color:var(--color-bone-600)] leading-relaxed mb-6">
+                <p className="text-[16px] text-bone-600 leading-relaxed mb-6">
                   {lead.summary}
                 </p>
-                <p className="text-[12.5px] text-[color:var(--color-bone-500)] flex items-center gap-3">
+                <p className="text-[12.5px] text-bone-500 flex items-center gap-3">
                   <span>{lead.author}</span>
-                  <span className="w-1 h-1 rounded-full bg-[color:var(--color-bone-400)]" />
+                  <span className="w-1 h-1 rounded-full bg-bone-400" />
                   <span>{lead.reading_minutes} min read</span>
-                  <span className="w-1 h-1 rounded-full bg-[color:var(--color-bone-400)]" />
+                  <span className="w-1 h-1 rounded-full bg-bone-400" />
                   <span>{new Date(lead.date).toLocaleDateString("en-GB", { year: "numeric", month: "long", day: "numeric" })}</span>
                 </p>
               </div>
@@ -88,7 +88,7 @@ export default function Insights() {
 
       {/* Remaining grid */}
       {rest.length > 0 && (
-        <section className="bg-[color:var(--color-bone-50)] section">
+        <section className="bg-bone-50 section">
           <div className="container-bank">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {rest.map((it, i) => (
@@ -102,23 +102,23 @@ export default function Insights() {
                 >
                   <Link to={`/insights/${it.slug}`} className="block">
                     <div
-                      className="aspect-[16/10] bg-cover bg-center bg-[color:var(--color-bone-200)]"
+                      className="aspect-[16/10] bg-cover bg-center bg-bone-200"
                       style={{ backgroundImage: it.image ? `url(${it.image})` : undefined }}
                     />
                   </Link>
                   <div className="p-8 md:p-9 flex-1 flex flex-col">
                     <p className="eyebrow eyebrow-accent mb-2">{it.eyebrow}</p>
-                    <h3 className="font-display text-[20px] text-[color:var(--color-navy-600)] mb-3 leading-tight">
-                      <Link to={`/insights/${it.slug}`} className="hover:text-[color:var(--color-orange-600)] transition-colors">
+                    <h3 className="font-display text-[20px] text-navy-600 mb-3 leading-tight">
+                      <Link to={`/insights/${it.slug}`} className="hover:text-orange-600 transition-colors">
                         {it.title}
                       </Link>
                     </h3>
-                    <p className="text-[14px] text-[color:var(--color-bone-600)] leading-relaxed mb-4 flex-1">
+                    <p className="text-[14px] text-bone-600 leading-relaxed mb-4 flex-1">
                       {it.summary}
                     </p>
-                    <p className="text-[12px] text-[color:var(--color-bone-500)] flex items-center gap-2">
+                    <p className="text-[12px] text-bone-500 flex items-center gap-2">
                       <span>{it.author}</span>
-                      <span className="w-1 h-1 rounded-full bg-[color:var(--color-bone-400)]" />
+                      <span className="w-1 h-1 rounded-full bg-bone-400" />
                       <span>{it.reading_minutes} min</span>
                     </p>
                   </div>

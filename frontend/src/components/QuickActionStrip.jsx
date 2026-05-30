@@ -13,8 +13,8 @@ import { CaretRightIcon } from "@phosphor-icons/react";
 export default function QuickActionStrip({ actions = [], tint = "navy" }) {
   const tintBg =
     tint === "orange"
-      ? "bg-[color:var(--color-orange-600)]"
-      : "bg-[color:var(--color-navy-600)]";
+      ? "bg-orange-600"
+      : "bg-navy-600";
 
   return (
     <section className={`${tintBg} text-white`}>
@@ -29,7 +29,7 @@ export default function QuickActionStrip({ actions = [], tint = "navy" }) {
               <Comp
                 key={a.label}
                 {...linkProps}
-                className="pill bg-white text-[color:var(--color-navy-600)] hover:text-[color:var(--color-orange-600)]"
+                className="pill bg-white text-navy-600 hover:text-orange-600"
               >
                 <span className="text-[13.5px] md:text-[14px] font-medium leading-tight pr-2">
                   {a.label}

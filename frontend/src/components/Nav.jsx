@@ -49,7 +49,7 @@ export default function Nav() {
   return (
     <>
       {/* ─── Audience strip (top tier, dark) ──────────────────────── */}
-      <div className="bg-[color:var(--color-navy-700)] text-white relative z-50">
+      <div className="bg-navy-700 text-white relative z-50">
         <div className="container-bank">
           <div className="flex items-stretch h-11 overflow-x-auto no-scrollbar">
             {AUDIENCES.map((a) => {
@@ -61,7 +61,7 @@ export default function Nav() {
                   className={() =>
                     `flex items-center px-5 md:px-6 text-[13px] tracking-[0.06em] font-medium transition-colors whitespace-nowrap ${
                       isActive
-                        ? "bg-white text-[color:var(--color-navy-700)]"
+                        ? "bg-white text-navy-700"
                         : "text-white/80 hover:text-white"
                     }`
                   }
@@ -88,7 +88,7 @@ export default function Nav() {
       {/* ─── Brand row (white, sticky) ───────────────────────────── */}
       <header
         className={`sticky top-0 z-40 bg-white transition-shadow ${
-          scrolled ? "shadow-[0_1px_0_0_var(--color-bone-200),0_8px_24px_rgba(12,10,20,0.04)]" : "border-b border-[color:var(--color-bone-200)]"
+          scrolled ? "shadow-[0_1px_0_0_var(--color-bone-200),0_8px_24px_rgba(12,10,20,0.04)]" : "border-b border-bone-200"
         }`}
       >
         <div className="container-bank">
@@ -97,10 +97,10 @@ export default function Nav() {
             <Link to="/" className="flex items-center gap-3 shrink-0" aria-label="Bard Santner home">
               <Monogram size={36} color="var(--color-orange-500)" />
               <span className="hidden sm:flex flex-col leading-none">
-                <span className="font-display text-[15px] md:text-[17px] tracking-[0.04em] text-[color:var(--color-navy-600)] font-medium uppercase">
+                <span className="font-display text-[15px] md:text-[17px] tracking-[0.04em] text-navy-600 font-medium uppercase">
                   Bard Santner
                 </span>
-                <span className="text-[9.5px] tracking-[0.18em] text-[color:var(--color-bone-500)] uppercase mt-0.5">
+                <span className="text-[9.5px] tracking-[0.18em] text-bone-500 uppercase mt-0.5">
                   Markets Inc
                 </span>
               </span>
@@ -115,8 +115,8 @@ export default function Nav() {
                   className={({ isActive }) =>
                     `text-[15px] font-medium transition-colors relative py-2 ${
                       isActive
-                        ? "text-[color:var(--color-orange-600)]"
-                        : "text-[color:var(--color-navy-600)] hover:text-[color:var(--color-orange-600)]"
+                        ? "text-orange-600"
+                        : "text-navy-600 hover:text-orange-600"
                     }`
                   }
                 >
@@ -129,7 +129,7 @@ export default function Nav() {
             <div className="flex items-center gap-2 md:gap-3">
               <button
                 aria-label="Search"
-                className="hidden md:flex w-9 h-9 items-center justify-center rounded-full hover:bg-[color:var(--color-bone-100)] text-[color:var(--color-navy-600)]"
+                className="hidden md:flex w-9 h-9 items-center justify-center rounded-full hover:bg-bone-100 text-navy-600"
               >
                 <MagnifyingGlassIcon size={18} weight="regular" />
               </button>
@@ -143,7 +143,7 @@ export default function Nav() {
               <button
                 onClick={() => setMobileOpen(true)}
                 aria-label="Open menu"
-                className="lg:hidden p-2 text-[color:var(--color-navy-600)]"
+                className="lg:hidden p-2 text-navy-600"
               >
                 <ListIcon size={22} weight="bold" />
               </button>
@@ -159,7 +159,7 @@ export default function Nav() {
             <div className="flex items-center justify-between h-16">
               <Link to="/" onClick={() => setMobileOpen(false)} className="flex items-center gap-3">
                 <Monogram size={32} color="var(--color-orange-500)" />
-                <span className="font-display text-[16px] tracking-[0.04em] text-[color:var(--color-navy-600)] uppercase">
+                <span className="font-display text-[16px] tracking-[0.04em] text-navy-600 uppercase">
                   Bard Santner
                 </span>
               </Link>
@@ -180,11 +180,11 @@ export default function Nav() {
                     onClick={() => setMobileOpen(false)}
                     className={`block p-3 rounded-md border ${
                       activeAudienceId === a.id
-                        ? "border-[color:var(--color-orange-500)] bg-[color:var(--color-orange-50)]"
-                        : "border-[color:var(--color-bone-200)]"
+                        ? "border-orange-500 bg-orange-50"
+                        : "border-bone-200"
                     }`}
                   >
-                    <span className="text-[13px] font-medium text-[color:var(--color-navy-600)]">
+                    <span className="text-[13px] font-medium text-navy-600">
                       {a.label}
                     </span>
                   </Link>
@@ -198,7 +198,7 @@ export default function Nav() {
                     key={l.to}
                     to={l.to}
                     onClick={() => setMobileOpen(false)}
-                    className="display-md py-2 text-[color:var(--color-navy-600)]"
+                    className="display-md py-2 text-navy-600"
                   >
                     {l.label}
                   </Link>

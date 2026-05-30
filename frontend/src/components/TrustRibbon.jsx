@@ -33,11 +33,11 @@ const TRUST_PILLARS = [
 
 export default function TrustRibbon() {
   return (
-    <section className="section bg-white border-y border-[color:var(--color-bone-200)]">
+    <section className="section bg-white border-y border-bone-200">
       <div className="container-bank">
         <div className="text-center mb-10 md:mb-12">
           <p className="eyebrow mb-4">§ 07 · Trust architecture</p>
-          <h2 className="display-lg text-[color:var(--color-navy-600)] max-w-2xl mx-auto">
+          <h2 className="display-lg text-navy-600 max-w-2xl mx-auto">
             The obligations a bank inherits the moment it opens its first account.
           </h2>
         </div>
@@ -46,13 +46,13 @@ export default function TrustRibbon() {
             const Icon = p.icon;
             return (
               <div key={p.title}>
-                <div className="w-14 h-14 rounded-lg bg-[color:var(--color-orange-50)] flex items-center justify-center mb-5">
-                  <Icon size={26} weight="regular" className="text-[color:var(--color-orange-600)]" />
+                <div className="w-14 h-14 rounded-lg bg-orange-50 flex items-center justify-center mb-5">
+                  <Icon size={26} weight="regular" className="text-orange-600" />
                 </div>
-                <p className="font-display text-[20px] text-[color:var(--color-navy-600)] mb-3">
+                <p className="font-display text-[20px] text-navy-600 mb-3">
                   {p.title}
                 </p>
-                <p className="text-[14.5px] text-[color:var(--color-bone-600)] leading-relaxed">
+                <p className="text-[14.5px] text-bone-600 leading-relaxed">
                   {p.body}
                 </p>
               </div>

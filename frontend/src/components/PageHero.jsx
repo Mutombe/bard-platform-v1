@@ -29,14 +29,14 @@ export default function PageHero({
       <section className="bg-white">
         <div className="container-bank pt-6 md:pt-10 pb-0">
           <div className="grid grid-cols-12 gap-0 rounded-xl overflow-hidden">
-            <div className="col-span-12 md:col-span-6 bg-[color:var(--color-navy-600)] text-white p-10 md:p-14 lg:p-16 flex flex-col justify-center min-h-[420px]">
+            <div className="col-span-12 md:col-span-6 bg-navy-600 text-white p-10 md:p-14 lg:p-16 flex flex-col justify-center min-h-[420px]">
               {eyebrow && <p className="eyebrow eyebrow-on-dark mb-6">{eyebrow}</p>}
               <h1 className="display-xl text-white">
                 {headline}
                 {italicTail && (
                   <>
                     <br />
-                    <span className="italic-accent text-[color:var(--color-orange-300)] font-light">
+                    <span className="italic-accent text-orange-300 font-light">
                       {italicTail}
                     </span>
                   </>
@@ -67,7 +67,7 @@ export default function PageHero({
               )}
             </div>
             <div
-              className="col-span-12 md:col-span-6 min-h-[300px] md:min-h-[420px] bg-[color:var(--color-bone-200)]"
+              className="col-span-12 md:col-span-6 min-h-[300px] md:min-h-[420px] bg-bone-200"
               style={{
                 backgroundImage: image ? `url(${image})` : undefined,
                 backgroundSize: "cover",
@@ -82,7 +82,7 @@ export default function PageHero({
 
   if (variant === "editorial") {
     return (
-      <section className="bg-[color:var(--color-bone-50)]">
+      <section className="bg-bone-50">
         <div className="container-bank section-lg">
           <div className="grid grid-cols-12 gap-10 md:gap-14 items-center">
             <div className="col-span-12 md:col-span-7">
@@ -91,20 +91,20 @@ export default function PageHero({
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                className="display-hero text-[color:var(--color-navy-600)] text-balance"
+                className="display-hero text-navy-600 text-balance"
               >
                 {headline}
                 {italicTail && (
                   <>
                     <br />
-                    <span className="italic-accent text-[color:var(--color-orange-600)] font-light">
+                    <span className="italic-accent text-orange-600 font-light">
                       {italicTail}
                     </span>
                   </>
                 )}
               </motion.h1>
               {body && (
-                <p className="mt-10 text-[18px] md:text-[20px] text-[color:var(--color-bone-600)] max-w-xl leading-relaxed">
+                <p className="mt-10 text-[18px] md:text-[20px] text-bone-600 max-w-xl leading-relaxed">
                   {body}
                 </p>
               )}
@@ -124,14 +124,14 @@ export default function PageHero({
                 </div>
               )}
               {noteUnderCTA && (
-                <p className="mt-4 text-[12px] text-[color:var(--color-bone-500)]">
+                <p className="mt-4 text-[12px] text-bone-500">
                   {noteUnderCTA}
                 </p>
               )}
             </div>
             <div className="col-span-12 md:col-span-5 hidden md:block">
               <div
-                className="aspect-[4/5] rounded-xl bg-[color:var(--color-bone-200)] bg-cover bg-center"
+                className="aspect-[4/5] rounded-xl bg-bone-200 bg-cover bg-center"
                 style={{ backgroundImage: image ? `url(${image})` : undefined }}
               />
             </div>
@@ -143,13 +143,13 @@ export default function PageHero({
 
   // ─── default: full-bleed editorial hero ─────────────────────────
   const tints = {
-    navy: "from-[color:var(--color-navy-900)]/85 via-[color:var(--color-navy-800)]/55 to-transparent",
-    ink: "from-[color:var(--color-ink)]/85 via-[color:var(--color-ink)]/45 to-transparent",
-    orange: "from-[color:var(--color-orange-800)]/85 via-[color:var(--color-orange-700)]/50 to-transparent",
+    navy: "from-navy-900/85 via-navy-800/55 to-transparent",
+    ink: "from-ink/85 via-ink/45 to-transparent",
+    orange: "from-orange-800/85 via-orange-700/50 to-transparent",
   };
 
   return (
-    <section className="relative overflow-hidden bg-[color:var(--color-navy-800)]">
+    <section className="relative overflow-hidden bg-navy-800">
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: image ? `url(${image})` : undefined }}
@@ -177,7 +177,7 @@ export default function PageHero({
             {italicTail && (
               <>
                 <br />
-                <span className="italic-accent text-[color:var(--color-orange-300)] font-light">
+                <span className="italic-accent text-orange-300 font-light">
                   {italicTail}
                 </span>
               </>

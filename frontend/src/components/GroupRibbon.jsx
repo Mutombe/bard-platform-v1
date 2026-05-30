@@ -14,13 +14,13 @@ import { GROUP_ENTITIES } from "../data/group.js";
  */
 export default function GroupRibbon({ vertical = false }) {
   return (
-    <section className="section bg-[color:var(--color-ink)] text-white monogram-bg">
+    <section className="section bg-ink text-white monogram-bg">
       <div className="container-bank">
         <div className="mb-12 md:mb-16 max-w-3xl">
           <p className="eyebrow eyebrow-on-dark mb-4">§ 03 · The Group</p>
           <h2 className="display-xl text-white">
             Five institutions.{" "}
-            <span className="italic-accent text-[color:var(--color-orange-300)] font-light">
+            <span className="italic-accent text-orange-300 font-light">
               One discipline.
             </span>
           </h2>
@@ -42,7 +42,7 @@ export default function GroupRibbon({ vertical = false }) {
             <Link
               key={e.id}
               to={e.href}
-              className="group relative block rounded-xl overflow-hidden bg-[color:var(--color-navy-800)] border border-white/5 hover:border-white/20 transition-colors p-8 lg:p-10 min-h-[300px] flex flex-col"
+              className="group relative block rounded-xl overflow-hidden bg-navy-800 border border-white/5 hover:border-white/20 transition-colors p-8 lg:p-10 min-h-[300px] flex flex-col"
             >
               {/* Accent rule */}
               <div
@@ -61,7 +61,7 @@ export default function GroupRibbon({ vertical = false }) {
               <p className="text-[14px] text-white/70 leading-relaxed mb-8 flex-1">
                 {e.tagline}
               </p>
-              <span className="inline-flex items-center gap-2 text-[13px] font-medium text-white group-hover:text-[color:var(--color-orange-300)] transition-colors">
+              <span className="inline-flex items-center gap-2 text-[13px] font-medium text-white group-hover:text-orange-300 transition-colors">
                 {e.cta}
                 <ArrowRightIcon size={13} weight="bold" />
               </span>

@@ -10,17 +10,17 @@ import { ArrowRightIcon } from "@phosphor-icons/react";
  */
 export default function ProductGrid({ heading, eyebrow, products = [], showAll = true }) {
   return (
-    <section className="section bg-[color:var(--color-bone-50)]">
+    <section className="section bg-bone-50">
       <div className="container-bank">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-10 md:mb-14 gap-6">
           <div>
             {eyebrow && <p className="eyebrow mb-3">{eyebrow}</p>}
-            <h2 className="display-xl text-[color:var(--color-navy-600)] text-balance max-w-2xl">
+            <h2 className="display-xl text-navy-600 text-balance max-w-2xl">
               {heading}
             </h2>
           </div>
           {showAll && (
-            <Link to="/banking" className="hover-line text-[14px] font-medium text-[color:var(--color-orange-600)]">
+            <Link to="/banking" className="hover-line text-[14px] font-medium text-orange-600">
               View all products →
             </Link>
           )}
@@ -38,7 +38,7 @@ export default function ProductGrid({ heading, eyebrow, products = [], showAll =
             >
               <Link to={`/products/${p.slug}`} className="block">
                 <div
-                  className="aspect-[4/3] bg-cover bg-center bg-[color:var(--color-bone-200)]"
+                  className="aspect-[4/3] bg-cover bg-center bg-bone-200"
                   style={{ backgroundImage: p.image ? `url(${p.image})` : undefined }}
                 />
               </Link>
@@ -52,15 +52,15 @@ export default function ProductGrid({ heading, eyebrow, products = [], showAll =
                 >
                   {p.eyebrow}
                 </p>
-                <h3 className="font-display text-[22px] md:text-[24px] text-[color:var(--color-navy-600)] mb-4 leading-tight">
+                <h3 className="font-display text-[22px] md:text-[24px] text-navy-600 mb-4 leading-tight">
                   {p.name}
                 </h3>
-                <p className="text-[15px] text-[color:var(--color-bone-600)] leading-relaxed mb-7 flex-1">
+                <p className="text-[15px] text-bone-600 leading-relaxed mb-7 flex-1">
                   {p.summary}
                 </p>
                 <Link
                   to={`/products/${p.slug}`}
-                  className="inline-flex items-center gap-2 text-[14px] font-medium text-[color:var(--color-navy-600)] hover:text-[color:var(--color-orange-600)] transition-colors"
+                  className="inline-flex items-center gap-2 text-[14px] font-medium text-navy-600 hover:text-orange-600 transition-colors"
                 >
                   Explore {p.name}
                   <ArrowRightIcon size={13} weight="bold" />

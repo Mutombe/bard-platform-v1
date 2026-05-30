@@ -39,9 +39,9 @@ export default function InsightDetail() {
       />
 
       {/* Breadcrumb */}
-      <div className="bg-white border-b border-[color:var(--color-bone-200)]">
+      <div className="bg-white border-b border-bone-200">
         <div className="container-bank py-4">
-          <Link to="/insights" className="text-[12.5px] text-[color:var(--color-bone-500)] hover:text-[color:var(--color-navy-600)] inline-flex items-center gap-1.5">
+          <Link to="/insights" className="text-[12.5px] text-bone-500 hover:text-navy-600 inline-flex items-center gap-1.5">
             <ArrowLeftIcon size={12} weight="bold" /> Back to Insights
           </Link>
         </div>
@@ -52,18 +52,18 @@ export default function InsightDetail() {
         <header className="container-bank pt-12 md:pt-20 pb-12">
           <div className="max-w-3xl mx-auto text-center">
             <p className="eyebrow eyebrow-accent mb-6">{it.eyebrow}</p>
-            <h1 className="display-xl text-[color:var(--color-navy-600)] mb-8 text-balance">
+            <h1 className="display-xl text-navy-600 mb-8 text-balance">
               {it.title}
             </h1>
-            <p className="text-[18px] md:text-[20px] text-[color:var(--color-bone-600)] leading-relaxed mb-8">
+            <p className="text-[18px] md:text-[20px] text-bone-600 leading-relaxed mb-8">
               {it.summary}
             </p>
-            <p className="text-[12.5px] text-[color:var(--color-bone-500)] flex items-center justify-center gap-3 flex-wrap">
-              <span className="font-medium text-[color:var(--color-navy-600)]">{it.author}</span>
+            <p className="text-[12.5px] text-bone-500 flex items-center justify-center gap-3 flex-wrap">
+              <span className="font-medium text-navy-600">{it.author}</span>
               {it.author_role && <span>· {it.author_role}</span>}
-              <span className="w-1 h-1 rounded-full bg-[color:var(--color-bone-400)]" />
+              <span className="w-1 h-1 rounded-full bg-bone-400" />
               <span>{new Date(it.date).toLocaleDateString("en-GB", { year: "numeric", month: "long", day: "numeric" })}</span>
-              <span className="w-1 h-1 rounded-full bg-[color:var(--color-bone-400)]" />
+              <span className="w-1 h-1 rounded-full bg-bone-400" />
               <span>{it.reading_minutes} min read</span>
             </p>
           </div>
@@ -72,7 +72,7 @@ export default function InsightDetail() {
         {it.image && (
           <div className="container-bank pb-12">
             <div
-              className="max-w-5xl mx-auto aspect-[16/9] rounded-xl bg-cover bg-center bg-[color:var(--color-bone-200)]"
+              className="max-w-5xl mx-auto aspect-[16/9] rounded-xl bg-cover bg-center bg-bone-200"
               style={{ backgroundImage: `url(${it.image})` }}
             />
           </div>
@@ -80,8 +80,8 @@ export default function InsightDetail() {
 
         {/* Body — editorial placeholder. Real long-form lives in /group/journal */}
         <div className="container-bank pb-16 md:pb-24">
-          <div className="max-w-2xl mx-auto prose-bank space-y-6 text-[17px] text-[color:var(--color-bone-700)] leading-relaxed">
-            <p className="text-[22px] italic-accent text-[color:var(--color-navy-600)] font-display font-light">
+          <div className="max-w-2xl mx-auto prose-bank space-y-6 text-[17px] text-bone-700 leading-relaxed">
+            <p className="text-[22px] italic-accent text-navy-600 font-display font-light">
               This insight is a short read. The long-form version, with citations and
               accompanying market data, is published in the next quarterly edition of
               Bardiq Journal.
