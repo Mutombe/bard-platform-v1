@@ -55,7 +55,11 @@ export default function Nav() {
       {/* ─── Audience strip (top tier, dark) ──────────────────────── */}
       <div className="bg-navy-700 text-white relative z-50">
         <div className="container-bank">
-          <div className="flex items-end h-12 overflow-x-auto no-scrollbar gap-0.5 pt-1">
+          {/* Audience strip — items-end so tabs sit flush with the brand row
+              below, plus gap-3.5 so each active tab's outward flares can
+              breathe without overlapping the next tab. pt-1 for a 4px top
+              reveal of navy above the tabs. */}
+          <div className="flex items-end h-12 overflow-x-auto no-scrollbar gap-3.5 pt-1">
             {AUDIENCES.map((a) => {
               const isActive = activeAudienceId === a.id;
               return (
@@ -63,10 +67,10 @@ export default function Nav() {
                   key={a.id}
                   to={a.path}
                   className={() =>
-                    `flex items-center px-5 md:px-7 h-[calc(100%-4px)] text-[13px] tracking-[0.06em] font-medium transition-colors whitespace-nowrap rounded-t-lg ${
+                    `flex items-center px-5 md:px-7 h-[calc(100%-4px)] text-[13px] tracking-[0.06em] font-medium transition-colors whitespace-nowrap ${
                       isActive
-                        ? "bg-white text-navy-700 shadow-[0_-1px_0_0_var(--color-orange-500)_inset]"
-                        : "text-white/80 hover:text-white hover:bg-white/5"
+                        ? "tab-active"
+                        : "rounded-t-lg text-white/80 hover:text-white hover:bg-white/5"
                     }`
                   }
                 >
@@ -74,7 +78,10 @@ export default function Nav() {
                 </NavLink>
               );
             })}
-            <div className="ml-auto flex items-center gap-6 text-[13px] text-white/70 pr-1">
+            {/* Right-side links share the same vertical box as the tabs so
+                their text baselines align with the tab labels — no more
+                floating low under the strip floor. */}
+            <div className="ml-auto h-[calc(100%-4px)] flex items-center gap-7 text-[13px] text-white/70 pr-1">
               <Link to="/locations" className="hover:text-white hidden md:inline">
                 Locations
               </Link>
