@@ -17,14 +17,14 @@ export default function AudienceTiles({ heading = "Banking experiences" }) {
       <div className="container-bank">
         <div className="text-center mb-12 md:mb-16">
           <p className="eyebrow mb-4">§ 02 · How we organise</p>
-          <h2 className="display-xl text-[color:var(--color-navy-600)]">
+          <h2 className="display-xl text-navy-600">
             {heading}
             <br />
-            <span className="italic-accent text-[color:var(--color-orange-600)] font-light">
+            <span className="italic-accent text-orange-600 font-light">
               for every life that needs banking.
             </span>
           </h2>
-          <p className="mt-6 text-[color:var(--color-bone-600)] max-w-2xl mx-auto leading-relaxed">
+          <p className="mt-6 text-bone-600 max-w-2xl mx-auto leading-relaxed">
             Five clear contexts. One bank. Choose the one your next
             conversation belongs in.
           </p>
@@ -48,12 +48,12 @@ export default function AudienceTiles({ heading = "Banking experiences" }) {
                     backgroundColor: "var(--color-navy-700)",
                   }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[color:var(--color-ink)]/90 via-[color:var(--color-ink)]/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/40 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-7 md:p-8">
                   <p className="eyebrow eyebrow-on-dark mb-4">{a.label}</p>
                   <p className="font-display text-[20px] md:text-[22px] text-white leading-snug">
                     Banking for{" "}
-                    <span className="italic-accent text-[color:var(--color-orange-300)] font-light">
+                    <span className="italic-accent text-orange-300 font-light">
                       {a.id === "personal" && "you"}
                       {a.id === "business" && "your business"}
                       {a.id === "private" && "your wealth"}

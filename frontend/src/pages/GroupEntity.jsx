@@ -28,7 +28,7 @@ export default function GroupEntity() {
       />
 
       {/* Hero */}
-      <section className="bg-[color:var(--color-ink)] text-white relative monogram-bg">
+      <section className="bg-ink text-white relative monogram-bg">
         <div
           className="absolute top-0 left-0 right-0 h-[4px]"
           style={{ background: e.accent }}
@@ -64,16 +64,16 @@ export default function GroupEntity() {
       <section className="bg-white section">
         <div className="container-bank">
           <p className="eyebrow mb-4">§ Sister institutions</p>
-          <h2 className="display-lg text-[color:var(--color-navy-600)] mb-10">
+          <h2 className="display-lg text-navy-600 mb-10">
             Four others on the same shelf.
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {others.map((o) => (
-              <Link key={o.id} to={o.href} className="group block p-6 rounded-xl border border-[color:var(--color-bone-200)] hover:border-[color:var(--color-orange-500)] transition-colors">
+              <Link key={o.id} to={o.href} className="group block p-6 rounded-xl border border-bone-200 hover:border-orange-500 transition-colors">
                 <Monogram size={28} color={o.accent} className="mb-5" />
-                <p className="font-display text-[18px] text-[color:var(--color-navy-600)] mb-2">{o.short}</p>
-                <p className="text-[13px] text-[color:var(--color-bone-600)] leading-relaxed mb-4">{o.tagline}</p>
-                <span className="inline-flex items-center gap-2 text-[12px] font-medium text-[color:var(--color-orange-600)]">
+                <p className="font-display text-[18px] text-navy-600 mb-2">{o.short}</p>
+                <p className="text-[13px] text-bone-600 leading-relaxed mb-4">{o.tagline}</p>
+                <span className="inline-flex items-center gap-2 text-[12px] font-medium text-orange-600">
                   {o.cta} <ArrowRightIcon size={12} weight="bold" />
                 </span>
               </Link>

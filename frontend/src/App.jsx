@@ -44,10 +44,10 @@ class ErrorBoundary extends Component {
         <div className="min-h-[60vh] flex items-center justify-center p-10 text-center bg-white">
           <div>
             <p className="eyebrow eyebrow-accent mb-4">A service interruption</p>
-            <h1 className="display-lg mb-4 text-[color:var(--color-navy-600)]">
+            <h1 className="display-lg mb-4 text-navy-600">
               We were unable to complete that request.
             </h1>
-            <p className="text-[color:var(--color-bone-600)] mb-8 max-w-md mx-auto">
+            <p className="text-bone-600 mb-8 max-w-md mx-auto">
               The fault is on our side. Please refresh, or return to the
               homepage and try again.
             </p>

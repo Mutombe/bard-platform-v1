@@ -24,7 +24,12 @@
    Lloyds-grade interior padding — pills 18/28, cards 32/40, buttons 18/28.
    Applied at @theme + @layer components level only so symmetry holds. */
 
-/* ─── Self-hosted Gellix ────────────────────────────────────────────── */
+/* ─── Self-hosted Gellix ──────────────────────────────────────────────
+   Gellix shipped only as Light (300) and Regular (400). Declaring the
+   Regular face under each weight (400, 500, 600, 700) the design system
+   asks for lets the browser pick it without synthesizing bold — the
+   weight-range syntax was confusing some browsers and the font wasn't
+   resolving at all. */
 @font-face {
   font-family: "Gellix";
   src: url("/fonts/Gellix-Light.ttf") format("truetype");
@@ -35,12 +40,31 @@
 @font-face {
   font-family: "Gellix";
   src: url("/fonts/Gellix-Regular.ttf") format("truetype");
-  font-weight: 400 600;  /* range covers 400/500/600 calls; browser will
-                            synthesize subtle weights from the single file. */
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
-─────────────────────────────────────────────────────────────────────────── */
+@font-face {
+  font-family: "Gellix";
+  src: url("/fonts/Gellix-Regular.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gellix";
+  src: url("/fonts/Gellix-Regular.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gellix";
+  src: url("/fonts/Gellix-Regular.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 
 @theme {
   /* ─── Brand primaries ─── */

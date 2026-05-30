@@ -30,14 +30,14 @@ export default function Leadership() {
             {LEADERSHIP.map((p) => (
               <article key={p.slug} className="bank-card p-0">
                 <div
-                  className="aspect-[4/5] bg-cover bg-center bg-[color:var(--color-bone-200)]"
+                  className="aspect-[4/5] bg-cover bg-center bg-bone-200"
                   style={{ backgroundImage: p.image ? `url(${p.image})` : undefined }}
                 />
                 <div className="p-8 md:p-10">
                   <p className="eyebrow eyebrow-accent mb-3">{p.short_role}</p>
-                  <h2 className="font-display text-[22px] text-[color:var(--color-navy-600)] mb-1">{p.name}</h2>
-                  <p className="text-[13px] text-[color:var(--color-bone-500)] mb-5">{p.role}</p>
-                  <p className="text-[14.5px] text-[color:var(--color-bone-600)] leading-relaxed">{p.bio}</p>
+                  <h2 className="font-display text-[22px] text-navy-600 mb-1">{p.name}</h2>
+                  <p className="text-[13px] text-bone-500 mb-5">{p.role}</p>
+                  <p className="text-[14.5px] text-bone-600 leading-relaxed">{p.bio}</p>
                 </div>
               </article>
             ))}

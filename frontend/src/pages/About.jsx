@@ -43,11 +43,11 @@ export default function About() {
           <div className="grid grid-cols-12 gap-10">
             <div className="col-span-12 md:col-span-4">
               <p className="eyebrow mb-4">§ The standard</p>
-              <h2 className="display-lg text-[color:var(--color-navy-600)]">
+              <h2 className="display-lg text-navy-600">
                 What we measure ourselves against.
               </h2>
             </div>
-            <div className="col-span-12 md:col-span-8 max-w-3xl space-y-6 text-[16px] md:text-[17px] text-[color:var(--color-bone-600)] leading-relaxed">
+            <div className="col-span-12 md:col-span-8 max-w-3xl space-y-6 text-[16px] md:text-[17px] text-bone-600 leading-relaxed">
               <p>
                 A bank is two things at once. A regulated, capital-bearing institution
                 operating under licence. And a relationship — held by a name, between
@@ -71,10 +71,10 @@ export default function About() {
       </section>
 
       {/* The four obligations */}
-      <section className="bg-[color:var(--color-bone-50)] section">
+      <section className="bg-bone-50 section">
         <div className="container-bank">
           <p className="eyebrow text-center mb-4">§ The obligations of a bank</p>
-          <h2 className="display-xl text-[color:var(--color-navy-600)] text-center max-w-2xl mx-auto mb-12">
+          <h2 className="display-xl text-navy-600 text-center max-w-2xl mx-auto mb-12">
             Four obligations a bank inherits the moment it opens its first account.
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -85,9 +85,9 @@ export default function About() {
               { n: "04", title: "To name the people.", body: "A bank is signed by its people. The CEO is named. The bankers are named. The complaint reaches a person, not a queue. Accountability cannot be abstract." },
             ].map((o) => (
               <div key={o.n}>
-                <p className="font-mono text-[12px] text-[color:var(--color-orange-600)] mb-3">{o.n}</p>
-                <h3 className="font-display text-[22px] text-[color:var(--color-navy-600)] mb-3">{o.title}</h3>
-                <p className="text-[14.5px] text-[color:var(--color-bone-600)] leading-relaxed">{o.body}</p>
+                <p className="font-mono text-[12px] text-orange-600 mb-3">{o.n}</p>
+                <h3 className="font-display text-[22px] text-navy-600 mb-3">{o.title}</h3>
+                <p className="text-[14.5px] text-bone-600 leading-relaxed">{o.body}</p>
               </div>
             ))}
           </div>
