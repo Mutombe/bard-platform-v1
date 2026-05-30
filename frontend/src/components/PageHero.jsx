@@ -28,9 +28,9 @@ export default function PageHero({
     return (
       <section className="bg-white">
         <div className="container-bank pt-6 md:pt-10 pb-0">
-          {/* Split hero — panel + photo sized so its bottom hits the
-              viewport edge. */}
-          <div className="grid grid-cols-12 gap-0 rounded-xl overflow-hidden min-h-[calc(100svh-160px)] md:min-h-[calc(100svh-180px)]">
+          {/* Split hero — panel + photo. Sized so hero + QuickActionStrip
+              fit one viewport (nav + strip ≈ 260 desktop). */}
+          <div className="grid grid-cols-12 gap-0 rounded-xl overflow-hidden min-h-[calc(100svh-280px)] md:min-h-[calc(100svh-260px)]">
             <div className="col-span-12 md:col-span-6 bg-navy-600 text-white p-10 md:p-14 lg:p-16 flex flex-col justify-center">
               {eyebrow && <p className="eyebrow eyebrow-on-dark mb-6">{eyebrow}</p>}
               <h1 className="display-xl text-white">
@@ -85,8 +85,9 @@ export default function PageHero({
   if (variant === "editorial") {
     return (
       <section className="bg-bone-50">
-        {/* Editorial hero — bottom pinned to viewport edge. */}
-        <div className="container-bank min-h-[calc(100svh-110px)] md:min-h-[calc(100svh-130px)] flex flex-col justify-center py-12 md:py-16">
+        {/* Editorial hero — same shared-viewport math as full-bleed so
+            scroll rhythm is consistent across hero variants. */}
+        <div className="container-bank min-h-[calc(100svh-280px)] md:min-h-[calc(100svh-260px)] flex flex-col justify-center py-12 md:py-16">
           <div className="grid grid-cols-12 gap-10 md:gap-14 items-center">
             <div className="col-span-12 md:col-span-8">
               {eyebrow && <p className="eyebrow mb-6">{eyebrow}</p>}
@@ -208,12 +209,15 @@ export default function PageHero({
 
       {/* Layer 5 — top dim under the nav */}
       <div className="absolute inset-0 bg-gradient-to-b from-ink/50 via-transparent to-transparent" />
-      {/* Full-bleed hero — bottom pinned to the viewport edge.
-          Only the nav is subtracted (audience strip 44 + brand row 80 ≈
-          124 desktop, 108 mobile). The QuickActionStrip falls naturally
-          below the fold, which is the institutional pattern — hero is
-          the first screen, the rest is the second. */}
-      <div className="relative container-bank min-h-[calc(100svh-110px)] md:min-h-[calc(100svh-130px)] flex flex-col justify-end pt-20 md:pt-24 pb-10 md:pb-14">
+      {/* Full-bleed hero — sized so the bottom of the QuickActionStrip
+          (the thin navy band of pills below the hero) lands at the
+          viewport's bottom edge. The combined above-the-fold layout:
+              nav (124 desktop, 108 mobile)
+            + hero (this min-h)
+            + strip (≈112 desktop, ≈164 mobile two-row)
+            = 100svh
+          So hero subtracts nav + strip = ≈260 desktop, ≈280 mobile. */}
+      <div className="relative container-bank min-h-[calc(100svh-280px)] md:min-h-[calc(100svh-260px)] flex flex-col justify-end pt-20 md:pt-24 pb-10 md:pb-14">
         <div className={`max-w-4xl lg:max-w-5xl ${align === "center" ? "mx-auto text-center" : ""}`}>
           {eyebrow && (
             <motion.p
