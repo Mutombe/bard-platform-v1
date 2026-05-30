@@ -10,7 +10,7 @@ import { PhoneIcon, EnvelopeSimpleIcon, ArrowRightIcon } from "@phosphor-icons/r
  */
 export default function AdvisoryBand() {
   return (
-    <section className="bg-bone-100">
+    <section className="bg-bone-100 border-t-2 border-orange-500">
       <div className="container-bank section">
         <div className="grid grid-cols-12 gap-8 md:gap-12 items-center">
           <div className="col-span-12 md:col-span-7">

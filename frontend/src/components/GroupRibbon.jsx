@@ -25,7 +25,7 @@ import { GROUP_ENTITIES } from "../data/group.js";
  */
 export default function GroupRibbon({ vertical = false }) {
   return (
-    <section className="section bg-ink text-white monogram-bg">
+    <section className="section bg-ink text-white monogram-bg border-y-2 border-orange-500">
       <div className="container-bank">
         <div className="mb-12 md:mb-16 max-w-3xl">
           <p className="eyebrow eyebrow-on-dark mb-4">§ 03 · The Group</p>

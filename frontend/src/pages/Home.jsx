@@ -5,6 +5,7 @@ import PageTransition from "../components/PageTransition.jsx";
 import PageHero from "../components/PageHero.jsx";
 import QuickActionStrip from "../components/QuickActionStrip.jsx";
 import AudienceTiles from "../components/AudienceTiles.jsx";
+import StatsBand from "../components/StatsBand.jsx";
 import ProductGrid from "../components/ProductGrid.jsx";
 import GroupRibbon from "../components/GroupRibbon.jsx";
 import InsightsRail from "../components/InsightsRail.jsx";
@@ -75,9 +76,12 @@ export default function Home() {
       {/* § 03 — Audience segmentation */}
       <AudienceTiles heading="Banking experiences" />
 
-      {/* § 04 — Featured products */}
+      {/* § 04 — Stats band — institutional gravitas */}
+      <StatsBand />
+
+      {/* § 05 — Featured products */}
       <ProductGrid
-        eyebrow="§ 04 · Featured solutions"
+        eyebrow="§ 05 · Featured solutions"
         heading="Four ways to start."
         products={featuredProducts}
       />

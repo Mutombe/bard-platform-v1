@@ -146,49 +146,69 @@ export default function PageHero({
   }
 
   // ─── default: full-bleed editorial hero ─────────────────────────
-  // Lloyds-style image blending. Three layers:
-  //   1. The photograph, slightly desaturated and dimmed via filter
-  //      so it reads as institutional editorial rather than stock
-  //      brochureware.
-  //   2. A diagonal-to-bottom-left navy gradient that lands ~85%
-  //      opaque under the text and fades to transparent toward the
-  //      top-right corner — gives the headline a dark canvas to
-  //      sit on without flooding the whole image.
-  //   3. A second top-down gradient to keep the upper area subtly
-  //      dimmed so the nav doesn't fight low-contrast sky / windows.
+  // Image blending recipe — the Bard Santner brand manual's documented
+  // "multiplicate" technique combined with the Lloyds editorial layering:
+  //
+  //   Layer 1  Orange 2px accent rule at the very top — brand signature,
+  //            an institutional gesture borrowed straight from the brand
+  //            manual posters ("orange bar at the top of a placeholder").
+  //   Layer 2  The photograph itself, filtered for institutional tonality:
+  //              saturate(0.65) brightness(0.85) contrast(1.08)
+  //            Strips brochure-stock saturation, deepens shadows.
+  //   Layer 3  Solid navy fill at low opacity with mix-blend-multiply.
+  //            This is the brand-manual "multiplicate" move: the brand
+  //            colour literally tints the photograph so the photo and
+  //            the brand share the same colour family.
+  //   Layer 4  Diagonal gradient at high opacity from the bottom-left
+  //            corner where the headline sits, fading to transparent
+  //            toward the top-right. The text canvas.
+  //   Layer 5  Top-down dim. Keeps the upper photo from fighting the nav.
   const tints = {
     navy: {
-      from: "from-navy-900/90",
-      via: "via-navy-800/55",
+      solid: "bg-navy-900/40",
+      from: "from-navy-950/95",
+      via: "via-navy-900/65",
       to: "to-navy-900/15",
     },
     ink: {
-      from: "from-ink/90",
-      via: "via-ink/55",
+      solid: "bg-ink/40",
+      from: "from-ink/95",
+      via: "via-ink/65",
       to: "to-ink/15",
     },
     orange: {
-      from: "from-orange-900/85",
-      via: "via-orange-800/50",
+      solid: "bg-orange-900/35",
+      from: "from-orange-950/90",
+      via: "via-orange-900/55",
       to: "to-orange-900/10",
     },
   };
   const t = tints[overlayTint] || tints.navy;
 
   return (
-    <section className="relative overflow-hidden bg-navy-800">
-      {/* Photograph — desaturated 20%, slightly dimmed for editorial tone */}
+    <section className="relative overflow-hidden bg-navy-900">
+      {/* Layer 1 — orange accent rule at the very top edge */}
+      <div className="absolute top-0 left-0 right-0 h-[2px] bg-orange-500 z-20" />
+
+      {/* Layer 2 — photograph with editorial-tone filter */}
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
           backgroundImage: image ? `url(${image})` : undefined,
-          filter: image ? "saturate(0.78) brightness(0.85) contrast(1.05)" : undefined,
+          filter: image ? "saturate(0.65) brightness(0.85) contrast(1.08)" : undefined,
         }}
       />
-      {/* Bottom-left dark gradient — text canvas */}
+
+      {/* Layer 3 — multiply navy tint. Photo and brand share a colour
+          family after this layer; the photo is no longer a stock photo,
+          it is part of the institution. */}
+      <div className={`absolute inset-0 ${t.solid} mix-blend-multiply`} />
+
+      {/* Layer 4 — diagonal text canvas */}
       <div className={`absolute inset-0 bg-gradient-to-tr ${t.from} ${t.via} ${t.to}`} />
-      {/* Top dim — subtle, keeps the upper-area legible under the nav */}
-      <div className="absolute inset-0 bg-gradient-to-b from-ink/40 via-transparent to-transparent" />
+
+      {/* Layer 5 — top dim under the nav */}
+      <div className="absolute inset-0 bg-gradient-to-b from-ink/50 via-transparent to-transparent" />
       {/* Full-bleed hero — min-h sized so hero + QuickActionStrip share
           one viewport (nav 124px + strip 96px + breathing 36px = 260
           subtraction). No max-h cap; if content needs more room the

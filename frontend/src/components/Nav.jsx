@@ -42,15 +42,20 @@ export default function Nav() {
   useEffect(() => setMobileOpen(false), [loc.pathname]);
 
   // The active audience is whichever audience-landing path is in the URL.
-  const activeAudienceId =
-    AUDIENCES.find((a) => loc.pathname.startsWith(a.path))?.id || null;
+  // When the user is on / or a non-audience page, default the visual
+  // active state to "Personal" — the largest cohort and the canonical
+  // entry point. This keeps the audience strip from feeling unanchored.
+  const matchedAudienceId = AUDIENCES.find((a) =>
+    loc.pathname.startsWith(a.path)
+  )?.id;
+  const activeAudienceId = matchedAudienceId || "personal";
 
   return (
     <>
       {/* ─── Audience strip (top tier, dark) ──────────────────────── */}
       <div className="bg-navy-700 text-white relative z-50">
         <div className="container-bank">
-          <div className="flex items-stretch h-11 overflow-x-auto no-scrollbar">
+          <div className="flex items-end h-12 overflow-x-auto no-scrollbar gap-0.5 pt-1">
             {AUDIENCES.map((a) => {
               const isActive = activeAudienceId === a.id;
               return (
@@ -58,10 +63,10 @@ export default function Nav() {
                   key={a.id}
                   to={a.path}
                   className={() =>
-                    `flex items-center px-5 md:px-6 text-[13px] tracking-[0.06em] font-medium transition-colors whitespace-nowrap ${
+                    `flex items-center px-5 md:px-7 h-[calc(100%-4px)] text-[13px] tracking-[0.06em] font-medium transition-colors whitespace-nowrap rounded-t-lg ${
                       isActive
-                        ? "bg-white text-navy-700"
-                        : "text-white/80 hover:text-white"
+                        ? "bg-white text-navy-700 shadow-[0_-1px_0_0_var(--color-orange-500)_inset]"
+                        : "text-white/80 hover:text-white hover:bg-white/5"
                     }`
                   }
                 >

@@ -12,7 +12,7 @@ import { INSIGHT } from "../data/images.js";
  */
 export default function InsightsRail({ heading, eyebrow, items = [] }) {
   return (
-    <section className="section bg-white">
+    <section className="section bg-white border-t border-bone-200">
       <div className="container-bank">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-10 md:mb-14 gap-6">
           <div>
