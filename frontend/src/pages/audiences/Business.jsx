@@ -6,6 +6,7 @@ import InsightsRail from "../../components/InsightsRail.jsx";
 import AdvisoryBand from "../../components/AdvisoryBand.jsx";
 import TrustRibbon from "../../components/TrustRibbon.jsx";
 import SEO, { breadcrumbJsonLd } from "../../components/SEO.jsx";
+import { HERO } from "../../data/images.js";
 
 import { QUICK_ACTIONS } from "../../data/quickActions.js";
 import { productsForAudience } from "../../data/products.js";
@@ -29,7 +30,7 @@ export default function Business() {
         body="Operating accounts, working capital and trade rails for the African enterprise."
         primaryCTA={{ to: "/products/business-account", label: "Open a Business Account" }}
         secondaryCTA={{ to: "/products/working-capital", label: "Apply for working capital" }}
-        image="/images/audience/business-hero.jpg"
+        image={HERO.business}
         overlayTint="navy"
       />
       <QuickActionStrip actions={QUICK_ACTIONS.business} tint="navy" />

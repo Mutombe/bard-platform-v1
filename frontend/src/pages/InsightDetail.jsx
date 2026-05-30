@@ -4,6 +4,7 @@ import InsightsRail from "../components/InsightsRail.jsx";
 import AdvisoryBand from "../components/AdvisoryBand.jsx";
 import SEO, { breadcrumbJsonLd, articleJsonLd } from "../components/SEO.jsx";
 import { findInsight, INSIGHTS } from "../data/insights.js";
+import { INSIGHT } from "../data/images.js";
 import { ArrowLeftIcon } from "@phosphor-icons/react";
 import NotFound from "./NotFound.jsx";
 
@@ -20,7 +21,7 @@ export default function InsightDetail() {
         description={it.summary}
         path={`/insights/${it.slug}`}
         type="article"
-        image={it.image}
+        image={INSIGHT[it.slug] || it.image}
         jsonLd={[
           breadcrumbJsonLd([
             { name: "Home", path: "/" },
@@ -31,7 +32,7 @@ export default function InsightDetail() {
             headline: it.title,
             description: it.summary,
             url: `https://bardsantnerbank.com/insights/${it.slug}`,
-            image: `https://bardsantnerbank.com${it.image}`,
+            image: INSIGHT[it.slug] || `https://bardsantnerbank.com${it.image}`,
             datePublished: it.date,
             author: it.author,
           }),
@@ -69,11 +70,14 @@ export default function InsightDetail() {
           </div>
         </header>
 
-        {it.image && (
+        {(INSIGHT[it.slug] || it.image) && (
           <div className="container-bank pb-12">
             <div
-              className="max-w-5xl mx-auto aspect-[16/9] rounded-xl bg-cover bg-center bg-bone-200"
-              style={{ backgroundImage: `url(${it.image})` }}
+              className="max-w-5xl mx-auto aspect-[16/9] rounded-xl bg-cover bg-center bg-bone-200 overflow-hidden"
+              style={{
+                backgroundImage: `url(${INSIGHT[it.slug] || it.image})`,
+                filter: "saturate(0.85) brightness(0.95)",
+              }}
             />
           </div>
         )}

@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRightIcon } from "@phosphor-icons/react";
 import { AUDIENCES } from "../data/audiences.js";
+import { AUDIENCE_TILE } from "../data/images.js";
 
 /**
  * The AfrAsia "Banking Experiences" four-up tile module. Five tiles for
@@ -44,8 +45,9 @@ export default function AudienceTiles({ heading = "Banking experiences" }) {
                 <div
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
                   style={{
-                    backgroundImage: `url(${a.hero_image})`,
+                    backgroundImage: `url(${AUDIENCE_TILE[a.id] || a.hero_image})`,
                     backgroundColor: "var(--color-navy-700)",
+                    filter: "saturate(0.85) brightness(0.92)",
                   }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/40 to-transparent" />

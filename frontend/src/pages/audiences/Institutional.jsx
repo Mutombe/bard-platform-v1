@@ -6,6 +6,7 @@ import InsightsRail from "../../components/InsightsRail.jsx";
 import AdvisoryBand from "../../components/AdvisoryBand.jsx";
 import TrustRibbon from "../../components/TrustRibbon.jsx";
 import SEO, { breadcrumbJsonLd } from "../../components/SEO.jsx";
+import { HERO } from "../../data/images.js";
 
 import { QUICK_ACTIONS } from "../../data/quickActions.js";
 import { productsForAudience } from "../../data/products.js";
@@ -29,7 +30,7 @@ export default function Institutional() {
         body="Liquidity, custody, debt origination and the correspondent banking memory institutional treasury requires."
         primaryCTA={{ to: "/products/treasury-services", label: "Treasury Services" }}
         secondaryCTA={{ to: "/contact?audience=institutional", label: "Speak to an institutional banker" }}
-        image="/images/audience/institutional-hero.jpg"
+        image={HERO.institutional}
         overlayTint="ink"
       />
       <QuickActionStrip actions={QUICK_ACTIONS.institutional} tint="navy" />

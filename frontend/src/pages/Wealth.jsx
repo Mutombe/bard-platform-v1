@@ -5,6 +5,7 @@ import InsightsRail from "../components/InsightsRail.jsx";
 import AdvisoryBand from "../components/AdvisoryBand.jsx";
 import TrustRibbon from "../components/TrustRibbon.jsx";
 import SEO, { breadcrumbJsonLd } from "../components/SEO.jsx";
+import { HERO } from "../data/images.js";
 import { productsForAudience } from "../data/products.js";
 import { insightsForAudience } from "../data/insights.js";
 
@@ -23,7 +24,7 @@ export default function Wealth() {
         body="Discretionary portfolios, succession architecture, and the long conversations that decide the next thirty years."
         primaryCTA={{ to: "/products/wealth-management", label: "Wealth Management" }}
         secondaryCTA={{ to: "/contact?audience=private", label: "Meet a wealth banker" }}
-        image="/images/hero/wealth.jpg"
+        image={HERO.wealth}
         overlayTint="ink"
       />
       <ProductGrid

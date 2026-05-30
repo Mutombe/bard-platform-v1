@@ -6,6 +6,7 @@ import InsightsRail from "../../components/InsightsRail.jsx";
 import AdvisoryBand from "../../components/AdvisoryBand.jsx";
 import TrustRibbon from "../../components/TrustRibbon.jsx";
 import SEO, { breadcrumbJsonLd } from "../../components/SEO.jsx";
+import { HERO } from "../../data/images.js";
 
 import { QUICK_ACTIONS } from "../../data/quickActions.js";
 import { productsForAudience } from "../../data/products.js";
@@ -29,7 +30,7 @@ export default function Personal() {
         body="Accounts, savings and credit for the rhythm of a household."
         primaryCTA={{ to: "/products/everyday-account", label: "Open an Everyday Account" }}
         secondaryCTA={{ to: "/contact?audience=personal", label: "Speak to a personal banker" }}
-        image="/images/audience/personal-hero.jpg"
+        image={HERO.personal}
         overlayTint="ink"
       />
       <QuickActionStrip actions={QUICK_ACTIONS.personal} tint="navy" />

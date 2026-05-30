@@ -3,6 +3,7 @@ import PageHero from "../components/PageHero.jsx";
 import AdvisoryBand from "../components/AdvisoryBand.jsx";
 import TrustRibbon from "../components/TrustRibbon.jsx";
 import SEO, { breadcrumbJsonLd } from "../components/SEO.jsx";
+import { HERO } from "../data/images.js";
 import { LEADERSHIP } from "../data/leadership.js";
 
 export default function Leadership() {
@@ -18,7 +19,7 @@ export default function Leadership() {
         eyebrow="§ Leadership"
         headline="A bank is signed by its people."
         body="Named, accountable, reachable. The leadership of Bard Santner Markets Inc."
-        image="/images/hero/leadership.jpg"
+        image={HERO.leadership}
         overlayTint="navy"
         variant="editorial"
       />

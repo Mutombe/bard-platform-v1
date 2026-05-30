@@ -5,6 +5,7 @@ import InsightsRail from "../components/InsightsRail.jsx";
 import AdvisoryBand from "../components/AdvisoryBand.jsx";
 import TrustRibbon from "../components/TrustRibbon.jsx";
 import SEO, { breadcrumbJsonLd } from "../components/SEO.jsx";
+import { HERO } from "../data/images.js";
 import { PRODUCTS } from "../data/products.js";
 import { insightsForAudience } from "../data/insights.js";
 
@@ -26,7 +27,7 @@ export default function Markets() {
         body="Liquidity, FX, custody, payments and bond origination. From the desk that runs the book."
         primaryCTA={{ to: "/products/treasury-services", label: "Treasury Services" }}
         secondaryCTA={{ to: "/contact?audience=institutional", label: "Speak to the desk" }}
-        image="/images/hero/markets.jpg"
+        image={HERO.markets}
         overlayTint="navy"
       />
       <ProductGrid

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRightIcon } from "@phosphor-icons/react";
+import { INSIGHT } from "../data/images.js";
 
 /**
  * Editorial insights rail. Three to four article cards plus a "View all
@@ -37,7 +38,10 @@ export default function InsightsRail({ heading, eyebrow, items = [] }) {
               <Link to={`/insights/${it.slug}`} className="block group">
                 <div
                   className="aspect-[16/10] rounded-lg overflow-hidden bg-bone-200 bg-cover bg-center mb-7"
-                  style={{ backgroundImage: it.image ? `url(${it.image})` : undefined }}
+                  style={{
+                    backgroundImage: `url(${INSIGHT[it.slug] || it.image || ""})`,
+                    filter: "saturate(0.85) brightness(0.95)",
+                  }}
                 />
                 <p className="eyebrow eyebrow-accent mb-4">{it.eyebrow}</p>
                 <h3 className="font-display text-[24px] md:text-[26px] text-navy-600 leading-tight mb-4 group-hover:text-orange-600 transition-colors">

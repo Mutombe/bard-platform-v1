@@ -6,6 +6,7 @@ import InsightsRail from "../../components/InsightsRail.jsx";
 import AdvisoryBand from "../../components/AdvisoryBand.jsx";
 import TrustRibbon from "../../components/TrustRibbon.jsx";
 import SEO, { breadcrumbJsonLd } from "../../components/SEO.jsx";
+import { HERO } from "../../data/images.js";
 
 import { QUICK_ACTIONS } from "../../data/quickActions.js";
 import { productsForAudience } from "../../data/products.js";
@@ -29,7 +30,7 @@ export default function PrivateBanking() {
         body="Discretionary wealth, structured credit and succession. Built around your life, not our product list."
         primaryCTA={{ to: "/contact?audience=private", label: "Meet a private banker" }}
         secondaryCTA={{ to: "/products/wealth-management", label: "Explore Wealth Management" }}
-        image="/images/audience/private-hero.jpg"
+        image={HERO.private}
         overlayTint="ink"
       />
       <QuickActionStrip actions={QUICK_ACTIONS.private} tint="navy" />
