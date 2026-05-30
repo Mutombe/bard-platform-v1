@@ -28,9 +28,8 @@ export default function About() {
 
       <PageHero
         eyebrow="§ About"
-        headline="A modern African"
-        italicTail="financial platform."
-        body="Bard Santner Markets Inc was incorporated in Harare and operates across personal, business, private, international and institutional clients. The flagship Bard Santner Microfinance Bank sits at the centre of a group spanning lending, sports finance and editorial."
+        headline="A modern African financial platform."
+        body="Bard Santner Markets Inc, Harare. The Microfinance Bank sits at the centre of a group spanning banking, markets, lending, sports finance and editorial."
         primaryCTA={{ to: "/group", label: "Meet the Group" }}
         secondaryCTA={{ to: "/leadership", label: "Leadership" }}
         image="/images/hero/about.jpg"

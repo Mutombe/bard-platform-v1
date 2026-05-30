@@ -86,11 +86,10 @@ export default function PageHero({
     return (
       <section className="bg-bone-50">
         {/* Editorial hero — generous whitespace, no overlay photography.
-            Capped so the next-section preview sits in the same first
-            viewport. */}
+            min-h carries the floor; no max-h so long content expands. */}
         <div className="container-bank min-h-[calc(100svh-280px)] md:min-h-[calc(100svh-260px)] flex flex-col justify-center py-12 md:py-16">
           <div className="grid grid-cols-12 gap-10 md:gap-14 items-center">
-            <div className="col-span-12 md:col-span-7">
+            <div className="col-span-12 md:col-span-8">
               {eyebrow && <p className="eyebrow mb-6">{eyebrow}</p>}
               <motion.h1
                 initial={{ opacity: 0, y: 16 }}
@@ -134,7 +133,7 @@ export default function PageHero({
                 </p>
               )}
             </div>
-            <div className="col-span-12 md:col-span-5 hidden md:block">
+            <div className="col-span-12 md:col-span-4 hidden md:block">
               <div
                 className="aspect-[4/5] rounded-xl bg-bone-200 bg-cover bg-center"
                 style={{ backgroundImage: image ? `url(${image})` : undefined }}
@@ -160,13 +159,13 @@ export default function PageHero({
         style={{ backgroundImage: image ? `url(${image})` : undefined }}
       />
       <div className={`absolute inset-0 bg-gradient-to-t ${tints[overlayTint] || tints.navy}`} />
-      {/* Full-bleed hero — capped so the QuickActionStrip directly below
-          fits inside the same first viewport. Nav = 124px (44 strip + 80
-          brand row). QuickActionStrip ≈ 96-180px (96 desktop one-row,
-          180 mobile two-row). So hero = viewport − nav − strip − ~36px
-          breathing = svh-260 desktop, svh-280 mobile. */}
-      <div className="relative container-bank min-h-[calc(100svh-280px)] md:min-h-[calc(100svh-260px)] max-h-[calc(100svh-220px)] flex flex-col justify-end pt-20 md:pt-24 pb-10 md:pb-14">
-        <div className={`max-w-3xl ${align === "center" ? "mx-auto text-center" : ""}`}>
+      {/* Full-bleed hero — min-h sized so hero + QuickActionStrip share
+          one viewport (nav 124px + strip 96px + breathing 36px = 260
+          subtraction). No max-h cap; if content needs more room the
+          hero expands rather than clipping the top. Governing brevity
+          happens at the page level — keep hero copy Lloyds-short. */}
+      <div className="relative container-bank min-h-[calc(100svh-280px)] md:min-h-[calc(100svh-260px)] flex flex-col justify-end pt-20 md:pt-24 pb-10 md:pb-14">
+        <div className={`max-w-4xl lg:max-w-5xl ${align === "center" ? "mx-auto text-center" : ""}`}>
           {eyebrow && (
             <motion.p
               initial={{ opacity: 0, y: 8 }}

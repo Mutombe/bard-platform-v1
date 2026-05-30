@@ -23,8 +23,7 @@ export default function Markets() {
       <PageHero
         eyebrow="§ Markets"
         headline="Treasury. Trade. Markets."
-        italicTail="From the desk that runs the book."
-        body="Liquidity, FX, custody, payments, bond origination and the long counterparty relationships on which institutional banking is actually built. Originated with care. Distributed with discipline."
+        body="Liquidity, FX, custody, payments and bond origination. From the desk that runs the book."
         primaryCTA={{ to: "/products/treasury-services", label: "Treasury Services" }}
         secondaryCTA={{ to: "/contact?audience=institutional", label: "Speak to the desk" }}
         image="/images/hero/markets.jpg"

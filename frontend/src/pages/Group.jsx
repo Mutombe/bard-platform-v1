@@ -16,9 +16,8 @@ export default function Group() {
       />
       <PageHero
         eyebrow="§ The Group"
-        headline="Five institutions."
-        italicTail="One discipline."
-        body="The Bard Santner Group is a financial platform, not a single product. Banking sits at the centre. Around it sit four sister institutions that share the standard. Each is named here, individually, with a link to its own page."
+        headline="Five institutions. One discipline."
+        body="A financial platform, not a single product. Banking at the centre, four sister institutions around it."
         primaryCTA={{ to: "/group/bsmfb", label: "Bard Santner Microfinance Bank" }}
         secondaryCTA={{ to: "/about", label: "About the Group" }}
         image="/images/hero/group.jpg"

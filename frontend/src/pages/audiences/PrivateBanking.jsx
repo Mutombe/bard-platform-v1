@@ -25,9 +25,8 @@ export default function PrivateBanking() {
       />
       <PageHero
         eyebrow={audience.eyebrow}
-        headline="Relationship-led banking."
-        italicTail="For lives with weight."
-        body="Discretionary mandates structured around your goals, not the bank's product list. Succession that holds across generations. A private banker who reads what you read, and answers the call before the second ring."
+        headline="Relationship-led banking. For lives with weight."
+        body="Discretionary wealth, structured credit and succession. Built around your life, not our product list."
         primaryCTA={{ to: "/contact?audience=private", label: "Meet a private banker" }}
         secondaryCTA={{ to: "/products/wealth-management", label: "Explore Wealth Management" }}
         image="/images/audience/private-hero.jpg"

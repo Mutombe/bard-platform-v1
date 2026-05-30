@@ -16,9 +16,8 @@ export default function Leadership() {
       />
       <PageHero
         eyebrow="§ Leadership"
-        headline="A bank is signed"
-        italicTail="by its people."
-        body="The leadership of Bard Santner Markets Inc. Named, accountable, and reachable. Each profile lists what they lead and the kind of conversation they take."
+        headline="A bank is signed by its people."
+        body="Named, accountable, reachable. The leadership of Bard Santner Markets Inc."
         image="/images/hero/leadership.jpg"
         overlayTint="navy"
         variant="editorial"

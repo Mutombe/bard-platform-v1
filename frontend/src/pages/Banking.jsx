@@ -20,8 +20,7 @@ export default function Banking() {
       <PageHero
         eyebrow="§ Banking"
         headline="Every account on one shelf."
-        italicTail="Choose the one that fits."
-        body="Personal, business, private and institutional banking products, organised by the rhythm of what they do, not the order in which we built them."
+        body="Personal, business, private and institutional banking, organised by what they do."
         primaryCTA={{ to: "/products/everyday-account", label: "Open an Everyday Account" }}
         secondaryCTA={{ to: "/contact", label: "Speak to a banker" }}
         image="/images/hero/banking.jpg"

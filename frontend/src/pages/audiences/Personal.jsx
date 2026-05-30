@@ -25,9 +25,8 @@ export default function Personal() {
       />
       <PageHero
         eyebrow={audience.eyebrow}
-        headline="Everyday banking,"
-        italicTail="built around your life."
-        body="An everyday account that doesn't punish you for living. Savings that compound on real terms. A home loan with a banker who answers the phone. Personal banking, as it ought to be."
+        headline="Everyday banking, built around your life."
+        body="Accounts, savings and credit for the rhythm of a household."
         primaryCTA={{ to: "/products/everyday-account", label: "Open an Everyday Account" }}
         secondaryCTA={{ to: "/contact?audience=personal", label: "Speak to a personal banker" }}
         image="/images/audience/personal-hero.jpg"

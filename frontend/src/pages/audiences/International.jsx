@@ -25,9 +25,8 @@ export default function International() {
       />
       <PageHero
         eyebrow={audience.eyebrow}
-        headline="An African platform,"
-        italicTail="with international reach."
-        body="A home-country account that opens before you arrive home. Foreign exchange priced from the desk that runs the book. Trade finance with correspondent relationships in over forty jurisdictions. The world, banked from Africa."
+        headline="An African platform with international reach."
+        body="Diaspora accounts, FX and cross-border trade. Correspondent banking across forty jurisdictions."
         primaryCTA={{ to: "/products/diaspora-account", label: "Open a Diaspora Account" }}
         secondaryCTA={{ to: "/products/foreign-exchange", label: "Foreign Exchange" }}
         image="/images/audience/international-hero.jpg"

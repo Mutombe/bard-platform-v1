@@ -19,9 +19,8 @@ export default function Wealth() {
       />
       <PageHero
         eyebrow="§ Wealth"
-        headline="Patient capital,"
-        italicTail="patient counsel."
-        body="Discretionary and advisory portfolios built around the life of the client, not the quarter of the bank. Cross-border allocation, succession architecture, and the rare conversations that decide the next thirty years."
+        headline="Patient capital, patient counsel."
+        body="Discretionary portfolios, succession architecture, and the long conversations that decide the next thirty years."
         primaryCTA={{ to: "/products/wealth-management", label: "Wealth Management" }}
         secondaryCTA={{ to: "/contact?audience=private", label: "Meet a wealth banker" }}
         image="/images/hero/wealth.jpg"

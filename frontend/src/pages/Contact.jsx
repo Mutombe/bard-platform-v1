@@ -47,9 +47,8 @@ export default function Contact() {
 
       <PageHero
         eyebrow="§ Contact"
-        headline="Open a conversation."
-        italicTail="It commits nothing."
-        body="The first conversation tells us whether we are the right bank for what you are trying to do. It tells you whether we are a partner you would like to spend a decade with."
+        headline="Open a conversation. It commits nothing."
+        body="The first call tells us if we are the right bank for you, and tells you if we are a partner worth a decade."
         image="/images/hero/contact.jpg"
         overlayTint="navy"
         variant="editorial"
