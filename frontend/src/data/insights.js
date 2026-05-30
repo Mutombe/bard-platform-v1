@@ -1,7 +1,11 @@
-// Editorial entries for /insights. Each entry is short by design — the
-// institution is its own evidence. Long-form belongs to Bardiq Journal.
+// Editorial entries for /insights. Symmetry-engineered:
 //
-// All dates are absolute. Reading-time is honest.
+//   eyebrow            1–3 words
+//   title              4–7 words, 1 line in display-md
+//   summary            22–28 words, lands in 3 lines at 14.5px
+//   reading_minutes    honest
+//
+// Dates are absolute. Long-form lives in Bardiq Journal.
 
 export const INSIGHTS = [
   {
@@ -9,7 +13,7 @@ export const INSIGHTS = [
     title: "Africa and the cross-border rail.",
     eyebrow: "Trade finance",
     summary:
-      "Why the rails that move goods between Lagos, Mombasa and Maputo will be African-built within the decade, and how the bank that builds them captures the corridor.",
+      "Why the rails moving goods between Lagos, Mombasa and Maputo will be African-built within the decade, and how the bank that builds them captures the corridor.",
     audience: ["business", "international", "institutional"],
     date: "2026-05-19",
     reading_minutes: 8,
@@ -22,7 +26,7 @@ export const INSIGHTS = [
     title: "The quiet case for a deposit base.",
     eyebrow: "Banking strategy",
     summary:
-      "Wholesale funding looks cheaper on a spreadsheet and crueler in a crisis. An argument for the patient, expensive, durable work of building a real retail book.",
+      "Wholesale funding looks cheaper on a spreadsheet and crueler in a crisis. An argument for the patient, expensive work of building a real retail book.",
     audience: ["business", "institutional"],
     date: "2026-05-05",
     reading_minutes: 6,
@@ -35,7 +39,7 @@ export const INSIGHTS = [
     title: "The diaspora is not a niche.",
     eyebrow: "Diaspora banking",
     summary:
-      "African remittance flows now exceed foreign direct investment in nine of the continent's largest economies. The diaspora is the primary capital allocator. Bank it that way.",
+      "Remittance flows now exceed foreign direct investment in nine of Africa's largest economies. The diaspora is the primary capital allocator. Bank it that way.",
     audience: ["international", "personal"],
     date: "2026-04-22",
     reading_minutes: 7,
@@ -48,7 +52,7 @@ export const INSIGHTS = [
     title: "Credit, when the rate is the conversation.",
     eyebrow: "Credit",
     summary:
-      "How to talk honestly with a borrower about a high-rate environment without selling them a refinancing they will regret six months later.",
+      "How to talk honestly with a borrower in a high-rate environment without selling a refinancing they will regret six months later.",
     audience: ["personal", "business"],
     date: "2026-04-08",
     reading_minutes: 5,
@@ -61,7 +65,7 @@ export const INSIGHTS = [
     title: "Treasury, and the discipline of the end of day.",
     eyebrow: "Treasury",
     summary:
-      "Why the institutional treasurer who closes the day every day at 5pm builds a stronger book than the one who closes it on month-end.",
+      "Why the treasurer who closes the day every day at five builds a stronger book than the one who closes it on month-end.",
     audience: ["institutional", "business"],
     date: "2026-03-25",
     reading_minutes: 6,
