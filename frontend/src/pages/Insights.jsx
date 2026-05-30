@@ -26,8 +26,7 @@ export default function Insights() {
       <PageHero
         eyebrow="§ Insights"
         headline="Reading from the desk."
-        italicTail="In the studio's own voice."
-        body="Editorial commentary on the African banking economy. Written by the people who run the desks they describe. Distinct from Bardiq Journal, which is the long-form publication of the group."
+        body="Editorial commentary by the people who run the desks. Bardiq Journal carries the long form."
         image="/images/hero/insights.jpg"
         overlayTint="navy"
         variant="editorial"

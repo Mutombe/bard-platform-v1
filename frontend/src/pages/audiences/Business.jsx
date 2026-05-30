@@ -25,9 +25,8 @@ export default function Business() {
       />
       <PageHero
         eyebrow={audience.eyebrow}
-        headline="Banking that works"
-        italicTail="as hard as your business."
-        body="Operating accounts without surprise fees, working capital that respects the trading cycle, and trade rails that move African goods through the world's ports. A relationship banker from day one, not from year three."
+        headline="Banking that works as hard as your business."
+        body="Operating accounts, working capital and trade rails for the African enterprise."
         primaryCTA={{ to: "/products/business-account", label: "Open a Business Account" }}
         secondaryCTA={{ to: "/products/working-capital", label: "Apply for working capital" }}
         image="/images/audience/business-hero.jpg"

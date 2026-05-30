@@ -73,9 +73,8 @@ export default function Locations() {
 
       <PageHero
         eyebrow="§ Locations"
-        headline="Where we operate."
-        italicTail="And where we are next."
-        body="The Harare flagship branch is where the institution lives. From there, the network extends in three rings: regional Zimbabwean branches, Southern African representative offices, and diaspora desks in the countries with the largest African diaspora communities."
+        headline="Where we operate. And where we are next."
+        body="Harare flagship, regional Zimbabwean branches, Southern African offices, and diaspora desks abroad."
         image="/images/hero/locations.jpg"
         overlayTint="navy"
         variant="editorial"
