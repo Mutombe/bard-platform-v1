@@ -33,7 +33,7 @@ const TRUST_PILLARS = [
 
 export default function TrustRibbon() {
   return (
-    <section className="section bg-white border-y border-bone-200">
+    <section className="section bg-white border-y-2 border-navy-600">
       <div className="container-bank">
         <div className="text-center mb-10 md:mb-12">
           <p className="eyebrow mb-4">§ 07 · Trust architecture</p>
