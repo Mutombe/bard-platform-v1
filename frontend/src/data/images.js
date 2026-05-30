@@ -1,127 +1,153 @@
-// Central image catalogue. Single point of swap for every photograph
-// the site displays. Source: Unsplash CC0 (free for commercial use,
-// no attribution required for hotlinking via images.unsplash.com).
+// Central image catalogue. Every URL here was individually searched on
+// Unsplash, the candidate photo was opened and inspected, the CDN ID
+// resolved, and the licence verified as standard Unsplash (free for
+// commercial use, no attribution required for hotlinking). No premium
+// Unsplash+ photos are used.
 //
-// Curated against the Bard Santner vision — "modern African financial
-// platform, anchored in Harare, built to international standards." Each
-// photograph chosen for what its page needs to say:
+// Selection brief — the Lloyds + AfrAsia + Investec aesthetic, applied
+// to the Bard Santner vision:
 //
-//   home          — African financial district, dusk: the institution
-//                   in its civic context
-//   personal      — domestic moment, family, warm interior
-//   business      — Black African woman entrepreneur, modern workplace
-//   private       — refined interior: library, art, heritage
-//   international — cross-border travel: airplane window over a city
-//   institutional — corporate boardroom / financial-district tower
-//   banking       — neoclassical banking architecture, columns
-//   wealth        — Modernist interior detail, art, refined material
-//   markets       — trading floor screens, glowing data
-//   about         — African urban cityscape at golden hour
-//   group         — institutional architecture, geometric facade
-//   leadership    — professional portrait, environmental
-//   insights      — reading at a desk, editorial gesture
-//   locations     — heritage world map, navigation
-//   contact       — Black African business handshake, focused
+//   • universal institutional imagery — modern offices, libraries,
+//     museums, refined architecture, professionals at work. African
+//     subjects where authentic; international where the subject is
+//     architectural or universal.
+//   • warm domesticity for personal banking, not stock cliché
+//   • photography that earns its placement — every hero photo carries
+//     the editorial argument of its page
+//   • art paintings used strategically in CTA backdrops (gallery walls,
+//     framed artwork) — per institutional-bank canon, the bank that
+//     publishes also collects.
 //
-// Replace any URL here with a local /images/... path when production
-// photography ships. Every page reads from this catalogue, so single-
-// line edits propagate.
+// Replace any URL with a local /images/... path when production
+// photography ships.
 
 const unsplash = (id, w = 2400, q = 80) =>
   `https://images.unsplash.com/photo-${id}?ixlib=rb-4.0.3&auto=format&fit=crop&w=${w}&q=${q}`;
 
 // ─── Page heroes ─────────────────────────────────────────────────────
 export const HERO = {
-  // The civic institution. Sunset over a financial district that could
-  // be Joburg, Nairobi or Lagos.
-  home:           unsplash("1486406146926-c627a92ad1ab"),
-  // A family meal at a sunlit table. Warmth, the everyday.
-  personal:       unsplash("1573497019940-1c28c88b4f3e"),
-  // Black African woman entrepreneur on a phone call in a modern
-  // workspace — the canonical African SME founder image.
-  business:       unsplash("1556761175-5973dc0f32e7"),
-  // Heritage library / reading room with leather and serious lamps.
-  private:        unsplash("1481627834876-b7833e8f5570"),
-  // Airplane window descending over a city at dusk — cross-border.
-  international:  unsplash("1499856871958-5b9627545d1a"),
-  // Modernist office tower facade against blue sky — institutional.
-  institutional:  unsplash("1497366216548-37526070297c"),
-  // Neoclassical bank columns — the architectural memory of banking.
-  banking:        unsplash("1556157382-97eda2d62296"),
-  // Refined interior detail with art and natural light.
-  wealth:         unsplash("1497366811353-6870744d04b2"),
-  // Trading floor / market data screens in low light.
+  // Johannesburg silhouette at golden hour. The civic institution in
+  // its African context, the financial district as a horizon line.
+  home:           unsplash("1771143345689-f30959718edf"),
+
+  // Family at the dining table sharing a meal. Warm, domestic, the
+  // everyday — not stock domesticity.
+  personal:       unsplash("1576089073624-b5751a8f4de9"),
+
+  // Entrepreneur at a desk with a laptop, candid workplace portrait.
+  business:       unsplash("1713946598417-437a1fccf2c6"),
+
+  // Gladstone's Library, Wales — Gothic reading room with wooden
+  // beams, leather chairs, the heritage editorial gesture.
+  private:        unsplash("1759731224815-87d2706c076c"),
+
+  // Final approach into Hong Kong from an airplane window —
+  // dusk light, the cross-border feeling.
+  international:  unsplash("1760711678895-b39ef6f3ca1d"),
+
+  // Chicago skyscraper, geometric facade against a clear sky.
+  // Modernist office tower, institutional.
+  institutional:  unsplash("1775135999483-f0a1470a9e1d"),
+
+  // Bank of Montreal Museum — neoclassical stone facade with
+  // pillars. The architectural memory of banking.
+  banking:        unsplash("1541354329998-f4d9a9f9297f"),
+
+  // Modern staircase with abstract art on the wall. Refined,
+  // collected, the wealth posture.
+  wealth:         unsplash("1766756388111-e3d5cb5edafb"),
+
+  // Candlestick chart on a dark monitor. From the desk that runs
+  // the book.
   markets:        unsplash("1611974789855-9c2a0a7236a3"),
-  // African urban cityscape at golden hour: the institution's home.
-  about:          unsplash("1604328698692-f76ea9498e76"),
-  // Geometric institutional facade detail.
-  group:          unsplash("1488229297570-58520851e868"),
-  // Environmental professional portrait, available light.
-  leadership:     unsplash("1573164713988-8665fc963095"),
-  // Editorial — desk with books, papers, a steady reading lamp.
-  insights:       unsplash("1543002588-bfa74002ed7e"),
-  // Heritage world map, the institutional gesture of locations.
-  locations:      unsplash("1524661135-423995f22d0b"),
-  // Black African business handshake, focused close-crop.
-  contact:        unsplash("1542744173-8e7e53415bb0"),
+
+  // Aerial view of a mountainous coastal city at dusk — the
+  // institution's broader landscape, geography as scale.
+  about:          unsplash("1569706971306-de5d78f6418e"),
+
+  // Classical stone facade with arched windows — the Group as
+  // institution-of-institutions.
+  group:          unsplash("1778429557352-ea4213f69e91"),
+
+  // Environmental portrait of a professional in suit, arms
+  // crossed, Copenhagen. The named-leadership posture.
+  leadership:     unsplash("1718209881007-c0ecdfc00f9d"),
+
+  // Reading desk in Gladstone's Library, same heritage gesture
+  // as private — editorial reading.
+  insights:       unsplash("1759731224815-87d2706c076c"),
+
+  // 1831 hand-drawn world map showing both hemispheres.
+  // Heritage cartography, refined institutional gesture.
+  locations:      unsplash("1779292235920-5c7862429b35"),
+
+  // Close-up handshake photographed in Nairobi — dignified,
+  // close-cropped, no laptop or paper clutter.
+  contact:        unsplash("1521790797524-b2497295b8a0"),
 };
 
 // ─── Audience-tile portraits ─────────────────────────────────────────
-// The 5-card "Banking for you / for your wealth / for your business /
-// the diaspora / institutions" carousel below the home hero. Each is
-// a portrait-format human moment that names the audience by gesture
-// alone — no caption needed.
+// The 5-card carousel below the home hero. Each tile reads as the
+// human moment its audience occupies — domestic for personal,
+// professional for business, refined for private, travel for
+// international, architectural for institutional.
 export const AUDIENCE_TILE = {
-  // A person at home with their phone — personal banking, domestic.
-  personal:       unsplash("1554224155-6726b3ff858f", 1200),
-  // Black African woman professional at her workplace — SME founder.
-  business:       unsplash("1573497019940-3a89ad2a3b91", 1200),
-  // Heritage interior, books, refined low light — private wealth.
-  private:        unsplash("1481627834876-b7833e8f5570", 1200),
-  // Travel scene — airport window, currency, cross-border.
-  international:  unsplash("1436491865332-7a61a109cc05", 1200),
-  // Boardroom / corporate skyline — the institutional audience.
-  institutional:  unsplash("1497366216548-37526070297c", 1200),
+  personal:       unsplash("1576089073624-b5751a8f4de9", 1200),
+  business:       unsplash("1713946598417-437a1fccf2c6", 1200),
+  private:        unsplash("1759731224815-87d2706c076c", 1200),
+  international:  unsplash("1760711678895-b39ef6f3ca1d", 1200),
+  institutional:  unsplash("1775135999483-f0a1470a9e1d", 1200),
+};
+
+// ─── Art for CTA backdrops ───────────────────────────────────────────
+// Strategic placement — art used as backdrop in CTA modules to lift the
+// "call-to-action" gesture from transactional to institutional. The
+// bank that publishes also collects.
+export const ART = {
+  // Ornate museum hallway with paintings along the walls and a
+  // skylight ceiling. For the AdvisoryBand "Speak to a banker" CTA.
+  advisoryHallway: unsplash("1778975144951-ea2a990c4ab4"),
+
+  // Brown wooden-framed painting on a vibrant green wall, in a
+  // Northern-European museum. Standalone CTA accent.
+  framedPainting: unsplash("1610589672715-28289f2165d0"),
+
+  // Yemisi Shyllon Museum of Art, Nigeria — African museum
+  // collection. For "becoming a bank" type editorial CTAs.
+  africanMuseum: unsplash("1769905226750-1db769c30bdc"),
 };
 
 // ─── Product cards ───────────────────────────────────────────────────
-// Square editorial images for the product grid. Each maps to a slug
-// from /data/products.js. The photograph isn't a product shot — it's
-// the human moment the product enables.
+// Square editorial images for the product grid. The photograph isn't
+// a product shot — it's the human moment or institutional context the
+// product enables. Most products reuse hero photos thematically; the
+// product-specific ones are sourced separately.
 export const PRODUCT = {
-  "everyday-account":     unsplash("1556742502-ec7c0e9f34b1", 1200),  // wallet + card
-  "savings-account":      unsplash("1579621970795-87facc2f976d", 1200),  // growth / compound
-  "home-loan":            unsplash("1564013799919-ab600027ffc6", 1200),  // african home, modern
-  "business-account":     unsplash("1556761175-5973dc0f32e7", 1200),  // african entrepreneur
-  "working-capital":      unsplash("1551836022-d5d88e9218df", 1200),  // african business interior
-  "trade-finance":        unsplash("1494412574643-ff11b0a5c1c3", 1200),  // shipping container port
-  "private-current":      unsplash("1485827404703-89b55fcc595e", 1200),  // refined architecture
-  "wealth-management":    unsplash("1497366811353-6870744d04b2", 1200),  // luxury interior detail
-  "structured-credit":    unsplash("1554224155-26032cdc0f12", 1200),  // documents / dial
-  "diaspora-account":     unsplash("1436491865332-7a61a109cc05", 1200),  // travel window
-  "foreign-exchange":     unsplash("1611974789855-9c2a0a7236a3", 1200),  // trading data
-  "treasury-services":    unsplash("1486406146926-c627a92ad1ab", 1200),  // financial district
-  "debt-capital-markets": unsplash("1559526324-4b87b5e36e44", 1200),  // skyline tower
+  "everyday-account":     unsplash("1576089073624-b5751a8f4de9", 1200),
+  "savings-account":      unsplash("1610589672715-28289f2165d0", 1200),
+  "home-loan":            unsplash("1771143345689-f30959718edf", 1200),
+  "business-account":     unsplash("1713946598417-437a1fccf2c6", 1200),
+  "working-capital":      unsplash("1718209881007-c0ecdfc00f9d", 1200),
+  "trade-finance":        unsplash("1760711678895-b39ef6f3ca1d", 1200),
+  "private-current":      unsplash("1759731224815-87d2706c076c", 1200),
+  "wealth-management":    unsplash("1766756388111-e3d5cb5edafb", 1200),
+  "structured-credit":    unsplash("1778429557352-ea4213f69e91", 1200),
+  "diaspora-account":     unsplash("1779292235920-5c7862429b35", 1200),
+  "foreign-exchange":     unsplash("1611974789855-9c2a0a7236a3", 1200),
+  "treasury-services":    unsplash("1541354329998-f4d9a9f9297f", 1200),
+  "debt-capital-markets": unsplash("1775135999483-f0a1470a9e1d", 1200),
 };
 
-// ─── Insight article hero images ─────────────────────────────────────
-// Each photograph chosen to carry the editorial argument of the piece
-// rather than illustrate it. 16:9 aspect ratio for the article hero.
+// ─── Insight article heroes ──────────────────────────────────────────
+// Each photograph chosen to carry the editorial argument of the piece.
+// 16:9 for article hero, ~1600px wide.
 export const INSIGHT = {
-  // The corridor. African trade route — container port at sunset.
-  "africa-and-the-cross-border-rail":          unsplash("1494412574643-ff11b0a5c1c3", 1600),
-  // The deposit base. Neoclassical bank columns.
-  "the-quiet-case-for-a-deposit-base":         unsplash("1556157382-97eda2d62296", 1600),
-  // The diaspora. Airplane window descending over the city.
-  "the-diaspora-is-not-a-niche":               unsplash("1436491865332-7a61a109cc05", 1600),
-  // Credit. A frank conversation across a desk.
-  "credit-when-the-rate-is-the-conversation":  unsplash("1554224155-26032cdc0f12", 1600),
-  // Treasury / end of day. Data screens, low light.
+  "africa-and-the-cross-border-rail":         unsplash("1760711678895-b39ef6f3ca1d", 1600),
+  "the-quiet-case-for-a-deposit-base":        unsplash("1541354329998-f4d9a9f9297f", 1600),
+  "the-diaspora-is-not-a-niche":              unsplash("1779292235920-5c7862429b35", 1600),
+  "credit-when-the-rate-is-the-conversation": unsplash("1611974789855-9c2a0a7236a3", 1600),
   "treasury-and-the-discipline-of-the-end-of-day": unsplash("1611974789855-9c2a0a7236a3", 1600),
-  // Wealth / second conversation. Refined heritage interior.
-  "wealth-and-the-second-conversation":        unsplash("1485827404703-89b55fcc595e", 1600),
-  // Bank as publishing institution. Books, papers, lamp.
-  "the-bank-as-a-publishing-institution":      unsplash("1543002588-bfa74002ed7e", 1600),
-  // Becoming a bank. African financial district, dusk.
-  "becoming-a-bank":                            unsplash("1604328698692-f76ea9498e76", 1600),
+  "wealth-and-the-second-conversation":       unsplash("1766756388111-e3d5cb5edafb", 1600),
+  "the-bank-as-a-publishing-institution":     unsplash("1759731224815-87d2706c076c", 1600),
+  "becoming-a-bank":                           unsplash("1771143345689-f30959718edf", 1600),
 };
