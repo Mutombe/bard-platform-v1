@@ -14,16 +14,20 @@ import { ART } from "../data/images.js";
 export default function AdvisoryBand() {
   return (
     <section className="relative bg-bone-100 border-t-2 border-orange-500 overflow-hidden">
-      {/* Art backdrop — strategic placement, low opacity, behind a strong
-          tint so it functions as an institutional whisper, not a flood. */}
+      {/* Art backdrop — Lloyds-canonical horizontal blending: gallery
+          photograph stays vibrant on the right (where the contact card
+          sits on a white surface, framed by the visible art) while a
+          strong bone-100 gradient on the left gives the editorial
+          headline a clean canvas to sit on. Heavy at 97% on the left,
+          fading to clear at ~60% width onward. */}
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
           backgroundImage: `url(${ART.advisoryHallway})`,
-          filter: "saturate(0.55) brightness(0.92) contrast(1.05)",
+          filter: "saturate(0.65) brightness(0.95) contrast(1.05)",
         }}
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-bone-100/97 via-bone-100/88 to-bone-100/70" />
+      <div className="absolute inset-0 bg-gradient-to-r from-bone-100/97 via-bone-100/65 to-bone-100/10" />
 
       <div className="relative container-bank section">
         <div className="grid grid-cols-12 gap-8 md:gap-12 items-center">

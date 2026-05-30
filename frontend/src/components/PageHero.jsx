@@ -149,41 +149,41 @@ export default function PageHero({
   }
 
   // ─── default: full-bleed editorial hero ─────────────────────────
-  // Image blending recipe — the Bard Santner brand manual's documented
-  // "multiplicate" technique combined with the Lloyds editorial layering:
+  // Lloyds-canonical image blending. The headline sits on the LEFT;
+  // the photograph stays vibrant on the RIGHT. The dark gradient
+  // fades horizontally from text-canvas (left) to clear (right):
   //
-  //   Layer 1  Orange 2px accent rule at the very top — brand signature,
-  //            an institutional gesture borrowed straight from the brand
-  //            manual posters ("orange bar at the top of a placeholder").
-  //   Layer 2  The photograph itself, filtered for institutional tonality:
-  //              saturate(0.65) brightness(0.85) contrast(1.08)
-  //            Strips brochure-stock saturation, deepens shadows.
-  //   Layer 3  Solid navy fill at low opacity with mix-blend-multiply.
-  //            This is the brand-manual "multiplicate" move: the brand
-  //            colour literally tints the photograph so the photo and
-  //            the brand share the same colour family.
-  //   Layer 4  Diagonal gradient at high opacity from the bottom-left
-  //            corner where the headline sits, fading to transparent
-  //            toward the top-right. The text canvas.
-  //   Layer 5  Top-down dim. Keeps the upper photo from fighting the nav.
+  //   Layer 1  Orange 2px accent rule at the very top — brand signature.
+  //   Layer 2  Photograph filtered for editorial tonality:
+  //              saturate(0.7) brightness(0.88) contrast(1.05)
+  //   Layer 3  Light navy multiply tint (15%) — the brand-manual
+  //            "multiplicate" move at low strength so it ties the
+  //            whole image to the brand without dimming the right side.
+  //   Layer 4  HORIZONTAL gradient — heavy navy at the left edge
+  //            (where the headline sits), fading to transparent at
+  //            ~55% of the width. From that point onward the
+  //            photograph is fully visible. This is the Lloyds move:
+  //            text canvas on the left, photo breathing on the right.
+  //   Layer 5  Subtle top dim — keeps the nav legible without
+  //            dimming the right side of the photograph.
   const tints = {
     navy: {
-      solid: "bg-navy-900/40",
+      multiply: "bg-navy-900/15",
       from: "from-navy-950/95",
-      via: "via-navy-900/65",
-      to: "to-navy-900/15",
+      via: "via-navy-900/55",
+      to: "to-transparent",
     },
     ink: {
-      solid: "bg-ink/40",
+      multiply: "bg-ink/15",
       from: "from-ink/95",
-      via: "via-ink/65",
-      to: "to-ink/15",
+      via: "via-ink/55",
+      to: "to-transparent",
     },
     orange: {
-      solid: "bg-orange-900/35",
+      multiply: "bg-orange-900/12",
       from: "from-orange-950/90",
-      via: "via-orange-900/55",
-      to: "to-orange-900/10",
+      via: "via-orange-900/45",
+      to: "to-transparent",
     },
   };
   const t = tints[overlayTint] || tints.navy;
@@ -193,25 +193,27 @@ export default function PageHero({
       {/* Layer 1 — orange accent rule at the very top edge */}
       <div className="absolute top-0 left-0 right-0 h-[2px] bg-orange-500 z-20" />
 
-      {/* Layer 2 — photograph with editorial-tone filter */}
+      {/* Layer 2 — photograph with light editorial filter */}
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
           backgroundImage: image ? `url(${image})` : undefined,
-          filter: image ? "saturate(0.65) brightness(0.85) contrast(1.08)" : undefined,
+          filter: image ? "saturate(0.7) brightness(0.88) contrast(1.05)" : undefined,
         }}
       />
 
-      {/* Layer 3 — multiply navy tint. Photo and brand share a colour
-          family after this layer; the photo is no longer a stock photo,
-          it is part of the institution. */}
-      <div className={`absolute inset-0 ${t.solid} mix-blend-multiply`} />
+      {/* Layer 3 — very light multiply tint. Just enough to tie the
+          photo's colour family to the brand. */}
+      <div className={`absolute inset-0 ${t.multiply} mix-blend-multiply`} />
 
-      {/* Layer 4 — diagonal text canvas */}
-      <div className={`absolute inset-0 bg-gradient-to-tr ${t.from} ${t.via} ${t.to}`} />
+      {/* Layer 4 — horizontal text canvas. Heavy on the left (where the
+          headline lives), clear on the right (where the photograph
+          carries the editorial weight). This is the Lloyds gesture. */}
+      <div className={`absolute inset-0 bg-gradient-to-r ${t.from} ${t.via} ${t.to}`} />
 
-      {/* Layer 5 — top dim under the nav */}
-      <div className="absolute inset-0 bg-gradient-to-b from-ink/50 via-transparent to-transparent" />
+      {/* Layer 5 — soft top dim, light enough not to fight the right
+          side of the photo. */}
+      <div className="absolute inset-0 bg-gradient-to-b from-ink/30 via-transparent to-transparent" />
       {/* Full-bleed hero — sized so the bottom of the QuickActionStrip
           (the thin navy band of pills below the hero) lands exactly at
           the viewport's bottom edge. Measured heights:
