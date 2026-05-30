@@ -46,13 +46,13 @@ export default function TrustRibbon() {
             const Icon = p.icon;
             return (
               <div key={p.title}>
-                <div className="w-12 h-12 rounded-lg bg-[color:var(--color-orange-50)] flex items-center justify-center mb-4">
-                  <Icon size={22} weight="regular" className="text-[color:var(--color-orange-600)]" />
+                <div className="w-14 h-14 rounded-lg bg-[color:var(--color-orange-50)] flex items-center justify-center mb-5">
+                  <Icon size={26} weight="regular" className="text-[color:var(--color-orange-600)]" />
                 </div>
-                <p className="font-display text-[17px] text-[color:var(--color-navy-600)] mb-2">
+                <p className="font-display text-[20px] text-[color:var(--color-navy-600)] mb-3">
                   {p.title}
                 </p>
-                <p className="text-[13px] text-[color:var(--color-bone-600)] leading-relaxed">
+                <p className="text-[14.5px] text-[color:var(--color-bone-600)] leading-relaxed">
                   {p.body}
                 </p>
               </div>

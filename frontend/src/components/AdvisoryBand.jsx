@@ -29,46 +29,46 @@ export default function AdvisoryBand() {
             </p>
           </div>
           <div className="col-span-12 md:col-span-5">
-            <div className="bg-white rounded-xl p-7 md:p-8 shadow-[var(--shadow-card)]">
-              <p className="eyebrow mb-4">Open a conversation</p>
+            <div className="bg-white rounded-xl p-8 md:p-10 shadow-[var(--shadow-card)]">
+              <p className="eyebrow mb-5">Open a conversation</p>
               <div className="space-y-4">
                 <a
                   href="tel:+263861200700"
-                  className="flex items-center justify-between p-4 rounded-lg border border-[color:var(--color-bone-200)] hover:border-[color:var(--color-orange-500)] transition-colors"
+                  className="flex items-center justify-between p-5 rounded-lg border border-[color:var(--color-bone-200)] hover:border-[color:var(--color-orange-500)] transition-colors"
                 >
-                  <div className="flex items-center gap-3">
-                    <PhoneIcon size={20} weight="regular" className="text-[color:var(--color-orange-600)]" />
+                  <div className="flex items-center gap-4">
+                    <PhoneIcon size={22} weight="regular" className="text-[color:var(--color-orange-600)]" />
                     <div>
-                      <p className="text-[13.5px] font-medium text-[color:var(--color-navy-600)]">
+                      <p className="text-[15px] font-medium text-[color:var(--color-navy-600)]">
                         +263 861 200 0700
                       </p>
-                      <p className="text-[11.5px] text-[color:var(--color-bone-500)]">
+                      <p className="text-[13px] text-[color:var(--color-bone-500)] mt-0.5">
                         Monday-Friday, 08:00-17:00 CAT
                       </p>
                     </div>
                   </div>
-                  <ArrowRightIcon size={14} weight="bold" className="text-[color:var(--color-bone-400)]" />
+                  <ArrowRightIcon size={15} weight="bold" className="text-[color:var(--color-bone-400)]" />
                 </a>
                 <a
                   href="mailto:info@bardsantner.com"
-                  className="flex items-center justify-between p-4 rounded-lg border border-[color:var(--color-bone-200)] hover:border-[color:var(--color-orange-500)] transition-colors"
+                  className="flex items-center justify-between p-5 rounded-lg border border-[color:var(--color-bone-200)] hover:border-[color:var(--color-orange-500)] transition-colors"
                 >
-                  <div className="flex items-center gap-3">
-                    <EnvelopeSimpleIcon size={20} weight="regular" className="text-[color:var(--color-orange-600)]" />
+                  <div className="flex items-center gap-4">
+                    <EnvelopeSimpleIcon size={22} weight="regular" className="text-[color:var(--color-orange-600)]" />
                     <div>
-                      <p className="text-[13.5px] font-medium text-[color:var(--color-navy-600)]">
+                      <p className="text-[15px] font-medium text-[color:var(--color-navy-600)]">
                         info@bardsantner.com
                       </p>
-                      <p className="text-[11.5px] text-[color:var(--color-bone-500)]">
+                      <p className="text-[13px] text-[color:var(--color-bone-500)] mt-0.5">
                         Response within one business day
                       </p>
                     </div>
                   </div>
-                  <ArrowRightIcon size={14} weight="bold" className="text-[color:var(--color-bone-400)]" />
+                  <ArrowRightIcon size={15} weight="bold" className="text-[color:var(--color-bone-400)]" />
                 </a>
-                <Link to="/contact" className="btn btn-navy w-full justify-center mt-2">
+                <Link to="/contact" className="btn btn-navy w-full justify-center mt-3">
                   Request a banker
-                  <ArrowRightIcon size={14} weight="bold" />
+                  <ArrowRightIcon size={15} weight="bold" />
                 </Link>
               </div>
             </div>

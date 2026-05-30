@@ -14,10 +14,32 @@
       mostly as IDENTIFIER accents (CTAs, audience strip, sub-brand chips)
       rather than flooding the canvas.
 
-   So we ship the bank palette as primaries and use a quiet ink/bone neutral
-   foundation underneath. Type stack substitutes Fraunces (display serif in
-   the spirit of Copperplate, web-licensed) and Inter (Avenir alternative,
-   humanist, web-licensed and DSGVO-clean self-hosted).
+   Body type is Gellix (sourced from the CACZ project archive). Headings
+   stay on Fraunces — the editorial Copperplate-spirit serif — for the
+   institutional gravity Bard Santner needs. Cormorant Garamond remains
+   the alternative editorial serif; JetBrains Mono carries micro/labels.
+
+   Token bumps applied 2026-05-30 per direction:
+   strategic — body 17px, headings +10%, hero unchanged.
+   Lloyds-grade interior padding — pills 18/28, cards 32/40, buttons 18/28.
+   Applied at @theme + @layer components level only so symmetry holds. */
+
+/* ─── Self-hosted Gellix ────────────────────────────────────────────── */
+@font-face {
+  font-family: "Gellix";
+  src: url("/fonts/Gellix-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gellix";
+  src: url("/fonts/Gellix-Regular.ttf") format("truetype");
+  font-weight: 400 600;  /* range covers 400/500/600 calls; browser will
+                            synthesize subtle weights from the single file. */
+  font-style: normal;
+  font-display: swap;
+}
 ─────────────────────────────────────────────────────────────────────────── */
 
 @theme {
@@ -68,17 +90,36 @@
   /* ─── Typography ─── */
   --font-display: "Fraunces Variable", "Copperplate", Georgia, serif;
   --font-display-alt: "Cormorant Garamond", "Times New Roman", serif;
-  --font-body: "Inter", "Avenir Next", "Avenir", system-ui, sans-serif;
+  --font-body: "Gellix", "Inter", "Avenir Next", "Avenir", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", "SF Mono", Consolas, monospace;
 
+  /* Hero unchanged. The other display tiers bumped ~10% to deliver the
+     "everything reads a touch bigger" institutional confidence the brief
+     calls for, without losing the type-scale ratio. */
   --text-display-hero:  clamp(2.75rem, 7vw, 6.5rem);
-  --text-display-xl:    clamp(2.25rem, 5.5vw, 4.5rem);
-  --text-display-lg:    clamp(1.75rem, 4vw, 3rem);
-  --text-display-md:    clamp(1.5rem, 3vw, 2.25rem);
+  --text-display-xl:    clamp(2.5rem, 6vw, 5rem);
+  --text-display-lg:    clamp(2rem, 4.5vw, 3.5rem);
+  --text-display-md:    clamp(1.75rem, 3.4vw, 2.5rem);
+
+  /* Body scale up to 17px so all paragraph text inherits the strategic
+     bump. Headings carry their own clamp() above. */
+  --text-body-base: 1.0625rem;   /* 17px */
+  --text-body-lg:   1.1875rem;   /* 19px */
+  --text-body-xl:   1.3125rem;   /* 21px */
 
   --section-pad-y:    clamp(4rem, 8vw, 8rem);
   --section-pad-y-lg: clamp(6rem, 12vw, 12rem);
   --container-pad-x:  clamp(1.25rem, 4vw, 2.5rem);
+
+  /* ─── Component-interior padding tokens (Lloyds-grade) ───────────────
+     Centralised here so every consumer scales coherently and symmetry
+     across cards / pills / buttons / sections is preserved. */
+  --pad-pill-y: 1.125rem;     /* 18px */
+  --pad-pill-x: 1.75rem;      /* 28px */
+  --pad-btn-y:  1.125rem;     /* 18px */
+  --pad-btn-x:  1.75rem;      /* 28px */
+  --pad-card:   2rem;         /* 32px */
+  --pad-card-lg: 2.5rem;      /* 40px — used on hero / advisory cards on lg+ */
 
   --shadow-card: 0 1px 2px rgba(12,10,20,0.04), 0 8px 24px rgba(12,10,20,0.06);
   --shadow-card-lift: 0 2px 4px rgba(12,10,20,0.06), 0 16px 40px rgba(12,10,20,0.10);
@@ -88,7 +129,10 @@
 /* ─── Base layer ─── */
 @layer base {
   html { scroll-behavior: smooth; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-  body { font-family: var(--font-body); color: var(--color-bone-700); background: var(--color-bone-50); font-feature-settings: "kern","liga","calt","ss01"; line-height: 1.55; margin: 0; }
+  /* Body bumped to 17px / 1.6 line-height as the institutional reading default.
+     Every paragraph inherits, every component picks it up through em-based sizing,
+     so symmetry holds across the system. */
+  body { font-family: var(--font-body); color: var(--color-bone-700); background: var(--color-bone-50); font-feature-settings: "kern","liga","calt","ss01"; font-size: var(--text-body-base); line-height: 1.6; margin: 0; }
   h1, h2, h3, h4 { font-family: var(--font-display); color: var(--color-navy-600); font-weight: 500; letter-spacing: -0.018em; line-height: 1.08; margin: 0; }
   h1 { font-weight: 400; }
   p  { color: var(--color-bone-600); margin: 0; }
@@ -113,7 +157,9 @@
   .eyebrow-on-dark { color: rgba(255,255,255,0.55); }
   .eyebrow-accent  { color: var(--color-orange-600); }
 
-  .btn { display: inline-flex; align-items: center; gap: 0.625rem; padding: 0.875rem 1.5rem; font-family: var(--font-body); font-weight: 600; font-size: 0.9375rem; line-height: 1; border-radius: 9999px; transition: all 200ms ease; cursor: pointer; white-space: nowrap; border: 1px solid transparent; }
+  /* Buttons — Lloyds-grade interior padding (18/28). Read these tokens
+     so every button on the site scales together. */
+  .btn { display: inline-flex; align-items: center; gap: 0.75rem; padding: var(--pad-btn-y) var(--pad-btn-x); font-family: var(--font-body); font-weight: 600; font-size: 1rem; line-height: 1; border-radius: 9999px; transition: all 200ms ease; cursor: pointer; white-space: nowrap; border: 1px solid transparent; }
   .btn-primary { background: var(--color-orange-500); color: white; }
   .btn-primary:hover { background: var(--color-orange-600); }
   .btn-primary:active { background: var(--color-orange-700); }
@@ -124,15 +170,25 @@
   .btn-ghost-dark { background: transparent; color: white; border-color: rgba(255,255,255,0.30); }
   .btn-ghost-dark:hover { background: rgba(255,255,255,0.08); border-color: white; }
 
-  .pill { display: inline-flex; align-items: center; justify-content: space-between; gap: 0.75rem; padding: 0.875rem 1.25rem; background: white; color: var(--color-navy-600); border-radius: 0.5rem; font-weight: 500; font-size: 0.9375rem; transition: all 200ms ease; border: 1px solid transparent; }
+  /* Pills — Lloyds quick-action strip pattern. Generous interior padding
+     (18/28) signals confidence in the same gesture Lloyds uses to push
+     their primary-action chips above the average. */
+  .pill { display: inline-flex; align-items: center; justify-content: space-between; gap: 1rem; padding: var(--pad-pill-y) var(--pad-pill-x); background: white; color: var(--color-navy-600); border-radius: 0.5rem; font-weight: 500; font-size: 1rem; line-height: 1.2; transition: all 200ms ease; border: 1px solid transparent; min-height: 3.5rem; }
   .pill:hover { box-shadow: var(--shadow-card-lift); transform: translateY(-1px); }
 
   .hover-line { position: relative; display: inline-block; }
   .hover-line::after { content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform 240ms ease; }
   .hover-line:hover::after { transform: scaleX(1); transform-origin: left; }
 
-  .bank-card { background: white; border-radius: 0.75rem; overflow: hidden; transition: box-shadow 240ms ease, transform 240ms ease; }
+  /* Cards — base white card. Inner padding is applied where the card body
+     starts, so a card with an image header keeps the image flush-edge
+     while the text block underneath gets the generous Lloyds padding. */
+  .bank-card { background: white; border-radius: 0.875rem; overflow: hidden; transition: box-shadow 240ms ease, transform 240ms ease; }
   .bank-card:hover { box-shadow: var(--shadow-card-lift); transform: translateY(-2px); }
+  /* Card-body utility — apply directly to the inner content block of any
+     bank-card to receive the Lloyds-grade 32 / 40 padding rhythm. */
+  .bank-card-body { padding: var(--pad-card); }
+  @media (min-width: 1024px) { .bank-card-body-lg { padding: var(--pad-card-lg); } }
 
   .section { padding-block: var(--section-pad-y); }
   .section-lg { padding-block: var(--section-pad-y-lg); }

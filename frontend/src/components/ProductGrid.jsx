@@ -42,25 +42,28 @@ export default function ProductGrid({ heading, eyebrow, products = [], showAll =
                   style={{ backgroundImage: p.image ? `url(${p.image})` : undefined }}
                 />
               </Link>
-              <div className="p-5 md:p-6 flex flex-col flex-1">
+              {/* Lloyds-grade card body — 32 mobile, 40 lg. The generous
+                  interior padding is the move that lets product cards read
+                  as institutional rather than catalogue. */}
+              <div className="bank-card-body lg:p-10 flex flex-col flex-1">
                 <p
-                  className="eyebrow mb-2"
+                  className="eyebrow mb-3"
                   style={{ color: p.accent || "var(--color-orange-600)" }}
                 >
                   {p.eyebrow}
                 </p>
-                <h3 className="font-display text-[20px] text-[color:var(--color-navy-600)] mb-3 leading-tight">
+                <h3 className="font-display text-[22px] md:text-[24px] text-[color:var(--color-navy-600)] mb-4 leading-tight">
                   {p.name}
                 </h3>
-                <p className="text-[14px] text-[color:var(--color-bone-600)] leading-relaxed mb-5 flex-1">
+                <p className="text-[15px] text-[color:var(--color-bone-600)] leading-relaxed mb-7 flex-1">
                   {p.summary}
                 </p>
                 <Link
                   to={`/products/${p.slug}`}
-                  className="inline-flex items-center gap-2 text-[13px] font-medium text-[color:var(--color-navy-600)] hover:text-[color:var(--color-orange-600)] transition-colors"
+                  className="inline-flex items-center gap-2 text-[14px] font-medium text-[color:var(--color-navy-600)] hover:text-[color:var(--color-orange-600)] transition-colors"
                 >
                   Explore {p.name}
-                  <ArrowRightIcon size={12} weight="bold" />
+                  <ArrowRightIcon size={13} weight="bold" />
                 </Link>
               </div>
             </motion.article>

@@ -36,17 +36,17 @@ export default function InsightsRail({ heading, eyebrow, items = [] }) {
             >
               <Link to={`/insights/${it.slug}`} className="block group">
                 <div
-                  className="aspect-[16/10] rounded-lg overflow-hidden bg-[color:var(--color-bone-200)] bg-cover bg-center mb-5"
+                  className="aspect-[16/10] rounded-lg overflow-hidden bg-[color:var(--color-bone-200)] bg-cover bg-center mb-7"
                   style={{ backgroundImage: it.image ? `url(${it.image})` : undefined }}
                 />
-                <p className="eyebrow eyebrow-accent mb-3">{it.eyebrow}</p>
-                <h3 className="font-display text-[22px] md:text-[24px] text-[color:var(--color-navy-600)] leading-tight mb-3 group-hover:text-[color:var(--color-orange-600)] transition-colors">
+                <p className="eyebrow eyebrow-accent mb-4">{it.eyebrow}</p>
+                <h3 className="font-display text-[24px] md:text-[26px] text-[color:var(--color-navy-600)] leading-tight mb-4 group-hover:text-[color:var(--color-orange-600)] transition-colors">
                   {it.title}
                 </h3>
-                <p className="text-[14.5px] text-[color:var(--color-bone-600)] leading-relaxed mb-4">
+                <p className="text-[15.5px] text-[color:var(--color-bone-600)] leading-relaxed mb-5">
                   {it.summary}
                 </p>
-                <p className="text-[12px] text-[color:var(--color-bone-500)] flex items-center gap-3">
+                <p className="text-[13px] text-[color:var(--color-bone-500)] flex items-center gap-3">
                   <span>{it.author}</span>
                   <span className="w-1 h-1 rounded-full bg-[color:var(--color-bone-400)]" />
                   <span>{it.reading_minutes} min read</span>
