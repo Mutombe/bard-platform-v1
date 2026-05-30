@@ -192,44 +192,12 @@
      gesture is the spacing and the case, not a different typeface. */
   .eyebrow { font-family: var(--font-mono); font-size: 0.75rem; line-height: 1; letter-spacing: 0.22em; text-transform: uppercase; color: var(--color-bone-500); font-weight: 500; }
 
-  /* Active audience tab — classic folder-tab shape:
-       • Top corners rounded INWARD (standard border-radius)
-       • Bottom corners flared OUTWARD via pseudo-element cutouts
-     The ::before and ::after are 14×14 boxes positioned just outside
-     the tab's bottom corners. Each carries a radial-gradient with a
-     transparent quarter-circle carved from the corner CLOSEST to the
-     navy strip's interior — leaving the white that sits flush with the
-     strip floor visually flaring out from the active tab. */
+  /* Active audience tab — sharp rectangular block, navy strip → white
+     tab, no curves, no flares, no under-rule. The white pulled out of
+     the navy carries the active state by itself. */
   .tab-active {
-    position: relative;
     background: white;
     color: var(--color-navy-700);
-    border-radius: 14px 14px 0 0;
-  }
-  .tab-active::before,
-  .tab-active::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    width: 14px;
-    height: 14px;
-    pointer-events: none;
-  }
-  .tab-active::before {
-    left: -14px;
-    background: radial-gradient(
-      circle at top left,
-      transparent 14px,
-      white 14px
-    );
-  }
-  .tab-active::after {
-    right: -14px;
-    background: radial-gradient(
-      circle at top right,
-      transparent 14px,
-      white 14px
-    );
   }
   .eyebrow-on-dark { color: rgba(255,255,255,0.55); }
   .eyebrow-accent  { color: var(--color-orange-600); }
