@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import PageTransition from "../components/PageTransition.jsx";
 import PageHero from "../components/PageHero.jsx";
 import SEO, { breadcrumbJsonLd } from "../components/SEO.jsx";
+import { HERO } from "../data/images.js";
 import { PhoneIcon, EnvelopeSimpleIcon, ChatCircleIcon, MapPinIcon, ArrowRightIcon, CheckCircleIcon } from "@phosphor-icons/react";
 import { AUDIENCES } from "../data/audiences.js";
 
@@ -49,7 +50,7 @@ export default function Contact() {
         eyebrow="§ Contact"
         headline="Open a conversation. It commits nothing."
         body="The first call tells us if we are the right bank for you, and tells you if we are a partner worth a decade."
-        image="/images/hero/contact.jpg"
+        image={HERO.contact}
         overlayTint="navy"
         variant="editorial"
       />

@@ -6,6 +6,7 @@ import InsightsRail from "../../components/InsightsRail.jsx";
 import AdvisoryBand from "../../components/AdvisoryBand.jsx";
 import TrustRibbon from "../../components/TrustRibbon.jsx";
 import SEO, { breadcrumbJsonLd } from "../../components/SEO.jsx";
+import { HERO } from "../../data/images.js";
 
 import { QUICK_ACTIONS } from "../../data/quickActions.js";
 import { productsForAudience } from "../../data/products.js";
@@ -29,7 +30,7 @@ export default function International() {
         body="Diaspora accounts, FX and cross-border trade. Correspondent banking across forty jurisdictions."
         primaryCTA={{ to: "/products/diaspora-account", label: "Open a Diaspora Account" }}
         secondaryCTA={{ to: "/products/foreign-exchange", label: "Foreign Exchange" }}
-        image="/images/audience/international-hero.jpg"
+        image={HERO.international}
         overlayTint="navy"
       />
       <QuickActionStrip actions={QUICK_ACTIONS.international} tint="navy" />

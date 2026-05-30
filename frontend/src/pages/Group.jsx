@@ -4,6 +4,7 @@ import GroupRibbon from "../components/GroupRibbon.jsx";
 import AdvisoryBand from "../components/AdvisoryBand.jsx";
 import TrustRibbon from "../components/TrustRibbon.jsx";
 import SEO, { breadcrumbJsonLd } from "../components/SEO.jsx";
+import { HERO } from "../data/images.js";
 
 export default function Group() {
   return (
@@ -20,7 +21,7 @@ export default function Group() {
         body="A financial platform, not a single product. Banking at the centre, four sister institutions around it."
         primaryCTA={{ to: "/group/bsmfb", label: "Bard Santner Microfinance Bank" }}
         secondaryCTA={{ to: "/about", label: "About the Group" }}
-        image="/images/hero/group.jpg"
+        image={HERO.group}
         overlayTint="ink"
       />
       <GroupRibbon vertical />

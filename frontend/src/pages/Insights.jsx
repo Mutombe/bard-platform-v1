@@ -5,6 +5,7 @@ import PageTransition from "../components/PageTransition.jsx";
 import PageHero from "../components/PageHero.jsx";
 import AdvisoryBand from "../components/AdvisoryBand.jsx";
 import SEO, { breadcrumbJsonLd } from "../components/SEO.jsx";
+import { HERO, INSIGHT } from "../data/images.js";
 import { INSIGHTS } from "../data/insights.js";
 import { AUDIENCES } from "../data/audiences.js";
 
@@ -27,7 +28,7 @@ export default function Insights() {
         eyebrow="§ Insights"
         headline="Reading from the desk."
         body="Editorial commentary by the people who run the desks. Bardiq Journal carries the long form."
-        image="/images/hero/insights.jpg"
+        image={HERO.insights}
         overlayTint="navy"
         variant="editorial"
       />
@@ -60,8 +61,11 @@ export default function Insights() {
             <Link to={`/insights/${lead.slug}`} className="group grid grid-cols-12 gap-8 md:gap-12 items-center">
               <div className="col-span-12 md:col-span-7">
                 <div
-                  className="aspect-[16/10] rounded-lg bg-cover bg-center bg-bone-200"
-                  style={{ backgroundImage: lead.image ? `url(${lead.image})` : undefined }}
+                  className="aspect-[16/10] rounded-lg bg-cover bg-center bg-bone-200 overflow-hidden"
+                  style={{
+                    backgroundImage: `url(${INSIGHT[lead.slug] || lead.image || ""})`,
+                    filter: "saturate(0.85) brightness(0.95)",
+                  }}
                 />
               </div>
               <div className="col-span-12 md:col-span-5">
@@ -101,8 +105,11 @@ export default function Insights() {
                 >
                   <Link to={`/insights/${it.slug}`} className="block">
                     <div
-                      className="aspect-[16/10] bg-cover bg-center bg-bone-200"
-                      style={{ backgroundImage: it.image ? `url(${it.image})` : undefined }}
+                      className="aspect-[16/10] bg-cover bg-center bg-bone-200 overflow-hidden"
+                      style={{
+                        backgroundImage: `url(${INSIGHT[it.slug] || it.image || ""})`,
+                        filter: "saturate(0.85) brightness(0.95)",
+                      }}
                     />
                   </Link>
                   <div className="p-8 md:p-9 flex-1 flex flex-col">

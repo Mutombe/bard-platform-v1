@@ -146,19 +146,49 @@ export default function PageHero({
   }
 
   // ─── default: full-bleed editorial hero ─────────────────────────
+  // Lloyds-style image blending. Three layers:
+  //   1. The photograph, slightly desaturated and dimmed via filter
+  //      so it reads as institutional editorial rather than stock
+  //      brochureware.
+  //   2. A diagonal-to-bottom-left navy gradient that lands ~85%
+  //      opaque under the text and fades to transparent toward the
+  //      top-right corner — gives the headline a dark canvas to
+  //      sit on without flooding the whole image.
+  //   3. A second top-down gradient to keep the upper area subtly
+  //      dimmed so the nav doesn't fight low-contrast sky / windows.
   const tints = {
-    navy: "from-navy-900/85 via-navy-800/55 to-transparent",
-    ink: "from-ink/85 via-ink/45 to-transparent",
-    orange: "from-orange-800/85 via-orange-700/50 to-transparent",
+    navy: {
+      from: "from-navy-900/90",
+      via: "via-navy-800/55",
+      to: "to-navy-900/15",
+    },
+    ink: {
+      from: "from-ink/90",
+      via: "via-ink/55",
+      to: "to-ink/15",
+    },
+    orange: {
+      from: "from-orange-900/85",
+      via: "via-orange-800/50",
+      to: "to-orange-900/10",
+    },
   };
+  const t = tints[overlayTint] || tints.navy;
 
   return (
     <section className="relative overflow-hidden bg-navy-800">
+      {/* Photograph — desaturated 20%, slightly dimmed for editorial tone */}
       <div
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: image ? `url(${image})` : undefined }}
+        style={{
+          backgroundImage: image ? `url(${image})` : undefined,
+          filter: image ? "saturate(0.78) brightness(0.85) contrast(1.05)" : undefined,
+        }}
       />
-      <div className={`absolute inset-0 bg-gradient-to-t ${tints[overlayTint] || tints.navy}`} />
+      {/* Bottom-left dark gradient — text canvas */}
+      <div className={`absolute inset-0 bg-gradient-to-tr ${t.from} ${t.via} ${t.to}`} />
+      {/* Top dim — subtle, keeps the upper-area legible under the nav */}
+      <div className="absolute inset-0 bg-gradient-to-b from-ink/40 via-transparent to-transparent" />
       {/* Full-bleed hero — min-h sized so hero + QuickActionStrip share
           one viewport (nav 124px + strip 96px + breathing 36px = 260
           subtraction). No max-h cap; if content needs more room the

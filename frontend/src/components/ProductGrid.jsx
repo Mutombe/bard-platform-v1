@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRightIcon } from "@phosphor-icons/react";
+import { PRODUCT } from "../data/images.js";
 
 /**
  * The Lloyds "Our products" grid. Editorial square photo + label + 2-line
@@ -36,10 +37,13 @@ export default function ProductGrid({ heading, eyebrow, products = [], showAll =
               transition={{ duration: 0.55, delay: i * 0.05, ease: [0.22, 1, 0.36, 1] }}
               className="bank-card flex flex-col"
             >
-              <Link to={`/products/${p.slug}`} className="block">
+              <Link to={`/products/${p.slug}`} className="block overflow-hidden">
                 <div
-                  className="aspect-[4/3] bg-cover bg-center bg-bone-200"
-                  style={{ backgroundImage: p.image ? `url(${p.image})` : undefined }}
+                  className="aspect-[4/3] bg-cover bg-center bg-bone-200 transition-transform duration-700 hover:scale-[1.03]"
+                  style={{
+                    backgroundImage: `url(${PRODUCT[p.slug] || p.image || ""})`,
+                    filter: "saturate(0.82) brightness(0.95)",
+                  }}
                 />
               </Link>
               {/* Lloyds-grade card body — 32 mobile, 40 lg. The generous

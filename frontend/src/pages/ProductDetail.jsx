@@ -5,6 +5,7 @@ import AdvisoryBand from "../components/AdvisoryBand.jsx";
 import TrustRibbon from "../components/TrustRibbon.jsx";
 import SEO, { breadcrumbJsonLd, financialProductJsonLd } from "../components/SEO.jsx";
 import { findProduct, PRODUCTS } from "../data/products.js";
+import { PRODUCT } from "../data/images.js";
 import NotFound from "./NotFound.jsx";
 
 /**
@@ -70,7 +71,10 @@ export default function ProductDetail() {
             <div className="col-span-12 md:col-span-7">
               <div
                 className="aspect-[5/4] rounded-xl bg-bone-200 bg-cover bg-center mb-6"
-                style={{ backgroundImage: p.image ? `url(${p.image})` : undefined }}
+                style={{
+                  backgroundImage: `url(${PRODUCT[p.slug] || p.image || ""})`,
+                  filter: "saturate(0.82) brightness(0.95)",
+                }}
               />
             </div>
             <div className="col-span-12 md:col-span-5">

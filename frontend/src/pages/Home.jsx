@@ -15,6 +15,7 @@ import SEO, { organizationJsonLd, websiteJsonLd, breadcrumbJsonLd } from "../com
 import { QUICK_ACTIONS } from "../data/quickActions.js";
 import { PRODUCTS } from "../data/products.js";
 import { INSIGHTS } from "../data/insights.js";
+import { HERO } from "../data/images.js";
 
 /**
  * The institutional home page. The canonical sequence pulled directly
@@ -64,7 +65,7 @@ export default function Home() {
         body="A modern African financial platform. Banking, wealth, markets and advisory, built to international standards."
         primaryCTA={{ to: "/personal", label: "Open an account" }}
         secondaryCTA={{ to: "/group", label: "Meet the Group" }}
-        image="/images/hero/home.jpg"
+        image={HERO.home}
         overlayTint="navy"
       />
 

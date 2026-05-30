@@ -4,6 +4,7 @@ import ProductGrid from "../components/ProductGrid.jsx";
 import AdvisoryBand from "../components/AdvisoryBand.jsx";
 import TrustRibbon from "../components/TrustRibbon.jsx";
 import SEO, { breadcrumbJsonLd } from "../components/SEO.jsx";
+import { HERO } from "../data/images.js";
 import { PRODUCTS } from "../data/products.js";
 
 export default function Banking() {
@@ -23,7 +24,7 @@ export default function Banking() {
         body="Personal, business, private and institutional banking, organised by what they do."
         primaryCTA={{ to: "/products/everyday-account", label: "Open an Everyday Account" }}
         secondaryCTA={{ to: "/contact", label: "Speak to a banker" }}
-        image="/images/hero/banking.jpg"
+        image={HERO.banking}
         overlayTint="navy"
       />
       <ProductGrid

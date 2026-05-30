@@ -2,6 +2,7 @@ import PageTransition from "../components/PageTransition.jsx";
 import PageHero from "../components/PageHero.jsx";
 import AdvisoryBand from "../components/AdvisoryBand.jsx";
 import SEO, { breadcrumbJsonLd } from "../components/SEO.jsx";
+import { HERO } from "../data/images.js";
 import { MapPinIcon, PhoneIcon, ClockIcon } from "@phosphor-icons/react";
 
 const LOCATIONS = [
@@ -75,7 +76,7 @@ export default function Locations() {
         eyebrow="§ Locations"
         headline="Where we operate. And where we are next."
         body="Harare flagship, regional Zimbabwean branches, Southern African offices, and diaspora desks abroad."
-        image="/images/hero/locations.jpg"
+        image={HERO.locations}
         overlayTint="navy"
         variant="editorial"
       />

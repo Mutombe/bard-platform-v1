@@ -4,6 +4,7 @@ import GroupRibbon from "../components/GroupRibbon.jsx";
 import AdvisoryBand from "../components/AdvisoryBand.jsx";
 import TrustRibbon from "../components/TrustRibbon.jsx";
 import SEO, { breadcrumbJsonLd, articleJsonLd } from "../components/SEO.jsx";
+import { HERO } from "../data/images.js";
 import { Link } from "react-router-dom";
 
 export default function About() {
@@ -32,7 +33,7 @@ export default function About() {
         body="Bard Santner Markets Inc, Harare. The Microfinance Bank sits at the centre of a group spanning banking, markets, lending, sports finance and editorial."
         primaryCTA={{ to: "/group", label: "Meet the Group" }}
         secondaryCTA={{ to: "/leadership", label: "Leadership" }}
-        image="/images/hero/about.jpg"
+        image={HERO.about}
         overlayTint="navy"
       />
 
