@@ -14,10 +14,12 @@
       mostly as IDENTIFIER accents (CTAs, audience strip, sub-brand chips)
       rather than flooding the canvas.
 
-   Body type is Gellix (sourced from the CACZ project archive). Headings
-   stay on Fraunces — the editorial Copperplate-spirit serif — for the
-   institutional gravity Bard Santner needs. Cormorant Garamond remains
-   the alternative editorial serif; JetBrains Mono carries micro/labels.
+   Gellix is the only typeface, body to display, micro to hero. The
+   only differentiators across the system are size, weight, letter-
+   spacing and case. Per the Lloyds canon — one family, governed
+   visually by hierarchy alone. Inter sits in the fallback stack so
+   weights 500/600/700 resolve cleanly when Gellix (Light + Regular)
+   doesn't ship those faces.
 
    Token bumps applied 2026-05-30 per direction:
    strategic — body 17px, headings +10%, hero unchanged.
@@ -111,11 +113,11 @@
   --color-error:   #88120e;
   --color-warn:    #c9a04d;
 
-  /* ─── Typography ─── */
-  --font-display: "Fraunces Variable", "Copperplate", Georgia, serif;
-  --font-display-alt: "Cormorant Garamond", "Times New Roman", serif;
+  /* ─── Typography ─── Gellix everywhere. One family. */
+  --font-display: "Gellix", "Inter", "Avenir Next", system-ui, sans-serif;
+  --font-display-alt: "Gellix", "Inter", "Avenir Next", system-ui, sans-serif;
   --font-body: "Gellix", "Inter", "Avenir Next", "Avenir", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", "SF Mono", Consolas, monospace;
+  --font-mono: "Gellix", "Inter", "Avenir Next", system-ui, sans-serif;
 
   /* Hero unchanged. The other display tiers bumped ~10% to deliver the
      "everything reads a touch bigger" institutional confidence the brief
@@ -157,8 +159,10 @@
      Every paragraph inherits, every component picks it up through em-based sizing,
      so symmetry holds across the system. */
   body { font-family: var(--font-body); color: var(--color-bone-700); background: var(--color-bone-50); font-feature-settings: "kern","liga","calt","ss01"; font-size: var(--text-body-base); line-height: 1.6; margin: 0; }
-  h1, h2, h3, h4 { font-family: var(--font-display); color: var(--color-navy-600); font-weight: 500; letter-spacing: -0.018em; line-height: 1.08; margin: 0; }
-  h1 { font-weight: 400; }
+  /* All headings live on Gellix Regular (400). Letter-spacing tightens
+     slightly to give large display sizes the right optical density. */
+  h1, h2, h3, h4 { font-family: var(--font-display); color: var(--color-navy-600); font-weight: 500; letter-spacing: -0.022em; line-height: 1.08; margin: 0; }
+  h1 { font-weight: 500; letter-spacing: -0.028em; }
   p  { color: var(--color-bone-600); margin: 0; }
   a  { color: inherit; text-decoration: none; }
   ::selection { background: var(--color-orange-500); color: white; }
@@ -170,17 +174,23 @@
 @layer components {
   .container-bank { width: 100%; max-width: 1440px; margin-inline: auto; padding-inline: var(--container-pad-x); }
 
-  .display-hero { font-family: var(--font-display); font-size: var(--text-display-hero); line-height: 0.98; letter-spacing: -0.022em; font-weight: 400; }
-  .display-xl   { font-family: var(--font-display); font-size: var(--text-display-xl);   line-height: 1.04; letter-spacing: -0.02em;  font-weight: 400; }
-  .display-lg   { font-family: var(--font-display); font-size: var(--text-display-lg);   line-height: 1.08; letter-spacing: -0.018em; font-weight: 500; }
-  .display-md   { font-family: var(--font-display); font-size: var(--text-display-md);   line-height: 1.12; letter-spacing: -0.014em; font-weight: 500; }
+  /* Display typography — all Gellix. Differentiated only by size,
+     letter-spacing and weight, per the Lloyds canon. Larger sizes
+     get tighter tracking so the optical density stays consistent
+     with what a true display face would deliver. */
+  .display-hero { font-family: var(--font-display); font-size: var(--text-display-hero); line-height: 0.98; letter-spacing: -0.032em; font-weight: 500; }
+  .display-xl   { font-family: var(--font-display); font-size: var(--text-display-xl);   line-height: 1.04; letter-spacing: -0.028em; font-weight: 500; }
+  .display-lg   { font-family: var(--font-display); font-size: var(--text-display-lg);   line-height: 1.08; letter-spacing: -0.022em; font-weight: 500; }
+  .display-md   { font-family: var(--font-display); font-size: var(--text-display-md);   line-height: 1.12; letter-spacing: -0.018em; font-weight: 500; }
 
   /* No-op kept for backwards-compatibility; italics removed sitewide
      per institutional brief — Lloyds, AfrAsia and Investec do not use
      italic emphasis in their canonical headlines. */
   .italic-accent { font-style: normal; }
 
-  .eyebrow { font-family: var(--font-mono); font-size: 0.6875rem; line-height: 1; letter-spacing: 0.22em; text-transform: uppercase; color: var(--color-bone-500); font-weight: 500; }
+  /* Eyebrow — Gellix uppercase with generous tracking. The institutional
+     gesture is the spacing and the case, not a different typeface. */
+  .eyebrow { font-family: var(--font-mono); font-size: 0.75rem; line-height: 1; letter-spacing: 0.22em; text-transform: uppercase; color: var(--color-bone-500); font-weight: 500; }
   .eyebrow-on-dark { color: rgba(255,255,255,0.55); }
   .eyebrow-accent  { color: var(--color-orange-600); }
 
