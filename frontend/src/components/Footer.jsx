@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import Monogram from "./Monogram.jsx";
 
 /**
  * Institutional banking footer. Four columns, deep navy ground, regulatory
@@ -78,7 +77,7 @@ export default function Footer() {
         <div className="grid grid-cols-12 gap-10 md:gap-14">
           <div className="col-span-12 md:col-span-3">
             <Link to="/" aria-label="Bard Santner home" className="inline-flex items-center gap-3">
-              <Monogram size={48} color="var(--color-orange-500)" />
+              <img src="/favicon.png" alt="" className="h-12 w-12 object-contain" />
               <span className="flex flex-col leading-none">
                 <span className="font-display text-[17px] tracking-[0.04em] uppercase">Bard Santner</span>
                 <span className="text-[10px] tracking-[0.18em] text-white/55 uppercase mt-1">Markets Inc</span>

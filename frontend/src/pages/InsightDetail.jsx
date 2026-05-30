@@ -81,7 +81,7 @@ export default function InsightDetail() {
         {/* Body — editorial placeholder. Real long-form lives in /group/journal */}
         <div className="container-bank pb-16 md:pb-24">
           <div className="max-w-2xl mx-auto prose-bank space-y-6 text-[17px] text-bone-700 leading-relaxed">
-            <p className="text-[22px] italic-accent text-navy-600 font-display font-light">
+            <p className="text-[22px] text-navy-600 font-display font-medium">
               This insight is a short read. The long-form version, with citations and
               accompanying market data, is published in the next quarterly edition of
               Bardiq Journal.

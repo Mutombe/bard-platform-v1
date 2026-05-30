@@ -17,7 +17,7 @@ export default function AdvisoryBand() {
             <p className="eyebrow mb-4">§ 06 · Advisory</p>
             <h2 className="display-xl text-navy-600 text-balance">
               We bank by relationship.{" "}
-              <span className="italic-accent text-orange-600 font-light">
+              <span className="text-navy-600">
                 Start one.
               </span>
             </h2>

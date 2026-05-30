@@ -28,15 +28,18 @@ export default function PageHero({
     return (
       <section className="bg-white">
         <div className="container-bank pt-6 md:pt-10 pb-0">
-          <div className="grid grid-cols-12 gap-0 rounded-xl overflow-hidden">
-            <div className="col-span-12 md:col-span-6 bg-navy-600 text-white p-10 md:p-14 lg:p-16 flex flex-col justify-center min-h-[420px]">
+          {/* Split hero — colour panel + photo. Sized to fit one viewport
+              below the nav (44px audience strip + 80px brand row = 124px).
+              min-h via svh + calc keeps content visible without scroll. */}
+          <div className="grid grid-cols-12 gap-0 rounded-xl overflow-hidden min-h-[calc(100svh-160px)] md:min-h-[calc(100svh-180px)]">
+            <div className="col-span-12 md:col-span-6 bg-navy-600 text-white p-10 md:p-14 lg:p-16 flex flex-col justify-center">
               {eyebrow && <p className="eyebrow eyebrow-on-dark mb-6">{eyebrow}</p>}
               <h1 className="display-xl text-white">
                 {headline}
                 {italicTail && (
                   <>
                     <br />
-                    <span className="italic-accent text-orange-300 font-light">
+                    <span className="text-white">
                       {italicTail}
                     </span>
                   </>
@@ -67,7 +70,7 @@ export default function PageHero({
               )}
             </div>
             <div
-              className="col-span-12 md:col-span-6 min-h-[300px] md:min-h-[420px] bg-bone-200"
+              className="col-span-12 md:col-span-6 min-h-[280px] md:min-h-0 bg-bone-200"
               style={{
                 backgroundImage: image ? `url(${image})` : undefined,
                 backgroundSize: "cover",
@@ -83,7 +86,10 @@ export default function PageHero({
   if (variant === "editorial") {
     return (
       <section className="bg-bone-50">
-        <div className="container-bank section-lg">
+        {/* Editorial hero — generous whitespace, no overlay photography.
+            Capped at one viewport minus nav so it always fits at first
+            paint, then the next section appears as the user scrolls. */}
+        <div className="container-bank min-h-[calc(100svh-160px)] md:min-h-[calc(100svh-180px)] flex flex-col justify-center py-16 md:py-20">
           <div className="grid grid-cols-12 gap-10 md:gap-14 items-center">
             <div className="col-span-12 md:col-span-7">
               {eyebrow && <p className="eyebrow mb-6">{eyebrow}</p>}
@@ -97,7 +103,7 @@ export default function PageHero({
                 {italicTail && (
                   <>
                     <br />
-                    <span className="italic-accent text-orange-600 font-light">
+                    <span className="text-navy-600">
                       {italicTail}
                     </span>
                   </>
@@ -155,7 +161,10 @@ export default function PageHero({
         style={{ backgroundImage: image ? `url(${image})` : undefined }}
       />
       <div className={`absolute inset-0 bg-gradient-to-t ${tints[overlayTint] || tints.navy}`} />
-      <div className="relative container-bank min-h-[560px] md:min-h-[640px] lg:min-h-[720px] flex flex-col justify-end pt-32 pb-16 md:pb-24">
+      {/* Full-bleed hero — one-viewport-minus-nav height so the hero +
+          its CTA stack fit cleanly above the fold on any screen, with
+          the next section just barely peeking in on tall viewports. */}
+      <div className="relative container-bank min-h-[calc(100svh-160px)] md:min-h-[calc(100svh-180px)] flex flex-col justify-end pt-24 pb-12 md:pb-16">
         <div className={`max-w-3xl ${align === "center" ? "mx-auto text-center" : ""}`}>
           {eyebrow && (
             <motion.p
@@ -177,7 +186,7 @@ export default function PageHero({
             {italicTail && (
               <>
                 <br />
-                <span className="italic-accent text-orange-300 font-light">
+                <span className="text-white">
                   {italicTail}
                 </span>
               </>

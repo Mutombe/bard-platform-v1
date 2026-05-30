@@ -20,7 +20,7 @@ export default function AudienceTiles({ heading = "Banking experiences" }) {
           <h2 className="display-xl text-navy-600">
             {heading}
             <br />
-            <span className="italic-accent text-orange-600 font-light">
+            <span className="text-navy-600">
               for every life that needs banking.
             </span>
           </h2>
@@ -53,7 +53,7 @@ export default function AudienceTiles({ heading = "Banking experiences" }) {
                   <p className="eyebrow eyebrow-on-dark mb-4">{a.label}</p>
                   <p className="font-display text-[20px] md:text-[22px] text-white leading-snug">
                     Banking for{" "}
-                    <span className="italic-accent text-orange-300 font-light">
+                    <span className="text-white">
                       {a.id === "personal" && "you"}
                       {a.id === "business" && "your business"}
                       {a.id === "private" && "your wealth"}

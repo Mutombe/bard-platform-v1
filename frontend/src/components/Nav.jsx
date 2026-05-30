@@ -1,7 +1,6 @@
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { MagnifyingGlassIcon, LockIcon, ListIcon, XIcon, CaretDownIcon } from "@phosphor-icons/react";
-import Monogram from "./Monogram.jsx";
 import { AUDIENCES } from "../data/audiences.js";
 
 /**
@@ -95,7 +94,7 @@ export default function Nav() {
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Brand mark */}
             <Link to="/" className="flex items-center gap-3 shrink-0" aria-label="Bard Santner home">
-              <Monogram size={36} color="var(--color-orange-500)" />
+              <img src="/favicon.png" alt="" className="h-9 w-9 md:h-10 md:w-10 object-contain" loading="eager" />
               <span className="hidden sm:flex flex-col leading-none">
                 <span className="font-display text-[15px] md:text-[17px] tracking-[0.04em] text-navy-600 font-medium uppercase">
                   Bard Santner
@@ -158,7 +157,7 @@ export default function Nav() {
           <div className="container-bank">
             <div className="flex items-center justify-between h-16">
               <Link to="/" onClick={() => setMobileOpen(false)} className="flex items-center gap-3">
-                <Monogram size={32} color="var(--color-orange-500)" />
+                <img src="/favicon.png" alt="" className="h-8 w-8 object-contain" />
                 <span className="font-display text-[16px] tracking-[0.04em] text-navy-600 uppercase">
                   Bard Santner
                 </span>
