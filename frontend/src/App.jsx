@@ -22,6 +22,7 @@ import ProductDetail from "./pages/ProductDetail.jsx";
 import Banking from "./pages/Banking.jsx";
 import Wealth from "./pages/Wealth.jsx";
 import Markets from "./pages/Markets.jsx";
+import OnlineBanking from "./pages/OnlineBanking.jsx";
 import Contact from "./pages/Contact.jsx";
 import Locations from "./pages/Locations.jsx";
 import Security from "./pages/Security.jsx";
@@ -87,6 +88,7 @@ export default function App() {
               <Route path="/banking" element={<Banking />} />
               <Route path="/wealth" element={<Wealth />} />
               <Route path="/markets" element={<Markets />} />
+              <Route path="/online-banking" element={<OnlineBanking />} />
 
               {/* Products */}
               <Route path="/products/:slug" element={<ProductDetail />} />

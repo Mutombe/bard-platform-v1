@@ -2,10 +2,13 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRightIcon } from "@phosphor-icons/react";
 import { INSIGHT } from "../data/images.js";
+import { findLeaderByName } from "../data/leadership.js";
 
-// Two-letter initials for the author byline avatar.
-// "Senziwani Sikhosana" → "SS"
-// "Alfred Mthimkhulu"   → "AM"
+// Two-letter initials for the author byline avatar — used as a graceful
+// fallback when the author isn't in the leadership data and we don't
+// have a portrait for them.
+//   "Senziwani Sikhosana" → "SS"
+//   "Alfred Mthimkhulu"   → "AM"
 function initials(name = "") {
   return name
     .split(/\s+/)
@@ -63,35 +66,61 @@ export default function InsightsRail({ heading, eyebrow, items = [] }) {
                   {it.summary}
                 </p>
 
-                {/* Author byline — show-off detail. Avatar circle with
-                    initials in navy on bone, the institutional
-                    publishing-house gesture. Author name above role
-                    + reading time. Mirrors the bylines real editorial
-                    publications use (FT, Investec Focus, the Bardiq
-                    Journal). */}
-                <div className="flex items-center gap-3">
-                  <span
-                    className="w-9 h-9 rounded-full bg-navy-600 text-white flex items-center justify-center text-[11px] font-medium tracking-[0.06em] font-display shrink-0 ring-2 ring-orange-500/60 ring-offset-2 ring-offset-milk"
-                    aria-hidden="true"
-                  >
-                    {initials(it.author)}
-                  </span>
-                  <div className="leading-tight">
-                    <p className="text-[13px] md:text-[13.5px] font-medium text-navy-600">
-                      {it.author}
-                    </p>
-                    <p className="text-[11px] md:text-[11.5px] text-bone-500 mt-0.5 flex items-center gap-2">
-                      {it.author_role && <span>{it.author_role}</span>}
-                      {it.author_role && <span className="w-0.5 h-0.5 rounded-full bg-bone-400" />}
-                      <span>{it.reading_minutes} min read</span>
-                    </p>
-                  </div>
-                </div>
+                {/* Author byline — portrait avatar when we have the
+                    leader's photograph, initials in navy as graceful
+                    fallback. Orange ring + milk offset reads as a
+                    real publishing-house byline. */}
+                <AuthorByline
+                  name={it.author}
+                  role={it.author_role}
+                  minutes={it.reading_minutes}
+                />
               </Link>
             </motion.article>
           ))}
         </div>
       </div>
     </section>
+  );
+}
+
+/**
+ * Author byline avatar — shared between the InsightsRail (this file)
+ * and InsightDetail (long-form view). When the author exists in the
+ * leadership data, we render their portrait inside the avatar circle.
+ * When they don't, we fall back to their two-letter initials over
+ * navy. Either way the avatar is ringed in orange/60 against a milk
+ * offset — the editorial-publication gesture.
+ */
+export function AuthorByline({ name, role, minutes }) {
+  const leader = findLeaderByName(name);
+  return (
+    <div className="flex items-center gap-3">
+      <span
+        className="w-9 h-9 rounded-full overflow-hidden bg-navy-600 text-white flex items-center justify-center text-[11px] font-medium tracking-[0.06em] font-display shrink-0 ring-2 ring-orange-500/60 ring-offset-2 ring-offset-milk"
+        aria-hidden="true"
+      >
+        {leader?.image ? (
+          <img
+            src={leader.image}
+            alt=""
+            className="w-full h-full object-cover"
+            loading="lazy"
+          />
+        ) : (
+          initials(name)
+        )}
+      </span>
+      <div className="leading-tight">
+        <p className="text-[13px] md:text-[13.5px] font-medium text-navy-600">
+          {name}
+        </p>
+        <p className="text-[11px] md:text-[11.5px] text-bone-500 mt-0.5 flex items-center gap-2">
+          {role && <span>{role}</span>}
+          {role && <span className="w-0.5 h-0.5 rounded-full bg-bone-400" />}
+          <span>{minutes} min read</span>
+        </p>
+      </div>
+    </div>
   );
 }

@@ -90,6 +90,7 @@ function buildIndex() {
     { title: "Banking", path: "/banking", summary: "All banking products on one shelf", eyebrow: "Service" },
     { title: "Wealth", path: "/wealth", summary: "Discretionary mandates, advisory portfolios, structured credit", eyebrow: "Service" },
     { title: "Markets & Treasury", path: "/markets", summary: "Treasury, FX, debt capital markets, trade finance", eyebrow: "Service" },
+    { title: "Online Banking", path: "/online-banking", summary: "Manage accounts, send and receive, pay bills, monitor in real time", eyebrow: "Digital" },
     { title: "The Group", path: "/group", summary: "Five institutions, one discipline", eyebrow: "About" },
     { title: "About Bard Santner", path: "/about", summary: "A modern African financial platform", eyebrow: "About" },
     { title: "Leadership", path: "/leadership", summary: "Named, accountable, reachable", eyebrow: "About" },
@@ -120,9 +121,9 @@ const TYPE_META = {
 
 // Curated empty-state suggestions
 const SUGGESTIONS = [
+  { label: "Log in to Online Banking", path: "/online-banking" },
   { label: "Open an Everyday Account", path: "/products/everyday-account" },
   { label: "Diaspora banking", path: "/international" },
-  { label: "Trade finance", path: "/products/trade-finance" },
   { label: "Wealth management", path: "/wealth" },
   { label: "The Group", path: "/group" },
   { label: "Speak to a banker", path: "/contact" },

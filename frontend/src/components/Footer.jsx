@@ -39,10 +39,10 @@ const COLUMNS = [
   {
     title: "Help & security",
     links: [
+      { label: "Online Banking", to: "/online-banking" },
       { label: "Contact us", to: "/contact" },
       { label: "Locations", to: "/locations" },
       { label: "Security", to: "/security" },
-      { label: "Fraud awareness", to: "/security#fraud" },
       { label: "Complaints", to: "/complaints" },
       { label: "Accessibility", to: "/accessibility" },
       { label: "Service status", to: "/status" },

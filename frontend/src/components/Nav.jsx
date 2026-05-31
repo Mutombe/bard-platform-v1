@@ -40,6 +40,7 @@ const PRIMARY_NAV = [
 ];
 
 const DRAWER_SECONDARY = [
+  { label: "Online Banking", to: "/online-banking" },
   { label: "Locations", to: "/locations" },
   { label: "Contact us", to: "/contact" },
   { label: "Leadership", to: "/leadership" },
