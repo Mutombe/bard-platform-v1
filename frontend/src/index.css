@@ -129,6 +129,14 @@
   --font-body: "Onest Variable", "Gellix", "Inter", "Avenir Next", system-ui, sans-serif;
   --font-mono: "Onest Variable", "Gellix", "Inter", system-ui, sans-serif;
 
+  /* Hero-only display serif — Instrument Serif. Used on the home
+     carousel headline as the editorial counterpoint to the all-Onest
+     system. The whole point is to break the institutional default
+     in exactly one place and see whether the bank can carry a
+     literary voice. Iowan Old Style / Garamond as native fallbacks. */
+  --font-hero-display: "Instrument Serif", "Iowan Old Style", "Garamond",
+                        "Hoefler Text", "Times New Roman", serif;
+
   /* Hero unchanged. The other display tiers bumped ~10% to deliver the
      "everything reads a touch bigger" institutional confidence the brief
      calls for, without losing the type-scale ratio. */
@@ -199,6 +207,19 @@
      get tighter tracking so the optical density stays consistent
      with what a true display face would deliver. */
   .display-hero { font-family: var(--font-display); font-size: var(--text-display-hero); line-height: 0.98; letter-spacing: -0.032em; font-weight: 500; }
+
+  /* Display-hero, serif variant — Instrument Serif. Serifs need less
+     negative tracking than the geometric sans (otherwise the joins
+     collide). Slightly looser line-height too because serif ascenders
+     and descenders carry more vertical weight. */
+  .display-hero-serif {
+    font-family: var(--font-hero-display);
+    font-size: var(--text-display-hero);
+    line-height: 1.02;
+    letter-spacing: -0.01em;
+    font-weight: 400;
+    font-feature-settings: "kern", "liga", "calt", "onum", "lnum";
+  }
   .display-xl   { font-family: var(--font-display); font-size: var(--text-display-xl);   line-height: 1.04; letter-spacing: -0.028em; font-weight: 500; }
   .display-lg   { font-family: var(--font-display); font-size: var(--text-display-lg);   line-height: 1.08; letter-spacing: -0.022em; font-weight: 500; }
   .display-md   { font-family: var(--font-display); font-size: var(--text-display-md);   line-height: 1.12; letter-spacing: -0.018em; font-weight: 500; }

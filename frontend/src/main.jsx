@@ -16,6 +16,13 @@ import "@fontsource/inter/500.css";
 import "@fontsource/inter/600.css";
 import "@fontsource/inter/700.css";
 
+// Experiment — Instrument Serif on the home hero only. Contemporary
+// display serif used by editorial publications and modern banks that
+// want a literary voice (Pictet, Morgan Stanley). Hack on the
+// otherwise-all-Onest type system to see if the bank can wear it.
+import "@fontsource/instrument-serif/400.css";
+import "@fontsource/instrument-serif/400-italic.css";
+
 import "./index.css";
 import App from "./App.jsx";
 

@@ -171,7 +171,11 @@ export default function HomeHeroCarousel() {
               {slide.eyebrow && (
                 <p className="eyebrow eyebrow-on-dark mb-5 md:mb-6">{slide.eyebrow}</p>
               )}
-              <h1 className="display-hero text-white text-balance">
+              {/* Experiment — hero headline uses display-hero-serif
+                  (Instrument Serif). Editorial counterpoint to the
+                  all-Onest system; the only place on the site where
+                  we wear a serif. */}
+              <h1 className="display-hero-serif text-white text-balance">
                 {slide.headline}
               </h1>
               {slide.body && (
