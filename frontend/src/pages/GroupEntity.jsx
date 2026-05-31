@@ -45,10 +45,7 @@ export default function GroupEntity() {
                 {String(idx + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
               </span>
               <span className="text-white/20">·</span>
-              <span
-                className="font-mono text-[11px] tracking-[0.18em] uppercase"
-                style={{ color: e.accent }}
-              >
+              <span className="font-mono text-[11px] tracking-[0.18em] uppercase text-orange-500">
                 {e.role}
               </span>
             </div>
@@ -100,10 +97,7 @@ export default function GroupEntity() {
                         {String(oIdx + 1).padStart(2, "0")}
                       </span>
                       <span className="text-bone-300">·</span>
-                      <span
-                        className="font-mono text-[11px] tracking-[0.18em] uppercase"
-                        style={{ color: o.accent }}
-                      >
+                      <span className="font-mono text-[11px] tracking-[0.18em] uppercase text-orange-600">
                         {o.role}
                       </span>
                     </div>
