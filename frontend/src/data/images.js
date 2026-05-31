@@ -111,6 +111,19 @@ export const AUDIENCE_TILE = {
   institutional:  unsplash("1573167507387-6b4b98cb7c13", 1200),
 };
 
+// ─── Sub-brand marquees — the "This is X" institutional moments ─────
+// Lloyds canon: pick one division per home page and give it a
+// cinematic full-bleed marquee. The horse photograph for Wealth carries
+// the same heritage signal Lloyds uses (equestrian → patient capital,
+// long horizon, generational wealth). One showcase per home page.
+export const MARQUEE = {
+  // Grayscale horse head close-up. Editorial composition, dark tonal
+  // family that pairs with our ink-and-orange overlay system. The
+  // backup pick is 1754281309126-532fd835b358 ("horse's eye in the
+  // darkness") — even more dramatic, swap if you want a tighter crop.
+  wealth: unsplash("1601726429844-acd8b1385972", 3200, 88),
+};
+
 // ─── Art for CTA backdrops ───────────────────────────────────────────
 // Strategic placement — art used as backdrop in CTA modules to lift the
 // "call-to-action" gesture from transactional to institutional. The
