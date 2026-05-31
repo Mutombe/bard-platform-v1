@@ -8,6 +8,7 @@ import {
   ArrowRightIcon,
 } from "@phosphor-icons/react";
 import { AUDIENCES } from "../data/audiences.js";
+import SearchModal from "./SearchModal.jsx";
 
 /**
  * Institutional Nav. Modelled on Lloyds + AfrAsia.
@@ -47,6 +48,7 @@ const DRAWER_SECONDARY = [
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const loc = useLocation();
 
   useEffect(() => {
@@ -66,6 +68,23 @@ export default function Nav() {
     else document.body.classList.remove("scroll-lock");
     return () => document.body.classList.remove("scroll-lock");
   }, [mobileOpen]);
+
+  // Global keyboard shortcuts — / and Cmd/Ctrl-K open the search.
+  // Skipped when the user is typing inside a form field.
+  useEffect(() => {
+    const onKey = (e) => {
+      const inField =
+        e.target.tagName === "INPUT" ||
+        e.target.tagName === "TEXTAREA" ||
+        e.target.isContentEditable;
+      if (!inField && (e.key === "/" || ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k"))) {
+        e.preventDefault();
+        setSearchOpen(true);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
 
   const matchedAudienceId = AUDIENCES.find((a) =>
     loc.pathname.startsWith(a.path)
@@ -168,40 +187,38 @@ export default function Nav() {
 
             {/* Trailing actions — search/login on desktop, hamburger on mobile */}
             <div className="flex items-center gap-2 md:gap-3">
+              {/* Search trigger — composite pill with icon + a faint
+                  keyboard hint ("/"). Click opens the search modal;
+                  the same modal also responds to "/" anywhere on the
+                  site. Mobile drawer carries its own search row. */}
               <button
-                aria-label="Search"
-                className="hidden md:flex w-10 h-10 items-center justify-center rounded-full hover:bg-smoke text-navy-600"
+                onClick={() => setSearchOpen(true)}
+                aria-label="Search Bard Santner"
+                className="group hidden md:inline-flex items-center gap-2.5 h-10 pl-3 pr-2.5 rounded-full hover:bg-smoke text-navy-600 transition-colors border border-transparent hover:border-bone-300"
               >
-                <MagnifyingGlassIcon size={18} weight="regular" />
+                <MagnifyingGlassIcon size={17} weight="regular" />
+                <span className="hidden lg:inline text-[12.5px] font-medium text-bone-500 group-hover:text-navy-600 transition-colors">
+                  Search
+                </span>
+                <kbd className="hidden lg:inline-flex items-center justify-center min-w-[20px] h-[20px] px-1 rounded-sm border border-bone-300 bg-paper text-bone-500 font-mono text-[10px] leading-none">
+                  /
+                </kbd>
               </button>
               {/* Desktop login — the Nav's showcase moment.
-                  A composite pill carrying three layered details:
-                    1. A lock icon in a navy circle on the left (the
-                       gesture of secure portal entry). On hover, the
-                       circle warms from navy → orange — the brand
-                       move that signals "the door is opening."
-                    2. The "Log in" verb in navy display weight.
-                    3. A live-status pip on the right — a small
-                       emerald dot with a pinging halo, signalling
-                       "Online Banking is operational right now."
-                       Institutional sites rarely surface system
-                       status this directly; we do, because trust
-                       is the product.
-                  Subtle shadow lift on hover completes the gesture. */}
+                  Composite pill: lock icon in a navy circle (warms to
+                  orange on hover — "the door is opening"), then the
+                  "Log in" verb in navy medium. Subtle shadow lift on
+                  hover; border darkens to navy. */}
               <a
                 href="https://online.bardsantnerbank.com"
                 aria-label="Log in to Online Banking"
-                className="group hidden md:inline-flex items-center gap-2.5 h-11 pl-1.5 pr-4 rounded-full bg-white border border-bone-300 hover:border-navy-600 transition-all duration-300 shadow-[0_1px_2px_rgba(12,10,20,0.04)] hover:shadow-[0_6px_18px_rgba(12,10,20,0.12)] hover:-translate-y-[1px]"
+                className="group hidden md:inline-flex items-center gap-3 h-11 pl-1.5 pr-5 rounded-full bg-white border border-bone-300 hover:border-navy-600 transition-all duration-300 shadow-[0_1px_2px_rgba(12,10,20,0.04)] hover:shadow-[0_6px_18px_rgba(12,10,20,0.12)] hover:-translate-y-[1px]"
               >
                 <span className="w-8 h-8 rounded-full bg-navy-700 group-hover:bg-orange-500 flex items-center justify-center transition-colors duration-300 shadow-[inset_0_-1px_0_rgba(0,0,0,0.12)]">
                   <LockIcon size={13} weight="bold" className="text-white" />
                 </span>
                 <span className="text-[14px] font-medium text-navy-700 group-hover:text-navy-900 transition-colors">
                   Log in
-                </span>
-                <span className="relative flex h-2 w-2 ml-0.5" aria-hidden="true">
-                  <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-60 animate-ping" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500 ring-1 ring-emerald-300/40" />
                 </span>
               </a>
               {/* Mobile hamburger — 44px square touch target */}
@@ -261,6 +278,16 @@ export default function Nav() {
 
             {/* Drawer body — scrolls internally */}
             <div className="flex-1 overflow-y-auto px-6 py-7">
+              {/* Mobile search trigger inside the drawer */}
+              <button
+                onClick={() => { setMobileOpen(false); setSearchOpen(true); }}
+                className="w-full mb-7 flex items-center gap-3 px-4 py-3.5 rounded-md border border-bone-200 bg-paper hover:border-orange-500 transition-colors text-left"
+              >
+                <MagnifyingGlassIcon size={17} weight="regular" className="text-bone-500" />
+                <span className="text-[14px] text-bone-500 flex-1">Search Bard Santner</span>
+                <ArrowRightIcon size={12} weight="bold" className="text-bone-400" />
+              </button>
+
               {/* Audience grid */}
               <p className="eyebrow mb-4">Choose your context</p>
               <div className="grid grid-cols-2 gap-2.5 mb-8">
@@ -335,6 +362,10 @@ export default function Nav() {
           </div>
         </>
       )}
+
+      {/* Search modal — global; mounted once at the Nav level so the
+          shortcut and the click trigger share state. */}
+      <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} />
     </>
   );
 }

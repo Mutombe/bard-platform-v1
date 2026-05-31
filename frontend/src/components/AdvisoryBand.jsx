@@ -8,23 +8,22 @@ import SectionReveal from "./SectionReveal.jsx";
  *
  * Two distinct compositions:
  *
- *   Desktop (md+): Lloyds horizontal blend. Gallery photograph stays
+ *   DESKTOP (md+): Lloyds horizontal blend. Gallery photograph stays
  *     vibrant on the right (framing the white contact card); strong
  *     bone-100 wash on the left gives the editorial headline a clean
- *     canvas. The "Open a conversation" card sits inside the art.
+ *     canvas. Light card with orange-50 icon tiles + navy CTA.
  *
- *   Mobile (<md): single clean bone-100 panel with no backdrop image.
- *     The gallery photograph competed with the card on a 343px column
- *     so we removed it. The card stays the focal point with bigger
- *     row touch targets, a third channel (WhatsApp), and a more
- *     prominent CTA button at the bottom. Everything stacks
- *     deliberately, not as a consequence of grid collapse.
+ *   MOBILE (<md): bg-bone-100 section, but the "Open a conversation"
+ *     card is now DARK (bg-navy-700) so it has actual visual weight
+ *     against the light section. White text, orange icon tiles,
+ *     warm-milk CTA. Reads as the focused conversion module the
+ *     entire section is pointing at, not a light card lost on a
+ *     light backdrop.
  */
 export default function AdvisoryBand() {
   return (
     <section className="relative bg-smoke border-t-2 border-orange-500 overflow-hidden">
-      {/* Desktop backdrop — art photo + horizontal bone-100 fade.
-          Mobile gets a clean bone-100 base instead (no photo). */}
+      {/* Desktop backdrop — gallery photo + horizontal bone-100 fade */}
       <div
         className="hidden md:block absolute inset-0 bg-cover bg-center"
         style={{
@@ -33,6 +32,7 @@ export default function AdvisoryBand() {
         }}
       />
       <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-bone-100/97 via-bone-100/65 to-bone-100/10" />
+      {/* Mobile — clean bone-100 surface, no photo */}
       <div className="md:hidden absolute inset-0 bg-bone-100" />
 
       <div className="relative container-bank section">
@@ -52,35 +52,82 @@ export default function AdvisoryBand() {
             </p>
           </SectionReveal>
 
-          {/* Right — "Open a conversation" card */}
+          {/* Right — "Open a conversation" card.
+              Two distinct mobile / desktop renders. */}
           <SectionReveal delay={0.15} className="col-span-12 md:col-span-5">
-            <div className="bg-paper rounded-xl p-5 md:p-10 shadow-[var(--shadow-card-lift)] border border-bone-200/60">
-              {/* Card head — eyebrow + thin orange rule. The eyebrow now
-                  has its own bar so the card has a clean institutional
-                  opening, not a floating label. */}
-              <div className="flex items-center gap-3 mb-5 md:mb-6">
+            {/* ─── MOBILE CARD — dark, focal, properly designed ──── */}
+            <div className="md:hidden bg-navy-700 rounded-xl overflow-hidden shadow-[0_16px_40px_rgba(12,10,20,0.18)] relative">
+              {/* 2px orange top rule */}
+              <div className="absolute top-0 left-0 right-0 h-[2px] bg-orange-500" />
+              <div className="p-5 pt-7">
+                {/* Card head */}
+                <div className="flex items-center gap-3 mb-5">
+                  <span className="h-[2px] w-7 bg-orange-500" />
+                  <p className="font-mono text-[10px] tracking-[0.22em] uppercase font-medium text-orange-400">
+                    Open a conversation
+                  </p>
+                </div>
+
+                {/* Channel rows — single tap targets, navy-on-navy
+                    with subtle outline, orange icon tile, primary
+                    text white, secondary white/55 */}
+                <div className="space-y-2">
+                  <DarkChannelRow
+                    href="tel:+263861200700"
+                    Icon={PhoneIcon}
+                    primary="+263 861 200 0700"
+                    secondary="Mon–Fri 08:00–17:00 CAT"
+                  />
+                  <DarkChannelRow
+                    href="mailto:info@bardsantner.com"
+                    Icon={EnvelopeSimpleIcon}
+                    primary="info@bardsantner.com"
+                    secondary="Reply within one business day"
+                    truncate
+                  />
+                  <DarkChannelRow
+                    href="https://wa.me/263774954415"
+                    external
+                    Icon={ChatCircleIcon}
+                    primary="WhatsApp the desk"
+                    secondary="For existing clients"
+                  />
+                </div>
+
+                {/* CTA — warm milk button on the dark card.
+                    Mirrors the WealthMarquee CTA grammar. */}
+                <Link
+                  to="/contact"
+                  className="mt-5 inline-flex items-center justify-center gap-2 bg-milk text-navy-700 hover:bg-paper px-6 py-3.5 rounded-lg font-medium text-[14.5px] transition-colors w-full"
+                >
+                  Request a banker
+                  <ArrowRightIcon size={14} weight="bold" />
+                </Link>
+              </div>
+            </div>
+
+            {/* ─── DESKTOP CARD — light, sits inside the gallery ─── */}
+            <div className="hidden md:block bg-paper rounded-xl p-10 shadow-[var(--shadow-card-lift)] border border-bone-200/60">
+              <div className="flex items-center gap-3 mb-6">
                 <span className="h-[2px] w-8 bg-orange-500" />
                 <p className="eyebrow eyebrow-accent">Open a conversation</p>
               </div>
 
-              {/* Channel rows. Bigger touch areas on mobile (min-h 64px),
-                  cleaner icon framing (each icon in a 40x40 tinted square
-                  instead of free-floating), better text hierarchy. */}
-              <div className="space-y-2.5 md:space-y-3">
-                <ChannelRow
+              <div className="space-y-3">
+                <LightChannelRow
                   href="tel:+263861200700"
                   Icon={PhoneIcon}
                   primary="+263 861 200 0700"
                   secondary="Mon–Fri, 08:00–17:00 CAT"
                 />
-                <ChannelRow
+                <LightChannelRow
                   href="mailto:info@bardsantner.com"
                   Icon={EnvelopeSimpleIcon}
                   primary="info@bardsantner.com"
                   secondary="Reply within one business day"
                   truncate
                 />
-                <ChannelRow
+                <LightChannelRow
                   href="https://wa.me/263774954415"
                   external
                   Icon={ChatCircleIcon}
@@ -89,12 +136,9 @@ export default function AdvisoryBand() {
                 />
               </div>
 
-              {/* Primary CTA — prominent navy button after the channels.
-                  On mobile this becomes the obvious next step once the
-                  user has confirmed the channels above. */}
               <Link
                 to="/contact"
-                className="btn btn-navy w-full justify-center mt-5 md:mt-6"
+                className="btn btn-navy w-full justify-center mt-6"
               >
                 Request a banker
                 <ArrowRightIcon size={14} weight="bold" />
@@ -107,30 +151,50 @@ export default function AdvisoryBand() {
   );
 }
 
-/**
- * Single contact-channel row inside the Advisory card.
- * The row is a single tap target. Icon is framed in a 40px tinted square
- * so the touch target reads as a deliberate component, not floating
- * iconography. Text container shrinks correctly so long email addresses
- * truncate instead of pushing the arrow off the row.
- */
-function ChannelRow({ href, Icon, primary, secondary, truncate = false, external = false }) {
+// Mobile channel row — designed for the dark card.
+function DarkChannelRow({ href, Icon, primary, secondary, truncate = false, external = false }) {
   const linkProps = external
     ? { href, target: "_blank", rel: "noopener noreferrer" }
     : { href };
   return (
     <a
       {...linkProps}
-      className="flex items-center gap-4 p-3.5 md:p-4 rounded-lg border border-bone-200 hover:border-orange-500 hover:bg-orange-50/40 transition-colors group"
+      className="flex items-center gap-3.5 p-3 rounded-lg border border-white/10 hover:border-orange-400/60 hover:bg-white/[0.03] transition-colors group"
     >
-      <span className="w-10 h-10 md:w-11 md:h-11 rounded-md bg-orange-50 flex items-center justify-center shrink-0 group-hover:bg-orange-100 transition-colors">
+      <span className="w-9 h-9 rounded-md bg-orange-500/15 flex items-center justify-center shrink-0 group-hover:bg-orange-500/25 transition-colors">
+        <Icon size={17} weight="regular" className="text-orange-400" />
+      </span>
+      <div className="min-w-0 flex-1">
+        <p className={`text-[14px] font-medium text-white leading-tight ${truncate ? "truncate" : ""}`}>
+          {primary}
+        </p>
+        <p className="text-[11.5px] text-white/55 mt-0.5 leading-snug">
+          {secondary}
+        </p>
+      </div>
+      <ArrowRightIcon size={12} weight="bold" className="text-white/40 group-hover:text-orange-400 shrink-0 transition-colors" />
+    </a>
+  );
+}
+
+// Desktop channel row — light card variant.
+function LightChannelRow({ href, Icon, primary, secondary, truncate = false, external = false }) {
+  const linkProps = external
+    ? { href, target: "_blank", rel: "noopener noreferrer" }
+    : { href };
+  return (
+    <a
+      {...linkProps}
+      className="flex items-center gap-4 p-4 rounded-lg border border-bone-200 hover:border-orange-500 hover:bg-orange-50/40 transition-colors group"
+    >
+      <span className="w-11 h-11 rounded-md bg-orange-50 flex items-center justify-center shrink-0 group-hover:bg-orange-100 transition-colors">
         <Icon size={20} weight="regular" className="text-orange-600" />
       </span>
       <div className="min-w-0 flex-1">
-        <p className={`text-[14.5px] md:text-[15px] font-medium text-navy-600 ${truncate ? "truncate" : ""}`}>
+        <p className={`text-[15px] font-medium text-navy-600 ${truncate ? "truncate" : ""}`}>
           {primary}
         </p>
-        <p className="text-[12.5px] md:text-[13px] text-bone-500 mt-0.5 leading-snug">
+        <p className="text-[13px] text-bone-500 mt-0.5 leading-snug">
           {secondary}
         </p>
       </div>
