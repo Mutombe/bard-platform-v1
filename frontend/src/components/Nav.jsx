@@ -209,9 +209,11 @@ export default function Nav() {
                   Composite pill: lock icon in a navy circle (warms to
                   orange on hover — "the door is opening"), then the
                   "Log in" verb in navy medium. Subtle shadow lift on
-                  hover; border darkens to navy. */}
-              <a
-                href="https://online.bardsantnerbank.com"
+                  hover; border darkens to navy.
+                  Routes to /online-banking — the landing page is the
+                  log-in surface; from there the secure portal opens. */}
+              <Link
+                to="/online-banking"
                 aria-label="Log in to Online Banking"
                 className="group hidden md:inline-flex items-center gap-3 h-11 pl-1.5 pr-5 rounded-full bg-white border border-bone-300 hover:border-navy-600 transition-all duration-300 shadow-[0_1px_2px_rgba(12,10,20,0.04)] hover:shadow-[0_6px_18px_rgba(12,10,20,0.12)] hover:-translate-y-[1px]"
               >
@@ -221,7 +223,7 @@ export default function Nav() {
                 <span className="text-[14px] font-medium text-navy-700 group-hover:text-navy-900 transition-colors">
                   Log in
                 </span>
-              </a>
+              </Link>
               {/* Mobile hamburger — 44px square touch target */}
               <button
                 onClick={() => setMobileOpen(true)}
@@ -345,12 +347,13 @@ export default function Nav() {
 
             {/* Drawer foot — login + speak to a banker */}
             <div className="px-6 py-5 border-t border-bone-200 bg-bone-50/60 space-y-3">
-              <a
-                href="https://online.bardsantnerbank.com"
+              <Link
+                to="/online-banking"
+                onClick={() => setMobileOpen(false)}
                 className="btn btn-navy w-full justify-center"
               >
                 <LockIcon size={14} weight="bold" /> Log in to Online Banking
-              </a>
+              </Link>
               <Link
                 to="/contact"
                 onClick={() => setMobileOpen(false)}
