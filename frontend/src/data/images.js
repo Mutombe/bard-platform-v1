@@ -173,14 +173,42 @@ export const PRODUCT = {
 
 // ─── Insight article heroes ──────────────────────────────────────────
 // Each photograph chosen to carry the editorial argument of the piece.
-// 16:9 for article hero, ~1600px wide.
+// 16:9 for article hero, ~1600px wide. EVERY photo is unique to its
+// insight — no shared photographs with other heroes, products or
+// other insights. The principle: each piece earns its own picture.
 export const INSIGHT = {
-  "africa-and-the-cross-border-rail":         unsplash("1760711678895-b39ef6f3ca1d", 1600),
-  "the-quiet-case-for-a-deposit-base":        unsplash("1541354329998-f4d9a9f9297f", 1600),
-  "the-diaspora-is-not-a-niche":              unsplash("1779292235920-5c7862429b35", 1600),
-  "credit-when-the-rate-is-the-conversation": unsplash("1611974789855-9c2a0a7236a3", 1600),
-  "treasury-and-the-discipline-of-the-end-of-day": unsplash("1611974789855-9c2a0a7236a3", 1600),
-  "wealth-and-the-second-conversation":       unsplash("1766756388111-e3d5cb5edafb", 1600),
-  "the-bank-as-a-publishing-institution":     unsplash("1759731224815-87d2706c076c", 1600),
-  "becoming-a-bank":                           unsplash("1771143345689-f30959718edf", 1600),
+  // Cargo ship docked at port with cranes — the cross-border rail
+  // made visible: containers, gantries, the corridor at work.
+  "africa-and-the-cross-border-rail":              unsplash("1769752803898-e7e9a843a120", 1600),
+
+  // Glass jar with coins and a small plant — patient, growing deposit
+  // base. Editorial restraint instead of the cliché money pile.
+  "the-quiet-case-for-a-deposit-base":             unsplash("1633158829875-e5316a358c6f", 1600),
+
+  // Suitcase + airport-window light — the diaspora's primary moment
+  // of capital allocation: arrival and departure. (Unchanged — already
+  // unique, already on-argument.)
+  "the-diaspora-is-not-a-niche":                   unsplash("1779292235920-5c7862429b35", 1600),
+
+  // Black flat-screen monitor with market data — the rate-as-the-
+  // conversation desk: what the credit committee actually looks at.
+  "credit-when-the-rate-is-the-conversation":      unsplash("1590283603385-17ffb3a7f29f", 1600),
+
+  // Calculator and pen on a paper ledger — the end-of-day discipline,
+  // the act itself. The treasurer's most-used objects.
+  "treasury-and-the-discipline-of-the-end-of-day": unsplash("1648201637025-1c77b9be3013", 1600),
+
+  // Two people in conversation across an office table — the "second
+  // conversation" wealth article makes visible: the meeting, not the
+  // money.
+  "wealth-and-the-second-conversation":            unsplash("1551836022-aadb801c60ae", 1600),
+
+  // Typesetting metal letters in a wooden tray — letterpress craft.
+  // The bank-as-a-publishing-institution argument shown as a
+  // typographer's drawer, the literal apparatus of editorial labour.
+  "the-bank-as-a-publishing-institution":          unsplash("1778167093244-33d90e4f76c2", 1600),
+
+  // Architect working on a draft with pencil and ruler — "becoming"
+  // as drafting. The bank under design before it is under operation.
+  "becoming-a-bank":                                unsplash("1503387762-592deb58ef4e", 1600),
 };
