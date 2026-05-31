@@ -78,10 +78,7 @@ export default function ProductDetail() {
               />
             </div>
             <div className="col-span-12 md:col-span-5">
-              <p
-                className="eyebrow mb-4"
-                style={{ color: p.accent || "var(--color-orange-600)" }}
-              >
+              <p className="eyebrow eyebrow-accent mb-4">
                 {p.eyebrow}
               </p>
               <h1 className="display-xl text-navy-600 mb-6">{p.name}</h1>

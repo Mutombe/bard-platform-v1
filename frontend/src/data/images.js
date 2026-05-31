@@ -21,16 +21,15 @@
 // Replace any URL with a local /images/... path when production
 // photography ships.
 
-const unsplash = (id, w = 2400, q = 80) =>
+const unsplash = (id, w = 3200, q = 85) =>
   `https://images.unsplash.com/photo-${id}?ixlib=rb-4.0.3&auto=format&fit=crop&w=${w}&q=${q}`;
 
 // ─── Page heroes ─────────────────────────────────────────────────────
 export const HERO = {
-  // Cape Town harbour panorama — cargo vessels, shipping containers,
-  // industrial cranes alongside urban architecture and natural
-  // landmarks. The institution in its real economic context: trade,
-  // infrastructure, the cross-border rail. Cinematic, editorial.
-  home:           unsplash("1774887765459-94b0d0b12605"),
+  // Manhattan Uptown skyline at golden hour, illuminated high-rises
+  // with dramatic warm lighting. Cinematic, premium-quality, the
+  // institutional grandeur the front door deserves.
+  home:           unsplash("1543158266-0066955047b1"),
 
   // Family at the dining table sharing a meal. Warm, domestic, the
   // everyday — not stock domesticity.
@@ -59,10 +58,10 @@ export const HERO = {
   // collected, the wealth posture.
   wealth:         unsplash("1766756388111-e3d5cb5edafb"),
 
-  // A real markets workspace — multiple monitors showing candlestick
-  // charts and trading data. The desk that runs the book, not a
-  // single stock chart.
-  markets:        unsplash("1744782211816-c5224434614f"),
+  // A trader at multiple monitors with a calculator, candlestick
+  // charts on each screen, office set at night lighting. The desk
+  // that runs the book — the human, the data and the discipline.
+  markets:        unsplash("1768055104895-e6185762f2a9"),
 
   // Aerial view of a mountainous coastal city at dusk — the
   // institution's broader landscape, geography as scale.
@@ -90,16 +89,21 @@ export const HERO = {
 };
 
 // ─── Audience-tile portraits ─────────────────────────────────────────
-// The 5-card carousel below the home hero. Each tile reads as the
-// human moment its audience occupies — domestic for personal,
-// professional for business, refined for private, travel for
-// international, architectural for institutional.
+// The 5-card carousel that sits directly below the home hero. Each
+// tile carries a DIFFERENT photograph from its corresponding page
+// hero — same audience, different editorial gesture — so the page
+// doesn't render the same image twice within 200px of vertical scroll.
 export const AUDIENCE_TILE = {
-  personal:       unsplash("1576089073624-b5751a8f4de9", 1200),
-  business:       unsplash("1713946598417-437a1fccf2c6", 1200),
-  private:        unsplash("1759731224815-87d2706c076c", 1200),
-  international:  unsplash("1760711678895-b39ef6f3ca1d", 1200),
-  institutional:  unsplash("1775135999483-f0a1470a9e1d", 1200),
+  // Woman in a dark blazer at a sunlit table — composed, everyday.
+  personal:       unsplash("1603464021578-f327592a89de", 1200),
+  // Tailor between two sewing machines — the African SME, real workshop.
+  business:       unsplash("1537057039314-1105d990934c", 1200),
+  // Modern lounge with full-height windows + greenery — refined leisure.
+  private:        unsplash("1761971975410-f8dd32d7fbdd", 1200),
+  // Vintage propeller aircraft landing at Schiphol at dusk — heritage travel.
+  international:  unsplash("1721592873149-9823d9dc6b40", 1200),
+  // Conference room with attentive participants — institutional setting.
+  institutional:  unsplash("1573167507387-6b4b98cb7c13", 1200),
 };
 
 // ─── Art for CTA backdrops ───────────────────────────────────────────
@@ -136,7 +140,9 @@ export const PRODUCT = {
   "wealth-management":    unsplash("1766756388111-e3d5cb5edafb", 1200),
   "structured-credit":    unsplash("1778429557352-ea4213f69e91", 1200),
   "diaspora-account":     unsplash("1779292235920-5c7862429b35", 1200),
-  "foreign-exchange":     unsplash("1611974789855-9c2a0a7236a3", 1200),
+  // Multiple Euro banknotes arranged on a wooden surface — editorial
+  // currency composition, not a cliché money pile.
+  "foreign-exchange":     unsplash("1579170053380-58064b2dee67", 1200),
   "treasury-services":    unsplash("1541354329998-f4d9a9f9297f", 1200),
   "debt-capital-markets": unsplash("1775135999483-f0a1470a9e1d", 1200),
 };

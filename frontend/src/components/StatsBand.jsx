@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import SectionReveal from "./SectionReveal.jsx";
 
 /**
  * Stats Band — the institutional gravitas module. Big numbers, restrained
@@ -23,7 +24,7 @@ export default function StatsBand() {
   return (
     <section className="bg-milk border-t-2 border-orange-500 border-b border-bone-200">
       <div className="container-bank py-16 md:py-24">
-        <div className="mb-12 md:mb-16 max-w-3xl">
+        <SectionReveal className="mb-12 md:mb-16 max-w-3xl">
           <div className="flex items-center gap-4 mb-5">
             <span className="h-[2px] w-12 bg-orange-500" />
             <p className="eyebrow eyebrow-accent">§ 04 · By the numbers</p>
@@ -31,7 +32,7 @@ export default function StatsBand() {
           <h2 className="display-xl text-navy-600 text-balance">
             The institution as a measurable thing.
           </h2>
-        </div>
+        </SectionReveal>
 
         <div className="grid grid-cols-2 md:grid-cols-5 border-l border-bone-200">
           {FIGURES.map((f, i) => (
