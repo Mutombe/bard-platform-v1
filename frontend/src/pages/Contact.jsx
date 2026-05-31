@@ -6,6 +6,7 @@ import SEO, { breadcrumbJsonLd } from "../components/SEO.jsx";
 import { HERO } from "../data/images.js";
 import { PhoneIcon, EnvelopeSimpleIcon, ChatCircleIcon, MapPinIcon, ArrowRightIcon, CheckCircleIcon } from "@phosphor-icons/react";
 import { AUDIENCES } from "../data/audiences.js";
+import { StackedAside } from "../components/PageHeroAsides.jsx";
 
 const CHANNELS = [
   { icon: PhoneIcon, title: "Telephone", lines: ["+263 861 200 0700", "Mon-Fri, 08:00-17:00 CAT"], href: "tel:+263861200700" },
@@ -53,6 +54,7 @@ export default function Contact() {
         image={HERO.contact}
         overlayTint="navy"
         variant="editorial"
+        aside={<StackedAside />}
       />
 
       {/* Channels grid */}

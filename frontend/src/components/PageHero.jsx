@@ -24,6 +24,7 @@ export default function PageHero({
   overlayTint = "navy", // "navy" | "ink" | "orange"
   align = "left",
   noteUnderCTA,
+  aside, // optional React node for editorial-variant right column
 }) {
   if (variant === "split") {
     return (
@@ -138,10 +139,14 @@ export default function PageHero({
               )}
             </div>
             <div className="col-span-12 md:col-span-4 hidden md:block">
-              <div
-                className="aspect-[4/5] rounded-xl bg-bone-200 bg-cover bg-center"
-                style={{ backgroundImage: image ? `url(${image})` : undefined }}
-              />
+              {aside ? (
+                aside
+              ) : (
+                <div
+                  className="aspect-[4/5] rounded-xl bg-bone-200 bg-cover bg-center"
+                  style={{ backgroundImage: image ? `url(${image})` : undefined }}
+                />
+              )}
             </div>
           </div>
         </div>
