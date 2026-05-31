@@ -79,9 +79,12 @@ export const HERO = {
   // as private — editorial reading.
   insights:       unsplash("1759731224815-87d2706c076c"),
 
-  // 1831 hand-drawn world map showing both hemispheres.
-  // Heritage cartography, refined institutional gesture.
-  locations:      unsplash("1779292235920-5c7862429b35"),
+  // Tall illuminated building at night with blue lighting — modern
+  // institutional architecture standing as the visual answer to "where
+  // we operate". The vintage world map photo we had here was already
+  // doing editorial work on /insights/the-diaspora-is-not-a-niche;
+  // letting it be the singular gesture there.
+  locations:      unsplash("1645414840873-a1c0826098ba"),
 
   // Close-up handshake photographed in Nairobi — dignified,
   // close-cropped, no laptop or paper clutter.
@@ -139,7 +142,9 @@ export const PRODUCT = {
   "private-current":      unsplash("1759731224815-87d2706c076c", 1200),
   "wealth-management":    unsplash("1766756388111-e3d5cb5edafb", 1200),
   "structured-credit":    unsplash("1778429557352-ea4213f69e91", 1200),
-  "diaspora-account":     unsplash("1779292235920-5c7862429b35", 1200),
+  // Family of three relaxing together on a couch — the diaspora
+  // family at home, the moment the Diaspora Account enables.
+  "diaspora-account":     unsplash("1637942189191-fa7add81c1bb", 1200),
   // Multiple Euro banknotes arranged on a wooden surface — editorial
   // currency composition, not a cliché money pile.
   "foreign-exchange":     unsplash("1579170053380-58064b2dee67", 1200),
