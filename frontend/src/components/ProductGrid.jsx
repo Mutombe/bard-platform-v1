@@ -63,13 +63,21 @@ export default function ProductGrid({ heading, eyebrow, products = [], showAll =
                 <p className="text-[14.5px] md:text-[15px] text-bone-600 leading-relaxed mb-6 md:mb-7 flex-1">
                   {p.summary}
                 </p>
-                <Link
-                  to={`/products/${p.slug}`}
-                  className="inline-flex items-center gap-2 text-[13.5px] md:text-[14px] font-medium text-navy-600 hover:text-orange-600 transition-colors"
-                >
-                  Explore {p.name}
-                  <ArrowRightIcon size={13} weight="bold" />
-                </Link>
+                <div className="flex items-center justify-between gap-3 flex-wrap">
+                  <Link
+                    to={`/products/${p.slug}`}
+                    className="inline-flex items-center gap-2 text-[13.5px] md:text-[14px] font-medium text-navy-600 hover:text-orange-600 transition-colors"
+                  >
+                    Explore {p.name}
+                    <ArrowRightIcon size={13} weight="bold" />
+                  </Link>
+                  {/* Apply-online affordance — a single quiet tag. The
+                      audience+features metadata was rejected; this one
+                      tag carries the action that actually matters. */}
+                  <span className="text-[10.5px] tracking-[0.16em] uppercase font-medium text-orange-600">
+                    Apply online
+                  </span>
+                </div>
               </div>
             </motion.article>
           ))}
