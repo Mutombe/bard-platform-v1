@@ -30,7 +30,7 @@ export default function Leadership() {
         <div className="container-bank">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
             {LEADERSHIP.map((p) => (
-              <article key={p.slug} className="bank-card p-0">
+              <article key={p.slug} className="bank-card p-0 flex flex-col h-full">
                 <div
                   className="aspect-[4/5] bg-cover bg-center bg-bone-200"
                   style={{ backgroundImage: p.image ? `url(${p.image})` : undefined }}

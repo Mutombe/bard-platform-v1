@@ -35,7 +35,7 @@ export default function ProductGrid({ heading, eyebrow, products = [], showAll =
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.55, delay: i * 0.05, ease: [0.22, 1, 0.36, 1] }}
-              className="bank-card flex flex-col"
+              className="bank-card flex flex-col h-full"
             >
               <Link to={`/products/${p.slug}`} className="block overflow-hidden">
                 <div

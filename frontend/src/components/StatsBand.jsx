@@ -34,7 +34,13 @@ export default function StatsBand() {
           </h2>
         </SectionReveal>
 
-        <div className="grid grid-cols-2 md:grid-cols-5 border-l border-bone-200">
+        {/* Symmetry rule: every cell uses flex flex-col justify-between
+            + h-full + min-height so the TOP of every number sits at the
+            same y and the BOTTOM of every caption sits at the same y,
+            regardless of caption line count. The cell becomes a fixed
+            chamber with number pinned to top, caption pinned to bottom,
+            silence in between. */}
+        <div className="grid grid-cols-2 md:grid-cols-5 border-l border-bone-200 items-stretch">
           {FIGURES.map((f, i) => (
             <motion.div
               key={i}
@@ -42,9 +48,9 @@ export default function StatsBand() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-              className="border-r border-bone-200 py-8 md:py-10 px-6 md:px-8"
+              className="border-r border-bone-200 py-10 md:py-12 px-6 md:px-8 flex flex-col justify-between min-h-[220px] md:min-h-[260px]"
             >
-              <p className="font-display text-[44px] md:text-[56px] lg:text-[64px] font-medium text-navy-600 leading-[0.95] tracking-[-0.03em] mb-3">
+              <p className="font-display text-[44px] md:text-[56px] lg:text-[64px] font-medium text-navy-600 leading-[0.95] tracking-[-0.03em]">
                 {f.value}
                 {f.unit && (
                   <span className="text-orange-500 text-[0.55em] align-baseline ml-0.5">
@@ -52,7 +58,7 @@ export default function StatsBand() {
                   </span>
                 )}
               </p>
-              <p className="text-[13px] md:text-[13.5px] text-bone-600 leading-relaxed max-w-[200px]">
+              <p className="text-[13px] md:text-[13.5px] text-bone-600 leading-relaxed max-w-[220px] mt-6">
                 {f.label}
               </p>
             </motion.div>

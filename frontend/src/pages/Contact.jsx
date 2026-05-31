@@ -80,27 +80,34 @@ export default function Contact() {
             })}
           </div>
 
-          {/* Form */}
-          <div className="grid grid-cols-12 gap-10 max-w-5xl mx-auto">
+          {/* Request a banker — confidence spacing.
+              Wider container (6xl, was 5xl), generous gap (16, was 10),
+              bigger section heading (display-xl), more vertical
+              breathing above the form. The left manifesto and the right
+              form both get more room to settle. */}
+          <div className="grid grid-cols-12 gap-12 md:gap-16 max-w-6xl mx-auto mt-12 md:mt-20">
             <div className="col-span-12 md:col-span-5">
-              <p className="eyebrow mb-4">§ Request a banker</p>
-              <h2 className="display-lg text-navy-600 mb-6">
+              <div className="flex items-center gap-4 mb-6">
+                <span className="h-[2px] w-12 bg-orange-500" />
+                <p className="eyebrow eyebrow-accent">§ Request a banker</p>
+              </div>
+              <h2 className="display-xl text-navy-600 text-balance mb-7 leading-[1.05]">
                 Tell us what you are looking for.
               </h2>
-              <p className="text-[15px] text-bone-600 leading-relaxed mb-6">
+              <p className="text-[16px] md:text-[17px] text-bone-600 leading-relaxed mb-9 max-w-md">
                 A relationship banker will call you back within one business day. If your enquiry is urgent, please use the telephone channel above.
               </p>
-              <ul className="space-y-3 text-[13.5px] text-bone-600">
-                <li className="flex items-start gap-3">
-                  <CheckCircleIcon size={18} weight="regular" className="text-orange-600 mt-0.5 shrink-0" />
+              <ul className="space-y-5 text-[14px] md:text-[14.5px] text-bone-600">
+                <li className="flex items-start gap-4">
+                  <CheckCircleIcon size={20} weight="regular" className="text-orange-600 mt-0.5 shrink-0" />
                   <span>No commitment. No automated chase sequence.</span>
                 </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircleIcon size={18} weight="regular" className="text-orange-600 mt-0.5 shrink-0" />
+                <li className="flex items-start gap-4">
+                  <CheckCircleIcon size={20} weight="regular" className="text-orange-600 mt-0.5 shrink-0" />
                   <span>You speak with a banker, not a call-centre agent.</span>
                 </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircleIcon size={18} weight="regular" className="text-orange-600 mt-0.5 shrink-0" />
+                <li className="flex items-start gap-4">
+                  <CheckCircleIcon size={20} weight="regular" className="text-orange-600 mt-0.5 shrink-0" />
                   <span>Same banker for the duration of the conversation.</span>
                 </li>
               </ul>
@@ -108,15 +115,15 @@ export default function Contact() {
 
             <div className="col-span-12 md:col-span-7">
               {submitted ? (
-                <div className="p-10 rounded-xl bg-orange-50 border border-orange-200 text-center">
-                  <CheckCircleIcon size={40} weight="regular" className="text-orange-600 mx-auto mb-4" />
-                  <h3 className="font-display text-[24px] text-navy-600 mb-3">Thank you.</h3>
-                  <p className="text-[15px] text-bone-600 max-w-md mx-auto">
+                <div className="p-12 md:p-14 rounded-xl bg-orange-50 border border-orange-200 text-center">
+                  <CheckCircleIcon size={44} weight="regular" className="text-orange-600 mx-auto mb-5" />
+                  <h3 className="font-display text-[28px] text-navy-600 mb-4">Thank you.</h3>
+                  <p className="text-[15px] text-bone-600 max-w-md mx-auto leading-relaxed">
                     A relationship banker has been notified and will be in touch within one business day. We have sent a confirmation to <strong className="text-navy-600">{form.email}</strong>.
                   </p>
                 </div>
               ) : (
-                <form onSubmit={onSubmit} className="p-8 md:p-10 rounded-xl bg-milk border border-bone-200 space-y-6">
+                <form onSubmit={onSubmit} className="p-10 md:p-12 rounded-xl bg-paper border border-bone-200 space-y-7 shadow-[var(--shadow-card)]">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <Field label="Full name" value={form.name} onChange={(v) => update("name", v)} required />
                     <Field label="Email" type="email" value={form.email} onChange={(v) => update("email", v)} required />
