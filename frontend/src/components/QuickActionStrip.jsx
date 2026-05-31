@@ -29,7 +29,7 @@ export default function QuickActionStrip({ actions = [], tint = "navy" }) {
               <Comp
                 key={a.label}
                 {...linkProps}
-                className="pill bg-white text-navy-600 hover:text-orange-600"
+                className="pill pill-outline"
               >
                 <span className="text-[13.5px] md:text-[14px] font-medium leading-tight pr-2">
                   {a.label}
