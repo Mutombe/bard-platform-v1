@@ -183,7 +183,7 @@ export default function ProductDetail() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
               {related.map((r) => (
                 <Link key={r.slug} to={`/products/${r.slug}`} className="bank-card flex flex-col p-6">
-                  <p className="eyebrow mb-2" style={{ color: r.accent }}>{r.eyebrow}</p>
+                  <p className="eyebrow eyebrow-accent mb-2">{r.eyebrow}</p>
                   <h3 className="font-display text-[20px] text-navy-600 mb-3">{r.name}</h3>
                   <p className="text-[14px] text-bone-600 leading-relaxed mb-4 flex-1">{r.summary}</p>
                   <span className="inline-flex items-center gap-2 text-[13px] font-medium text-orange-600">
