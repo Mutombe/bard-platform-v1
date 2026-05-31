@@ -285,13 +285,13 @@ export default function PageHero({
           {(primaryCTA || secondaryCTA) && (
             <div className="mt-8 md:mt-10 flex flex-wrap items-center gap-3">
               {primaryCTA && (
-                <Link to={primaryCTA.to} className="btn btn-hero-primary">
+                <Link to={primaryCTA.to} className="btn btn-primary">
                   {primaryCTA.label}
                   <ArrowRightIcon size={14} weight="bold" />
                 </Link>
               )}
               {secondaryCTA && (
-                <Link to={secondaryCTA.to} className="btn btn-hero-ghost">
+                <Link to={secondaryCTA.to} className="btn btn-ghost-dark">
                   {secondaryCTA.label}
                 </Link>
               )}
