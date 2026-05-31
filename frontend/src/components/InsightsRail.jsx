@@ -14,19 +14,19 @@ export default function InsightsRail({ heading, eyebrow, items = [] }) {
   return (
     <section className="section bg-milk border-t border-bone-200">
       <div className="container-bank">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-10 md:mb-14 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-8 md:mb-14 gap-5">
           <div>
             {eyebrow && <p className="eyebrow mb-3">{eyebrow}</p>}
             <h2 className="display-xl text-navy-600 text-balance max-w-2xl">
               {heading}
             </h2>
           </div>
-          <Link to="/insights" className="hover-line text-[14px] font-medium text-orange-600">
+          <Link to="/insights" className="hover-line text-[14px] font-medium text-orange-600 inline-flex">
             View all insights →
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-7 md:gap-6">
           {items.slice(0, 3).map((it, i) => (
             <motion.article
               key={it.slug}
@@ -37,20 +37,20 @@ export default function InsightsRail({ heading, eyebrow, items = [] }) {
             >
               <Link to={`/insights/${it.slug}`} className="block group">
                 <div
-                  className="aspect-[16/10] rounded-lg overflow-hidden bg-bone-200 bg-cover bg-center mb-7"
+                  className="aspect-[16/10] rounded-lg overflow-hidden bg-bone-200 bg-cover bg-center mb-5 md:mb-7"
                   style={{
                     backgroundImage: `url(${INSIGHT[it.slug] || it.image || ""})`,
                     filter: "saturate(0.85) brightness(0.95)",
                   }}
                 />
-                <p className="eyebrow eyebrow-accent mb-4">{it.eyebrow}</p>
-                <h3 className="font-display text-[24px] md:text-[26px] text-navy-600 leading-tight mb-4 group-hover:text-orange-600 transition-colors">
+                <p className="eyebrow eyebrow-accent mb-3 md:mb-4">{it.eyebrow}</p>
+                <h3 className="font-display text-[20px] md:text-[26px] text-navy-600 leading-tight mb-3 md:mb-4 group-hover:text-orange-600 transition-colors">
                   {it.title}
                 </h3>
-                <p className="text-[15.5px] text-bone-600 leading-relaxed mb-5">
+                <p className="text-[14.5px] md:text-[15.5px] text-bone-600 leading-relaxed mb-4 md:mb-5">
                   {it.summary}
                 </p>
-                <p className="text-[13px] text-bone-500 flex items-center gap-3">
+                <p className="text-[12.5px] md:text-[13px] text-bone-500 flex items-center gap-3">
                   <span>{it.author}</span>
                   <span className="w-1 h-1 rounded-full bg-bone-400" />
                   <span>{it.reading_minutes} min read</span>

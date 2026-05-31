@@ -60,7 +60,7 @@ export default function Insights() {
       {lead && (
         <section className="bg-milk section">
           <div className="container-bank">
-            <Link to={`/insights/${lead.slug}`} className="group grid grid-cols-12 gap-8 md:gap-12 items-center">
+            <Link to={`/insights/${lead.slug}`} className="group grid grid-cols-12 gap-7 md:gap-12 items-center">
               <div className="col-span-12 md:col-span-7">
                 <div
                   className="aspect-[16/10] rounded-lg bg-cover bg-center bg-bone-200 overflow-hidden"
@@ -72,13 +72,13 @@ export default function Insights() {
               </div>
               <div className="col-span-12 md:col-span-5">
                 <p className="eyebrow eyebrow-accent mb-3">{lead.eyebrow} · Featured</p>
-                <h2 className="display-lg text-navy-600 mb-5 group-hover:text-orange-600 transition-colors">
+                <h2 className="display-lg text-navy-600 mb-4 md:mb-5 group-hover:text-orange-600 transition-colors">
                   {lead.title}
                 </h2>
-                <p className="text-[16px] text-bone-600 leading-relaxed mb-6">
+                <p className="text-[15px] md:text-[16px] text-bone-600 leading-relaxed mb-5 md:mb-6">
                   {lead.summary}
                 </p>
-                <p className="text-[12.5px] text-bone-500 flex items-center gap-3">
+                <p className="text-[12px] md:text-[12.5px] text-bone-500 flex flex-wrap items-center gap-x-3 gap-y-1.5">
                   <span>{lead.author}</span>
                   <span className="w-1 h-1 rounded-full bg-bone-400" />
                   <span>{lead.reading_minutes} min read</span>
@@ -137,17 +137,17 @@ export default function Insights() {
                         }}
                       />
                     </Link>
-                    <div className={`p-8 md:p-9 flex-1 flex flex-col ${isWide ? "md:w-1/2" : ""}`}>
+                    <div className={`p-6 md:p-9 flex-1 flex flex-col ${isWide ? "md:w-1/2" : ""}`}>
                       <p className="eyebrow eyebrow-accent mb-3">{it.eyebrow}</p>
-                      <h3 className={`font-display text-navy-600 mb-3 leading-tight ${isWide ? "text-[24px] md:text-[28px]" : "text-[20px]"}`}>
+                      <h3 className={`font-display text-navy-600 mb-3 leading-tight ${isWide ? "text-[20px] md:text-[28px]" : "text-[18px] md:text-[20px]"}`}>
                         <Link to={`/insights/${it.slug}`} className="hover:text-orange-600 transition-colors">
                           {it.title}
                         </Link>
                       </h3>
-                      <p className="text-[14.5px] text-bone-600 leading-relaxed mb-5 flex-1">
+                      <p className="text-[14px] md:text-[14.5px] text-bone-600 leading-relaxed mb-4 md:mb-5 flex-1">
                         {it.summary}
                       </p>
-                      <p className="text-[12px] text-bone-500 flex items-center gap-2">
+                      <p className="text-[11.5px] md:text-[12px] text-bone-500 flex items-center gap-2">
                         <span>{it.author}</span>
                         <span className="w-1 h-1 rounded-full bg-bone-400" />
                         <span>{it.reading_minutes} min</span>

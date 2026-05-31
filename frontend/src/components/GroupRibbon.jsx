@@ -29,23 +29,23 @@ export default function GroupRibbon({ vertical = false }) {
   return (
     <section className="section bg-ink text-white monogram-bg border-y-2 border-orange-500">
       <div className="container-bank">
-        <SectionReveal className="mb-12 md:mb-16 max-w-3xl">
+        <SectionReveal className="mb-10 md:mb-16 max-w-3xl">
           <p className="eyebrow eyebrow-on-dark mb-4">§ 03 · The Group</p>
           <h2 className="display-xl text-white">
             Five institutions. One discipline.
           </h2>
-          <p className="mt-6 text-white/70 leading-relaxed max-w-2xl text-[16px] md:text-[17px]">
+          <p className="mt-5 md:mt-6 text-white/70 leading-relaxed max-w-2xl text-[15.5px] md:text-[17px]">
             Bard Santner is a financial platform, not a single product.
-            The bank sits at the centre. Around it sit four sister
-            institutions that share the standard.
+            The bank sits at the centre. Four sister institutions sit
+            around it. All share the same standard.
           </p>
         </SectionReveal>
 
         <div
           className={
             vertical
-              ? "flex flex-col gap-4"
-              : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4"
+              ? "flex flex-col gap-3 md:gap-4"
+              : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 md:gap-4"
           }
         >
           {GROUP_ENTITIES.map((e, idx) => (
@@ -71,7 +71,7 @@ export default function GroupRibbon({ vertical = false }) {
                   orange across all five entities; the accent colour
                   still survives in the 1px top rule above. One label
                   colour, five hairline marks. */}
-              <div className="px-8 lg:px-9 pt-8 lg:pt-9 pb-6 lg:pb-7">
+              <div className="px-6 md:px-8 lg:px-9 pt-6 md:pt-8 lg:pt-9 pb-5 md:pb-6 lg:pb-7">
                 <div className="flex items-center gap-3">
                   <span className="font-mono text-[11px] tracking-[0.22em] text-white/35">
                     {String(idx + 1).padStart(2, "0")}
@@ -86,17 +86,17 @@ export default function GroupRibbon({ vertical = false }) {
               </div>
 
               {/* Hairline divider */}
-              <div className="mx-8 lg:mx-9 h-[1px] bg-white/10" />
+              <div className="mx-6 md:mx-8 lg:mx-9 h-[1px] bg-white/10" />
 
               {/* Body — name + tagline + CTA */}
-              <div className="px-8 lg:px-9 pt-7 lg:pt-8 pb-9 lg:pb-10 flex-1 flex flex-col">
-                <h3 className="font-display text-[22px] md:text-[24px] text-white mb-4 leading-[1.15]">
+              <div className="px-6 md:px-8 lg:px-9 pt-6 md:pt-7 lg:pt-8 pb-7 md:pb-9 lg:pb-10 flex-1 flex flex-col">
+                <h3 className="font-display text-[20px] md:text-[24px] text-white mb-3 md:mb-4 leading-[1.15]">
                   {e.name}
                 </h3>
-                <p className="text-[14.5px] text-white/70 leading-relaxed mb-9 flex-1">
+                <p className="text-[14px] md:text-[14.5px] text-white/70 leading-relaxed mb-7 md:mb-9 flex-1">
                   {e.tagline}
                 </p>
-                <span className="inline-flex items-center gap-2 text-[13px] font-medium text-white group-hover:text-orange-300 transition-colors tracking-wide">
+                <span className="inline-flex items-center gap-2 text-[12.5px] md:text-[13px] font-medium text-white group-hover:text-orange-300 transition-colors tracking-wide">
                   {e.cta}
                   <ArrowRightIcon size={13} weight="bold" />
                 </span>

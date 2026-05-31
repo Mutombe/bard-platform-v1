@@ -50,16 +50,16 @@ export default function InsightDetail() {
 
       {/* Article hero */}
       <article className="bg-milk">
-        <header className="container-bank pt-12 md:pt-20 pb-12">
+        <header className="container-bank pt-10 md:pt-20 pb-10 md:pb-12">
           <div className="max-w-3xl mx-auto text-center">
-            <p className="eyebrow eyebrow-accent mb-6">{it.eyebrow}</p>
-            <h1 className="display-xl text-navy-600 mb-8 text-balance">
+            <p className="eyebrow eyebrow-accent mb-5 md:mb-6">{it.eyebrow}</p>
+            <h1 className="display-xl text-navy-600 mb-6 md:mb-8 text-balance">
               {it.title}
             </h1>
-            <p className="text-[18px] md:text-[20px] text-bone-600 leading-relaxed mb-8">
+            <p className="text-[16px] md:text-[20px] text-bone-600 leading-relaxed mb-6 md:mb-8">
               {it.summary}
             </p>
-            <p className="text-[12.5px] text-bone-500 flex items-center justify-center gap-3 flex-wrap">
+            <p className="text-[12px] md:text-[12.5px] text-bone-500 flex items-center justify-center gap-x-3 gap-y-1.5 flex-wrap">
               <span className="font-medium text-navy-600">{it.author}</span>
               {it.author_role && <span>· {it.author_role}</span>}
               <span className="w-1 h-1 rounded-full bg-bone-400" />
@@ -71,9 +71,9 @@ export default function InsightDetail() {
         </header>
 
         {(INSIGHT[it.slug] || it.image) && (
-          <div className="container-bank pb-12">
+          <div className="container-bank pb-10 md:pb-12">
             <div
-              className="max-w-5xl mx-auto aspect-[16/9] rounded-xl bg-cover bg-center bg-bone-200 overflow-hidden"
+              className="max-w-5xl mx-auto aspect-[16/10] md:aspect-[16/9] rounded-xl bg-cover bg-center bg-bone-200 overflow-hidden"
               style={{
                 backgroundImage: `url(${INSIGHT[it.slug] || it.image})`,
                 filter: "saturate(0.85) brightness(0.95)",
@@ -83,9 +83,9 @@ export default function InsightDetail() {
         )}
 
         {/* Body — editorial placeholder. Real long-form lives in /group/journal */}
-        <div className="container-bank pb-16 md:pb-24">
-          <div className="max-w-2xl mx-auto prose-bank space-y-6 text-[17px] text-bone-700 leading-relaxed">
-            <p className="text-[22px] text-navy-600 font-display font-medium">
+        <div className="container-bank pb-14 md:pb-24">
+          <div className="max-w-2xl mx-auto prose-bank space-y-5 md:space-y-6 text-[15.5px] md:text-[17px] text-bone-700 leading-relaxed">
+            <p className="text-[19px] md:text-[22px] text-navy-600 font-display font-medium leading-snug">
               This insight is a short read. The long-form version, with citations and
               accompanying market data, is published in the next quarterly edition of
               Bardiq Journal.
@@ -100,8 +100,8 @@ export default function InsightDetail() {
               easiest thing is to bring it to them. Use the button below and a member
               of the team will follow up within one business day.
             </p>
-            <div className="pt-6">
-              <Link to="/contact" className="btn btn-navy">
+            <div className="pt-5 md:pt-6">
+              <Link to="/contact" className="btn btn-navy w-full sm:w-auto justify-center">
                 Speak to a banker about this
               </Link>
             </div>
