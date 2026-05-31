@@ -73,22 +73,24 @@ export default function WealthMarquee() {
               <div className="absolute inset-0 bg-gradient-to-r from-ink/55 via-transparent to-ink/45" />
               <div className="absolute inset-0 md:hidden bg-gradient-to-b from-transparent via-transparent to-ink/85" />
 
-              {/* Orange logo tile — sub-brand cartouche.
-                  Favicon on the left, two-line brand text on the right
-                  ("BARD SANTNER" eyebrow + "WEALTH" sub-brand), aligned
-                  horizontally. Contrasting orange against the ink card. */}
-              <div className="absolute top-6 left-6 md:top-8 md:left-8 bg-orange-500 rounded-md px-4 py-3 md:px-5 md:py-4 flex items-center gap-3 md:gap-3.5 shadow-[0_8px_24px_rgba(0,0,0,0.25)]">
+              {/* Sub-brand mark — no enclosing tile. The favicon is
+                  itself the orange brand stamp; wrapping it in an
+                  orange tile would dissolve the mark into its own
+                  colour. Instead, the favicon sits directly on the
+                  dark card surface with two-line brand text beside it
+                  in white. The mark IS the cartouche. */}
+              <div className="absolute top-6 left-6 md:top-8 md:left-8 flex items-center gap-3 md:gap-4">
                 <img
                   src="/favicon.png"
                   alt=""
-                  className="h-9 w-9 md:h-10 md:w-10 object-contain shrink-0"
+                  className="h-11 w-11 md:h-12 md:w-12 object-contain shrink-0 drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)]"
                   loading="lazy"
                 />
                 <div className="leading-none">
-                  <p className="font-display text-[9.5px] md:text-[10px] tracking-[0.22em] uppercase font-medium text-white/85">
+                  <p className="font-display text-[10px] md:text-[10.5px] tracking-[0.22em] uppercase font-medium text-white/70">
                     Bard Santner
                   </p>
-                  <p className="font-display text-[16px] md:text-[18px] tracking-[0.10em] uppercase font-medium text-white mt-1">
+                  <p className="font-display text-[17px] md:text-[19px] tracking-[0.08em] uppercase font-medium text-white mt-1.5">
                     Wealth
                   </p>
                 </div>
