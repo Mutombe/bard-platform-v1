@@ -213,7 +213,7 @@ export default function Nav() {
                   Routes to /online-banking — the landing page is the
                   log-in surface; from there the secure portal opens. */}
               <Link
-                to="/online-banking"
+                to="/login"
                 aria-label="Log in to Online Banking"
                 className="group hidden md:inline-flex items-center gap-3 h-11 pl-1.5 pr-5 rounded-full bg-white border border-bone-300 hover:border-navy-600 transition-all duration-300 shadow-[0_1px_2px_rgba(12,10,20,0.04)] hover:shadow-[0_6px_18px_rgba(12,10,20,0.12)] hover:-translate-y-[1px]"
               >
@@ -348,7 +348,7 @@ export default function Nav() {
             {/* Drawer foot — login + speak to a banker */}
             <div className="px-6 py-5 border-t border-bone-200 bg-bone-50/60 space-y-3">
               <Link
-                to="/online-banking"
+                to="/login"
                 onClick={() => setMobileOpen(false)}
                 className="btn btn-navy w-full justify-center"
               >
