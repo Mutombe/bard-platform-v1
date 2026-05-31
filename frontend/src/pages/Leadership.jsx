@@ -5,6 +5,7 @@ import TrustRibbon from "../components/TrustRibbon.jsx";
 import SEO, { breadcrumbJsonLd } from "../components/SEO.jsx";
 import { HERO } from "../data/images.js";
 import { LEADERSHIP } from "../data/leadership.js";
+import { TriptychAside } from "../components/PageHeroAsides.jsx";
 
 export default function Leadership() {
   return (
@@ -22,6 +23,7 @@ export default function Leadership() {
         image={HERO.leadership}
         overlayTint="navy"
         variant="editorial"
+        aside={<TriptychAside />}
       />
 
       <section className="bg-milk section-lg">

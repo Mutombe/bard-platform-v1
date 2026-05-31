@@ -4,6 +4,7 @@ import AdvisoryBand from "../components/AdvisoryBand.jsx";
 import SEO, { breadcrumbJsonLd } from "../components/SEO.jsx";
 import { HERO } from "../data/images.js";
 import { MapPinIcon, PhoneIcon, ClockIcon } from "@phosphor-icons/react";
+import { MondrianAside } from "../components/PageHeroAsides.jsx";
 
 const LOCATIONS = [
   {
@@ -79,6 +80,7 @@ export default function Locations() {
         image={HERO.locations}
         overlayTint="navy"
         variant="editorial"
+        aside={<MondrianAside />}
       />
 
       <section className="bg-milk section">

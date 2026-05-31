@@ -5,6 +5,7 @@ import PageTransition from "../components/PageTransition.jsx";
 import PageHero from "../components/PageHero.jsx";
 import AdvisoryBand from "../components/AdvisoryBand.jsx";
 import SEO, { breadcrumbJsonLd } from "../components/SEO.jsx";
+import { HoneycombAside } from "../components/PageHeroAsides.jsx";
 import { HERO, INSIGHT } from "../data/images.js";
 import { INSIGHTS } from "../data/insights.js";
 import { AUDIENCES } from "../data/audiences.js";
@@ -31,6 +32,7 @@ export default function Insights() {
         image={HERO.insights}
         overlayTint="navy"
         variant="editorial"
+        aside={<HoneycombAside />}
       />
 
       {/* Filter bar */}
