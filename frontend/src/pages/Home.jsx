@@ -6,6 +6,7 @@ import PageHero from "../components/PageHero.jsx";
 import QuickActionStrip from "../components/QuickActionStrip.jsx";
 import AudienceTiles from "../components/AudienceTiles.jsx";
 import StatsBand from "../components/StatsBand.jsx";
+import WealthMarquee from "../components/WealthMarquee.jsx";
 import ProductGrid from "../components/ProductGrid.jsx";
 import GroupRibbon from "../components/GroupRibbon.jsx";
 import InsightsRail from "../components/InsightsRail.jsx";
@@ -25,11 +26,17 @@ import { HERO } from "../data/images.js";
  *   § 01  HERO              full-bleed editorial photo, one CTA
  *   § 02  QUICK ACTIONS     4 pills under the hero
  *   § 03  AUDIENCE TILES    5 cards across (Personal..Institutional)
- *   § 04  FEATURED PRODUCTS 4-up editorial cards
- *   § 05  GROUP             5 dark sub-brand cards
- *   § 06  INSIGHTS          3 editorial article cards
- *   § 07  ADVISORY BAND     "Speak to a banker"
- *   § 08  TRUST RIBBON      4 pillars: regulated, deposits, security, AML
+ *   § 04  STATS BAND        5 institutional figures, hairline cells
+ *   § 05  WEALTH MARQUEE    "This is Bard Santner Wealth" — the
+ *                           Lloyds-canonical brand moment: editorial
+ *                           horse photograph, sub-brand monogram,
+ *                           offerings pipe, dual CTA. The home page's
+ *                           single moment of disproportionate craft.
+ *   § 06  FEATURED PRODUCTS 4-up editorial cards
+ *   § 07  GROUP             5 dark sub-brand cards
+ *   § 08  INSIGHTS          3 editorial article cards
+ *   § 09  ADVISORY BAND     "Speak to a banker"
+ *   § 10  TRUST RIBBON      4 pillars: regulated, deposits, security, AML
  *
  * Whitespace and silence carry the rest.
  */
@@ -79,7 +86,16 @@ export default function Home() {
       {/* § 04 — Stats band — institutional gravitas */}
       <StatsBand />
 
-      {/* § 05 — Featured products */}
+      {/* § 05 — Wealth marquee. The Lloyds-canonical brand moment.
+          One section per home page is given disproportionate craft;
+          this is it. Cinematic horse photograph, sub-brand monogram,
+          offerings taxonomy, dual CTA. The institutional whisper that
+          says "this is what we look like at our most premium." */}
+      <WealthMarquee />
+
+      {/* § Featured products — kept at § 05 so the existing thematic
+          numbering doesn't shift. The Wealth marquee carries its own
+          sub-brand identity, not a numbered section. */}
       <ProductGrid
         eyebrow="§ 05 · Featured solutions"
         heading="Four ways to start."
