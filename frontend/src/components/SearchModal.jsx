@@ -91,6 +91,8 @@ function buildIndex() {
     { title: "Wealth", path: "/wealth", summary: "Discretionary mandates, advisory portfolios, structured credit", eyebrow: "Service" },
     { title: "Markets & Treasury", path: "/markets", summary: "Treasury, FX, debt capital markets, trade finance", eyebrow: "Service" },
     { title: "Online Banking", path: "/online-banking", summary: "Manage accounts, send and receive, pay bills, monitor in real time", eyebrow: "Digital" },
+    { title: "Log in", path: "/login", summary: "Continue with Google, Apple, or your Bard Santner credentials", eyebrow: "Digital" },
+    { title: "Banking app dashboard", path: "/app", summary: "Accounts, transfers, statements — the signed-in customer view", eyebrow: "Digital" },
     { title: "The Group", path: "/group", summary: "Five institutions, one discipline", eyebrow: "About" },
     { title: "About Bard Santner", path: "/about", summary: "A modern African financial platform", eyebrow: "About" },
     { title: "Leadership", path: "/leadership", summary: "Named, accountable, reachable", eyebrow: "About" },
@@ -121,11 +123,11 @@ const TYPE_META = {
 
 // Curated empty-state suggestions
 const SUGGESTIONS = [
-  { label: "Log in to Online Banking", path: "/online-banking" },
+  { label: "Log in to Online Banking", path: "/login" },
+  { label: "Preview the app", path: "/app" },
   { label: "Open an Everyday Account", path: "/products/everyday-account" },
   { label: "Diaspora banking", path: "/international" },
   { label: "Wealth management", path: "/wealth" },
-  { label: "The Group", path: "/group" },
   { label: "Speak to a banker", path: "/contact" },
 ];
 

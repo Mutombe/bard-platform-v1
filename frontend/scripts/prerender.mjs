@@ -28,7 +28,7 @@ const ORIGIN = `http://localhost:${PORT}`;
 const STATIC_ROUTES = [
   "/",
   "/personal", "/business", "/private-banking", "/international", "/institutional",
-  "/banking", "/wealth", "/markets", "/online-banking",
+  "/banking", "/wealth", "/markets", "/online-banking", "/login", "/app",
   "/about", "/group", "/leadership",
   "/insights",
   "/contact", "/locations",

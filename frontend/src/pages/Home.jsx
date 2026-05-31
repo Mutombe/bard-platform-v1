@@ -1,8 +1,5 @@
-import { Link } from "react-router-dom";
-import { ArrowRightIcon } from "@phosphor-icons/react";
-
 import PageTransition from "../components/PageTransition.jsx";
-import PageHero from "../components/PageHero.jsx";
+import HomeHeroCarousel from "../components/HomeHeroCarousel.jsx";
 import QuickActionStrip from "../components/QuickActionStrip.jsx";
 import AudienceTiles from "../components/AudienceTiles.jsx";
 import StatsBand from "../components/StatsBand.jsx";
@@ -17,7 +14,6 @@ import SEO, { organizationJsonLd, websiteJsonLd, breadcrumbJsonLd } from "../com
 import { QUICK_ACTIONS } from "../data/quickActions.js";
 import { PRODUCTS } from "../data/products.js";
 import { INSIGHTS } from "../data/insights.js";
-import { HERO } from "../data/images.js";
 
 /**
  * The institutional home page. The canonical sequence pulled directly
@@ -63,19 +59,16 @@ export default function Home() {
         ]}
       />
 
-      {/* § 01 — Hero. Lloyds-grade brevity: single headline, short
-          subhead, two CTAs. The compliance disclosure that used to sit
-          under the CTAs has moved into the global TrustRibbon at § 08
-          where it belongs. */}
-      <PageHero
-        eyebrow="§ 01 · Bard Santner Markets Inc"
-        headline="Built for the African enterprise."
-        body="A modern African financial platform. Banking, wealth, markets and advisory, built to international standards."
-        primaryCTA={{ to: "/personal", label: "Open an account" }}
-        secondaryCTA={{ to: "/group", label: "Meet the Group" }}
-        image={HERO.home}
-        overlayTint="navy"
-      />
+      {/* § 01 — Hero carousel.
+          Three slides showcasing different solutions:
+            1. The institution itself ("Built for the African enterprise")
+            2. Online Banking ("Banking that travels with you")
+            3. Bard Santner Wealth ("Patient capital. Patient counsel.")
+          Auto-advances every 7.5s; pauses on hover; arrows + dots for
+          manual control. Parallax + 5-layer overlay system carried over
+          from PageHero so the rhythm with QuickActionStrip below is
+          identical. */}
+      <HomeHeroCarousel />
 
       {/* § 02 — Quick actions */}
       <QuickActionStrip actions={QUICK_ACTIONS.general} tint="navy" />

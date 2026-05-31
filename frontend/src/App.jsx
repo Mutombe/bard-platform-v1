@@ -23,6 +23,8 @@ import Banking from "./pages/Banking.jsx";
 import Wealth from "./pages/Wealth.jsx";
 import Markets from "./pages/Markets.jsx";
 import OnlineBanking from "./pages/OnlineBanking.jsx";
+import Login from "./pages/Login.jsx";
+import AppDashboard from "./pages/AppDashboard.jsx";
 import Contact from "./pages/Contact.jsx";
 import Locations from "./pages/Locations.jsx";
 import Security from "./pages/Security.jsx";
@@ -66,10 +68,16 @@ class ErrorBoundary extends Component {
 export default function App() {
   const location = useLocation();
 
+  // Routes that run their own application shell (own topbar / sidebar
+  // / no public Nav + Footer). The public marketing chrome is
+  // suppressed for these to keep the surface focused.
+  const isAppShellRoute =
+    location.pathname === "/login" || location.pathname.startsWith("/app");
+
   return (
     <>
       <ScrollToTop />
-      <Nav />
+      {!isAppShellRoute && <Nav />}
 
       <main>
         <ErrorBoundary>
@@ -89,6 +97,10 @@ export default function App() {
               <Route path="/wealth" element={<Wealth />} />
               <Route path="/markets" element={<Markets />} />
               <Route path="/online-banking" element={<OnlineBanking />} />
+
+              {/* App shell — own layout, no public Nav/Footer */}
+              <Route path="/login" element={<Login />} />
+              <Route path="/app" element={<AppDashboard />} />
 
               {/* Products */}
               <Route path="/products/:slug" element={<ProductDetail />} />
@@ -123,7 +135,7 @@ export default function App() {
         </ErrorBoundary>
       </main>
 
-      <Footer />
+      {!isAppShellRoute && <Footer />}
     </>
   );
 }

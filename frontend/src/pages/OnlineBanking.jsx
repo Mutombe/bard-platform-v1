@@ -44,26 +44,10 @@ import { HERO } from "../data/images.js";
  */
 
 const ONLINE_QUICK_ACTIONS = [
-  {
-    label: "Log in to Online Banking",
-    path: "https://online.bardsantnerbank.com",
-    external: true,
-  },
-  {
-    label: "Register a new user",
-    path: "/contact?audience=personal",
-    external: false,
-  },
-  {
-    label: "Get the mobile app",
-    path: "/contact",
-    external: false,
-  },
-  {
-    label: "Help & support",
-    path: "/contact",
-    external: false,
-  },
+  { label: "Log in to Online Banking", path: "/login" },
+  { label: "Open an account", path: "/personal" },
+  { label: "Preview the app", path: "/app" },
+  { label: "Help & support", path: "/contact" },
 ];
 
 const CAPABILITIES = [
@@ -146,8 +130,8 @@ export default function OnlineBanking() {
         eyebrow="§ Online Banking"
         headline="Banking that travels with you."
         body="Send, receive, save and manage from any device. Same bank, same banker — without the queue."
-        primaryCTA={{ to: "https://online.bardsantnerbank.com", label: "Log in to Online Banking" }}
-        secondaryCTA={{ to: "/contact", label: "Get the app" }}
+        primaryCTA={{ to: "/login", label: "Log in to Online Banking" }}
+        secondaryCTA={{ to: "/app", label: "Preview the app" }}
         image={HERO.onlineBanking}
         overlayTint="navy"
       />
@@ -276,18 +260,18 @@ export default function OnlineBanking() {
                   to in branch — reachable in-app.
                 </p>
                 <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3">
-                  <a
-                    href="https://online.bardsantnerbank.com"
+                  <Link
+                    to="/login"
                     className="btn btn-primary w-full sm:w-auto justify-center"
                   >
                     <LockIcon size={14} weight="bold" />
                     Log in to Online Banking
-                  </a>
+                  </Link>
                   <Link
-                    to="/contact"
+                    to="/app"
                     className="btn btn-ghost-light w-full sm:w-auto justify-center"
                   >
-                    Get the app
+                    Preview the app
                     <ArrowRightIcon size={14} weight="bold" />
                   </Link>
                 </div>

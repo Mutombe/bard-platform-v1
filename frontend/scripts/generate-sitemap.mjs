@@ -35,6 +35,7 @@ const STATIC_ROUTES = [
   { path: "/wealth",          priority: "0.8", changefreq: "weekly"  },
   { path: "/markets",         priority: "0.8", changefreq: "weekly"  },
   { path: "/online-banking",  priority: "0.9", changefreq: "weekly"  },
+  { path: "/login",           priority: "0.6", changefreq: "monthly" },
 
   // Institution
   { path: "/about",           priority: "0.8", changefreq: "monthly" },
