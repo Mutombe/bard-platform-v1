@@ -205,54 +205,77 @@ export default function HomeHeroCarousel() {
         </motion.div>
       </div>
 
-      {/* Carousel controls — pinned bottom-right, above QuickActionStrip */}
-      <div className="absolute z-20 right-4 md:right-8 bottom-6 md:bottom-8 flex items-center gap-3 md:gap-4">
-        {/* Dot indicators with autoplay progress */}
-        <div className="flex items-center gap-2 md:gap-2.5">
+      {/* ─── MOBILE controls — dots only, centred, with empty-space
+          confidence around them. Carets + counter are desktop-only;
+          on a 343px column the cluster crowded the bottom edge. */}
+      <div className="md:hidden absolute z-20 left-0 right-0 bottom-6 flex justify-center">
+        <div className="flex items-center gap-2">
           {SLIDES.map((s, i) => (
             <button
               key={s.id}
               onClick={() => setIndex(i)}
               aria-label={`Slide ${i + 1}: ${s.headline}`}
-              className="group relative w-9 md:w-12 h-1 rounded-full bg-white/25 overflow-hidden"
+              className="relative w-8 h-1 rounded-full bg-white/25 overflow-hidden"
             >
               <span
-                className={`absolute inset-y-0 left-0 bg-white transition-all ${
-                  i < index ? "w-full" : i === index ? "" : "w-0"
-                }`}
+                className="absolute inset-y-0 left-0 bg-white"
                 style={
                   i === index && !paused
                     ? { width: "100%", transition: `width ${AUTOPLAY_MS}ms linear` }
                     : i === index
                     ? { width: "100%" }
-                    : undefined
+                    : { width: "0%" }
                 }
               />
             </button>
           ))}
         </div>
+      </div>
 
-        {/* Caret controls */}
-        <div className="flex items-center gap-1.5 md:gap-2 ml-2">
+      {/* ─── DESKTOP controls — full kit (dots + carets bottom-right,
+          counter bottom-left). Hidden on mobile via md: */}
+      <div className="hidden md:flex absolute z-20 right-8 bottom-8 items-center gap-4">
+        <div className="flex items-center gap-2.5">
+          {SLIDES.map((s, i) => (
+            <button
+              key={s.id}
+              onClick={() => setIndex(i)}
+              aria-label={`Slide ${i + 1}: ${s.headline}`}
+              className="relative w-12 h-1 rounded-full bg-white/25 overflow-hidden"
+            >
+              <span
+                className="absolute inset-y-0 left-0 bg-white"
+                style={
+                  i === index && !paused
+                    ? { width: "100%", transition: `width ${AUTOPLAY_MS}ms linear` }
+                    : i === index
+                    ? { width: "100%" }
+                    : { width: "0%" }
+                }
+              />
+            </button>
+          ))}
+        </div>
+        <div className="flex items-center gap-2 ml-2">
           <button
             onClick={() => go(-1)}
             aria-label="Previous slide"
-            className="w-9 h-9 md:w-10 md:h-10 flex items-center justify-center rounded-full border border-white/30 hover:border-white hover:bg-white/10 text-white transition-colors"
+            className="w-10 h-10 flex items-center justify-center rounded-full border border-white/30 hover:border-white hover:bg-white/10 text-white transition-colors"
           >
             <CaretLeftIcon size={13} weight="bold" />
           </button>
           <button
             onClick={() => go(1)}
             aria-label="Next slide"
-            className="w-9 h-9 md:w-10 md:h-10 flex items-center justify-center rounded-full border border-white/30 hover:border-white hover:bg-white/10 text-white transition-colors"
+            className="w-10 h-10 flex items-center justify-center rounded-full border border-white/30 hover:border-white hover:bg-white/10 text-white transition-colors"
           >
             <CaretRightIcon size={13} weight="bold" />
           </button>
         </div>
       </div>
 
-      {/* Slide counter — bottom-left, small editorial mark */}
-      <div className="absolute z-20 left-4 md:left-8 bottom-6 md:bottom-8 font-mono text-[11px] tracking-[0.22em] text-white/55">
+      {/* Slide counter — desktop-only, bottom-left editorial mark */}
+      <div className="hidden md:block absolute z-20 left-8 bottom-8 font-mono text-[11px] tracking-[0.22em] text-white/55">
         <span className="text-white/80 font-medium">
           {String(index + 1).padStart(2, "0")}
         </span>
