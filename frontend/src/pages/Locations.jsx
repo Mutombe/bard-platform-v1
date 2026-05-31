@@ -87,7 +87,7 @@ export default function Locations() {
         <div className="container-bank">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {LOCATIONS.map((loc) => (
-              <article key={loc.city} className="bank-card p-8 md:p-10 flex flex-col">
+              <article key={loc.city} className="bank-card p-8 md:p-10 flex flex-col h-full">
                 <div className="flex items-start justify-between mb-4">
                   <h2 className="font-display text-[24px] text-navy-600">{loc.city}</h2>
                   <span className={`text-[10px] tracking-[0.18em] uppercase px-2 py-1 rounded ${

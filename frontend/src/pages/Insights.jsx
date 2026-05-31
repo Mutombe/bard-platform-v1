@@ -91,47 +91,71 @@ export default function Insights() {
         </section>
       )}
 
-      {/* Remaining grid */}
+      {/* Remaining articles — bento grid for symmetric variety.
+          Pattern across a 12-col grid:
+            Row 1   8 + 4    (large feature + small adjacent)
+            Row 2   4 + 4 + 4 (three equal)
+            Row 3   4 + 8    (small + large mirror of row 1)
+          The grid mirrors itself across the middle row, so symmetry
+          holds even with size variety. */}
       {rest.length > 0 && (
         <section className="bg-milk section">
           <div className="container-bank">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {rest.map((it, i) => (
-                <motion.article
-                  key={it.slug}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-60px" }}
-                  transition={{ duration: 0.5, delay: i * 0.05 }}
-                  className="bank-card flex flex-col"
-                >
-                  <Link to={`/insights/${it.slug}`} className="block">
-                    <div
-                      className="aspect-[16/10] bg-cover bg-center bg-bone-200 overflow-hidden"
-                      style={{
-                        backgroundImage: `url(${INSIGHT[it.slug] || it.image || ""})`,
-                        filter: "saturate(0.85) brightness(0.95)",
-                      }}
-                    />
-                  </Link>
-                  <div className="p-8 md:p-9 flex-1 flex flex-col">
-                    <p className="eyebrow eyebrow-accent mb-2">{it.eyebrow}</p>
-                    <h3 className="font-display text-[20px] text-navy-600 mb-3 leading-tight">
-                      <Link to={`/insights/${it.slug}`} className="hover:text-orange-600 transition-colors">
-                        {it.title}
-                      </Link>
-                    </h3>
-                    <p className="text-[14px] text-bone-600 leading-relaxed mb-4 flex-1">
-                      {it.summary}
-                    </p>
-                    <p className="text-[12px] text-bone-500 flex items-center gap-2">
-                      <span>{it.author}</span>
-                      <span className="w-1 h-1 rounded-full bg-bone-400" />
-                      <span>{it.reading_minutes} min</span>
-                    </p>
-                  </div>
-                </motion.article>
-              ))}
+            <div className="grid grid-cols-12 gap-5 md:gap-6 auto-rows-fr">
+              {rest.map((it, i) => {
+                // Bento sizing — indices 0,5 are 8-col; 4,6 are 4-col;
+                // 1,2,3 are 4-col equal middle row. Indices wrap if more
+                // than 7 articles (rare); falls back to 6-col cards.
+                const bentoCols = [
+                  "md:col-span-8", // 0  large left
+                  "md:col-span-4", // 1  small right
+                  "md:col-span-4", // 2  middle row 1/3
+                  "md:col-span-4", // 3  middle row 2/3
+                  "md:col-span-4", // 4  middle row 3/3
+                  "md:col-span-4", // 5  small left mirror
+                  "md:col-span-8", // 6  large right mirror
+                ];
+                const span = bentoCols[i] || "md:col-span-6";
+                // Wide cards (col-span-8) use a horizontal layout with
+                // image on the left; standard cards stack image-on-top.
+                const isWide = span === "md:col-span-8";
+                return (
+                  <motion.article
+                    key={it.slug}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-60px" }}
+                    transition={{ duration: 0.55, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
+                    className={`col-span-12 ${span} bank-card flex h-full ${isWide ? "md:flex-row flex-col" : "flex-col"}`}
+                  >
+                    <Link to={`/insights/${it.slug}`} className={`block overflow-hidden ${isWide ? "md:w-1/2" : ""}`}>
+                      <div
+                        className={`bg-cover bg-center bg-bone-200 ${isWide ? "aspect-[4/3] md:aspect-auto md:h-full" : "aspect-[16/10]"}`}
+                        style={{
+                          backgroundImage: `url(${INSIGHT[it.slug] || it.image || ""})`,
+                          filter: "saturate(0.85) brightness(0.95)",
+                        }}
+                      />
+                    </Link>
+                    <div className={`p-8 md:p-9 flex-1 flex flex-col ${isWide ? "md:w-1/2" : ""}`}>
+                      <p className="eyebrow eyebrow-accent mb-3">{it.eyebrow}</p>
+                      <h3 className={`font-display text-navy-600 mb-3 leading-tight ${isWide ? "text-[24px] md:text-[28px]" : "text-[20px]"}`}>
+                        <Link to={`/insights/${it.slug}`} className="hover:text-orange-600 transition-colors">
+                          {it.title}
+                        </Link>
+                      </h3>
+                      <p className="text-[14.5px] text-bone-600 leading-relaxed mb-5 flex-1">
+                        {it.summary}
+                      </p>
+                      <p className="text-[12px] text-bone-500 flex items-center gap-2">
+                        <span>{it.author}</span>
+                        <span className="w-1 h-1 rounded-full bg-bone-400" />
+                        <span>{it.reading_minutes} min</span>
+                      </p>
+                    </div>
+                  </motion.article>
+                );
+              })}
             </div>
           </div>
         </section>
