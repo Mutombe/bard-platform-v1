@@ -26,14 +26,12 @@ const unsplash = (id, w = 3200, q = 85) =>
 
 // ─── Page heroes ─────────────────────────────────────────────────────
 export const HERO = {
-  // Brown concrete building rising against open blue sky — the
-  // architectural subject sits center-right, with negative-space sky
-  // on the left. The composition cooperates with our hero gradient:
-  // the dark fade lives on the left (over empty sky, no visual cost)
-  // and the building stays prominent in the right half where the
-  // overlay clears. Warm brown stone on cool blue reads as
-  // institutional permanence — the bank as a building, not a logo.
-  home:           unsplash("1615752598882-6ca08b76a989"),
+  // High-rise silhouettes against a dawn sky, dramatic golden-orange
+  // sunrise light bathing modern urban geometry. Reads as "new day,
+  // institutional optimism, the modern African financial platform
+  // standing at first light." The warm sunrise tones cooperate with
+  // our orange-on-ink overlay system instead of fighting it.
+  home:           unsplash("1511371496040-1fb40794e675"),
 
   // Family at the dining table sharing a meal. Warm, domestic, the
   // everyday — not stock domesticity.
