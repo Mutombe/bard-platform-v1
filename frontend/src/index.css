@@ -129,13 +129,13 @@
   --font-body: "Onest Variable", "Gellix", "Inter", "Avenir Next", system-ui, sans-serif;
   --font-mono: "Onest Variable", "Gellix", "Inter", system-ui, sans-serif;
 
-  /* Hero-only display serif — Instrument Serif. Used on the home
+  /* Hero-only display serif — Fraunces Variable. Used on the home
      carousel headline as the editorial counterpoint to the all-Onest
      system. The whole point is to break the institutional default
-     in exactly one place and see whether the bank can carry a
-     literary voice. Iowan Old Style / Garamond as native fallbacks. */
-  --font-hero-display: "Instrument Serif", "Iowan Old Style", "Garamond",
-                        "Hoefler Text", "Times New Roman", serif;
+     in exactly one place and see if the bank can carry a literary
+     voice. Iowan Old Style / Garamond as native fallbacks. */
+  --font-hero-display: "Fraunces Variable", "Fraunces", "Iowan Old Style",
+                        "Garamond", "Hoefler Text", "Times New Roman", serif;
 
   /* Hero unchanged. The other display tiers bumped ~10% to deliver the
      "everything reads a touch bigger" institutional confidence the brief
@@ -208,16 +208,25 @@
      with what a true display face would deliver. */
   .display-hero { font-family: var(--font-display); font-size: var(--text-display-hero); line-height: 0.98; letter-spacing: -0.032em; font-weight: 500; }
 
-  /* Display-hero, serif variant — Instrument Serif. Serifs need less
-     negative tracking than the geometric sans (otherwise the joins
-     collide). Slightly looser line-height too because serif ascenders
-     and descenders carry more vertical weight. */
+  /* Display-hero, serif variant — Fraunces Variable.
+     Fraunces is unusual: it exposes three variable axes (weight,
+     SOFT, optical-size) and we tune all three for the hero context.
+       • weight 520 — between Regular and SemiBold; gives the serif
+         enough body to hold against the dark hero overlay
+       • SOFT 40 — partially rounded serifs; the friendly-but-serious
+         compromise that suits the brand voice
+       • opsz 96 — display optical size; opens letterforms for the
+         big size, keeps stroke contrast crisp
+     Letter-spacing -0.014em (less negative than the sans's -0.032em)
+     because serif joins start to collide if you tighten further.
+     Line-height 1.02 — serif ascenders + descenders need the room. */
   .display-hero-serif {
     font-family: var(--font-hero-display);
     font-size: var(--text-display-hero);
     line-height: 1.02;
-    letter-spacing: -0.01em;
-    font-weight: 400;
+    letter-spacing: -0.014em;
+    font-weight: 520;
+    font-variation-settings: "SOFT" 40, "opsz" 96;
     font-feature-settings: "kern", "liga", "calt", "onum", "lnum";
   }
   .display-xl   { font-family: var(--font-display); font-size: var(--text-display-xl);   line-height: 1.04; letter-spacing: -0.028em; font-weight: 500; }
