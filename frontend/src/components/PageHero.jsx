@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRightIcon } from "@phosphor-icons/react";
 
@@ -188,17 +189,33 @@ export default function PageHero({
   };
   const t = tints[overlayTint] || tints.navy;
 
+  // Lloyds-canonical parallax. The photograph scrolls at ~75% of the
+  // text's speed, creating depth as the user enters the page. The text
+  // also lifts slightly as it leaves the viewport — both effects subtle
+  // enough to feel like institutional gravity, not motion theatre.
+  const heroRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+  const photoY = useTransform(scrollYProgress, [0, 1], ["0%", "22%"]);
+  const photoScale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
+  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "-12%"]);
+  const textOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0.4]);
+
   return (
-    <section className="relative overflow-hidden bg-navy-900">
+    <section ref={heroRef} className="relative overflow-hidden bg-navy-900">
       {/* Layer 1 — orange accent rule at the very top edge */}
       <div className="absolute top-0 left-0 right-0 h-[2px] bg-orange-500 z-20" />
 
-      {/* Layer 2 — photograph with light editorial filter */}
-      <div
+      {/* Layer 2 — photograph with light editorial filter + parallax */}
+      <motion.div
         className="absolute inset-0 bg-cover bg-center"
         style={{
           backgroundImage: image ? `url(${image})` : undefined,
           filter: image ? "saturate(0.7) brightness(0.88) contrast(1.05)" : undefined,
+          y: photoY,
+          scale: photoScale,
         }}
       />
 
@@ -225,7 +242,10 @@ export default function PageHero({
                        = 100svh − 280 mobile
                        = 100svh − 236 desktop */}
       <div className="relative container-bank min-h-[calc(100svh-280px)] md:min-h-[calc(100svh-236px)] flex flex-col justify-end pt-20 md:pt-24 pb-10 md:pb-14">
-        <div className={`max-w-4xl lg:max-w-5xl ${align === "center" ? "mx-auto text-center" : ""}`}>
+        <motion.div
+          style={{ y: textY, opacity: textOpacity }}
+          className={`max-w-4xl lg:max-w-5xl ${align === "center" ? "mx-auto text-center" : ""}`}
+        >
           {eyebrow && (
             <motion.p
               initial={{ opacity: 0, y: 8 }}
@@ -280,7 +300,7 @@ export default function PageHero({
           {noteUnderCTA && (
             <p className="mt-4 text-[11.5px] text-white/60">{noteUnderCTA}</p>
           )}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

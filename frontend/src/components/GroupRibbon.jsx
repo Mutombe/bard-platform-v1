@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { ArrowRightIcon } from "@phosphor-icons/react";
+import SectionReveal from "./SectionReveal.jsx";
 import { GROUP_ENTITIES } from "../data/group.js";
 
 /**
@@ -27,7 +29,7 @@ export default function GroupRibbon({ vertical = false }) {
   return (
     <section className="section bg-ink text-white monogram-bg border-y-2 border-orange-500">
       <div className="container-bank">
-        <div className="mb-12 md:mb-16 max-w-3xl">
+        <SectionReveal className="mb-12 md:mb-16 max-w-3xl">
           <p className="eyebrow eyebrow-on-dark mb-4">§ 03 · The Group</p>
           <h2 className="display-xl text-white">
             Five institutions. One discipline.
@@ -37,7 +39,7 @@ export default function GroupRibbon({ vertical = false }) {
             The bank sits at the centre. Around it sit four sister
             institutions that share the standard.
           </p>
-        </div>
+        </SectionReveal>
 
         <div
           className={
@@ -47,10 +49,16 @@ export default function GroupRibbon({ vertical = false }) {
           }
         >
           {GROUP_ENTITIES.map((e, idx) => (
-            <Link
+            <motion.div
               key={e.id}
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, delay: idx * 0.08, ease: [0.22, 1, 0.36, 1] }}
+            >
+            <Link
               to={e.href}
-              className="group relative block bg-navy-800 hover:bg-navy-700 transition-colors flex flex-col"
+              className="group relative block bg-navy-800 hover:bg-navy-700 transition-colors flex flex-col h-full"
             >
               {/* Top accent — single 1px rule in the entity colour.
                   No thickness, no chip, just a clean institutional mark. */}
@@ -92,6 +100,7 @@ export default function GroupRibbon({ vertical = false }) {
                 </span>
               </div>
             </Link>
+            </motion.div>
           ))}
         </div>
       </div>

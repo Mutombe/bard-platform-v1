@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { PhoneIcon, EnvelopeSimpleIcon, ArrowRightIcon } from "@phosphor-icons/react";
 import { ART } from "../data/images.js";
+import SectionReveal from "./SectionReveal.jsx";
 
 /**
  * Advisory band — the "speak to a banker" institutional CTA module.
@@ -31,7 +32,7 @@ export default function AdvisoryBand() {
 
       <div className="relative container-bank section">
         <div className="grid grid-cols-12 gap-8 md:gap-12 items-center">
-          <div className="col-span-12 md:col-span-7">
+          <SectionReveal className="col-span-12 md:col-span-7">
             <p className="eyebrow mb-4">§ 06 · Advisory</p>
             <h2 className="display-xl text-navy-600 text-balance">
               We bank by relationship.{" "}
@@ -45,8 +46,8 @@ export default function AdvisoryBand() {
               trying to do. It tells you whether we are a partner you
               would like to spend a decade with.
             </p>
-          </div>
-          <div className="col-span-12 md:col-span-5">
+          </SectionReveal>
+          <SectionReveal delay={0.15} className="col-span-12 md:col-span-5">
             <div className="bg-paper rounded-xl p-8 md:p-10 shadow-[var(--shadow-card-lift)]">
               <p className="eyebrow mb-5">Open a conversation</p>
               <div className="space-y-4">
@@ -90,7 +91,7 @@ export default function AdvisoryBand() {
                 </Link>
               </div>
             </div>
-          </div>
+          </SectionReveal>
         </div>
       </div>
     </section>

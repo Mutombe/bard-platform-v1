@@ -50,10 +50,10 @@ export default function ProductGrid({ heading, eyebrow, products = [], showAll =
                   interior padding is the move that lets product cards read
                   as institutional rather than catalogue. */}
               <div className="bank-card-body lg:p-10 flex flex-col flex-1">
-                <p
-                  className="eyebrow mb-3"
-                  style={{ color: p.accent || "var(--color-orange-600)" }}
-                >
+                {/* Every product eyebrow uses the same brand orange so the
+                    grid reads as one rhythm; the photograph carries the
+                    individual identity of each product, not the label. */}
+                <p className="eyebrow eyebrow-accent mb-3">
                   {p.eyebrow}
                 </p>
                 <h3 className="font-display text-[22px] md:text-[24px] text-navy-600 mb-4 leading-tight">
