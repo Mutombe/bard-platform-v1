@@ -77,34 +77,40 @@ export default function Nav() {
       {/* ─── Audience strip (top tier, dark) ──────────────────────── */}
       <div className="bg-navy-700 text-white relative z-50">
         <div className="container-bank">
-          {/* Mobile tracking is tighter (0.04em vs 0.06em) so the five
-              audience labels fit a 375px viewport without scroll. The
-              right-side secondary links (Locations / Contact / Group)
-              are mobile-hidden — they live in the drawer. */}
-          <div className="flex items-stretch h-10 md:h-11 overflow-x-auto no-scrollbar">
-            {AUDIENCES.map((a) => {
-              const isActive = activeAudienceId === a.id;
-              return (
-                <NavLink
-                  key={a.id}
-                  to={a.path}
-                  className={() =>
-                    `flex items-center px-3.5 md:px-7 text-[12px] md:text-[13px] tracking-[0.04em] md:tracking-[0.06em] font-medium transition-colors whitespace-nowrap ${
-                      isActive
-                        ? "tab-active"
-                        : "text-white/80 hover:text-white hover:bg-white/5"
-                    }`
-                  }
-                >
-                  {a.label}
-                </NavLink>
-              );
-            })}
-            <div className="ml-auto hidden md:flex items-center gap-7 text-[13px] text-white/70 pr-1">
-              <Link to="/locations" className="hover:text-white">Locations</Link>
-              <Link to="/contact" className="hover:text-white">Contact us</Link>
-              <Link to="/group" className="hover:text-white">Bard Santner Group</Link>
+          {/* On mobile the five audience labels don't all fit a 375px
+              viewport (the long ones — "Private Banking", "International",
+              "Institutional" — push the strip to ~550px). The strip
+              scrolls horizontally and we layer a right-edge fade so the
+              scrollability reads at a glance without a visible scrollbar. */}
+          <div className="relative">
+            <div className="flex items-stretch h-10 md:h-11 overflow-x-auto no-scrollbar">
+              {AUDIENCES.map((a) => {
+                const isActive = activeAudienceId === a.id;
+                return (
+                  <NavLink
+                    key={a.id}
+                    to={a.path}
+                    className={() =>
+                      `flex items-center px-3.5 md:px-7 text-[12px] md:text-[13px] tracking-[0.04em] md:tracking-[0.06em] font-medium transition-colors whitespace-nowrap ${
+                        isActive
+                          ? "tab-active"
+                          : "text-white/80 hover:text-white hover:bg-white/5"
+                      }`
+                    }
+                  >
+                    {a.label}
+                  </NavLink>
+                );
+              })}
+              <div className="ml-auto hidden md:flex items-center gap-7 text-[13px] text-white/70 pr-1">
+                <Link to="/locations" className="hover:text-white">Locations</Link>
+                <Link to="/contact" className="hover:text-white">Contact us</Link>
+                <Link to="/group" className="hover:text-white">Bard Santner Group</Link>
+              </div>
             </div>
+            {/* Mobile-only right-edge fade — institutional scroll
+                affordance. Hidden on md+ where the strip fits cleanly. */}
+            <div className="md:hidden pointer-events-none absolute right-0 top-0 bottom-0 w-10 bg-gradient-to-l from-navy-700 to-transparent" />
           </div>
         </div>
       </div>

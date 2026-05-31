@@ -35,24 +35,31 @@ export default function Insights() {
         aside={<HoneycombAside />}
       />
 
-      {/* Filter bar */}
+      {/* Filter bar — mobile-aware. The six chips don't all fit a 375px
+          row so we scroll horizontally with a right-edge fade for the
+          scroll affordance. Sticky to the brand row top so the filter
+          travels with the reader. */}
       <section className="bg-milk border-b border-bone-200 sticky top-[64px] md:top-[80px] z-30">
-        <div className="container-bank py-4 overflow-x-auto no-scrollbar">
-          <div className="flex items-center gap-2">
-            {FILTERS.map((f) => (
-              <button
-                key={f.id}
-                onClick={() => setFilter(f.id)}
-                className={`px-4 py-2 rounded-full text-[13px] font-medium transition-colors whitespace-nowrap ${
-                  filter === f.id
-                    ? "bg-navy-600 text-white"
-                    : "bg-smoke text-navy-600 hover:bg-bone-200"
-                }`}
-              >
-                {f.label}
-              </button>
-            ))}
+        <div className="relative">
+          <div className="container-bank py-3 md:py-4 overflow-x-auto no-scrollbar">
+            <div className="flex items-center gap-2">
+              {FILTERS.map((f) => (
+                <button
+                  key={f.id}
+                  onClick={() => setFilter(f.id)}
+                  className={`px-3.5 md:px-4 py-2 rounded-full text-[12.5px] md:text-[13px] font-medium transition-colors whitespace-nowrap ${
+                    filter === f.id
+                      ? "bg-navy-600 text-white"
+                      : "bg-smoke text-navy-600 hover:bg-bone-200"
+                  }`}
+                >
+                  {f.label}
+                </button>
+              ))}
+            </div>
           </div>
+          {/* Mobile-only right-edge fade — scroll affordance */}
+          <div className="md:hidden pointer-events-none absolute right-0 top-0 bottom-0 w-10 bg-gradient-to-l from-milk to-transparent" />
         </div>
       </section>
 
