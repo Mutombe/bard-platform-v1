@@ -13,7 +13,7 @@ import { ART } from "../data/images.js";
  */
 export default function AdvisoryBand() {
   return (
-    <section className="relative bg-bone-100 border-t-2 border-orange-500 overflow-hidden">
+    <section className="relative bg-smoke border-t-2 border-orange-500 overflow-hidden">
       {/* Art backdrop — Lloyds-canonical horizontal blending: gallery
           photograph stays vibrant on the right (where the contact card
           sits on a white surface, framed by the visible art) while a
@@ -47,7 +47,7 @@ export default function AdvisoryBand() {
             </p>
           </div>
           <div className="col-span-12 md:col-span-5">
-            <div className="bg-white rounded-xl p-8 md:p-10 shadow-[var(--shadow-card-lift)]">
+            <div className="bg-paper rounded-xl p-8 md:p-10 shadow-[var(--shadow-card-lift)]">
               <p className="eyebrow mb-5">Open a conversation</p>
               <div className="space-y-4">
                 <a

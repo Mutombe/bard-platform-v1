@@ -40,7 +40,7 @@ export default function InsightDetail() {
       />
 
       {/* Breadcrumb */}
-      <div className="bg-white border-b border-bone-200">
+      <div className="bg-milk border-b border-bone-200">
         <div className="container-bank py-4">
           <Link to="/insights" className="text-[12.5px] text-bone-500 hover:text-navy-600 inline-flex items-center gap-1.5">
             <ArrowLeftIcon size={12} weight="bold" /> Back to Insights
@@ -49,7 +49,7 @@ export default function InsightDetail() {
       </div>
 
       {/* Article hero */}
-      <article className="bg-white">
+      <article className="bg-milk">
         <header className="container-bank pt-12 md:pt-20 pb-12">
           <div className="max-w-3xl mx-auto text-center">
             <p className="eyebrow eyebrow-accent mb-6">{it.eyebrow}</p>

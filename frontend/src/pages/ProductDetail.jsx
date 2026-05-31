@@ -52,7 +52,7 @@ export default function ProductDetail() {
       />
 
       {/* Breadcrumb */}
-      <div className="bg-white border-b border-bone-200">
+      <div className="bg-milk border-b border-bone-200">
         <div className="container-bank py-4">
           <nav className="text-[12.5px] text-bone-500 flex items-center gap-2">
             <Link to="/" className="hover:text-navy-600">Home</Link>
@@ -65,7 +65,7 @@ export default function ProductDetail() {
       </div>
 
       {/* Hero — split layout */}
-      <section className="bg-white">
+      <section className="bg-milk">
         <div className="container-bank section">
           <div className="grid grid-cols-12 gap-8 md:gap-12 items-start">
             <div className="col-span-12 md:col-span-7">
@@ -107,7 +107,7 @@ export default function ProductDetail() {
       <hr className="hairline" />
 
       {/* What's included */}
-      <section className="bg-bone-50 section">
+      <section className="bg-milk section">
         <div className="container-bank">
           <div className="grid grid-cols-12 gap-8 mb-10">
             <div className="col-span-12 md:col-span-4">
@@ -135,7 +135,7 @@ export default function ProductDetail() {
       </section>
 
       {/* How to apply */}
-      <section className="bg-white section">
+      <section className="bg-milk section">
         <div className="container-bank">
           <div className="grid grid-cols-12 gap-8 mb-10">
             <div className="col-span-12 md:col-span-4">
@@ -177,7 +177,7 @@ export default function ProductDetail() {
 
       {/* Related products */}
       {related.length > 0 && (
-        <section className="bg-bone-50 section">
+        <section className="bg-milk section">
           <div className="container-bank">
             <p className="eyebrow mb-4">§ Continue exploring</p>
             <h2 className="display-lg text-navy-600 mb-10">

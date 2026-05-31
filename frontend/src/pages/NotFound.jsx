@@ -7,7 +7,7 @@ export default function NotFound() {
   return (
     <PageTransition>
       <SEO title="Page not found" description="The page you were looking for could not be found." path="/404" noindex />
-      <section className="min-h-[70vh] bg-white flex items-center">
+      <section className="min-h-[70vh] bg-milk flex items-center">
         <div className="container-bank text-center max-w-xl mx-auto py-20">
           <Monogram size={56} color="var(--color-orange-500)" className="mx-auto mb-8" />
           <p className="eyebrow eyebrow-accent mb-4">§ 404</p>

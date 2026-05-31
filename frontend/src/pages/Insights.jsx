@@ -34,7 +34,7 @@ export default function Insights() {
       />
 
       {/* Filter bar */}
-      <section className="bg-white border-b border-bone-200 sticky top-[64px] md:top-[80px] z-30">
+      <section className="bg-milk border-b border-bone-200 sticky top-[64px] md:top-[80px] z-30">
         <div className="container-bank py-4 overflow-x-auto no-scrollbar">
           <div className="flex items-center gap-2">
             {FILTERS.map((f) => (
@@ -44,7 +44,7 @@ export default function Insights() {
                 className={`px-4 py-2 rounded-full text-[13px] font-medium transition-colors whitespace-nowrap ${
                   filter === f.id
                     ? "bg-navy-600 text-white"
-                    : "bg-bone-100 text-navy-600 hover:bg-bone-200"
+                    : "bg-smoke text-navy-600 hover:bg-bone-200"
                 }`}
               >
                 {f.label}
@@ -56,7 +56,7 @@ export default function Insights() {
 
       {/* Lead article */}
       {lead && (
-        <section className="bg-white section">
+        <section className="bg-milk section">
           <div className="container-bank">
             <Link to={`/insights/${lead.slug}`} className="group grid grid-cols-12 gap-8 md:gap-12 items-center">
               <div className="col-span-12 md:col-span-7">
@@ -91,7 +91,7 @@ export default function Insights() {
 
       {/* Remaining grid */}
       {rest.length > 0 && (
-        <section className="bg-bone-50 section">
+        <section className="bg-milk section">
           <div className="container-bank">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {rest.map((it, i) => (

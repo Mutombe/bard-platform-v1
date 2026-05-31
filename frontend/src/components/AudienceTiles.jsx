@@ -14,7 +14,7 @@ import { AUDIENCE_TILE } from "../data/images.js";
  */
 export default function AudienceTiles({ heading = "Banking experiences" }) {
   return (
-    <section className="section bg-white">
+    <section className="section bg-milk">
       <div className="container-bank">
         <div className="text-center mb-12 md:mb-16">
           <p className="eyebrow mb-4">§ 02 · How we organise</p>

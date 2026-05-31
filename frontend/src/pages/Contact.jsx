@@ -56,7 +56,7 @@ export default function Contact() {
       />
 
       {/* Channels grid */}
-      <section className="bg-white section">
+      <section className="bg-milk section">
         <div className="container-bank">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-16">
             {CHANNELS.map((c) => {
@@ -114,7 +114,7 @@ export default function Contact() {
                   </p>
                 </div>
               ) : (
-                <form onSubmit={onSubmit} className="p-8 md:p-10 rounded-xl bg-bone-50 border border-bone-200 space-y-6">
+                <form onSubmit={onSubmit} className="p-8 md:p-10 rounded-xl bg-milk border border-bone-200 space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <Field label="Full name" value={form.name} onChange={(v) => update("name", v)} required />
                     <Field label="Email" type="email" value={form.email} onChange={(v) => update("email", v)} required />

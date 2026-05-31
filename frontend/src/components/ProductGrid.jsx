@@ -11,7 +11,7 @@ import { PRODUCT } from "../data/images.js";
  */
 export default function ProductGrid({ heading, eyebrow, products = [], showAll = true }) {
   return (
-    <section className="section bg-bone-50 border-y border-bone-200">
+    <section className="section bg-milk border-y border-bone-200">
       <div className="container-bank">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-10 md:mb-14 gap-6">
           <div>
