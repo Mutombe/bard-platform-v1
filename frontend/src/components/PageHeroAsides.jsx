@@ -35,32 +35,30 @@ const layoutHex = (row, col, size, gap = 10) => {
   };
 };
 export function HoneycombAside() {
-  // Five editorial moments, all photographs — the orange "§ Editorial"
-  // label cell was removed: it read as a decorative placeholder rather
-  // than an institutional gesture, and the user flagged it. Cluster is
-  // now 2-on-top + 3-on-bottom: a stable hexagonal silhouette.
+  // Five editorial photographs + the orange "§ Editorial" anchor cell
+  // in the centre. The diaspora photo (1779292235920-5c7862429b35) was
+  // swapped for the becoming-a-bank "architect drafting" photo — the
+  // user wanted that specific tile replaced; everything else stays.
   const photos = [
     INSIGHT["the-bank-as-a-publishing-institution"],
     INSIGHT["africa-and-the-cross-border-rail"],
-    INSIGHT["the-diaspora-is-not-a-niche"],
+    INSIGHT["becoming-a-bank"],
     INSIGHT["wealth-and-the-second-conversation"],
     INSIGHT["the-quiet-case-for-a-deposit-base"],
   ];
   const SIZE = 118;
-  // Outer wrapper adds right padding so the honeycomb keeps a deliberate
-  // gap from the page's right edge instead of touching it. Inner relative
-  // box hosts the absolute-positioned hex tiles.
+  // Outer wrapper adds right padding so the cluster keeps a deliberate
+  // gap from the page's right edge instead of pressing against it.
   return (
     <div className="w-full pr-4 md:pr-8 lg:pr-10">
-      <div className="relative w-full max-w-[420px] h-[300px] mx-auto">
+      <div className="relative w-full max-w-[420px] h-[420px] mx-auto">
         {[
-          // Row 0 — two hexes, no offset
           [0, 0, photos[0], 0.0],
           [0, 1, photos[1], 0.08],
-          // Row 1 — three hexes, offset by xStep/2 (the honeycomb stagger)
           [1, 0, photos[2], 0.16],
-          [1, 1, photos[3], 0.24],
-          [1, 2, photos[4], 0.32],
+          [1, 1, "label", 0.24],
+          [1, 2, photos[3], 0.32],
+          [2, 1, photos[4], 0.40],
         ].map(([row, col, src, delay], i) => (
           <motion.div
             key={i}
@@ -71,12 +69,23 @@ export function HoneycombAside() {
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
           >
-            <img
-              src={src}
-              alt=""
-              className="w-full h-full object-cover"
-              style={{ filter: "saturate(0.78) brightness(0.93)" }}
-            />
+            {src === "label" ? (
+              <div className="w-full h-full bg-orange-500 flex flex-col items-center justify-center text-navy-900">
+                <span className="font-mono text-[10px] tracking-[0.22em] uppercase opacity-80">
+                  §
+                </span>
+                <span className="font-display text-[13px] font-medium mt-1">
+                  Editorial
+                </span>
+              </div>
+            ) : (
+              <img
+                src={src}
+                alt=""
+                className="w-full h-full object-cover"
+                style={{ filter: "saturate(0.78) brightness(0.93)" }}
+              />
+            )}
           </motion.div>
         ))}
       </div>
