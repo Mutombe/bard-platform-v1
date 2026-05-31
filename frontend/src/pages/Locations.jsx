@@ -85,12 +85,12 @@ export default function Locations() {
 
       <section className="bg-milk section">
         <div className="container-bank">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
             {LOCATIONS.map((loc) => (
-              <article key={loc.city} className="bank-card p-8 md:p-10 flex flex-col h-full">
-                <div className="flex items-start justify-between mb-4">
-                  <h2 className="font-display text-[24px] text-navy-600">{loc.city}</h2>
-                  <span className={`text-[10px] tracking-[0.18em] uppercase px-2 py-1 rounded ${
+              <article key={loc.city} className="bank-card p-6 md:p-10 flex flex-col h-full">
+                <div className="flex items-start justify-between gap-3 mb-3 md:mb-4">
+                  <h2 className="font-display text-[22px] md:text-[24px] text-navy-600">{loc.city}</h2>
+                  <span className={`text-[10px] tracking-[0.18em] uppercase px-2 py-1 rounded shrink-0 ${
                     loc.status === "Open"
                       ? "bg-orange-50 text-orange-700"
                       : "bg-smoke text-bone-500"
@@ -98,11 +98,11 @@ export default function Locations() {
                     {loc.status}
                   </span>
                 </div>
-                <p className="text-[12px] tracking-[0.12em] uppercase text-bone-500 mb-5">
+                <p className="text-[11.5px] md:text-[12px] tracking-[0.12em] uppercase text-bone-500 mb-4 md:mb-5">
                   {loc.type}
                 </p>
 
-                <div className="space-y-3 text-[13.5px] text-bone-600 flex-1">
+                <div className="space-y-3 text-[13px] md:text-[13.5px] text-bone-600 flex-1">
                   <p className="flex items-start gap-2.5">
                     <MapPinIcon size={16} weight="regular" className="text-orange-600 mt-0.5 shrink-0" />
                     <span className="leading-relaxed">{loc.address}</span>
@@ -117,7 +117,7 @@ export default function Locations() {
                   </p>
                 </div>
 
-                <p className="mt-5 pt-5 border-t border-bone-200 text-[12.5px] text-bone-500 leading-relaxed">
+                <p className="mt-4 md:mt-5 pt-4 md:pt-5 border-t border-bone-200 text-[12px] md:text-[12.5px] text-bone-500 leading-relaxed">
                   {loc.note}
                 </p>
               </article>

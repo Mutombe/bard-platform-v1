@@ -13,7 +13,7 @@ export default function ProductGrid({ heading, eyebrow, products = [], showAll =
   return (
     <section className="section bg-milk border-y border-bone-200">
       <div className="container-bank">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-10 md:mb-14 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-8 md:mb-14 gap-5">
           <div>
             {eyebrow && <p className="eyebrow mb-3">{eyebrow}</p>}
             <h2 className="display-xl text-navy-600 text-balance max-w-2xl">
@@ -21,13 +21,13 @@ export default function ProductGrid({ heading, eyebrow, products = [], showAll =
             </h2>
           </div>
           {showAll && (
-            <Link to="/banking" className="hover-line text-[14px] font-medium text-orange-600">
+            <Link to="/banking" className="hover-line text-[14px] font-medium text-orange-600 inline-flex">
               View all products →
             </Link>
           )}
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
           {products.map((p, i) => (
             <motion.article
               key={p.slug}
@@ -49,25 +49,23 @@ export default function ProductGrid({ heading, eyebrow, products = [], showAll =
               {/* Bold orange accent line where the photograph meets the
                   content. Brand signature exactly where the eye lands. */}
               <div className="h-[3px] bg-orange-500" />
-              {/* Lloyds-grade card body — 32 mobile, 40 lg. The generous
-                  interior padding is the move that lets product cards read
-                  as institutional rather than catalogue. */}
+              {/* Lloyds-grade card body — bank-card-body now responsive
+                  via the token system: 24 mobile / 32 md / 40 lg. The
+                  generous interior padding is the move that lets product
+                  cards read as institutional rather than catalogue. */}
               <div className="bank-card-body lg:p-10 flex flex-col flex-1">
-                {/* Every product eyebrow uses the same brand orange so the
-                    grid reads as one rhythm; the photograph carries the
-                    individual identity of each product, not the label. */}
                 <p className="eyebrow eyebrow-accent mb-3">
                   {p.eyebrow}
                 </p>
-                <h3 className="font-display text-[22px] md:text-[24px] text-navy-600 mb-4 leading-tight">
+                <h3 className="font-display text-[20px] md:text-[24px] text-navy-600 mb-3 md:mb-4 leading-tight">
                   {p.name}
                 </h3>
-                <p className="text-[15px] text-bone-600 leading-relaxed mb-7 flex-1">
+                <p className="text-[14.5px] md:text-[15px] text-bone-600 leading-relaxed mb-6 md:mb-7 flex-1">
                   {p.summary}
                 </p>
                 <Link
                   to={`/products/${p.slug}`}
-                  className="inline-flex items-center gap-2 text-[14px] font-medium text-navy-600 hover:text-orange-600 transition-colors"
+                  className="inline-flex items-center gap-2 text-[13.5px] md:text-[14px] font-medium text-navy-600 hover:text-orange-600 transition-colors"
                 >
                   Explore {p.name}
                   <ArrowRightIcon size={13} weight="bold" />

@@ -70,7 +70,7 @@ export default function ProductDetail() {
           <div className="grid grid-cols-12 gap-8 md:gap-12 items-start">
             <div className="col-span-12 md:col-span-7">
               <div
-                className="aspect-[5/4] rounded-xl bg-bone-200 bg-cover bg-center mb-6"
+                className="aspect-[16/10] md:aspect-[5/4] rounded-xl bg-bone-200 bg-cover bg-center mb-6"
                 style={{
                   backgroundImage: `url(${PRODUCT[p.slug] || p.image || ""})`,
                   filter: "saturate(0.82) brightness(0.95)",
@@ -78,18 +78,18 @@ export default function ProductDetail() {
               />
             </div>
             <div className="col-span-12 md:col-span-5">
-              <p className="eyebrow eyebrow-accent mb-4">
+              <p className="eyebrow eyebrow-accent mb-3 md:mb-4">
                 {p.eyebrow}
               </p>
-              <h1 className="display-xl text-navy-600 mb-6">{p.name}</h1>
-              <p className="text-[17px] text-bone-600 leading-relaxed mb-8">
+              <h1 className="display-xl text-navy-600 mb-5 md:mb-6">{p.name}</h1>
+              <p className="text-[15.5px] md:text-[17px] text-bone-600 leading-relaxed mb-7 md:mb-8">
                 {p.summary}
               </p>
-              <div className="flex flex-wrap items-center gap-3 mb-6">
-                <Link to={`/contact?product=${p.slug}`} className="btn btn-primary">
+              <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-3 mb-5 md:mb-6">
+                <Link to={`/contact?product=${p.slug}`} className="btn btn-primary w-full sm:w-auto justify-center">
                   Apply for {p.name} <ArrowRightIcon size={14} weight="bold" />
                 </Link>
-                <Link to="/contact" className="btn btn-ghost-light">
+                <Link to="/contact" className="btn btn-ghost-light w-full sm:w-auto justify-center">
                   Speak to a banker
                 </Link>
               </div>
@@ -106,21 +106,21 @@ export default function ProductDetail() {
       {/* What's included */}
       <section className="bg-milk section">
         <div className="container-bank">
-          <div className="grid grid-cols-12 gap-8 mb-10">
+          <div className="grid grid-cols-12 gap-7 md:gap-8 mb-8 md:mb-10">
             <div className="col-span-12 md:col-span-4">
-              <p className="eyebrow mb-4">§ What's included</p>
+              <p className="eyebrow mb-3 md:mb-4">§ What's included</p>
               <h2 className="display-lg text-navy-600">
                 The features that travel with this product.
               </h2>
             </div>
             <div className="col-span-12 md:col-span-8">
-              <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-5">
+              <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 md:gap-y-5">
                 {p.features.map((f, i) => (
                   <li key={i} className="flex items-start gap-3">
                     <span className="mt-1 w-5 h-5 rounded-full bg-orange-500 flex items-center justify-center shrink-0">
                       <CheckIcon size={12} weight="bold" className="text-white" />
                     </span>
-                    <span className="text-[15px] text-bone-700 leading-relaxed">
+                    <span className="text-[14.5px] md:text-[15px] text-bone-700 leading-relaxed">
                       {f}
                     </span>
                   </li>
@@ -134,36 +134,36 @@ export default function ProductDetail() {
       {/* How to apply */}
       <section className="bg-milk section">
         <div className="container-bank">
-          <div className="grid grid-cols-12 gap-8 mb-10">
+          <div className="grid grid-cols-12 gap-7 md:gap-8 mb-8 md:mb-10">
             <div className="col-span-12 md:col-span-4">
-              <p className="eyebrow mb-4">§ How to apply</p>
+              <p className="eyebrow mb-3 md:mb-4">§ How to apply</p>
               <h2 className="display-lg text-navy-600">
                 Three steps, no theatre.
               </h2>
             </div>
             <div className="col-span-12 md:col-span-8">
-              <ol className="space-y-6">
+              <ol className="space-y-5 md:space-y-6">
                 {[
                   { n: "01", title: "Tell us who you are.", body: "Online application, in-branch, or by appointment with a banker. KYC documents at hand: ID, proof of address, source of funds." },
                   { n: "02", title: "We assess.", body: "Underwriting and onboarding usually complete within 48 hours for personal products, up to 5 business days for credit facilities." },
                   { n: "03", title: "We open the account.", body: "Welcome pack, card despatch, online and mobile banking activation, introduction to your banker if applicable." },
                 ].map((s) => (
-                  <li key={s.n} className="grid grid-cols-12 gap-4">
-                    <span className="col-span-2 md:col-span-1 font-mono text-[13px] text-orange-600 pt-1">
+                  <li key={s.n} className="grid grid-cols-12 gap-3 md:gap-4">
+                    <span className="col-span-2 md:col-span-1 font-mono text-[12.5px] md:text-[13px] text-orange-600 pt-1">
                       {s.n}
                     </span>
                     <div className="col-span-10 md:col-span-11">
-                      <p className="font-display text-[20px] text-navy-600 mb-1">{s.title}</p>
-                      <p className="text-[14.5px] text-bone-600 leading-relaxed">{s.body}</p>
+                      <p className="font-display text-[18px] md:text-[20px] text-navy-600 mb-1 leading-tight">{s.title}</p>
+                      <p className="text-[14px] md:text-[14.5px] text-bone-600 leading-relaxed">{s.body}</p>
                     </div>
                   </li>
                 ))}
               </ol>
-              <div className="mt-10 flex flex-wrap gap-3">
-                <Link to={`/contact?product=${p.slug}`} className="btn btn-navy">
+              <div className="mt-8 md:mt-10 flex flex-col sm:flex-row sm:flex-wrap gap-3">
+                <Link to={`/contact?product=${p.slug}`} className="btn btn-navy w-full sm:w-auto justify-center">
                   Start your application <ArrowRightIcon size={14} weight="bold" />
                 </Link>
-                <Link to="/locations" className="btn btn-ghost-light">
+                <Link to="/locations" className="btn btn-ghost-light w-full sm:w-auto justify-center">
                   Visit a branch
                 </Link>
               </div>
@@ -176,17 +176,17 @@ export default function ProductDetail() {
       {related.length > 0 && (
         <section className="bg-milk section">
           <div className="container-bank">
-            <p className="eyebrow mb-4">§ Continue exploring</p>
-            <h2 className="display-lg text-navy-600 mb-10">
+            <p className="eyebrow mb-3 md:mb-4">§ Continue exploring</p>
+            <h2 className="display-lg text-navy-600 mb-8 md:mb-10">
               Other products on the same shelf.
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
               {related.map((r) => (
-                <Link key={r.slug} to={`/products/${r.slug}`} className="bank-card flex flex-col h-full p-6">
+                <Link key={r.slug} to={`/products/${r.slug}`} className="bank-card flex flex-col h-full p-5 md:p-6">
                   <p className="eyebrow eyebrow-accent mb-2">{r.eyebrow}</p>
-                  <h3 className="font-display text-[20px] text-navy-600 mb-3">{r.name}</h3>
-                  <p className="text-[14px] text-bone-600 leading-relaxed mb-4 flex-1">{r.summary}</p>
-                  <span className="inline-flex items-center gap-2 text-[13px] font-medium text-orange-600">
+                  <h3 className="font-display text-[19px] md:text-[20px] text-navy-600 mb-3">{r.name}</h3>
+                  <p className="text-[13.5px] md:text-[14px] text-bone-600 leading-relaxed mb-4 flex-1">{r.summary}</p>
+                  <span className="inline-flex items-center gap-2 text-[12.5px] md:text-[13px] font-medium text-orange-600">
                     Explore <ArrowRightIcon size={12} weight="bold" />
                   </span>
                 </Link>

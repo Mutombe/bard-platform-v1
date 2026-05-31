@@ -15,12 +15,12 @@ import SectionReveal from "./SectionReveal.jsx";
 export default function AdvisoryBand() {
   return (
     <section className="relative bg-smoke border-t-2 border-orange-500 overflow-hidden">
-      {/* Art backdrop — Lloyds-canonical horizontal blending: gallery
-          photograph stays vibrant on the right (where the contact card
-          sits on a white surface, framed by the visible art) while a
-          strong bone-100 gradient on the left gives the editorial
-          headline a clean canvas to sit on. Heavy at 97% on the left,
-          fading to clear at ~60% width onward. */}
+      {/* Art backdrop. On desktop the gradient runs horizontally
+          (heavy left, clear right) so the gallery photograph frames
+          the white contact card on the right. On mobile the whole
+          section stacks vertically — the horizontal fade would leave
+          the upper-right area too transparent, so we layer a softer
+          all-over wash instead so the text still reads against the art. */}
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
@@ -28,10 +28,13 @@ export default function AdvisoryBand() {
           filter: "saturate(0.65) brightness(0.95) contrast(1.05)",
         }}
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-bone-100/97 via-bone-100/65 to-bone-100/10" />
+      {/* Mobile wash — uniform bone-100/90 across the whole panel */}
+      <div className="absolute inset-0 md:hidden bg-bone-100/92" />
+      {/* Desktop wash — horizontal Lloyds gradient */}
+      <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-bone-100/97 via-bone-100/65 to-bone-100/10" />
 
       <div className="relative container-bank section">
-        <div className="grid grid-cols-12 gap-8 md:gap-12 items-center">
+        <div className="grid grid-cols-12 gap-10 md:gap-12 items-center">
           <SectionReveal className="col-span-12 md:col-span-7">
             <p className="eyebrow mb-4">§ 06 · Advisory</p>
             <h2 className="display-xl text-navy-600 text-balance">
@@ -40,7 +43,7 @@ export default function AdvisoryBand() {
                 Start one.
               </span>
             </h2>
-            <p className="mt-6 text-[16px] text-bone-600 max-w-xl leading-relaxed">
+            <p className="mt-5 md:mt-6 text-[15.5px] md:text-[16px] text-bone-600 max-w-xl leading-relaxed">
               The first conversation costs nothing and commits nothing.
               It tells us whether we are the right bank for what you are
               trying to do. It tells you whether we are a partner you
@@ -48,46 +51,46 @@ export default function AdvisoryBand() {
             </p>
           </SectionReveal>
           <SectionReveal delay={0.15} className="col-span-12 md:col-span-5">
-            <div className="bg-paper rounded-xl p-8 md:p-10 shadow-[var(--shadow-card-lift)]">
+            <div className="bg-paper rounded-xl p-6 md:p-10 shadow-[var(--shadow-card-lift)]">
               <p className="eyebrow mb-5">Open a conversation</p>
-              <div className="space-y-4">
+              <div className="space-y-3 md:space-y-4">
                 <a
                   href="tel:+263861200700"
-                  className="flex items-center justify-between p-5 rounded-lg border border-bone-200 hover:border-orange-500 transition-colors"
+                  className="flex items-center justify-between p-4 md:p-5 rounded-lg border border-bone-200 hover:border-orange-500 transition-colors"
                 >
-                  <div className="flex items-center gap-4">
-                    <PhoneIcon size={22} weight="regular" className="text-orange-600" />
-                    <div>
-                      <p className="text-[15px] font-medium text-navy-600">
+                  <div className="flex items-center gap-3 md:gap-4 min-w-0">
+                    <PhoneIcon size={20} weight="regular" className="text-orange-600 shrink-0" />
+                    <div className="min-w-0">
+                      <p className="text-[14.5px] md:text-[15px] font-medium text-navy-600">
                         +263 861 200 0700
                       </p>
-                      <p className="text-[13px] text-bone-500 mt-0.5">
-                        Monday-Friday, 08:00-17:00 CAT
+                      <p className="text-[12px] md:text-[13px] text-bone-500 mt-0.5">
+                        Mon–Fri, 08:00–17:00 CAT
                       </p>
                     </div>
                   </div>
-                  <ArrowRightIcon size={15} weight="bold" className="text-bone-400" />
+                  <ArrowRightIcon size={14} weight="bold" className="text-bone-400 shrink-0" />
                 </a>
                 <a
                   href="mailto:info@bardsantner.com"
-                  className="flex items-center justify-between p-5 rounded-lg border border-bone-200 hover:border-orange-500 transition-colors"
+                  className="flex items-center justify-between p-4 md:p-5 rounded-lg border border-bone-200 hover:border-orange-500 transition-colors"
                 >
-                  <div className="flex items-center gap-4">
-                    <EnvelopeSimpleIcon size={22} weight="regular" className="text-orange-600" />
-                    <div>
-                      <p className="text-[15px] font-medium text-navy-600">
+                  <div className="flex items-center gap-3 md:gap-4 min-w-0">
+                    <EnvelopeSimpleIcon size={20} weight="regular" className="text-orange-600 shrink-0" />
+                    <div className="min-w-0">
+                      <p className="text-[14.5px] md:text-[15px] font-medium text-navy-600 truncate">
                         info@bardsantner.com
                       </p>
-                      <p className="text-[13px] text-bone-500 mt-0.5">
-                        Response within one business day
+                      <p className="text-[12px] md:text-[13px] text-bone-500 mt-0.5">
+                        Reply within one business day
                       </p>
                     </div>
                   </div>
-                  <ArrowRightIcon size={15} weight="bold" className="text-bone-400" />
+                  <ArrowRightIcon size={14} weight="bold" className="text-bone-400 shrink-0" />
                 </a>
-                <Link to="/contact" className="btn btn-navy w-full justify-center mt-3">
+                <Link to="/contact" className="btn btn-navy w-full justify-center mt-2 md:mt-3">
                   Request a banker
-                  <ArrowRightIcon size={15} weight="bold" />
+                  <ArrowRightIcon size={14} weight="bold" />
                 </Link>
               </div>
             </div>

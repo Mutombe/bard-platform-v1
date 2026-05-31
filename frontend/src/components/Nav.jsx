@@ -1,20 +1,32 @@
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { MagnifyingGlassIcon, LockIcon, ListIcon, XIcon, CaretDownIcon } from "@phosphor-icons/react";
+import {
+  MagnifyingGlassIcon,
+  LockIcon,
+  ListIcon,
+  XIcon,
+  ArrowRightIcon,
+} from "@phosphor-icons/react";
 import { AUDIENCES } from "../data/audiences.js";
 
 /**
- * Institutional Nav. Modelled directly on Lloyds + AfrAsia.
+ * Institutional Nav. Modelled on Lloyds + AfrAsia.
  *
  *   ╔══════════════════════════════════════════════════════════════════╗
- *   ║ Personal   Business   Private   International   Institutional   ║   ← dark audience strip
+ *   ║ Personal · Business · Private · International · Institutional   ║   ← audience strip
  *   ╠══════════════════════════════════════════════════════════════════╣
- *   ║ [Monogram] BARD SANTNER  Banking  Wealth  Markets  Insights  About    [Search] [Log in] ║
+ *   ║ [Mark]  BARD SANTNER   Banking  Wealth  Markets  …   [Search] [Log in] ║
  *   ╚══════════════════════════════════════════════════════════════════╝
  *
- * Active audience tab is highlighted. The primary nav row stays consistent
- * across audiences — only the active audience changes the visible CTA copy
- * deeper inside each page.
+ * Mobile behaviour:
+ *  • Audience strip remains scrollable but tightens its tracking and
+ *    padding so the five labels survive a 375px viewport without losing
+ *    institutional weight.
+ *  • Brand row keeps a 44×44 hamburger touch target. Login becomes
+ *    icon-only on mobile — the verb moves into the drawer where it has
+ *    room to be a primary CTA.
+ *  • Mobile drawer is a full-screen panel with backdrop, scroll-lock,
+ *    and a compact link scale (no more enormous display-md links).
  */
 
 const PRIMARY_NAV = [
@@ -24,6 +36,12 @@ const PRIMARY_NAV = [
   { label: "Insights", to: "/insights" },
   { label: "Group", to: "/group" },
   { label: "About", to: "/about" },
+];
+
+const DRAWER_SECONDARY = [
+  { label: "Locations", to: "/locations" },
+  { label: "Contact us", to: "/contact" },
+  { label: "Leadership", to: "/leadership" },
 ];
 
 export default function Nav() {
@@ -41,10 +59,14 @@ export default function Nav() {
   // Close mobile drawer on every route change.
   useEffect(() => setMobileOpen(false), [loc.pathname]);
 
-  // The active audience is whichever audience-landing path is in the URL.
-  // When the user is on / or a non-audience page, default the visual
-  // active state to "Personal" — the largest cohort and the canonical
-  // entry point. This keeps the audience strip from feeling unanchored.
+  // Scroll-lock the page body while the drawer is open so the drawer
+  // owns the entire viewport's focus.
+  useEffect(() => {
+    if (mobileOpen) document.body.classList.add("scroll-lock");
+    else document.body.classList.remove("scroll-lock");
+    return () => document.body.classList.remove("scroll-lock");
+  }, [mobileOpen]);
+
   const matchedAudienceId = AUDIENCES.find((a) =>
     loc.pathname.startsWith(a.path)
   )?.id;
@@ -55,10 +77,11 @@ export default function Nav() {
       {/* ─── Audience strip (top tier, dark) ──────────────────────── */}
       <div className="bg-navy-700 text-white relative z-50">
         <div className="container-bank">
-          {/* Audience strip — items-stretch so the active tab is a clean
-              full-height rectangular block from top to bottom of the strip.
-              No rounded corners, no flares, no under-rules. */}
-          <div className="flex items-stretch h-11 overflow-x-auto no-scrollbar">
+          {/* Mobile tracking is tighter (0.04em vs 0.06em) so the five
+              audience labels fit a 375px viewport without scroll. The
+              right-side secondary links (Locations / Contact / Group)
+              are mobile-hidden — they live in the drawer. */}
+          <div className="flex items-stretch h-10 md:h-11 overflow-x-auto no-scrollbar">
             {AUDIENCES.map((a) => {
               const isActive = activeAudienceId === a.id;
               return (
@@ -66,7 +89,7 @@ export default function Nav() {
                   key={a.id}
                   to={a.path}
                   className={() =>
-                    `flex items-center px-5 md:px-7 text-[13px] tracking-[0.06em] font-medium transition-colors whitespace-nowrap ${
+                    `flex items-center px-3.5 md:px-7 text-[12px] md:text-[13px] tracking-[0.04em] md:tracking-[0.06em] font-medium transition-colors whitespace-nowrap ${
                       isActive
                         ? "tab-active"
                         : "text-white/80 hover:text-white hover:bg-white/5"
@@ -77,18 +100,10 @@ export default function Nav() {
                 </NavLink>
               );
             })}
-            {/* Right-side links share the same vertical box as the tabs so
-                their text baselines align with the tab labels. */}
-            <div className="ml-auto flex items-center gap-7 text-[13px] text-white/70 pr-1">
-              <Link to="/locations" className="hover:text-white hidden md:inline">
-                Locations
-              </Link>
-              <Link to="/contact" className="hover:text-white hidden md:inline">
-                Contact us
-              </Link>
-              <Link to="/group" className="hover:text-white hidden md:inline">
-                Bard Santner Group
-              </Link>
+            <div className="ml-auto hidden md:flex items-center gap-7 text-[13px] text-white/70 pr-1">
+              <Link to="/locations" className="hover:text-white">Locations</Link>
+              <Link to="/contact" className="hover:text-white">Contact us</Link>
+              <Link to="/group" className="hover:text-white">Bard Santner Group</Link>
             </div>
           </div>
         </div>
@@ -97,25 +112,36 @@ export default function Nav() {
       {/* ─── Brand row (white, sticky) ───────────────────────────── */}
       <header
         className={`sticky top-0 z-40 bg-white transition-shadow ${
-          scrolled ? "shadow-[0_1px_0_0_var(--color-bone-200),0_8px_24px_rgba(12,10,20,0.04)]" : "border-b border-bone-200"
+          scrolled
+            ? "shadow-[0_1px_0_0_var(--color-bone-200),0_8px_24px_rgba(12,10,20,0.04)]"
+            : "border-b border-bone-200"
         }`}
       >
         <div className="container-bank">
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Brand mark */}
-            <Link to="/" className="flex items-center gap-3 shrink-0" aria-label="Bard Santner home">
-              <img src="/favicon.png" alt="" className="h-9 w-9 md:h-10 md:w-10 object-contain" loading="eager" />
-              <span className="hidden sm:flex flex-col leading-none">
-                <span className="font-display text-[15px] md:text-[17px] tracking-[0.04em] text-navy-600 font-medium uppercase">
+            <Link
+              to="/"
+              className="flex items-center gap-3 shrink-0"
+              aria-label="Bard Santner home"
+            >
+              <img
+                src="/favicon.png"
+                alt=""
+                className="h-9 w-9 md:h-10 md:w-10 object-contain"
+                loading="eager"
+              />
+              <span className="flex flex-col leading-none">
+                <span className="font-display text-[14px] md:text-[17px] tracking-[0.04em] text-navy-600 font-medium uppercase">
                   Bard Santner
                 </span>
-                <span className="text-[9.5px] tracking-[0.18em] text-bone-500 uppercase mt-0.5">
+                <span className="hidden sm:inline-block text-[9.5px] tracking-[0.18em] text-bone-500 uppercase mt-0.5">
                   Markets Inc
                 </span>
               </span>
             </Link>
 
-            {/* Primary nav */}
+            {/* Primary nav — desktop */}
             <nav className="hidden lg:flex items-center gap-8">
               {PRIMARY_NAV.map((l) => (
                 <NavLink
@@ -134,27 +160,29 @@ export default function Nav() {
               ))}
             </nav>
 
-            {/* Trailing actions */}
+            {/* Trailing actions — search/login on desktop, hamburger on mobile */}
             <div className="flex items-center gap-2 md:gap-3">
               <button
                 aria-label="Search"
-                className="hidden md:flex w-9 h-9 items-center justify-center rounded-full hover:bg-smoke text-navy-600"
+                className="hidden md:flex w-10 h-10 items-center justify-center rounded-full hover:bg-smoke text-navy-600"
               >
                 <MagnifyingGlassIcon size={18} weight="regular" />
               </button>
+              {/* Desktop login — full pill. Mobile login moves to drawer. */}
               <a
                 href="https://online.bardsantnerbank.com"
-                className="btn btn-ghost-light text-[14px] py-3 px-5"
+                className="hidden md:inline-flex btn btn-ghost-light text-[14px] py-3 px-5"
               >
                 <LockIcon size={14} weight="bold" />
                 Log in
               </a>
+              {/* Mobile hamburger — 44px square touch target */}
               <button
                 onClick={() => setMobileOpen(true)}
                 aria-label="Open menu"
-                className="lg:hidden p-2 text-navy-600"
+                className="lg:hidden w-11 h-11 flex items-center justify-center text-navy-600 -mr-1 rounded-md hover:bg-smoke"
               >
-                <ListIcon size={22} weight="bold" />
+                <ListIcon size={24} weight="bold" />
               </button>
             </div>
           </div>
@@ -163,57 +191,104 @@ export default function Nav() {
 
       {/* ─── Mobile drawer ───────────────────────────────────────── */}
       {mobileOpen && (
-        <div className="fixed inset-0 z-50 lg:hidden bg-white">
-          <div className="container-bank">
-            <div className="flex items-center justify-between h-16">
-              <Link to="/" onClick={() => setMobileOpen(false)} className="flex items-center gap-3">
-                <img src="/favicon.png" alt="" className="h-8 w-8 object-contain" />
-                <span className="font-display text-[16px] tracking-[0.04em] text-navy-600 uppercase">
+        <>
+          {/* Backdrop — tap-to-close. Lives below the panel z. */}
+          <button
+            type="button"
+            aria-label="Close menu"
+            onClick={() => setMobileOpen(false)}
+            className="fixed inset-0 z-[55] lg:hidden bg-ink/40 backdrop-blur-[2px]"
+          />
+          {/* Panel — full-screen on small phones, side-drawer feel via max-w
+              on larger mobile. Scrollable internally. */}
+          <div
+            role="dialog"
+            aria-modal="true"
+            className="fixed inset-y-0 right-0 z-[60] lg:hidden w-full max-w-[420px] bg-white shadow-[0_24px_80px_rgba(12,10,20,0.18)] flex flex-col"
+          >
+            {/* Drawer head */}
+            <div className="px-6 pt-5 pb-4 border-b border-bone-200 flex items-center justify-between">
+              <Link
+                to="/"
+                onClick={() => setMobileOpen(false)}
+                className="flex items-center gap-3"
+              >
+                <img
+                  src="/favicon.png"
+                  alt=""
+                  className="h-8 w-8 object-contain"
+                />
+                <span className="font-display text-[15px] tracking-[0.04em] text-navy-600 uppercase font-medium">
                   Bard Santner
                 </span>
               </Link>
-              <button onClick={() => setMobileOpen(false)} aria-label="Close menu" className="p-2">
-                <XIcon size={24} weight="bold" />
+              <button
+                onClick={() => setMobileOpen(false)}
+                aria-label="Close menu"
+                className="w-11 h-11 flex items-center justify-center -mr-2 rounded-md hover:bg-smoke text-navy-600"
+              >
+                <XIcon size={22} weight="bold" />
               </button>
             </div>
 
-            <hr className="hairline" />
-
-            <div className="py-6">
-              <p className="eyebrow mb-3">Choose your context</p>
-              <div className="grid grid-cols-2 gap-2 mb-8">
+            {/* Drawer body — scrolls internally */}
+            <div className="flex-1 overflow-y-auto px-6 py-7">
+              {/* Audience grid */}
+              <p className="eyebrow mb-4">Choose your context</p>
+              <div className="grid grid-cols-2 gap-2.5 mb-8">
                 {AUDIENCES.map((a) => (
                   <Link
                     key={a.id}
                     to={a.path}
                     onClick={() => setMobileOpen(false)}
-                    className={`block p-3 rounded-md border ${
+                    className={`flex items-center justify-between gap-2 px-4 py-3.5 rounded-md border transition-colors ${
                       activeAudienceId === a.id
-                        ? "border-orange-500 bg-orange-50"
-                        : "border-bone-200"
+                        ? "border-orange-500 bg-orange-50 text-navy-700"
+                        : "border-bone-200 bg-paper text-navy-600 hover:border-orange-300"
                     }`}
                   >
-                    <span className="text-[13px] font-medium text-navy-600">
+                    <span className="text-[13.5px] font-medium leading-tight">
                       {a.label}
                     </span>
+                    <ArrowRightIcon size={12} weight="bold" className="opacity-60 shrink-0" />
                   </Link>
                 ))}
               </div>
 
-              <p className="eyebrow mb-3">The bank</p>
-              <nav className="flex flex-col gap-1 mb-8">
+              {/* Primary nav — compact size, not display-md huge */}
+              <p className="eyebrow mb-4">The bank</p>
+              <nav className="flex flex-col mb-8 border-y border-bone-200">
                 {PRIMARY_NAV.map((l) => (
                   <Link
                     key={l.to}
                     to={l.to}
                     onClick={() => setMobileOpen(false)}
-                    className="display-md py-2 text-navy-600"
+                    className="flex items-center justify-between py-4 text-[17px] font-medium text-navy-600 border-b border-bone-100 last:border-b-0 hover:text-orange-600 transition-colors"
+                  >
+                    <span>{l.label}</span>
+                    <ArrowRightIcon size={13} weight="bold" className="opacity-50" />
+                  </Link>
+                ))}
+              </nav>
+
+              {/* Secondary links */}
+              <p className="eyebrow mb-4">Reach us</p>
+              <nav className="flex flex-col gap-3 mb-9">
+                {DRAWER_SECONDARY.map((l) => (
+                  <Link
+                    key={l.to}
+                    to={l.to}
+                    onClick={() => setMobileOpen(false)}
+                    className="text-[14.5px] text-bone-600 hover:text-navy-600 transition-colors"
                   >
                     {l.label}
                   </Link>
                 ))}
               </nav>
+            </div>
 
+            {/* Drawer foot — login + speak to a banker */}
+            <div className="px-6 py-5 border-t border-bone-200 bg-bone-50/60 space-y-3">
               <a
                 href="https://online.bardsantnerbank.com"
                 className="btn btn-navy w-full justify-center"
@@ -223,13 +298,14 @@ export default function Nav() {
               <Link
                 to="/contact"
                 onClick={() => setMobileOpen(false)}
-                className="btn btn-ghost-light w-full justify-center mt-3"
+                className="btn btn-ghost-light w-full justify-center"
               >
                 Speak to a banker
+                <ArrowRightIcon size={14} weight="bold" />
               </Link>
             </div>
           </div>
-        </div>
+        </>
       )}
     </>
   );

@@ -18,8 +18,12 @@ export default function QuickActionStrip({ actions = [], tint = "navy" }) {
 
   return (
     <section className={`${tintBg} text-white`}>
-      <div className="container-bank py-6 md:py-7">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+      {/* Mobile padding lifts to py-7 (28px) — same as desktop — so the
+          strip reads as a confident band, not a compressed one. Pills
+          stack 2×2 on mobile with a slightly wider gap (gap-2.5 → gap-3)
+          to keep symmetry with the rest of the system's spacing rhythm. */}
+      <div className="container-bank py-7 md:py-7">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 md:gap-3">
           {actions.map((a) => {
             const Comp = a.external ? "a" : Link;
             const linkProps = a.external
@@ -31,10 +35,10 @@ export default function QuickActionStrip({ actions = [], tint = "navy" }) {
                 {...linkProps}
                 className="pill pill-outline"
               >
-                <span className="text-[13.5px] md:text-[14px] font-medium leading-tight pr-2">
+                <span className="text-[12.5px] md:text-[14px] font-medium leading-tight pr-1.5">
                   {a.label}
                 </span>
-                <CaretRightIcon size={14} weight="bold" className="shrink-0" />
+                <CaretRightIcon size={13} weight="bold" className="shrink-0" />
               </Comp>
             );
           })}
