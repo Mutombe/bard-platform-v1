@@ -240,8 +240,13 @@ export default function PageHero({
                           = 172 mobile (2-row), 112 desktop (1-row)
           ⇒ hero min-h = 100svh − nav − strip
                        = 100svh − 280 mobile
-                       = 100svh − 236 desktop */}
-      <div className="relative container-bank min-h-[calc(100svh-280px)] md:min-h-[calc(100svh-236px)] flex flex-col justify-end pt-20 md:pt-24 pb-10 md:pb-14">
+                       = 100svh − 236 desktop
+
+          Content is justify-center with symmetric pt/pb so it sits at
+          the calculated vertical centre of the hero — equal breathing
+          to the nav above and the strip below. Spacing is earned, not
+          forced. */}
+      <div className="relative container-bank min-h-[calc(100svh-280px)] md:min-h-[calc(100svh-236px)] flex flex-col justify-center pt-20 md:pt-28 pb-20 md:pb-28">
         <motion.div
           style={{ y: textY, opacity: textOpacity }}
           className={`max-w-4xl lg:max-w-5xl ${align === "center" ? "mx-auto text-center" : ""}`}
