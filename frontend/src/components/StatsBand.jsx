@@ -37,9 +37,12 @@ export default function StatsBand() {
         {/* Symmetry rule: every cell uses flex flex-col justify-between
             + h-full + min-height so the TOP of every number sits at the
             same y and the BOTTOM of every caption sits at the same y,
-            regardless of caption line count. The cell becomes a fixed
-            chamber with number pinned to top, caption pinned to bottom,
-            silence in between. */}
+            regardless of caption line count.
+
+            Hover layer: each cell carries a 2px orange top rule that
+            scales in from the left on hover, plus a subtle warm bg
+            tint (orange-50/40) and a number-colour transition. Shared
+            inner borders stay intact — hover is overlay, not structure. */}
         <div className="grid grid-cols-2 md:grid-cols-5 border-l border-bone-200 items-stretch">
           {FIGURES.map((f, i) => (
             <motion.div
@@ -48,17 +51,20 @@ export default function StatsBand() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-              className="border-r border-bone-200 py-10 md:py-12 px-6 md:px-8 flex flex-col justify-between min-h-[220px] md:min-h-[260px]"
+              className="group relative border-r border-bone-200 py-10 md:py-12 px-6 md:px-8 flex flex-col justify-between min-h-[220px] md:min-h-[260px] cursor-default transition-colors duration-300 hover:bg-orange-50/45"
             >
-              <p className="font-display text-[44px] md:text-[56px] lg:text-[64px] font-medium text-navy-600 leading-[0.95] tracking-[-0.03em]">
+              {/* Top-edge orange accent — invisible by default, slides
+                  in from the left on hover. */}
+              <span className="absolute top-0 left-0 right-0 h-[2px] bg-orange-500 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]" />
+              <p className="font-display text-[44px] md:text-[56px] lg:text-[64px] font-medium text-navy-600 leading-[0.95] tracking-[-0.03em] transition-colors duration-300 group-hover:text-navy-700">
                 {f.value}
                 {f.unit && (
-                  <span className="text-orange-500 text-[0.55em] align-baseline ml-0.5">
+                  <span className="text-orange-500 text-[0.55em] align-baseline ml-0.5 transition-colors duration-300 group-hover:text-orange-600">
                     {f.unit}
                   </span>
                 )}
               </p>
-              <p className="text-[13px] md:text-[13.5px] text-bone-600 leading-relaxed max-w-[220px] mt-6">
+              <p className="text-[13px] md:text-[13.5px] text-bone-600 leading-relaxed max-w-[220px] mt-6 transition-colors duration-300 group-hover:text-bone-700">
                 {f.label}
               </p>
             </motion.div>
