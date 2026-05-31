@@ -35,8 +35,10 @@ const layoutHex = (row, col, size, gap = 10) => {
   };
 };
 export function HoneycombAside() {
-  // Pulled from the existing insight photo pool — six different editorial
-  // moments, none repeating.
+  // Five editorial moments, all photographs — the orange "§ Editorial"
+  // label cell was removed: it read as a decorative placeholder rather
+  // than an institutional gesture, and the user flagged it. Cluster is
+  // now 2-on-top + 3-on-bottom: a stable hexagonal silhouette.
   const photos = [
     INSIGHT["the-bank-as-a-publishing-institution"],
     INSIGHT["africa-and-the-cross-border-rail"],
@@ -44,45 +46,40 @@ export function HoneycombAside() {
     INSIGHT["wealth-and-the-second-conversation"],
     INSIGHT["the-quiet-case-for-a-deposit-base"],
   ];
-  const SIZE = 130;
+  const SIZE = 118;
+  // Outer wrapper adds right padding so the honeycomb keeps a deliberate
+  // gap from the page's right edge instead of touching it. Inner relative
+  // box hosts the absolute-positioned hex tiles.
   return (
-    <div className="relative w-full max-w-[460px] h-[460px] mx-auto">
-      {[
-        [0, 0, photos[0], 0.0],
-        [0, 1, photos[1], 0.08],
-        [1, 0, photos[2], 0.16],
-        [1, 1, "label", 0.24],
-        [1, 2, photos[3], 0.32],
-        [2, 1, photos[4], 0.40],
-      ].map(([row, col, src, delay], i) => (
-        <motion.div
-          key={i}
-          className="absolute overflow-hidden"
-          style={layoutHex(row, col, SIZE, 12)}
-          initial={{ opacity: 0, scale: 0.85 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
-        >
-          {src === "label" ? (
-            <div className="w-full h-full bg-orange-500 flex flex-col items-center justify-center text-navy-900">
-              <span className="font-mono text-[10px] tracking-[0.22em] uppercase opacity-80">
-                §
-              </span>
-              <span className="font-display text-[14px] font-medium mt-1">
-                Editorial
-              </span>
-            </div>
-          ) : (
+    <div className="w-full pr-4 md:pr-8 lg:pr-10">
+      <div className="relative w-full max-w-[420px] h-[300px] mx-auto">
+        {[
+          // Row 0 — two hexes, no offset
+          [0, 0, photos[0], 0.0],
+          [0, 1, photos[1], 0.08],
+          // Row 1 — three hexes, offset by xStep/2 (the honeycomb stagger)
+          [1, 0, photos[2], 0.16],
+          [1, 1, photos[3], 0.24],
+          [1, 2, photos[4], 0.32],
+        ].map(([row, col, src, delay], i) => (
+          <motion.div
+            key={i}
+            className="absolute overflow-hidden"
+            style={layoutHex(row, col, SIZE, 10)}
+            initial={{ opacity: 0, scale: 0.85 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
+          >
             <img
               src={src}
               alt=""
               className="w-full h-full object-cover"
               style={{ filter: "saturate(0.78) brightness(0.93)" }}
             />
-          )}
-        </motion.div>
-      ))}
+          </motion.div>
+        ))}
+      </div>
     </div>
   );
 }
