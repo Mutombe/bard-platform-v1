@@ -174,13 +174,35 @@ export default function Nav() {
               >
                 <MagnifyingGlassIcon size={18} weight="regular" />
               </button>
-              {/* Desktop login — full pill. Mobile login moves to drawer. */}
+              {/* Desktop login — the Nav's showcase moment.
+                  A composite pill carrying three layered details:
+                    1. A lock icon in a navy circle on the left (the
+                       gesture of secure portal entry). On hover, the
+                       circle warms from navy → orange — the brand
+                       move that signals "the door is opening."
+                    2. The "Log in" verb in navy display weight.
+                    3. A live-status pip on the right — a small
+                       emerald dot with a pinging halo, signalling
+                       "Online Banking is operational right now."
+                       Institutional sites rarely surface system
+                       status this directly; we do, because trust
+                       is the product.
+                  Subtle shadow lift on hover completes the gesture. */}
               <a
                 href="https://online.bardsantnerbank.com"
-                className="hidden md:inline-flex btn btn-ghost-light text-[14px] py-3 px-5"
+                aria-label="Log in to Online Banking"
+                className="group hidden md:inline-flex items-center gap-2.5 h-11 pl-1.5 pr-4 rounded-full bg-white border border-bone-300 hover:border-navy-600 transition-all duration-300 shadow-[0_1px_2px_rgba(12,10,20,0.04)] hover:shadow-[0_6px_18px_rgba(12,10,20,0.12)] hover:-translate-y-[1px]"
               >
-                <LockIcon size={14} weight="bold" />
-                Log in
+                <span className="w-8 h-8 rounded-full bg-navy-700 group-hover:bg-orange-500 flex items-center justify-center transition-colors duration-300 shadow-[inset_0_-1px_0_rgba(0,0,0,0.12)]">
+                  <LockIcon size={13} weight="bold" className="text-white" />
+                </span>
+                <span className="text-[14px] font-medium text-navy-700 group-hover:text-navy-900 transition-colors">
+                  Log in
+                </span>
+                <span className="relative flex h-2 w-2 ml-0.5" aria-hidden="true">
+                  <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-60 animate-ping" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500 ring-1 ring-emerald-300/40" />
+                </span>
               </a>
               {/* Mobile hamburger — 44px square touch target */}
               <button

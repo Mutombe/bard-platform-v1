@@ -67,11 +67,16 @@ export default function GroupRibbon({ vertical = false }) {
                 style={{ backgroundColor: e.accent }}
               />
 
-              {/* Header — index + role. The role label sits in brand
-                  orange across all five entities; the accent colour
-                  still survives in the 1px top rule above. One label
-                  colour, five hairline marks. */}
-              <div className="px-6 md:px-8 lg:px-9 pt-6 md:pt-8 lg:pt-9 pb-5 md:pb-6 lg:pb-7">
+              {/* Header — index + role + ticker chip.
+                  The role label sits in brand orange across all five
+                  entities. New show-off detail: a ticker-style code
+                  chip floating on the right side of the card header,
+                  same grammar as a Bloomberg or Reuters institutional
+                  identifier. Carries the entity's short code (BSMFB,
+                  Markets, Loans, Golf, Journal) in tracked mono inside
+                  a thin-bordered chip. Reads as a financial-house
+                  ticker, not a tag. */}
+              <div className="px-6 md:px-8 lg:px-9 pt-6 md:pt-8 lg:pt-9 pb-5 md:pb-6 lg:pb-7 flex items-start justify-between gap-3">
                 <div className="flex items-center gap-3">
                   <span className="font-mono text-[11px] tracking-[0.22em] text-white/35">
                     {String(idx + 1).padStart(2, "0")}
@@ -83,6 +88,12 @@ export default function GroupRibbon({ vertical = false }) {
                     {e.role}
                   </span>
                 </div>
+                <span
+                  className="font-mono text-[10px] tracking-[0.15em] uppercase text-white/40 group-hover:text-white/65 transition-colors border border-white/15 group-hover:border-white/30 px-2 py-1 rounded-sm whitespace-nowrap"
+                  aria-hidden="true"
+                >
+                  {e.short}
+                </span>
               </div>
 
               {/* Hairline divider */}

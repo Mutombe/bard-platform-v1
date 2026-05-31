@@ -112,7 +112,7 @@ export default function WealthMarquee() {
 
               <Link
                 to="/wealth"
-                className="inline-flex items-center justify-center gap-2 bg-white text-navy-700 hover:bg-bone-50 px-6 py-4 rounded-lg font-medium text-[14.5px] md:text-[15px] transition-colors w-full md:w-auto"
+                className="inline-flex items-center justify-center gap-2 bg-milk text-navy-700 hover:bg-paper px-6 py-4 rounded-lg font-medium text-[14.5px] md:text-[15px] transition-colors w-full md:w-auto"
               >
                 Explore Bard Santner Wealth
                 <ArrowRightIcon size={14} weight="bold" />

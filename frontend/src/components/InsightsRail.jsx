@@ -3,6 +3,18 @@ import { motion } from "framer-motion";
 import { ArrowRightIcon } from "@phosphor-icons/react";
 import { INSIGHT } from "../data/images.js";
 
+// Two-letter initials for the author byline avatar.
+// "Senziwani Sikhosana" → "SS"
+// "Alfred Mthimkhulu"   → "AM"
+function initials(name = "") {
+  return name
+    .split(/\s+/)
+    .map((w) => w[0] || "")
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
+}
+
 /**
  * Editorial insights rail. Three to four article cards plus a "View all
  * insights" link. Used on the home page, on each audience landing, and
@@ -47,14 +59,34 @@ export default function InsightsRail({ heading, eyebrow, items = [] }) {
                 <h3 className="font-display text-[20px] md:text-[26px] text-navy-600 leading-tight mb-3 md:mb-4 group-hover:text-orange-600 transition-colors">
                   {it.title}
                 </h3>
-                <p className="text-[14.5px] md:text-[15.5px] text-bone-600 leading-relaxed mb-4 md:mb-5">
+                <p className="text-[14.5px] md:text-[15.5px] text-bone-600 leading-relaxed mb-5 md:mb-6">
                   {it.summary}
                 </p>
-                <p className="text-[12.5px] md:text-[13px] text-bone-500 flex items-center gap-3">
-                  <span>{it.author}</span>
-                  <span className="w-1 h-1 rounded-full bg-bone-400" />
-                  <span>{it.reading_minutes} min read</span>
-                </p>
+
+                {/* Author byline — show-off detail. Avatar circle with
+                    initials in navy on bone, the institutional
+                    publishing-house gesture. Author name above role
+                    + reading time. Mirrors the bylines real editorial
+                    publications use (FT, Investec Focus, the Bardiq
+                    Journal). */}
+                <div className="flex items-center gap-3">
+                  <span
+                    className="w-9 h-9 rounded-full bg-navy-600 text-white flex items-center justify-center text-[11px] font-medium tracking-[0.06em] font-display shrink-0 ring-2 ring-orange-500/60 ring-offset-2 ring-offset-milk"
+                    aria-hidden="true"
+                  >
+                    {initials(it.author)}
+                  </span>
+                  <div className="leading-tight">
+                    <p className="text-[13px] md:text-[13.5px] font-medium text-navy-600">
+                      {it.author}
+                    </p>
+                    <p className="text-[11px] md:text-[11.5px] text-bone-500 mt-0.5 flex items-center gap-2">
+                      {it.author_role && <span>{it.author_role}</span>}
+                      {it.author_role && <span className="w-0.5 h-0.5 rounded-full bg-bone-400" />}
+                      <span>{it.reading_minutes} min read</span>
+                    </p>
+                  </div>
+                </div>
               </Link>
             </motion.article>
           ))}
