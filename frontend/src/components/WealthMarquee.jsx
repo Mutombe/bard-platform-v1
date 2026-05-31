@@ -99,7 +99,7 @@ export default function WealthMarquee() {
 
             {/* ─── RIGHT / BOTTOM — text content + CTA ────────────────── */}
             <div className="bg-ink p-7 sm:p-9 md:p-10 lg:p-12 flex flex-col justify-center">
-              <h2 className="font-display text-[26px] md:text-[32px] lg:text-[36px] font-medium text-white leading-[1.12] mb-4 md:mb-5 tracking-[-0.018em]">
+              <h2 className="display-md text-white mb-4 md:mb-5">
                 This is Bard Santner Wealth
               </h2>
               <p className="text-[15px] md:text-[16px] text-white/85 leading-relaxed mb-3 md:mb-4">
