@@ -138,7 +138,7 @@ export default function Nav() {
             <div className="flex items-center gap-2 md:gap-3">
               <button
                 aria-label="Search"
-                className="hidden md:flex w-9 h-9 items-center justify-center rounded-full hover:bg-bone-100 text-navy-600"
+                className="hidden md:flex w-9 h-9 items-center justify-center rounded-full hover:bg-smoke text-navy-600"
               >
                 <MagnifyingGlassIcon size={18} weight="regular" />
               </button>

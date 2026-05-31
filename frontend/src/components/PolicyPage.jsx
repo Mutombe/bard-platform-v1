@@ -29,7 +29,7 @@ export default function PolicyPage({
         ])]}
       />
 
-      <section className="bg-white">
+      <section className="bg-milk">
         <div className="container-bank pt-16 md:pt-24 pb-12">
           <div className="max-w-4xl">
             <p className="eyebrow eyebrow-accent mb-4">§ Legal & regulatory</p>
@@ -43,7 +43,7 @@ export default function PolicyPage({
 
       <hr className="hairline" />
 
-      <section className="bg-bone-50">
+      <section className="bg-milk">
         <div className="container-bank section">
           <div className="grid grid-cols-12 gap-8 md:gap-12">
             {/* Meta column */}

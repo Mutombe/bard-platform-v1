@@ -26,9 +26,11 @@ const unsplash = (id, w = 2400, q = 80) =>
 
 // ─── Page heroes ─────────────────────────────────────────────────────
 export const HERO = {
-  // Johannesburg silhouette at golden hour. The civic institution in
-  // its African context, the financial district as a horizon line.
-  home:           unsplash("1771143345689-f30959718edf"),
+  // Cape Town harbour panorama — cargo vessels, shipping containers,
+  // industrial cranes alongside urban architecture and natural
+  // landmarks. The institution in its real economic context: trade,
+  // infrastructure, the cross-border rail. Cinematic, editorial.
+  home:           unsplash("1774887765459-94b0d0b12605"),
 
   // Family at the dining table sharing a meal. Warm, domestic, the
   // everyday — not stock domesticity.
@@ -57,9 +59,10 @@ export const HERO = {
   // collected, the wealth posture.
   wealth:         unsplash("1766756388111-e3d5cb5edafb"),
 
-  // Candlestick chart on a dark monitor. From the desk that runs
-  // the book.
-  markets:        unsplash("1611974789855-9c2a0a7236a3"),
+  // A real markets workspace — multiple monitors showing candlestick
+  // charts and trading data. The desk that runs the book, not a
+  // single stock chart.
+  markets:        unsplash("1744782211816-c5224434614f"),
 
   // Aerial view of a mountainous coastal city at dusk — the
   // institution's broader landscape, geography as scale.

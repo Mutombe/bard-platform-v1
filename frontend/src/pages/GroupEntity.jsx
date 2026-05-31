@@ -75,7 +75,7 @@ export default function GroupEntity() {
       </section>
 
       {/* Sister institutions — same card grammar as GroupRibbon, light theme */}
-      <section className="bg-white section">
+      <section className="bg-milk section">
         <div className="container-bank">
           <p className="eyebrow mb-4">§ Sister institutions</p>
           <h2 className="display-lg text-navy-600 mb-12">
@@ -88,7 +88,7 @@ export default function GroupEntity() {
                 <Link
                   key={o.id}
                   to={o.href}
-                  className="group block bg-white border border-bone-200 hover:border-bone-400 transition-colors flex flex-col"
+                  className="group block bg-paper border border-bone-200 hover:border-bone-400 transition-colors flex flex-col"
                 >
                   <div
                     className="h-[1px] w-full"

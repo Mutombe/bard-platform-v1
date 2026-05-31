@@ -21,7 +21,7 @@ const FIGURES = [
 
 export default function StatsBand() {
   return (
-    <section className="bg-white border-t-2 border-orange-500 border-b border-bone-200">
+    <section className="bg-milk border-t-2 border-orange-500 border-b border-bone-200">
       <div className="container-bank py-16 md:py-24">
         <div className="mb-12 md:mb-16 max-w-3xl">
           <div className="flex items-center gap-4 mb-5">

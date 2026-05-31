@@ -41,7 +41,7 @@ class ErrorBoundary extends Component {
   render() {
     if (this.state.hasError) {
       return (
-        <div className="min-h-[60vh] flex items-center justify-center p-10 text-center bg-white">
+        <div className="min-h-[60vh] flex items-center justify-center p-10 text-center bg-milk">
           <div>
             <p className="eyebrow eyebrow-accent mb-4">A service interruption</p>
             <h1 className="display-lg mb-4 text-navy-600">

@@ -24,7 +24,7 @@ export default function Leadership() {
         variant="editorial"
       />
 
-      <section className="bg-white section-lg">
+      <section className="bg-milk section-lg">
         <div className="container-bank">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
             {LEADERSHIP.map((p) => (

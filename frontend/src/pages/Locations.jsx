@@ -81,7 +81,7 @@ export default function Locations() {
         variant="editorial"
       />
 
-      <section className="bg-white section">
+      <section className="bg-milk section">
         <div className="container-bank">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {LOCATIONS.map((loc) => (
@@ -91,7 +91,7 @@ export default function Locations() {
                   <span className={`text-[10px] tracking-[0.18em] uppercase px-2 py-1 rounded ${
                     loc.status === "Open"
                       ? "bg-orange-50 text-orange-700"
-                      : "bg-bone-100 text-bone-500"
+                      : "bg-smoke text-bone-500"
                   }`}>
                     {loc.status}
                   </span>

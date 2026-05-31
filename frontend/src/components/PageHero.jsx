@@ -26,7 +26,7 @@ export default function PageHero({
 }) {
   if (variant === "split") {
     return (
-      <section className="bg-white">
+      <section className="bg-milk">
         <div className="container-bank pt-6 md:pt-10 pb-0">
           {/* Split hero — panel + photo. Sized so hero + QuickActionStrip
               together fill one viewport (nav + strip = 280 mobile, 236
@@ -87,7 +87,7 @@ export default function PageHero({
 
   if (variant === "editorial") {
     return (
-      <section className="bg-bone-50">
+      <section className="bg-milk">
         {/* Editorial hero — same shared-viewport math as full-bleed so
             scroll rhythm is consistent across hero variants. */}
         <div className="container-bank min-h-[calc(100svh-280px)] md:min-h-[calc(100svh-236px)] flex flex-col justify-center py-12 md:py-16">

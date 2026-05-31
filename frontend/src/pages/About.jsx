@@ -38,7 +38,7 @@ export default function About() {
       />
 
       {/* Manifesto */}
-      <section className="bg-white section">
+      <section className="bg-milk section">
         <div className="container-bank">
           <div className="grid grid-cols-12 gap-10">
             <div className="col-span-12 md:col-span-4">
@@ -71,7 +71,7 @@ export default function About() {
       </section>
 
       {/* The four obligations */}
-      <section className="bg-bone-50 section">
+      <section className="bg-milk section">
         <div className="container-bank">
           <p className="eyebrow text-center mb-4">§ The obligations of a bank</p>
           <h2 className="display-xl text-navy-600 text-center max-w-2xl mx-auto mb-12">
