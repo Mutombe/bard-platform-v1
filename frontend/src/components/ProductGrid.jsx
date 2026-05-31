@@ -3,6 +3,15 @@ import { motion } from "framer-motion";
 import { ArrowRightIcon } from "@phosphor-icons/react";
 import { PRODUCT } from "../data/images.js";
 
+// Format audience taxonomy for the card footer.
+// ["personal"] → "Personal"
+// ["business","international"] → "Business · International"
+function audienceLabel(audience = []) {
+  return audience
+    .map((a) => a.charAt(0).toUpperCase() + a.slice(1))
+    .join(" · ");
+}
+
 /**
  * The Lloyds "Our products" grid. Editorial square photo + label + 2-line
  * description + outlined CTA pill, repeated 4-6 times.
@@ -70,6 +79,20 @@ export default function ProductGrid({ heading, eyebrow, products = [], showAll =
                   Explore {p.name}
                   <ArrowRightIcon size={13} weight="bold" />
                 </Link>
+
+                {/* Show-off footer — institutional metadata.
+                    Audience taxonomy + feature count + apply-channel,
+                    all in tracked uppercase mono with orange interpuncts
+                    between elements. The "trading-desk taxonomy" beat
+                    that signals each product is a real institutional
+                    line, not a marketing entry. */}
+                <div className="mt-5 md:mt-6 pt-4 md:pt-5 border-t border-bone-200 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[10.5px] tracking-[0.16em] uppercase font-medium text-bone-500">
+                  <span>{audienceLabel(p.audience)}</span>
+                  <span className="w-1 h-1 rounded-full bg-orange-500 shrink-0" />
+                  <span>{p.features.length} features</span>
+                  <span className="w-1 h-1 rounded-full bg-orange-500 shrink-0" />
+                  <span className="text-orange-600">Apply online</span>
+                </div>
               </div>
             </motion.article>
           ))}
