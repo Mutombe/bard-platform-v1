@@ -3,6 +3,33 @@ import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRightIcon } from "@phosphor-icons/react";
 
+// CTA helper — when the destination starts with http(s) we render an
+// anchor (and open it in a new tab); otherwise the standard Router Link.
+// Lets pages pass external URLs (e.g. the online-banking portal) in
+// the same shape as internal routes.
+function HeroCTA({ cta, className, withArrow = false }) {
+  if (!cta) return null;
+  const isExternal = /^https?:\/\//.test(cta.to);
+  const inner = (
+    <>
+      {cta.label}
+      {withArrow && <ArrowRightIcon size={14} weight="bold" />}
+    </>
+  );
+  if (isExternal) {
+    return (
+      <a href={cta.to} target="_blank" rel="noopener noreferrer" className={className}>
+        {inner}
+      </a>
+    );
+  }
+  return (
+    <Link to={cta.to} className={className}>
+      {inner}
+    </Link>
+  );
+}
+
 /**
  * Institutional page hero. Three variants:
  *
@@ -160,17 +187,8 @@ function FullBleedHero({
           )}
           {(primaryCTA || secondaryCTA) && (
             <div className="mt-8 md:mt-10 flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-3">
-              {primaryCTA && (
-                <Link to={primaryCTA.to} className="btn btn-primary w-full sm:w-auto justify-center">
-                  {primaryCTA.label}
-                  <ArrowRightIcon size={14} weight="bold" />
-                </Link>
-              )}
-              {secondaryCTA && (
-                <Link to={secondaryCTA.to} className="btn btn-ghost-dark w-full sm:w-auto justify-center">
-                  {secondaryCTA.label}
-                </Link>
-              )}
+              <HeroCTA cta={primaryCTA} withArrow className="btn btn-primary w-full sm:w-auto justify-center" />
+              <HeroCTA cta={secondaryCTA} className="btn btn-ghost-dark w-full sm:w-auto justify-center" />
             </div>
           )}
           {noteUnderCTA && (
@@ -221,17 +239,8 @@ function EditorialDesktopHero({
             )}
             {(primaryCTA || secondaryCTA) && (
               <div className="mt-10 flex flex-wrap items-center gap-3">
-                {primaryCTA && (
-                  <Link to={primaryCTA.to} className="btn btn-primary">
-                    {primaryCTA.label}
-                    <ArrowRightIcon size={14} weight="bold" />
-                  </Link>
-                )}
-                {secondaryCTA && (
-                  <Link to={secondaryCTA.to} className="btn btn-ghost-light">
-                    {secondaryCTA.label}
-                  </Link>
-                )}
+                <HeroCTA cta={primaryCTA} withArrow className="btn btn-primary" />
+                <HeroCTA cta={secondaryCTA} className="btn btn-ghost-light" />
               </div>
             )}
             {noteUnderCTA && (
@@ -287,17 +296,8 @@ function SplitDesktopHero({
             )}
             {(primaryCTA || secondaryCTA) && (
               <div className="mt-8 flex flex-wrap items-center gap-3">
-                {primaryCTA && (
-                  <Link to={primaryCTA.to} className="btn btn-primary">
-                    {primaryCTA.label}
-                    <ArrowRightIcon size={14} weight="bold" />
-                  </Link>
-                )}
-                {secondaryCTA && (
-                  <Link to={secondaryCTA.to} className="btn btn-ghost-dark">
-                    {secondaryCTA.label}
-                  </Link>
-                )}
+                <HeroCTA cta={primaryCTA} withArrow className="btn btn-primary" />
+                <HeroCTA cta={secondaryCTA} className="btn btn-ghost-dark" />
               </div>
             )}
             {noteUnderCTA && (

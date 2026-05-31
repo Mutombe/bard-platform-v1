@@ -4,6 +4,7 @@ import InsightsRail from "../components/InsightsRail.jsx";
 import AdvisoryBand from "../components/AdvisoryBand.jsx";
 import SEO, { breadcrumbJsonLd, articleJsonLd } from "../components/SEO.jsx";
 import { findInsight, INSIGHTS } from "../data/insights.js";
+import { findLeaderByName } from "../data/leadership.js";
 import { INSIGHT } from "../data/images.js";
 import { ArrowLeftIcon } from "@phosphor-icons/react";
 import NotFound from "./NotFound.jsx";
@@ -59,10 +60,32 @@ export default function InsightDetail() {
             <p className="text-[16px] md:text-[20px] text-bone-600 leading-relaxed mb-6 md:mb-8">
               {it.summary}
             </p>
+            {/* Byline — portrait avatar + author block. Centered for
+                the article-header composition. */}
+            <div className="flex items-center justify-center gap-3 mb-3">
+              {(() => {
+                const leader = findLeaderByName(it.author);
+                return (
+                  <span
+                    className="w-10 h-10 rounded-full overflow-hidden bg-navy-600 text-white flex items-center justify-center text-[12px] font-medium tracking-[0.06em] font-display shrink-0 ring-2 ring-orange-500/60 ring-offset-2 ring-offset-milk"
+                    aria-hidden="true"
+                  >
+                    {leader?.image ? (
+                      <img src={leader.image} alt="" className="w-full h-full object-cover" />
+                    ) : (
+                      it.author.split(/\s+/).map((w) => w[0] || "").join("").slice(0, 2).toUpperCase()
+                    )}
+                  </span>
+                );
+              })()}
+              <div className="text-left leading-tight">
+                <p className="text-[13.5px] md:text-[14px] font-medium text-navy-600">{it.author}</p>
+                {it.author_role && (
+                  <p className="text-[12px] md:text-[12.5px] text-bone-500 mt-0.5">{it.author_role}</p>
+                )}
+              </div>
+            </div>
             <p className="text-[12px] md:text-[12.5px] text-bone-500 flex items-center justify-center gap-x-3 gap-y-1.5 flex-wrap">
-              <span className="font-medium text-navy-600">{it.author}</span>
-              {it.author_role && <span>· {it.author_role}</span>}
-              <span className="w-1 h-1 rounded-full bg-bone-400" />
               <span>{new Date(it.date).toLocaleDateString("en-GB", { year: "numeric", month: "long", day: "numeric" })}</span>
               <span className="w-1 h-1 rounded-full bg-bone-400" />
               <span>{it.reading_minutes} min read</span>

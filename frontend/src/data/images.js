@@ -91,6 +91,11 @@ export const HERO = {
   // Close-up handshake photographed in Nairobi — dignified,
   // close-cropped, no laptop or paper clutter.
   contact:        unsplash("1521790797524-b2497295b8a0"),
+
+  // Person holding a phone — editorial banking-on-mobile composition.
+  // Clean professional setup, the device as instrument. Used as the
+  // /online-banking hero.
+  onlineBanking:  unsplash("1512428559087-560fa5ceab42"),
 };
 
 // ─── Audience-tile portraits ─────────────────────────────────────────
