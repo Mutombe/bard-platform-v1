@@ -46,6 +46,9 @@ export default function ProductGrid({ heading, eyebrow, products = [], showAll =
                   }}
                 />
               </Link>
+              {/* Bold orange accent line where the photograph meets the
+                  content. Brand signature exactly where the eye lands. */}
+              <div className="h-[3px] bg-orange-500" />
               {/* Lloyds-grade card body — 32 mobile, 40 lg. The generous
                   interior padding is the move that lets product cards read
                   as institutional rather than catalogue. */}

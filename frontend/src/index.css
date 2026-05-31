@@ -222,8 +222,19 @@
   .btn-navy:hover { background: var(--color-navy-700); }
   .btn-ghost-light { background: var(--color-paper); color: var(--color-navy-600); border-color: var(--color-bone-300); }
   .btn-ghost-light:hover { background: var(--color-milk); border-color: var(--color-navy-600); }
-  .btn-ghost-dark { background: transparent; color: white; border-color: rgba(255,255,255,0.30); }
+  .btn-ghost-dark { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.55); padding: calc(var(--pad-btn-y) - 1px) calc(var(--pad-btn-x) - 1px); }
   .btn-ghost-dark:hover { background: rgba(255,255,255,0.08); border-color: white; }
+
+  /* Hero CTAs — outline-only, bold 2px border. The buttons under a
+     full-bleed hero need to NOT compete with the photograph for
+     attention; the border carries the action, the bg never fills.
+     The primary uses a solid white border with a brand-orange hover
+     fill; the secondary uses a half-opacity white border with a
+     subtle white tint on hover. Same gesture, two weights. */
+  .btn-hero-primary { background: transparent; color: white; border: 2px solid white; padding: calc(var(--pad-btn-y) - 1px) calc(var(--pad-btn-x) - 1px); }
+  .btn-hero-primary:hover { background: var(--color-orange-500); color: white; border-color: var(--color-orange-500); }
+  .btn-hero-ghost { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.45); padding: calc(var(--pad-btn-y) - 1px) calc(var(--pad-btn-x) - 1px); }
+  .btn-hero-ghost:hover { background: rgba(255,255,255,0.08); border-color: white; }
 
   /* Pills — Lloyds quick-action strip pattern. Generous interior padding
      (18/28) signals confidence in the same gesture Lloyds uses to push
