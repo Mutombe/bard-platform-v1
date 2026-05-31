@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRightIcon } from "@phosphor-icons/react";
-import Monogram from "./Monogram.jsx";
 import { MARQUEE } from "../data/images.js";
 
 /**
@@ -53,38 +52,43 @@ export default function WealthMarquee() {
           <div className="absolute top-0 left-0 right-0 h-[2px] bg-orange-500 z-10" />
 
           <div className="grid grid-cols-1 md:grid-cols-2">
-            {/* ─── LEFT / TOP — logo tile + horse photograph ──────────── */}
+            {/* ─── LEFT / TOP — logo tile + architectural photograph ──── */}
             <div className="relative aspect-[5/4] md:aspect-auto md:min-h-[420px] bg-ink overflow-hidden">
-              {/* Horse photograph — the editorial moment. The grayscale
-                  horse head sits center-right on a dark backdrop; the
-                  photo's dark areas blend seamlessly with the card's
-                  ink surface so there's no visible frame. */}
+              {/* Modern-building photograph — our own aesthetic, not the
+                  Lloyds horse. Geometric glass-and-sky composition,
+                  filtered just enough to settle into the ink card surface
+                  without losing the optimistic blue. */}
               <div
                 className="absolute inset-0 bg-cover bg-center"
                 style={{
                   backgroundImage: `url(${MARQUEE.wealth})`,
-                  filter: "saturate(0) brightness(0.78) contrast(1.12)",
+                  filter: "saturate(0.82) brightness(0.88) contrast(1.06)",
                 }}
               />
 
               {/* Soft inner blends — fade the left edge into ink so the
-                  logo tile sits on a clean dark canvas, and fade the
-                  right edge into ink so the photo merges into the card
-                  divider (or into the bottom panel on mobile). */}
-              <div className="absolute inset-0 bg-gradient-to-r from-ink/65 via-transparent to-ink/55" />
+                  logo tile reads on a clean dark canvas; fade the right
+                  edge into ink so the photo merges into the card divider
+                  (or into the bottom panel on mobile). */}
+              <div className="absolute inset-0 bg-gradient-to-r from-ink/55 via-transparent to-ink/45" />
               <div className="absolute inset-0 md:hidden bg-gradient-to-b from-transparent via-transparent to-ink/85" />
 
               {/* Orange logo tile — sub-brand cartouche.
-                  Floats in the upper-left of the photo panel. Contains
-                  the Monogram + "BARD SANTNER" / "WEALTH" stack. Brand-
-                  contrasting orange against the ink card. */}
-              <div className="absolute top-6 left-6 md:top-8 md:left-8 bg-orange-500 rounded-md p-4 md:p-5 flex flex-col items-start shadow-[0_8px_24px_rgba(0,0,0,0.25)]">
-                <Monogram size={28} color="white" />
-                <div className="mt-3 leading-none">
+                  Favicon on the left, two-line brand text on the right
+                  ("BARD SANTNER" eyebrow + "WEALTH" sub-brand), aligned
+                  horizontally. Contrasting orange against the ink card. */}
+              <div className="absolute top-6 left-6 md:top-8 md:left-8 bg-orange-500 rounded-md px-4 py-3 md:px-5 md:py-4 flex items-center gap-3 md:gap-3.5 shadow-[0_8px_24px_rgba(0,0,0,0.25)]">
+                <img
+                  src="/favicon.png"
+                  alt=""
+                  className="h-9 w-9 md:h-10 md:w-10 object-contain shrink-0"
+                  loading="lazy"
+                />
+                <div className="leading-none">
                   <p className="font-display text-[9.5px] md:text-[10px] tracking-[0.22em] uppercase font-medium text-white/85">
                     Bard Santner
                   </p>
-                  <p className="font-display text-[18px] md:text-[20px] tracking-[0.10em] uppercase font-medium text-white mt-1.5">
+                  <p className="font-display text-[16px] md:text-[18px] tracking-[0.10em] uppercase font-medium text-white mt-1">
                     Wealth
                   </p>
                 </div>
