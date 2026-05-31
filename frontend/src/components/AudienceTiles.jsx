@@ -50,9 +50,17 @@ export default function AudienceTiles({ heading = "Banking experiences" }) {
                     filter: "saturate(0.85) brightness(0.92)",
                   }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/40 to-transparent" />
+                {/* Warm gradient that starts at the photo's vertical
+                    centre and deepens toward the bottom. Top half of
+                    every portrait stays unblemished; the warm tones
+                    (orange-deepening-to-ink) sit beneath the caption
+                    so the audience label has a canvas the right
+                    institutional temperature for our brand. */}
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-orange-900/35 via-50% to-ink/95" />
                 <div className="absolute inset-x-0 bottom-0 p-7 md:p-8">
-                  <p className="eyebrow eyebrow-on-dark mb-4">{a.label}</p>
+                  <p className="eyebrow eyebrow-on-dark mb-4 underline underline-offset-[6px] decoration-1 decoration-orange-400/70">
+                    {a.label}
+                  </p>
                   <p className="font-display text-[20px] md:text-[22px] text-white leading-snug">
                     Banking for{" "}
                     <span className="text-white">
@@ -63,7 +71,7 @@ export default function AudienceTiles({ heading = "Banking experiences" }) {
                       {a.id === "institutional" && "institutions"}
                     </span>
                   </p>
-                  <span className="mt-5 inline-flex items-center gap-2 text-[13px] text-white/80 group-hover:text-white">
+                  <span className="mt-5 inline-flex items-center gap-2 text-[13px] text-white/80 group-hover:text-white transition-colors">
                     Open the door
                     <ArrowRightIcon size={13} weight="bold" />
                   </span>
