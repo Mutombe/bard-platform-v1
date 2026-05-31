@@ -60,17 +60,17 @@ export default function Contact() {
       {/* Channels grid */}
       <section className="bg-milk section">
         <div className="container-bank">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 mb-12 md:mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 md:gap-5 mb-12 md:mb-16">
             {CHANNELS.map((c) => {
               const Icon = c.icon;
               return (
-                <a key={c.title} href={c.href} className="block p-6 md:p-9 rounded-xl border border-bone-200 hover:border-orange-500 hover:shadow-[var(--shadow-card)] transition-all">
+                <a key={c.title} href={c.href} className="block p-5 md:p-9 rounded-xl border border-bone-200 hover:border-orange-500 hover:shadow-[var(--shadow-card)] transition-all">
                   <div className="w-11 h-11 rounded-lg bg-orange-50 flex items-center justify-center mb-4 md:mb-5">
                     <Icon size={20} weight="regular" className="text-orange-600" />
                   </div>
                   <p className="font-display text-[17px] md:text-[18px] text-navy-600 mb-2">{c.title}</p>
                   {c.lines.map((l, i) => (
-                    <p key={i} className={`text-[13px] md:text-[13.5px] ${i === 0 ? "text-navy-600 font-medium" : "text-bone-500"} leading-relaxed`}>
+                    <p key={i} className={`text-[13px] md:text-[13.5px] ${i === 0 ? "text-navy-600 font-medium" : "text-bone-500"} leading-relaxed break-words`}>
                       {l}
                     </p>
                   ))}
@@ -79,33 +79,44 @@ export default function Contact() {
             })}
           </div>
 
-          {/* Request a banker — confidence spacing.
-              Wider container (6xl), generous gap (16 desktop, 10 mobile).
-              On mobile the form panel pads down to 24px so the field
-              labels and inputs read at full width without a heavy
-              border crowding the 343px container. */}
-          <div className="grid grid-cols-12 gap-10 md:gap-16 max-w-6xl mx-auto mt-10 md:mt-20">
+          {/* Request a banker — different layouts mobile vs desktop.
+              Desktop: 5+7 grid with manifesto on the left, form on the right.
+              Mobile: stacked, but with a tighter manifesto (no bullet list — those
+              three points are inline pill-tags instead) so the form gets to
+              be the focal point quickly. */}
+          <div className="grid grid-cols-12 gap-8 md:gap-16 max-w-6xl mx-auto mt-10 md:mt-20">
             <div className="col-span-12 md:col-span-5">
-              <div className="flex items-center gap-4 mb-5 md:mb-6">
-                <span className="h-[2px] w-12 bg-orange-500" />
+              <div className="flex items-center gap-3 md:gap-4 mb-5 md:mb-6">
+                <span className="h-[2px] w-10 md:w-12 bg-orange-500" />
                 <p className="eyebrow eyebrow-accent">§ Request a banker</p>
               </div>
-              <h2 className="display-xl text-navy-600 text-balance mb-6 md:mb-7 leading-[1.05]">
+              <h2 className="display-xl text-navy-600 text-balance mb-5 md:mb-7 leading-[1.05]">
                 Tell us what you are looking for.
               </h2>
-              <p className="text-[15.5px] md:text-[17px] text-bone-600 leading-relaxed mb-7 md:mb-9 max-w-md">
+              <p className="text-[15.5px] md:text-[17px] text-bone-600 leading-relaxed mb-6 md:mb-9 max-w-md">
                 A relationship banker will call you back within one business day. If your enquiry is urgent, please use the telephone channel above.
               </p>
-              <ul className="space-y-4 md:space-y-5 text-[14px] md:text-[14.5px] text-bone-600">
-                <li className="flex items-start gap-3 md:gap-4">
+
+              {/* Mobile-only: collapse the three commitments into a row of
+                  compact pill tags. The full sentence bullets stay on
+                  desktop where there is room for the editorial pace. */}
+              <div className="md:hidden flex flex-wrap gap-2">
+                <Pill>No commitment</Pill>
+                <Pill>No auto-chase</Pill>
+                <Pill>Real banker</Pill>
+                <Pill>Same banker</Pill>
+              </div>
+
+              <ul className="hidden md:block space-y-5 text-[14.5px] text-bone-600">
+                <li className="flex items-start gap-4">
                   <CheckCircleIcon size={20} weight="regular" className="text-orange-600 mt-0.5 shrink-0" />
                   <span>No commitment. No automated chase sequence.</span>
                 </li>
-                <li className="flex items-start gap-3 md:gap-4">
+                <li className="flex items-start gap-4">
                   <CheckCircleIcon size={20} weight="regular" className="text-orange-600 mt-0.5 shrink-0" />
                   <span>You speak with a banker, not a call-centre agent.</span>
                 </li>
-                <li className="flex items-start gap-3 md:gap-4">
+                <li className="flex items-start gap-4">
                   <CheckCircleIcon size={20} weight="regular" className="text-orange-600 mt-0.5 shrink-0" />
                   <span>Same banker for the duration of the conversation.</span>
                 </li>
@@ -114,7 +125,7 @@ export default function Contact() {
 
             <div className="col-span-12 md:col-span-7">
               {submitted ? (
-                <div className="p-8 md:p-14 rounded-xl bg-orange-50 border border-orange-200 text-center">
+                <div className="p-7 md:p-14 rounded-xl bg-orange-50 border border-orange-200 text-center">
                   <CheckCircleIcon size={40} weight="regular" className="text-orange-600 mx-auto mb-4 md:mb-5" />
                   <h3 className="font-display text-[22px] md:text-[28px] text-navy-600 mb-3 md:mb-4">Thank you.</h3>
                   <p className="text-[14.5px] md:text-[15px] text-bone-600 max-w-md mx-auto leading-relaxed">
@@ -122,8 +133,11 @@ export default function Contact() {
                   </p>
                 </div>
               ) : (
-                <form onSubmit={onSubmit} className="p-6 md:p-12 rounded-xl bg-paper border border-bone-200 space-y-6 md:space-y-7 shadow-[var(--shadow-card)]">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <form
+                  onSubmit={onSubmit}
+                  className="p-5 sm:p-7 md:p-12 rounded-xl bg-paper border border-bone-200 space-y-5 md:space-y-7 shadow-[var(--shadow-card)]"
+                >
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-4">
                     <Field label="Full name" value={form.name} onChange={(v) => update("name", v)} required />
                     <Field label="Email" type="email" value={form.email} onChange={(v) => update("email", v)} required />
                   </div>
@@ -134,7 +148,7 @@ export default function Contact() {
                       <select
                         value={form.audience}
                         onChange={(e) => update("audience", e.target.value)}
-                        className="w-full px-4 md:px-5 py-3.5 text-[15px] md:text-[15.5px] bg-white border border-bone-300 rounded-md focus:outline-none focus:border-orange-500"
+                        className="w-full px-4 md:px-5 py-3.5 text-[15px] md:text-[15.5px] bg-white border border-bone-300 rounded-md focus:outline-none focus:border-orange-500 appearance-none bg-[url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%228%22 viewBox=%220 0 12 8%22 fill=%22none%22><path d=%22M1 1L6 6L11 1%22 stroke=%22%234a4942%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/></svg>')] bg-no-repeat bg-[right_16px_center]"
                       >
                         {AUDIENCES.map((a) => (
                           <option key={a.id} value={a.id}>{a.label_full}</option>
@@ -147,13 +161,17 @@ export default function Contact() {
                     <textarea
                       value={form.message}
                       onChange={(e) => update("message", e.target.value)}
-                      rows={5}
+                      rows={4}
                       required
-                      className="w-full px-4 md:px-5 py-3.5 text-[15px] md:text-[15.5px] bg-white border border-bone-300 rounded-md focus:outline-none focus:border-orange-500 resize-none"
+                      className="w-full px-4 md:px-5 py-3.5 text-[15px] md:text-[15.5px] bg-white border border-bone-300 rounded-md focus:outline-none focus:border-orange-500 resize-none min-h-[120px] md:min-h-[140px]"
                       placeholder="What product, what stage, what timeline."
                     />
                   </div>
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                  {/* Submit row — on mobile the button is full-width and
+                      placed above the privacy note (the verb is the
+                      thing, the disclosure is the footnote). On desktop
+                      they sit on the same row. */}
+                  <div className="flex flex-col-reverse md:flex-row md:items-center md:justify-between gap-3 md:gap-4 pt-1">
                     <p className="text-[11.5px] text-bone-500 leading-relaxed md:max-w-sm">
                       We use your details only to respond to this enquiry. See <a href="/privacy" className="underline hover:text-navy-600">Privacy</a>.
                     </p>
@@ -183,5 +201,13 @@ function Field({ label, value, onChange, type = "text", required = false }) {
         className="w-full px-4 md:px-5 py-3.5 text-[15px] md:text-[15.5px] bg-white border border-bone-300 rounded-md focus:outline-none focus:border-orange-500"
       />
     </div>
+  );
+}
+
+function Pill({ children }) {
+  return (
+    <span className="inline-flex items-center px-3 py-1.5 rounded-full bg-orange-50 text-orange-700 text-[12.5px] font-medium border border-orange-200/70">
+      {children}
+    </span>
   );
 }
