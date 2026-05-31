@@ -113,15 +113,19 @@ export const AUDIENCE_TILE = {
 
 // ─── Sub-brand marquees — the "This is X" institutional moments ─────
 // Lloyds canon: pick one division per home page and give it a
-// cinematic full-bleed marquee. The horse photograph for Wealth carries
-// the same heritage signal Lloyds uses (equestrian → patient capital,
-// long horizon, generational wealth). One showcase per home page.
+// dedicated card marquee. Lloyds uses a horse (heritage equestrian);
+// we use modern architecture — the institutional aesthetic of an
+// African platform built to international standards.
 export const MARQUEE = {
-  // Grayscale horse head close-up. Editorial composition, dark tonal
-  // family that pairs with our ink-and-orange overlay system. The
-  // backup pick is 1754281309126-532fd835b358 ("horse's eye in the
-  // darkness") — even more dramatic, swap if you want a tighter crop.
-  wealth: unsplash("1601726429844-acd8b1385972", 3200, 88),
+  // Modern building corner against a clear blue sky. Geometric forms,
+  // clean glass facade, minimalist architectural photography. The
+  // optimistic blue-sky tonality pairs with our dark card surface
+  // and signals the modern-institutional posture of Bard Santner
+  // Wealth — patient capital, contemporary structure.
+  wealth: unsplash("1745698694474-9ecee02b51de", 3200, 88),
+  // Backup picks (swap MARQUEE.wealth above if direction changes):
+  //   1601726429844-acd8b1385972  — grayscale horse head (Lloyds-direct)
+  //   1754281309126-532fd835b358  — horse's eye in darkness (tighter)
 };
 
 // ─── Art for CTA backdrops ───────────────────────────────────────────
