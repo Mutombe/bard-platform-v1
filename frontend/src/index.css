@@ -123,11 +123,11 @@
   --color-error:   #88120e;
   --color-warn:    #c9a04d;
 
-  /* ─── Typography ─── Gellix everywhere. One family. */
-  --font-display: "Gellix", "Inter", "Avenir Next", system-ui, sans-serif;
-  --font-display-alt: "Gellix", "Inter", "Avenir Next", system-ui, sans-serif;
-  --font-body: "Gellix", "Inter", "Avenir Next", "Avenir", system-ui, sans-serif;
-  --font-mono: "Gellix", "Inter", "Avenir Next", system-ui, sans-serif;
+  /* ─── Typography ─── Onest everywhere. One family. */
+  --font-display: "Onest Variable", "Gellix", "Inter", system-ui, sans-serif;
+  --font-display-alt: "Onest Variable", "Gellix", "Inter", system-ui, sans-serif;
+  --font-body: "Onest Variable", "Gellix", "Inter", "Avenir Next", system-ui, sans-serif;
+  --font-mono: "Onest Variable", "Gellix", "Inter", system-ui, sans-serif;
 
   /* Hero unchanged. The other display tiers bumped ~10% to deliver the
      "everything reads a touch bigger" institutional confidence the brief

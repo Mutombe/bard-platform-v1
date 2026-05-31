@@ -67,7 +67,10 @@ export default function GroupRibbon({ vertical = false }) {
                 style={{ backgroundColor: e.accent }}
               />
 
-              {/* Header — index + role */}
+              {/* Header — index + role. The role label sits in brand
+                  orange across all five entities; the accent colour
+                  still survives in the 1px top rule above. One label
+                  colour, five hairline marks. */}
               <div className="px-8 lg:px-9 pt-8 lg:pt-9 pb-6 lg:pb-7">
                 <div className="flex items-center gap-3">
                   <span className="font-mono text-[11px] tracking-[0.22em] text-white/35">
@@ -75,8 +78,7 @@ export default function GroupRibbon({ vertical = false }) {
                   </span>
                   <span className="text-white/20">·</span>
                   <span
-                    className="font-mono text-[11px] tracking-[0.18em] uppercase"
-                    style={{ color: e.accent }}
+                    className="font-mono text-[11px] tracking-[0.18em] uppercase text-orange-500"
                   >
                     {e.role}
                   </span>
