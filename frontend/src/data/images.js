@@ -26,10 +26,12 @@ const unsplash = (id, w = 3200, q = 85) =>
 
 // ─── Page heroes ─────────────────────────────────────────────────────
 export const HERO = {
-  // Manhattan Uptown skyline at golden hour, illuminated high-rises
-  // with dramatic warm lighting. Cinematic, premium-quality, the
-  // institutional grandeur the front door deserves.
-  home:           unsplash("1543158266-0066955047b1"),
+  // High-rise silhouettes against a dawn sky, dramatic golden-orange
+  // sunrise light bathing modern urban geometry. Reads as "new day,
+  // institutional optimism, the modern African financial platform
+  // standing at first light." The warm sunrise tones cooperate with
+  // our orange-on-ink overlay system instead of fighting it.
+  home:           unsplash("1511371496040-1fb40794e675"),
 
   // Family at the dining table sharing a meal. Warm, domestic, the
   // everyday — not stock domesticity.
