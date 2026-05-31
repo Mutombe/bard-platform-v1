@@ -80,7 +80,7 @@ export default function Login() {
 
             {/* Headline — compact, single-instance */}
             <p className="eyebrow eyebrow-accent mb-2">§ Welcome back</p>
-            <h1 className="font-display text-[26px] sm:text-[30px] font-medium text-navy-600 leading-[1.1] tracking-[-0.018em] mb-5">
+            <h1 className="display-md text-navy-600 mb-5">
               Log in to your bank.
             </h1>
 
