@@ -98,10 +98,10 @@
   /* ─── Neutrals — quiet foundation ─── */
   --color-ink:   #0c0a14;
   --color-coal:  #1a1822;
-  --color-bone-50:  #fafaf7;
-  --color-bone-100: #f4f3ee;
-  --color-bone-200: #e8e6dd;
-  --color-bone-300: #d4d1c6;
+  --color-bone-50:  #f9fafb;
+  --color-bone-100: #f2f4f7;
+  --color-bone-200: #e6e9ee;
+  --color-bone-300: #d4d7df;
   --color-bone-400: #a8a59a;
   --color-bone-500: #6b6960;
   --color-bone-600: #4a4942;
@@ -113,9 +113,9 @@
      orange feels at home on it) and smoke (the secondary surface,
      deeper and more textural). The institution earns its complexion
      the same way its photographs do. */
-  --color-milk:  #faf5e8;   /* primary canvas — replaces bg-white on most surfaces */
-  --color-smoke: #efe7d4;   /* secondary surface — replaces bg-bone-100 on most surfaces */
-  --color-paper: #fdfbf5;   /* lighter still — for cards lifting off the milk canvas */
+  --color-milk:  #ffffff;   /* primary canvas — clean white space (authority) */
+  --color-smoke: #f5f6f8;   /* secondary surface — a cool light grey for alternating bands */
+  --color-paper: #ffffff;   /* cards — white, lifting via borders + soft shadow */
 
   /* ─── Functional accents — used very sparingly ─── */
   --color-signal:  #b35419;
