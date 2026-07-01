@@ -178,6 +178,17 @@
   --shadow-card: 0 1px 2px rgba(12,10,20,0.04), 0 8px 24px rgba(12,10,20,0.06);
   --shadow-card-lift: 0 2px 4px rgba(12,10,20,0.06), 0 16px 40px rgba(12,10,20,0.10);
   --shadow-hero: 0 24px 80px rgba(12,10,20,0.18);
+
+  /* ─── Card edge tokens ───────────────────────────────────────────────
+     When the canvas went pure white, white cards lost their edge: shadows
+     alone are imperceptible on #fff, so cards dissolved into the page. The
+     fix is a hairline RING rather than a heavy outline — tinted with the
+     brand navy so the edge reads as "considered", not a default grey box,
+     and faint enough that the whitespace still carries the composition.
+     On hover the ring warms toward brand orange: the same navy-foundation →
+     orange-accent logic the whole system runs on, expressed as motion. */
+  --card-edge:       rgba(49, 47, 77, 0.14);    /* navy-600 @ 14% — cool resting hairline */
+  --card-edge-hover: rgba(238, 125, 54, 0.55);  /* orange-500 @ 55% — warms on engage */
 }
 
 /* ─── Base layer ─── */
@@ -349,8 +360,15 @@
   /* Cards — base white card. Inner padding is applied where the card body
      starts, so a card with an image header keeps the image flush-edge
      while the text block underneath gets the generous Lloyds padding. */
-  .bank-card { background: white; border-radius: 0.875rem; overflow: hidden; transition: box-shadow 240ms ease, transform 240ms ease; }
-  .bank-card:hover { box-shadow: var(--shadow-card-lift); transform: translateY(-2px); }
+  /* "Lifted paper" — the resting state now carries its own definition so a
+     white card never dissolves into a white section. A navy-tinted hairline
+     ring gives the crisp edge that shadows can't on pure white; the soft
+     ambient --shadow-card (defined in @theme but previously only applied on
+     hover) lifts the card just off the canvas so it reads as paper, not an
+     outlined box. Both are whisper-quiet — the whitespace still leads.
+     On hover the ring warms to orange and the lift deepens. */
+  .bank-card { background: white; border-radius: 0.875rem; overflow: hidden; border: 1px solid var(--card-edge); box-shadow: var(--shadow-card); transition: box-shadow 240ms ease, transform 240ms ease, border-color 240ms ease; }
+  .bank-card:hover { border-color: var(--card-edge-hover); box-shadow: var(--shadow-card-lift); transform: translateY(-2px); }
   /* Card-body utility — applies the responsive padding rhythm. Mobile
      gets 24px (the institutional sweet spot at 343px content width),
      md gets 32px, lg gets 40px. One utility, three breakpoints. */
