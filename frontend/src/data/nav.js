@@ -36,10 +36,10 @@ export const NAV_MENU = [
   },
   {
     label: "Insights",
-    to: "/insights",
+    to: "https://bgfi.global",
     children: [
-      { label: "BGFI — Bard Global Finance Institute", to: "/insights" },
-      { label: "Finance Africa Quarterly", to: "/insights" },
+      { label: "Bard Global Finance Institute (BGFI)", to: "https://bgfi.global" },
+      { label: "Finance Africa Quarterly", to: "https://bgfi.global/publications/finance-africa-quarterly" },
     ],
   },
   {
@@ -57,9 +57,10 @@ export const NAV_MENU = [
 ];
 
 // Right-aligned utility links kept on the top strip.
-// NOTE: /careers has no page yet — it resolves to the 404 page until built.
+// "Bard Santner Group" points to the external group site; the other two are
+// internal pages.
 export const NAV_UTILITY = [
   { label: "Careers", to: "/careers" },
   { label: "Contact us", to: "/contact" },
-  { label: "Bard Santner Group", to: "/group" },
+  { label: "Bard Santner Group", to: "https://bardsantner.com/" },
 ];

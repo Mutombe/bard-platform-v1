@@ -34,6 +34,24 @@ const LINK_V = {
   show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
 };
 
+// Some destinations are external (BGFI, the group site). Render those as real
+// anchors that open in a new tab; internal routes stay on the Router Link.
+const isExternal = (to) => /^https?:\/\//.test(to);
+function NavItem({ to, className, onClick, children }) {
+  if (isExternal(to)) {
+    return (
+      <a href={to} target="_blank" rel="noopener noreferrer" className={className} onClick={onClick}>
+        {children}
+      </a>
+    );
+  }
+  return (
+    <Link to={to} className={className} onClick={onClick}>
+      {children}
+    </Link>
+  );
+}
+
 /**
  * Institutional Nav — J.P. Morgan / AfrAsia dropdown pattern.
  *
@@ -173,9 +191,9 @@ export default function Nav() {
             {/* Utility links — right */}
             <div className="ml-auto hidden md:flex items-center gap-7 text-[13px] text-white/70 pr-1">
               {NAV_UTILITY.map((u) => (
-                <Link key={u.to} to={u.to} className="hover:text-white transition-colors">
+                <NavItem key={u.to} to={u.to} className="hover:text-white transition-colors">
                   {u.label}
-                </Link>
+                </NavItem>
               ))}
             </div>
           </div>
@@ -208,12 +226,12 @@ export default function Nav() {
                 >
                   {activeItem.children.map((c) => (
                     <motion.span key={c.label} variants={LINK_V} className="shrink-0 px-2.5 first:pl-0">
-                      <Link
+                      <NavItem
                         to={c.to}
                         className="hover-line text-[13.5px] xl:text-[14px] font-medium text-navy-600 hover:text-orange-600 tracking-[0.005em] transition-colors whitespace-nowrap"
                       >
                         {c.label}
-                      </Link>
+                      </NavItem>
                     </motion.span>
                   ))}
                 </motion.div>
@@ -354,14 +372,14 @@ export default function Nav() {
                           >
                             <div className="flex flex-col pb-3">
                               {item.children.map((c) => (
-                                <Link
+                                <NavItem
                                   key={c.label}
                                   to={c.to}
                                   onClick={() => setMobileOpen(false)}
                                   className="py-2.5 pl-4 text-[14px] text-bone-600 hover:text-orange-600 border-l-2 border-bone-200 hover:border-orange-500 transition-colors"
                                 >
                                   {c.label}
-                                </Link>
+                                </NavItem>
                               ))}
                             </div>
                           </motion.div>
@@ -376,14 +394,14 @@ export default function Nav() {
               <p className="eyebrow mb-4">Reach us</p>
               <nav className="flex flex-col gap-3 mb-9">
                 {NAV_UTILITY.map((u) => (
-                  <Link
+                  <NavItem
                     key={u.to}
                     to={u.to}
                     onClick={() => setMobileOpen(false)}
                     className="text-[14.5px] text-bone-600 hover:text-navy-600 transition-colors"
                   >
                     {u.label}
-                  </Link>
+                  </NavItem>
                 ))}
               </nav>
             </div>
