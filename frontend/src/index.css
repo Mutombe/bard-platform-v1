@@ -337,8 +337,8 @@
      The primary uses a solid white border with a brand-orange hover
      fill; the secondary uses a half-opacity white border with a
      subtle white tint on hover. Same gesture, two weights. */
-  .btn-hero-primary { background: #ffffff; color: var(--color-navy-700); border: 2px solid #ffffff; padding: calc(var(--pad-btn-y) - 1px) calc(var(--pad-btn-x) - 1px); }
-  .btn-hero-primary:hover { background: var(--color-orange-500); color: #ffffff; border-color: var(--color-orange-500); }
+  .btn-hero-primary { background: var(--color-orange-500); color: #ffffff; border: 2px solid var(--color-orange-500); padding: calc(var(--pad-btn-y) - 1px) calc(var(--pad-btn-x) - 1px); }
+  .btn-hero-primary:hover { background: #ffffff; color: var(--color-navy-700); border-color: #ffffff; }
   .btn-hero-ghost { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.45); padding: calc(var(--pad-btn-y) - 1px) calc(var(--pad-btn-x) - 1px); }
   .btn-hero-ghost:hover { background: rgba(255,255,255,0.08); border-color: white; }
 
