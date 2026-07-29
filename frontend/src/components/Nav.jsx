@@ -204,10 +204,10 @@ export default function Nav() {
                   variants={ROW_V}
                   initial="hidden"
                   animate="show"
-                  className="flex flex-nowrap items-center justify-start gap-x-5 py-5 md:py-6 overflow-x-auto no-scrollbar"
+                  className="flex flex-nowrap items-center justify-start py-5 md:py-6 overflow-x-auto no-scrollbar divide-x divide-bone-200"
                 >
                   {activeItem.children.map((c) => (
-                    <motion.span key={c.label} variants={LINK_V} className="shrink-0">
+                    <motion.span key={c.label} variants={LINK_V} className="shrink-0 px-2.5 first:pl-0">
                       <Link
                         to={c.to}
                         className="hover-line text-[13.5px] xl:text-[14px] font-medium text-navy-600 hover:text-orange-600 tracking-[0.005em] transition-colors whitespace-nowrap"
