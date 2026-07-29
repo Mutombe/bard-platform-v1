@@ -22,7 +22,7 @@ import SectionReveal from "./SectionReveal.jsx";
  */
 export default function AdvisoryBand() {
   return (
-    <section className="relative bg-smoke border-t-2 border-orange-500 overflow-hidden">
+    <section className="relative bg-smoke border-t border-bone-200 overflow-hidden">
       {/* Desktop backdrop — gallery photo + horizontal bone-100 fade */}
       <div
         className="hidden md:block absolute inset-0 bg-cover bg-center"

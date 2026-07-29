@@ -33,7 +33,7 @@ const TRUST_PILLARS = [
 
 export default function TrustRibbon() {
   return (
-    <section className="section bg-milk border-y-2 border-navy-600">
+    <section className="section bg-milk border-t border-bone-200">
       <div className="container-bank">
         <div className="text-center mb-10 md:mb-12">
           <p className="eyebrow mb-4">§ 07 · Trust architecture</p>
@@ -50,8 +50,8 @@ export default function TrustRibbon() {
             const Icon = p.icon;
             return (
               <div key={p.title}>
-                <div className="w-12 h-12 md:w-14 md:h-14 rounded-lg bg-orange-50 flex items-center justify-center mb-4 md:mb-5">
-                  <Icon size={24} weight="regular" className="text-orange-600" />
+                <div className="w-12 h-12 md:w-14 md:h-14 rounded-lg bg-navy-50 flex items-center justify-center mb-4 md:mb-5">
+                  <Icon size={24} weight="regular" className="text-navy-600" />
                 </div>
                 <p className="font-display text-[18px] md:text-[20px] text-navy-600 mb-2 md:mb-3">
                   {p.title}

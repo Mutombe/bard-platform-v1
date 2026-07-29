@@ -87,8 +87,8 @@ export default function WhoWeServe() {
                 <span className="font-display text-navy-600 text-[17px] md:text-[19px] leading-tight">
                   {it}
                 </span>
-                <span className="w-9 h-9 rounded-full bg-orange-50 flex items-center justify-center shrink-0">
-                  <ArrowRightIcon size={14} weight="bold" className="text-orange-600" />
+                <span className="w-9 h-9 rounded-full bg-navy-50 flex items-center justify-center shrink-0">
+                  <ArrowRightIcon size={14} weight="bold" className="text-navy-600" />
                 </span>
               </motion.div>
             ))}

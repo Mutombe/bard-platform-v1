@@ -62,7 +62,7 @@ export default function Careers() {
                 transition={{ duration: 0.5, delay: (i % 3) * 0.06, ease: [0.16, 1, 0.3, 1] }}
                 className="bank-card bank-card-body flex flex-col h-full"
               >
-                <span className="font-display text-orange-500 text-[15px] mb-3">
+                <span className="font-display text-navy-400 text-[15px] mb-3">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <h3 className="font-display text-navy-600 text-[22px] md:text-[24px] mb-3 leading-tight">
