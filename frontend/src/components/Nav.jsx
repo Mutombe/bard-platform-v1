@@ -92,79 +92,53 @@ export default function Nav() {
     (item.to !== "/" && loc.pathname.startsWith(item.to + "/")) ||
     item.children?.some((c) => c.to !== "/" && loc.pathname === c.to);
 
+  // The currently-open top-level item, whose sub-links fill the full-width
+  // secondary bar below the strip (the AfrAsia two-tier mechanic).
+  const activeItem = NAV_MENU.find((i) => i.label === openMenu) || null;
+
   return (
     <>
-      {/* ─── Dropdown strip (top tier, dark) ──────────────────────────── */}
-      <div className="bg-navy-700 text-white relative z-50">
+      {/* ─── Dropdown strip (top tier, dark) ──────────────────────────────
+          Two-tier mechanic from the AfrAsia reference: the top strip holds
+          the four triggers; hovering/focusing one drops a FULL-WIDTH
+          secondary bar beneath the strip carrying that section's sub-links
+          in a horizontal row. The active tab lifts to white so it connects
+          visually to the bar. onMouseLeave lives on the whole wrapper so the
+          pointer can travel from a tab down into the bar without it closing
+          (the bar is a DOM descendant of this wrapper). */}
+      <div
+        className="bg-navy-700 text-white relative z-50"
+        onMouseLeave={closeSoon}
+      >
         <div className="container-bank">
           <div className="flex items-stretch h-11">
-            {/* Desktop dropdown triggers */}
-            <nav
-              className="hidden md:flex items-stretch"
-              onMouseLeave={closeSoon}
-              aria-label="Primary"
-            >
+            {/* Desktop triggers */}
+            <nav className="hidden md:flex items-stretch" aria-label="Primary">
               {NAV_MENU.map((item) => {
                 const open = openMenu === item.label;
                 const active = isSectionActive(item);
                 return (
-                  <div
+                  <button
                     key={item.label}
-                    className="relative flex items-stretch"
+                    type="button"
+                    aria-haspopup="true"
+                    aria-expanded={open}
                     onMouseEnter={() => openNow(item.label)}
+                    onFocus={() => openNow(item.label)}
+                    onClick={() => setOpenMenu(open ? null : item.label)}
+                    className={`flex items-center gap-1.5 px-5 lg:px-6 text-[13px] tracking-[0.04em] font-medium transition-colors whitespace-nowrap ${
+                      active || open
+                        ? "tab-active"
+                        : "text-white/85 hover:text-white hover:bg-white/5"
+                    }`}
                   >
-                    {/* Top-level items are dropdown TRIGGERS only — they do
-                        not navigate; the sub-links carry the destinations. */}
-                    <button
-                      type="button"
-                      aria-haspopup="true"
-                      aria-expanded={open}
-                      onFocus={() => openNow(item.label)}
-                      onClick={() => setOpenMenu(open ? null : item.label)}
-                      className={`flex items-center gap-1.5 px-5 lg:px-6 text-[13px] tracking-[0.04em] font-medium transition-colors whitespace-nowrap ${
-                        active || open
-                          ? "tab-active"
-                          : "text-white/85 hover:text-white hover:bg-white/5"
-                      }`}
-                    >
-                      {item.label}
-                      <CaretDownIcon
-                        size={11}
-                        weight="bold"
-                        className={`transition-transform duration-200 ${open ? "rotate-180" : ""}`}
-                      />
-                    </button>
-
-                    <AnimatePresence>
-                      {open && (
-                        <motion.div
-                          role="menu"
-                          initial={{ opacity: 0, y: 6 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 6 }}
-                          transition={{ duration: 0.16, ease: [0.22, 1, 0.36, 1] }}
-                          onMouseEnter={() => openNow(item.label)}
-                          className="absolute left-0 top-full z-50 w-max min-w-[240px] max-w-[360px] bg-white rounded-b-lg border border-t-0 border-bone-200 shadow-[0_16px_44px_rgba(12,10,20,0.18)] py-2"
-                        >
-                          {item.children.map((c) => (
-                            <Link
-                              key={c.label}
-                              to={c.to}
-                              role="menuitem"
-                              className="group flex items-center justify-between gap-4 px-5 py-2.5 text-[13.5px] text-navy-600 hover:text-orange-600 hover:bg-smoke transition-colors"
-                            >
-                              <span>{c.label}</span>
-                              <ArrowRightIcon
-                                size={12}
-                                weight="bold"
-                                className="opacity-0 -translate-x-1 group-hover:opacity-60 group-hover:translate-x-0 transition-all shrink-0"
-                              />
-                            </Link>
-                          ))}
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
+                    {item.label}
+                    <CaretDownIcon
+                      size={11}
+                      weight="bold"
+                      className={`transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+                    />
+                  </button>
                 );
               })}
             </nav>
@@ -184,6 +158,35 @@ export default function Nav() {
             </div>
           </div>
         </div>
+
+        {/* Full-width secondary bar — the hovered tab's sub-links, in a row */}
+        <AnimatePresence>
+          {activeItem && (
+            <motion.div
+              initial={{ opacity: 0, y: -6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
+              onMouseEnter={() => openNow(activeItem.label)}
+              className="hidden md:block absolute left-0 right-0 top-full z-50 bg-white border-b border-bone-200 shadow-[0_16px_40px_rgba(12,10,20,0.12)]"
+            >
+              <div className="absolute top-0 left-0 right-0 h-[2px] bg-orange-500" />
+              <div className="container-bank">
+                <div className="flex flex-wrap items-center justify-center gap-x-8 lg:gap-x-10 gap-y-2 py-4">
+                  {activeItem.children.map((c) => (
+                    <Link
+                      key={c.label}
+                      to={c.to}
+                      className="text-[13.5px] font-medium text-navy-600 hover:text-orange-600 tracking-[0.01em] transition-colors whitespace-nowrap"
+                    >
+                      {c.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* ─── Brand row (white, sticky) — centre intentionally empty ─────── */}
