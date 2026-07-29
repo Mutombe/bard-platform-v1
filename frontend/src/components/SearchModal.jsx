@@ -7,18 +7,14 @@ import {
   ArrowRightIcon,
   ArrowUpRightIcon,
   StorefrontIcon,
-  NewspaperIcon,
-  BuildingsIcon,
   UsersThreeIcon,
   CompassIcon,
   ArrowUpIcon,
   ArrowDownIcon,
   CornersOutIcon,
 } from "@phosphor-icons/react";
-import { PRODUCTS } from "../data/products.js";
-import { INSIGHTS } from "../data/insights.js";
-import { GROUP_ENTITIES } from "../data/group.js";
-import { AUDIENCES } from "../data/audiences.js";
+import { SOLUTIONS } from "../data/solutions.js";
+import { SEGMENTS } from "../data/whoWeServe.js";
 
 /**
  * Institutional search modal — the "command-K" pattern, ours.
@@ -38,96 +34,74 @@ import { AUDIENCES } from "../data/audiences.js";
  *  • Footer with keyboard hints (↑↓ to navigate, ⏎ to open, esc to close)
  */
 
-// Build a flat, searchable index from the four data files.
+// Build a flat, searchable index from the current information architecture.
 function buildIndex() {
   const items = [];
-  PRODUCTS.forEach((p) =>
+  SOLUTIONS.forEach((s) =>
     items.push({
-      id: `p-${p.slug}`,
-      type: "product",
-      title: p.name,
-      eyebrow: p.eyebrow,
-      summary: p.summary,
-      path: `/products/${p.slug}`,
-      keywords: [p.name, p.eyebrow, p.category, ...(p.audience || [])].join(" "),
+      id: `sol-${s.slug}`,
+      type: "solution",
+      title: s.title,
+      eyebrow: "Solutions",
+      summary: s.headline,
+      path: `/solutions/${s.slug}`,
+      keywords: [s.title, s.headline, ...(s.blocks?.flatMap((b) => b.items) || [])].join(" "),
     })
   );
-  INSIGHTS.forEach((it) =>
+  SEGMENTS.forEach((seg) =>
     items.push({
-      id: `i-${it.slug}`,
-      type: "insight",
-      title: it.title,
-      eyebrow: it.eyebrow,
-      summary: it.summary,
-      path: `/insights/${it.slug}`,
-      keywords: [it.title, it.eyebrow, it.author, ...(it.audience || [])].join(" "),
-    })
-  );
-  GROUP_ENTITIES.forEach((e) =>
-    items.push({
-      id: `g-${e.id}`,
-      type: "group",
-      title: e.name,
-      eyebrow: e.role,
-      summary: e.tagline,
-      path: e.href,
-      keywords: [e.name, e.short, e.role, e.tagline].join(" "),
-    })
-  );
-  AUDIENCES.forEach((a) =>
-    items.push({
-      id: `a-${a.id}`,
-      type: "audience",
-      title: `${a.label} banking`,
-      eyebrow: "Audience",
-      summary: a.eyebrow || `Banking for ${a.id}`,
-      path: a.path,
-      keywords: [a.label, a.label_full, a.id].join(" "),
+      id: `seg-${seg.slug}`,
+      type: "segment",
+      title: seg.title,
+      eyebrow: "Who We Serve",
+      summary: seg.headline,
+      path: `/who-we-serve/${seg.slug}`,
+      keywords: [seg.title, seg.headline, ...(seg.items || [])].join(" "),
     })
   );
   // Static destinations
   [
-    { title: "Banking", path: "/banking", summary: "All banking products on one shelf", eyebrow: "Service" },
-    { title: "Wealth", path: "/wealth", summary: "Discretionary mandates, advisory portfolios, structured credit", eyebrow: "Service" },
-    { title: "Markets & Treasury", path: "/markets", summary: "Treasury, FX, debt capital markets, trade finance", eyebrow: "Service" },
-    { title: "Online Banking", path: "/online-banking", summary: "Manage accounts, send and receive, pay bills, monitor in real time", eyebrow: "Digital" },
-    { title: "Log in", path: "/login", summary: "Continue with Google, Apple, or your Bard Santner credentials", eyebrow: "Digital" },
-    { title: "Banking app dashboard", path: "/app", summary: "Accounts, transfers, statements — the signed-in customer view", eyebrow: "Digital" },
-    { title: "The Group", path: "/group", summary: "Five institutions, one discipline", eyebrow: "About" },
-    { title: "About Bard Santner", path: "/about", summary: "A modern African financial platform", eyebrow: "About" },
-    { title: "Leadership", path: "/leadership", summary: "Named, accountable, reachable", eyebrow: "About" },
-    { title: "Locations", path: "/locations", summary: "Branches, desks, representative offices", eyebrow: "About" },
-    { title: "Contact", path: "/contact", summary: "Telephone, email, WhatsApp, by appointment", eyebrow: "Reach" },
-    { title: "Insights", path: "/insights", summary: "Editorial commentary from the desk", eyebrow: "Reading" },
+    { title: "About Us", path: "/about", summary: "Our story, manifesto, vision and board" },
+    { title: "Board of Directors", path: "/about#board-of-directors", summary: "Named, accountable, reachable" },
+    { title: "Careers", path: "/careers", summary: "Build a better bank with us" },
+    { title: "Contact us", path: "/contact", summary: "Telephone, email, WhatsApp, by appointment" },
+    { title: "Log in", path: "/login", summary: "Online Banking — continue with Google, Apple or email" },
+    { title: "Online Banking dashboard", path: "/app", summary: "Accounts, transfers, statements" },
+    { title: "Security", path: "/security", summary: "Fraud, encryption and staying safe" },
+    { title: "Privacy", path: "/privacy", summary: "How we handle your data" },
+    { title: "Terms", path: "/terms", summary: "Terms and conditions" },
+    { title: "Cookies", path: "/cookies", summary: "How we use cookies" },
+    { title: "Regulatory", path: "/regulatory", summary: "Licensing and supervision" },
+    { title: "Accessibility", path: "/accessibility", summary: "Our accessibility commitment" },
+    { title: "Complaints", path: "/complaints", summary: "If something has gone wrong" },
+    { title: "Legal", path: "/legal", summary: "Legal information" },
   ].forEach((p) =>
     items.push({
       id: `s-${p.path}`,
       type: "page",
       title: p.title,
-      eyebrow: p.eyebrow,
+      eyebrow: "Page",
       summary: p.summary,
       path: p.path,
-      keywords: `${p.title} ${p.summary} ${p.eyebrow}`,
+      keywords: `${p.title} ${p.summary}`,
     })
   );
   return items;
 }
 
 const TYPE_META = {
-  product: { label: "Products", icon: StorefrontIcon, order: 1 },
-  insight: { label: "Insights", icon: NewspaperIcon, order: 2 },
-  group: { label: "The Group", icon: BuildingsIcon, order: 3 },
-  audience: { label: "Audiences", icon: UsersThreeIcon, order: 4 },
-  page: { label: "Pages", icon: CompassIcon, order: 5 },
+  solution: { label: "Solutions", icon: StorefrontIcon, order: 1 },
+  segment: { label: "Who We Serve", icon: UsersThreeIcon, order: 2 },
+  page: { label: "Pages", icon: CompassIcon, order: 3 },
 };
 
 // Curated empty-state suggestions
 const SUGGESTIONS = [
+  { label: "For Individuals", path: "/solutions/individuals" },
+  { label: "For Companies and Institutions", path: "/solutions/companies-institutions" },
+  { label: "Diaspora and International", path: "/who-we-serve/diaspora-international" },
+  { label: "Careers", path: "/careers" },
   { label: "Log in to Online Banking", path: "/login" },
-  { label: "Preview the app", path: "/app" },
-  { label: "Open an Everyday Account", path: "/products/everyday-account" },
-  { label: "Diaspora banking", path: "/international" },
-  { label: "Wealth management", path: "/wealth" },
   { label: "Speak to a banker", path: "/contact" },
 ];
 
@@ -241,7 +215,7 @@ export default function SearchModal({ open, onClose }) {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 type="text"
-                placeholder="Search products, insights, the Group…"
+                placeholder="Search solutions, segments and pages…"
                 className="w-full pl-16 pr-14 py-5 md:py-6 text-[16px] md:text-[18px] text-navy-700 placeholder:text-bone-400 bg-transparent outline-none"
                 aria-label="Search query"
               />
@@ -375,10 +349,9 @@ function EmptyState({ onPick }) {
         <p className="text-[12.5px] text-bone-500 leading-relaxed flex items-start gap-3">
           <CornersOutIcon size={14} weight="regular" className="text-bone-400 mt-0.5 shrink-0" />
           <span>
-            Search across <strong className="text-navy-700">13 products</strong>,{" "}
-            <strong className="text-navy-700">8 insights</strong>,{" "}
-            <strong className="text-navy-700">5 institutions in the Group</strong> and every
-            page on bardsantner.com. Try a product name, "diaspora", or "treasury".
+            Search across <strong className="text-navy-700">3 solutions</strong>,{" "}
+            <strong className="text-navy-700">7 client segments</strong> and every page.
+            Try "individuals", "diaspora", or "careers".
           </span>
         </p>
       </div>

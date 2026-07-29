@@ -23,41 +23,20 @@ const STATIC_ROUTES = [
   // Top of site
   { path: "/",                priority: "1.0", changefreq: "weekly"  },
 
-  // Audience landings
-  { path: "/personal",        priority: "0.9", changefreq: "weekly"  },
-  { path: "/business",        priority: "0.9", changefreq: "weekly"  },
-  { path: "/private-banking", priority: "0.9", changefreq: "weekly"  },
-  { path: "/international",   priority: "0.9", changefreq: "weekly"  },
-  { path: "/institutional",   priority: "0.9", changefreq: "weekly"  },
-
-  // Service hubs
-  { path: "/banking",         priority: "0.8", changefreq: "weekly"  },
-  { path: "/wealth",          priority: "0.8", changefreq: "weekly"  },
-  { path: "/markets",         priority: "0.8", changefreq: "weekly"  },
-  { path: "/online-banking",  priority: "0.9", changefreq: "weekly"  },
-  { path: "/login",           priority: "0.6", changefreq: "monthly" },
-
-  // Institution
+  // Institution + reach
   { path: "/about",           priority: "0.8", changefreq: "monthly" },
-  { path: "/group",           priority: "0.8", changefreq: "monthly" },
-  { path: "/leadership",      priority: "0.7", changefreq: "monthly" },
-
-  // Editorial
-  { path: "/insights",        priority: "0.9", changefreq: "weekly"  },
-
-  // Contact / locations
+  { path: "/careers",         priority: "0.7", changefreq: "monthly" },
   { path: "/contact",         priority: "0.7", changefreq: "monthly" },
-  { path: "/locations",       priority: "0.7", changefreq: "monthly" },
 
   // Trust + legal
-  { path: "/security",        priority: "0.5", changefreq: "yearly"  },
-  { path: "/legal",           priority: "0.4", changefreq: "yearly"  },
+  { path: "/security",        priority: "0.4", changefreq: "yearly"  },
+  { path: "/legal",           priority: "0.3", changefreq: "yearly"  },
   { path: "/privacy",         priority: "0.4", changefreq: "yearly"  },
   { path: "/cookies",         priority: "0.3", changefreq: "yearly"  },
   { path: "/terms",           priority: "0.3", changefreq: "yearly"  },
-  { path: "/regulatory",      priority: "0.5", changefreq: "yearly"  },
-  { path: "/accessibility",   priority: "0.4", changefreq: "yearly"  },
-  { path: "/complaints",      priority: "0.4", changefreq: "yearly"  },
+  { path: "/regulatory",      priority: "0.4", changefreq: "yearly"  },
+  { path: "/accessibility",   priority: "0.3", changefreq: "yearly"  },
+  { path: "/complaints",      priority: "0.3", changefreq: "yearly"  },
 ];
 
 async function extractSlugs(filePath) {
@@ -90,20 +69,14 @@ function urlElement({ path: p, priority = "0.5", changefreq = "monthly" }) {
 async function main() {
   await fs.mkdir(DIST, { recursive: true });
 
-  const [productSlugs, insightSlugs, groupSlugs, solutionSlugs, segmentSlugs] = await Promise.all([
-    extractSlugs(path.join(SRC, "data/products.js")),
-    extractSlugs(path.join(SRC, "data/insights.js")),
-    extractSlugs(path.join(SRC, "data/group.js")),
+  const [solutionSlugs, segmentSlugs] = await Promise.all([
     extractSlugs(path.join(SRC, "data/solutions.js")),
     extractSlugs(path.join(SRC, "data/whoWeServe.js")),
   ]);
 
   const dynamic = [
-    ...solutionSlugs.map((s) => ({ path: `/solutions/${s}`,     priority: "0.8", changefreq: "monthly" })),
-    ...segmentSlugs.map((s)  => ({ path: `/who-we-serve/${s}`,  priority: "0.8", changefreq: "monthly" })),
-    ...productSlugs.map((s) => ({ path: `/products/${s}`,  priority: "0.7", changefreq: "monthly" })),
-    ...insightSlugs.map((s) => ({ path: `/insights/${s}`,  priority: "0.7", changefreq: "monthly" })),
-    ...groupSlugs.map((s)   => ({ path: `/group/${s}`,     priority: "0.7", changefreq: "monthly" })),
+    ...solutionSlugs.map((s) => ({ path: `/solutions/${s}`,    priority: "0.8", changefreq: "monthly" })),
+    ...segmentSlugs.map((s)  => ({ path: `/who-we-serve/${s}`, priority: "0.8", changefreq: "monthly" })),
   ];
 
   const all = [...STATIC_ROUTES, ...dynamic];
@@ -135,7 +108,7 @@ Crawl-delay: 0
   await fs.writeFile(path.join(PUB, "robots.txt"), robots, "utf8");
 
   console.log(
-    `[sitemap] wrote ${unique.length} routes (${solutionSlugs.length} solutions, ${segmentSlugs.length} segments, ${productSlugs.length} products, ${insightSlugs.length} insights, ${groupSlugs.length} group entities + ${STATIC_ROUTES.length} static)`
+    `[sitemap] wrote ${unique.length} routes (${solutionSlugs.length} solutions, ${segmentSlugs.length} segments + ${STATIC_ROUTES.length} static)`
   );
 }
 
