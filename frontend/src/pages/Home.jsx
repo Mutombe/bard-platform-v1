@@ -7,10 +7,11 @@ import QuickActionStrip from "../components/QuickActionStrip.jsx";
 import PrivateBankingMarquee from "../components/PrivateBankingMarquee.jsx";
 import ScrollSpine from "../components/ScrollSpine.jsx";
 import RevealImage from "../components/RevealImage.jsx";
+import BgfiCards from "../components/BgfiCards.jsx";
 import AdvisoryBand from "../components/AdvisoryBand.jsx";
 import TrustRibbon from "../components/TrustRibbon.jsx";
 import SEO, { organizationJsonLd, websiteJsonLd, breadcrumbJsonLd } from "../components/SEO.jsx";
-import { HERO, AUDIENCE_TILE, INSIGHT } from "../data/images.js";
+import { HERO, AUDIENCE_TILE } from "../data/images.js";
 
 /**
  * Home — content from the Bard Santner Website Map (2026-07-28), composed to a
@@ -68,30 +69,6 @@ const AUDIENCES = [
   { label: "Farmers", to: "/who-we-serve/agriculture" },
   { label: "Institutions", to: "/who-we-serve/financial-institutions" },
   { label: "International & diaspora", to: "/who-we-serve/diaspora-international" },
-];
-
-const INSIGHTS_FEED = [
-  {
-    category: "Finance Africa Quarterly",
-    title: "Africa's investment landscape, quarter by quarter.",
-    blurb: "In-depth analysis of African economies, financial markets and the emerging opportunities executives and investors are watching.",
-    image: INSIGHT["africa-and-the-cross-border-rail"],
-    href: "https://bgfi.global/publications/finance-africa-quarterly",
-  },
-  {
-    category: "Research",
-    title: "The corridors moving African trade.",
-    blurb: "Why the rails carrying goods between the continent's ports will be African-built within the decade — and what that unlocks.",
-    image: INSIGHT["treasury-and-the-discipline-of-the-end-of-day"],
-    href: "https://bgfi.global",
-  },
-  {
-    category: "Market Intelligence",
-    title: "The quiet case for a domestic deposit base.",
-    blurb: "Wholesale funding looks cheaper on a spreadsheet and crueller in a crisis. An argument for the patient work of a real retail book.",
-    image: INSIGHT["the-quiet-case-for-a-deposit-base"],
-    href: "https://bgfi.global",
-  },
 ];
 
 // Numbered section eyebrow — the "prospectus index" that gives the page a
@@ -291,39 +268,7 @@ export default function Home() {
             </a>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            {INSIGHTS_FEED.map((a, i) => (
-              <motion.a
-                key={a.title}
-                href={a.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 26 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-70px" }}
-                transition={{ duration: 0.6, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-                className="bank-card group flex flex-col h-full"
-              >
-                <div className="overflow-hidden">
-                  <RevealImage
-                    image={a.image}
-                    className="aspect-[16/10] bg-cover bg-center bg-bone-200 transition-transform duration-700 group-hover:scale-[1.04]"
-                  />
-                </div>
-                <div className="bank-card-body flex flex-col flex-1">
-                  <p className="eyebrow eyebrow-accent mb-4">{a.category}</p>
-                  <h3 className="font-display text-navy-600 text-[21px] md:text-[23px] leading-tight mb-4">
-                    {a.title}
-                  </h3>
-                  <p className="text-[15px] text-bone-600 leading-relaxed flex-1">{a.blurb}</p>
-                  <span className="mt-8 inline-flex items-center gap-2 text-[14.5px] font-medium text-navy-600 group-hover:text-orange-600 transition-colors">
-                    Read on BGFI
-                    <ArrowUpRightIcon size={14} weight="bold" className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                  </span>
-                </div>
-              </motion.a>
-            ))}
-          </div>
+          <BgfiCards />
         </div>
       </section>
 
@@ -364,33 +309,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Crescendo — dark closing CTA ───────────────────────────── */}
-      <section className="relative bg-ink text-white overflow-hidden">
-        <div className="absolute top-0 left-0 right-0 h-[2px] bg-orange-500" />
-        <div className="container-bank py-24 md:py-36">
-          <motion.div {...reveal} className="max-w-3xl">
-            <p className="eyebrow eyebrow-on-dark mb-6">Looking ahead</p>
-            <h2 className="display-xl text-white text-balance">
-              Let's build your future together.
-            </h2>
-            <p className="mt-7 text-[18px] md:text-[21px] text-white/80 leading-relaxed max-w-2xl">
-              Our goal isn't simply to become another bank. It's to become the financial
-              partner people trust at every stage of life and every stage of business. Open
-              an account, start a conversation, and build your future with Bard Santner.
-            </p>
-            <div className="mt-10 flex flex-col sm:flex-row gap-4">
-              <Link to="/solutions/individuals" className="btn btn-primary w-full sm:w-auto justify-center">
-                Open an account
-                <ArrowRightIcon size={16} weight="bold" />
-              </Link>
-              <Link to="/contact" className="btn btn-hero-ghost w-full sm:w-auto justify-center">
-                Start a conversation
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
+      {/* ── Closing CTA — the Advisory band carries "Looking ahead" ── */}
       <AdvisoryBand />
       <TrustRibbon />
     </PageTransition>
