@@ -238,7 +238,7 @@ export default function Nav() {
               <img
                 src="/logo-bsmfb.png"
                 alt="Bard Santner Microfinance Bank"
-                className="h-9 md:h-11 w-auto object-contain"
+                className="h-10 md:h-12 w-auto object-contain"
                 loading="eager"
               />
             </Link>
@@ -302,7 +302,7 @@ export default function Nav() {
             {/* Drawer head */}
             <div className="px-6 pt-5 pb-4 border-b border-bone-200 flex items-center justify-between">
               <Link to="/" onClick={() => setMobileOpen(false)} className="flex items-center">
-                <img src="/logo-bsmfb.png" alt="Bard Santner Microfinance Bank" className="h-8 w-auto object-contain" />
+                <img src="/logo-bsmfb.png" alt="Bard Santner Microfinance Bank" className="h-9 w-auto object-contain" />
               </Link>
               <button
                 onClick={() => setMobileOpen(false)}
