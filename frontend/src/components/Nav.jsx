@@ -12,6 +12,28 @@ import {
 import { NAV_MENU, NAV_UTILITY } from "../data/nav.js";
 import SearchModal from "./SearchModal.jsx";
 
+// ─── Dropdown motion — a premium, unhurried reveal ─────────────────────
+// The bar eases open on an expo-out curve; its sub-links then cascade in
+// with a light stagger and settle. Switching tabs re-keys the row so the
+// cascade replays crisply rather than snapping.
+const BAR_V = {
+  hidden: { height: 0, opacity: 0 },
+  show: {
+    height: "auto",
+    opacity: 1,
+    transition: { duration: 0.42, ease: [0.16, 1, 0.3, 1] },
+  },
+  exit: { height: 0, opacity: 0, transition: { duration: 0.28, ease: [0.4, 0, 0.2, 1] } },
+};
+const ROW_V = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.045, delayChildren: 0.1 } },
+};
+const LINK_V = {
+  hidden: { opacity: 0, y: 12 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
+};
+
 /**
  * Institutional Nav — J.P. Morgan / AfrAsia dropdown pattern.
  *
@@ -162,31 +184,39 @@ export default function Nav() {
         {/* Full-width secondary bar — the hovered tab's sub-links. It lives in
             normal flow (a height reveal), so it takes its OWN space and pushes
             the brand row down rather than overlaying it, and opens seamlessly.
-            Sub-links are left-aligned to the container edge. */}
+            Sub-links are left-aligned and held to a single line (they scroll
+            rather than wrap, so long menus like "Who We Serve" never break). */}
         <AnimatePresence>
           {activeItem && (
             <motion.div
               key="secbar"
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
+              variants={BAR_V}
+              initial="hidden"
+              animate="show"
+              exit="exit"
               onMouseEnter={() => openNow(activeItem.label)}
               className="hidden md:block overflow-hidden bg-white border-b border-bone-200 relative"
             >
               <div className="absolute top-0 left-0 right-0 h-[2px] bg-orange-500" />
               <div className="container-bank">
-                <div className="flex flex-wrap items-center justify-start gap-x-8 lg:gap-x-10 gap-y-2.5 py-4">
+                <motion.div
+                  key={activeItem.label}
+                  variants={ROW_V}
+                  initial="hidden"
+                  animate="show"
+                  className="flex flex-nowrap items-center justify-start gap-x-5 2xl:gap-x-7 py-5 md:py-6 overflow-x-auto no-scrollbar"
+                >
                   {activeItem.children.map((c) => (
-                    <Link
-                      key={c.label}
-                      to={c.to}
-                      className="text-[13.5px] font-medium text-navy-600 hover:text-orange-600 tracking-[0.01em] transition-colors whitespace-nowrap"
-                    >
-                      {c.label}
-                    </Link>
+                    <motion.span key={c.label} variants={LINK_V} className="shrink-0">
+                      <Link
+                        to={c.to}
+                        className="hover-line text-[12px] 2xl:text-[13px] font-medium text-navy-600 hover:text-orange-600 tracking-[0.005em] transition-colors whitespace-nowrap"
+                      >
+                        {c.label}
+                      </Link>
+                    </motion.span>
                   ))}
-                </div>
+                </motion.div>
               </div>
             </motion.div>
           )}
