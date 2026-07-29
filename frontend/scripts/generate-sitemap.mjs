@@ -90,13 +90,17 @@ function urlElement({ path: p, priority = "0.5", changefreq = "monthly" }) {
 async function main() {
   await fs.mkdir(DIST, { recursive: true });
 
-  const [productSlugs, insightSlugs, groupSlugs] = await Promise.all([
+  const [productSlugs, insightSlugs, groupSlugs, solutionSlugs, segmentSlugs] = await Promise.all([
     extractSlugs(path.join(SRC, "data/products.js")),
     extractSlugs(path.join(SRC, "data/insights.js")),
     extractSlugs(path.join(SRC, "data/group.js")),
+    extractSlugs(path.join(SRC, "data/solutions.js")),
+    extractSlugs(path.join(SRC, "data/whoWeServe.js")),
   ]);
 
   const dynamic = [
+    ...solutionSlugs.map((s) => ({ path: `/solutions/${s}`,     priority: "0.8", changefreq: "monthly" })),
+    ...segmentSlugs.map((s)  => ({ path: `/who-we-serve/${s}`,  priority: "0.8", changefreq: "monthly" })),
     ...productSlugs.map((s) => ({ path: `/products/${s}`,  priority: "0.7", changefreq: "monthly" })),
     ...insightSlugs.map((s) => ({ path: `/insights/${s}`,  priority: "0.7", changefreq: "monthly" })),
     ...groupSlugs.map((s)   => ({ path: `/group/${s}`,     priority: "0.7", changefreq: "monthly" })),
@@ -131,7 +135,7 @@ Crawl-delay: 0
   await fs.writeFile(path.join(PUB, "robots.txt"), robots, "utf8");
 
   console.log(
-    `[sitemap] wrote ${unique.length} routes (${productSlugs.length} products, ${insightSlugs.length} insights, ${groupSlugs.length} group entities + ${STATIC_ROUTES.length} static)`
+    `[sitemap] wrote ${unique.length} routes (${solutionSlugs.length} solutions, ${segmentSlugs.length} segments, ${productSlugs.length} products, ${insightSlugs.length} insights, ${groupSlugs.length} group entities + ${STATIC_ROUTES.length} static)`
   );
 }
 

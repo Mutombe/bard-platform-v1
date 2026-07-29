@@ -90,15 +90,19 @@ function diskPathFor(route) {
 }
 
 async function main() {
-  const [products, insights, group] = await Promise.all([
+  const [products, insights, group, solutions, segments] = await Promise.all([
     extractSlugs(path.join(SRC, "data/products.js")),
     extractSlugs(path.join(SRC, "data/insights.js")),
     extractSlugs(path.join(SRC, "data/group.js")),
+    extractSlugs(path.join(SRC, "data/solutions.js")),
+    extractSlugs(path.join(SRC, "data/whoWeServe.js")),
   ]);
   const dynamic = [
     ...products.map((s) => `/products/${s}`),
     ...insights.map((s) => `/insights/${s}`),
     ...group.map((s) => `/group/${s}`),
+    ...solutions.map((s) => `/solutions/${s}`),
+    ...segments.map((s) => `/who-we-serve/${s}`),
   ];
   const routes = [...new Set([...STATIC_ROUTES, ...dynamic])];
 

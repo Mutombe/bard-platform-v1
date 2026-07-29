@@ -1,55 +1,40 @@
-import { Link, NavLink, useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   MagnifyingGlassIcon,
   LockIcon,
   ListIcon,
   XIcon,
   ArrowRightIcon,
+  CaretDownIcon,
 } from "@phosphor-icons/react";
-import { AUDIENCES } from "../data/audiences.js";
+import { NAV_MENU, NAV_UTILITY } from "../data/nav.js";
 import SearchModal from "./SearchModal.jsx";
 
 /**
- * Institutional Nav. Modelled on Lloyds + AfrAsia.
+ * Institutional Nav — J.P. Morgan / AfrAsia dropdown pattern.
  *
  *   ╔══════════════════════════════════════════════════════════════════╗
- *   ║ Personal · Business · Private · International · Institutional   ║   ← audience strip
+ *   ║ Solutions ▾  Who We Serve ▾  Insights ▾  About Us ▾   Locations … ║  ← dropdown strip
  *   ╠══════════════════════════════════════════════════════════════════╣
- *   ║ [Mark]  BARD SANTNER   Banking  Wealth  Markets  …   [Search] [Log in] ║
+ *   ║ [Mark]  BARD SANTNER                              [Search] [Log in]║  ← brand row (centre empty)
  *   ╚══════════════════════════════════════════════════════════════════╝
  *
- * Mobile behaviour:
- *  • Audience strip remains scrollable but tightens its tracking and
- *    padding so the five labels survive a 375px viewport without losing
- *    institutional weight.
- *  • Brand row keeps a 44×44 hamburger touch target. Login becomes
- *    icon-only on mobile — the verb moves into the drawer where it has
- *    room to be a primary CTA.
- *  • Mobile drawer is a full-screen panel with backdrop, scroll-lock,
- *    and a compact link scale (no more enormous display-md links).
+ * The four top-level items each reveal a dropdown of sub-links on hover /
+ * focus (desktop) — the "sub-links under the top link" behaviour from the
+ * AfrAsia reference. The brand row's former primary nav (Banking, Wealth,
+ * Markets, Insights, Group, About) is intentionally removed; that space is
+ * left empty per direction. Mobile carries the same four as accordions
+ * inside the drawer.
  */
-
-const PRIMARY_NAV = [
-  { label: "Banking", to: "/banking" },
-  { label: "Wealth", to: "/wealth" },
-  { label: "Markets", to: "/markets" },
-  { label: "Insights", to: "/insights" },
-  { label: "Group", to: "/group" },
-  { label: "About", to: "/about" },
-];
-
-const DRAWER_SECONDARY = [
-  { label: "Online Banking", to: "/online-banking" },
-  { label: "Locations", to: "/locations" },
-  { label: "Contact us", to: "/contact" },
-  { label: "Leadership", to: "/leadership" },
-];
-
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [openMenu, setOpenMenu] = useState(null);       // desktop dropdown (by label)
+  const [mobileSection, setMobileSection] = useState(null); // drawer accordion (by label)
+  const closeTimer = useRef(null);
   const loc = useLocation();
 
   useEffect(() => {
@@ -59,11 +44,15 @@ export default function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close mobile drawer on every route change.
-  useEffect(() => setMobileOpen(false), [loc.pathname]);
+  // Close mobile drawer + any open dropdown on every route change. This is a
+  // legitimate sync-with-the-router effect, not derived state.
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMobileOpen(false);
+    setOpenMenu(null);
+  }, [loc.pathname]);
 
-  // Scroll-lock the page body while the drawer is open so the drawer
-  // owns the entire viewport's focus.
+  // Scroll-lock the page body while the drawer is open.
   useEffect(() => {
     if (mobileOpen) document.body.classList.add("scroll-lock");
     else document.body.classList.remove("scroll-lock");
@@ -71,7 +60,6 @@ export default function Nav() {
   }, [mobileOpen]);
 
   // Global keyboard shortcuts — / and Cmd/Ctrl-K open the search.
-  // Skipped when the user is typing inside a form field.
   useEffect(() => {
     const onKey = (e) => {
       const inField =
@@ -82,60 +70,123 @@ export default function Nav() {
         e.preventDefault();
         setSearchOpen(true);
       }
+      if (e.key === "Escape") setOpenMenu(null);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
-  const matchedAudienceId = AUDIENCES.find((a) =>
-    loc.pathname.startsWith(a.path)
-  )?.id;
-  const activeAudienceId = matchedAudienceId || "personal";
+  // Hover intent — small close delay so the pointer can travel from the
+  // trigger into the panel without the menu snapping shut.
+  const openNow = (label) => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setOpenMenu(label);
+  };
+  const closeSoon = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    closeTimer.current = setTimeout(() => setOpenMenu(null), 140);
+  };
+
+  const isSectionActive = (item) =>
+    loc.pathname === item.to ||
+    (item.to !== "/" && loc.pathname.startsWith(item.to + "/")) ||
+    item.children?.some((c) => c.to !== "/" && loc.pathname === c.to);
 
   return (
     <>
-      {/* ─── Audience strip (top tier, dark) ──────────────────────── */}
+      {/* ─── Dropdown strip (top tier, dark) ──────────────────────────── */}
       <div className="bg-navy-700 text-white relative z-50">
         <div className="container-bank">
-          {/* On mobile the five audience labels don't all fit a 375px
-              viewport (the long ones — "Private Banking", "International",
-              "Institutional" — push the strip to ~550px). The strip
-              scrolls horizontally and we layer a right-edge fade so the
-              scrollability reads at a glance without a visible scrollbar. */}
-          <div className="relative">
-            <div className="flex items-stretch h-10 md:h-11 overflow-x-auto no-scrollbar">
-              {AUDIENCES.map((a) => {
-                const isActive = activeAudienceId === a.id;
+          <div className="flex items-stretch h-11">
+            {/* Desktop dropdown triggers */}
+            <nav
+              className="hidden md:flex items-stretch"
+              onMouseLeave={closeSoon}
+              aria-label="Primary"
+            >
+              {NAV_MENU.map((item) => {
+                const open = openMenu === item.label;
+                const active = isSectionActive(item);
                 return (
-                  <NavLink
-                    key={a.id}
-                    to={a.path}
-                    className={() =>
-                      `flex items-center px-3.5 md:px-7 text-[12px] md:text-[13px] tracking-[0.04em] md:tracking-[0.06em] font-medium transition-colors whitespace-nowrap ${
-                        isActive
-                          ? "tab-active"
-                          : "text-white/80 hover:text-white hover:bg-white/5"
-                      }`
-                    }
+                  <div
+                    key={item.label}
+                    className="relative flex items-stretch"
+                    onMouseEnter={() => openNow(item.label)}
                   >
-                    {a.label}
-                  </NavLink>
+                    {/* Top-level items are dropdown TRIGGERS only — they do
+                        not navigate; the sub-links carry the destinations. */}
+                    <button
+                      type="button"
+                      aria-haspopup="true"
+                      aria-expanded={open}
+                      onFocus={() => openNow(item.label)}
+                      onClick={() => setOpenMenu(open ? null : item.label)}
+                      className={`flex items-center gap-1.5 px-5 lg:px-6 text-[13px] tracking-[0.04em] font-medium transition-colors whitespace-nowrap ${
+                        active || open
+                          ? "tab-active"
+                          : "text-white/85 hover:text-white hover:bg-white/5"
+                      }`}
+                    >
+                      {item.label}
+                      <CaretDownIcon
+                        size={11}
+                        weight="bold"
+                        className={`transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+                      />
+                    </button>
+
+                    <AnimatePresence>
+                      {open && (
+                        <motion.div
+                          role="menu"
+                          initial={{ opacity: 0, y: 6 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 6 }}
+                          transition={{ duration: 0.16, ease: [0.22, 1, 0.36, 1] }}
+                          onMouseEnter={() => openNow(item.label)}
+                          className="absolute left-0 top-full z-50 w-max min-w-[240px] max-w-[360px] bg-white rounded-b-lg border border-t-0 border-bone-200 shadow-[0_16px_44px_rgba(12,10,20,0.18)] py-2"
+                        >
+                          {item.children.map((c) => (
+                            <Link
+                              key={c.label}
+                              to={c.to}
+                              role="menuitem"
+                              className="group flex items-center justify-between gap-4 px-5 py-2.5 text-[13.5px] text-navy-600 hover:text-orange-600 hover:bg-smoke transition-colors"
+                            >
+                              <span>{c.label}</span>
+                              <ArrowRightIcon
+                                size={12}
+                                weight="bold"
+                                className="opacity-0 -translate-x-1 group-hover:opacity-60 group-hover:translate-x-0 transition-all shrink-0"
+                              />
+                            </Link>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
                 );
               })}
-              <div className="ml-auto hidden md:flex items-center gap-7 text-[13px] text-white/70 pr-1">
-                <Link to="/locations" className="hover:text-white">Locations</Link>
-                <Link to="/contact" className="hover:text-white">Contact us</Link>
-                <Link to="/group" className="hover:text-white">Bard Santner Group</Link>
-              </div>
+            </nav>
+
+            {/* Mobile label filler (triggers live in the drawer on mobile) */}
+            <span className="md:hidden flex items-center text-[11px] tracking-[0.18em] text-white/60 uppercase">
+              Bard Santner Markets Inc
+            </span>
+
+            {/* Utility links — right */}
+            <div className="ml-auto hidden md:flex items-center gap-7 text-[13px] text-white/70 pr-1">
+              {NAV_UTILITY.map((u) => (
+                <Link key={u.to} to={u.to} className="hover:text-white transition-colors">
+                  {u.label}
+                </Link>
+              ))}
             </div>
-            {/* Mobile-only right-edge fade — institutional scroll
-                affordance. Hidden on md+ where the strip fits cleanly. */}
-            <div className="md:hidden pointer-events-none absolute right-0 top-0 bottom-0 w-10 bg-gradient-to-l from-navy-700 to-transparent" />
           </div>
         </div>
       </div>
 
-      {/* ─── Brand row (white, sticky) ───────────────────────────── */}
+      {/* ─── Brand row (white, sticky) — centre intentionally empty ─────── */}
       <header
         className={`sticky top-0 z-40 bg-white transition-shadow ${
           scrolled
@@ -146,11 +197,7 @@ export default function Nav() {
         <div className="container-bank">
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Brand mark */}
-            <Link
-              to="/"
-              className="flex items-center gap-3 shrink-0"
-              aria-label="Bard Santner home"
-            >
+            <Link to="/" className="flex items-center gap-3 shrink-0" aria-label="Bard Santner home">
               <img
                 src="/favicon.png"
                 alt=""
@@ -167,31 +214,10 @@ export default function Nav() {
               </span>
             </Link>
 
-            {/* Primary nav — desktop */}
-            <nav className="hidden lg:flex items-center gap-8">
-              {PRIMARY_NAV.map((l) => (
-                <NavLink
-                  key={l.to}
-                  to={l.to}
-                  className={({ isActive }) =>
-                    `text-[15px] font-medium transition-colors relative py-2 ${
-                      isActive
-                        ? "text-orange-600"
-                        : "text-navy-600 hover:text-orange-600"
-                    }`
-                  }
-                >
-                  {l.label}
-                </NavLink>
-              ))}
-            </nav>
+            {/* Centre — deliberately empty (primary nav removed per direction) */}
 
-            {/* Trailing actions — search/login on desktop, hamburger on mobile */}
+            {/* Trailing actions */}
             <div className="flex items-center gap-2 md:gap-3">
-              {/* Search trigger — composite pill with icon + a faint
-                  keyboard hint ("/"). Click opens the search modal;
-                  the same modal also responds to "/" anywhere on the
-                  site. Mobile drawer carries its own search row. */}
               <button
                 onClick={() => setSearchOpen(true)}
                 aria-label="Search Bard Santner"
@@ -205,13 +231,6 @@ export default function Nav() {
                   /
                 </kbd>
               </button>
-              {/* Desktop login — the Nav's showcase moment.
-                  Composite pill: lock icon in a navy circle (warms to
-                  orange on hover — "the door is opening"), then the
-                  "Log in" verb in navy medium. Subtle shadow lift on
-                  hover; border darkens to navy.
-                  Routes to /online-banking — the landing page is the
-                  log-in surface; from there the secure portal opens. */}
               <Link
                 to="/login"
                 aria-label="Log in to Online Banking"
@@ -224,11 +243,11 @@ export default function Nav() {
                   Log in
                 </span>
               </Link>
-              {/* Mobile hamburger — 44px square touch target */}
+              {/* Mobile hamburger */}
               <button
                 onClick={() => setMobileOpen(true)}
                 aria-label="Open menu"
-                className="lg:hidden w-11 h-11 flex items-center justify-center text-navy-600 -mr-1 rounded-md hover:bg-smoke"
+                className="md:hidden w-11 h-11 flex items-center justify-center text-navy-600 -mr-1 rounded-md hover:bg-smoke"
               >
                 <ListIcon size={24} weight="bold" />
               </button>
@@ -237,35 +256,24 @@ export default function Nav() {
         </div>
       </header>
 
-      {/* ─── Mobile drawer ───────────────────────────────────────── */}
+      {/* ─── Mobile drawer ───────────────────────────────────────────── */}
       {mobileOpen && (
         <>
-          {/* Backdrop — tap-to-close. Lives below the panel z. */}
           <button
             type="button"
             aria-label="Close menu"
             onClick={() => setMobileOpen(false)}
-            className="fixed inset-0 z-[55] lg:hidden bg-ink/40 backdrop-blur-[2px]"
+            className="fixed inset-0 z-[55] md:hidden bg-ink/40 backdrop-blur-[2px]"
           />
-          {/* Panel — full-screen on small phones, side-drawer feel via max-w
-              on larger mobile. Scrollable internally. */}
           <div
             role="dialog"
             aria-modal="true"
-            className="fixed inset-y-0 right-0 z-[60] lg:hidden w-full max-w-[420px] bg-white shadow-[0_24px_80px_rgba(12,10,20,0.18)] flex flex-col"
+            className="fixed inset-y-0 right-0 z-[60] md:hidden w-full max-w-[420px] bg-white shadow-[0_24px_80px_rgba(12,10,20,0.18)] flex flex-col"
           >
             {/* Drawer head */}
             <div className="px-6 pt-5 pb-4 border-b border-bone-200 flex items-center justify-between">
-              <Link
-                to="/"
-                onClick={() => setMobileOpen(false)}
-                className="flex items-center gap-3"
-              >
-                <img
-                  src="/favicon.png"
-                  alt=""
-                  className="h-8 w-8 object-contain"
-                />
+              <Link to="/" onClick={() => setMobileOpen(false)} className="flex items-center gap-3">
+                <img src="/favicon.png" alt="" className="h-8 w-8 object-contain" />
                 <span className="font-display text-[15px] tracking-[0.04em] text-navy-600 uppercase font-medium">
                   Bard Santner
                 </span>
@@ -279,9 +287,9 @@ export default function Nav() {
               </button>
             </div>
 
-            {/* Drawer body — scrolls internally */}
+            {/* Drawer body */}
             <div className="flex-1 overflow-y-auto px-6 py-7">
-              {/* Mobile search trigger inside the drawer */}
+              {/* Search */}
               <button
                 onClick={() => { setMobileOpen(false); setSearchOpen(true); }}
                 className="w-full mb-7 flex items-center gap-3 px-4 py-3.5 rounded-md border border-bone-200 bg-paper hover:border-orange-500 transition-colors text-left"
@@ -291,61 +299,70 @@ export default function Nav() {
                 <ArrowRightIcon size={12} weight="bold" className="text-bone-400" />
               </button>
 
-              {/* Audience grid */}
-              <p className="eyebrow mb-4">Choose your context</p>
-              <div className="grid grid-cols-2 gap-2.5 mb-8">
-                {AUDIENCES.map((a) => (
-                  <Link
-                    key={a.id}
-                    to={a.path}
-                    onClick={() => setMobileOpen(false)}
-                    className={`flex items-center justify-between gap-2 px-4 py-3.5 rounded-md border transition-colors ${
-                      activeAudienceId === a.id
-                        ? "border-orange-500 bg-orange-50 text-navy-700"
-                        : "border-bone-200 bg-paper text-navy-600 hover:border-orange-300"
-                    }`}
-                  >
-                    <span className="text-[13.5px] font-medium leading-tight">
-                      {a.label}
-                    </span>
-                    <ArrowRightIcon size={12} weight="bold" className="opacity-60 shrink-0" />
-                  </Link>
-                ))}
-              </div>
-
-              {/* Primary nav — compact size, not display-md huge */}
-              <p className="eyebrow mb-4">The bank</p>
-              <nav className="flex flex-col mb-8 border-y border-bone-200">
-                {PRIMARY_NAV.map((l) => (
-                  <Link
-                    key={l.to}
-                    to={l.to}
-                    onClick={() => setMobileOpen(false)}
-                    className="flex items-center justify-between py-4 text-[17px] font-medium text-navy-600 border-b border-bone-100 last:border-b-0 hover:text-orange-600 transition-colors"
-                  >
-                    <span>{l.label}</span>
-                    <ArrowRightIcon size={13} weight="bold" className="opacity-50" />
-                  </Link>
-                ))}
+              {/* Menu accordions */}
+              <nav className="flex flex-col border-y border-bone-200 mb-8">
+                {NAV_MENU.map((item) => {
+                  const expanded = mobileSection === item.label;
+                  return (
+                    <div key={item.label} className="border-b border-bone-100 last:border-b-0">
+                      <button
+                        onClick={() => setMobileSection(expanded ? null : item.label)}
+                        aria-expanded={expanded}
+                        className="w-full flex items-center justify-between py-4 text-[16.5px] font-medium text-navy-600"
+                      >
+                        <span>{item.label}</span>
+                        <CaretDownIcon
+                          size={15}
+                          weight="bold"
+                          className={`text-bone-400 transition-transform duration-200 ${expanded ? "rotate-180" : ""}`}
+                        />
+                      </button>
+                      <AnimatePresence initial={false}>
+                        {expanded && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+                            className="overflow-hidden"
+                          >
+                            <div className="flex flex-col pb-3">
+                              {item.children.map((c) => (
+                                <Link
+                                  key={c.label}
+                                  to={c.to}
+                                  onClick={() => setMobileOpen(false)}
+                                  className="py-2.5 pl-4 text-[14px] text-bone-600 hover:text-orange-600 border-l-2 border-bone-200 hover:border-orange-500 transition-colors"
+                                >
+                                  {c.label}
+                                </Link>
+                              ))}
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  );
+                })}
               </nav>
 
-              {/* Secondary links */}
+              {/* Utility */}
               <p className="eyebrow mb-4">Reach us</p>
               <nav className="flex flex-col gap-3 mb-9">
-                {DRAWER_SECONDARY.map((l) => (
+                {NAV_UTILITY.map((u) => (
                   <Link
-                    key={l.to}
-                    to={l.to}
+                    key={u.to}
+                    to={u.to}
                     onClick={() => setMobileOpen(false)}
                     className="text-[14.5px] text-bone-600 hover:text-navy-600 transition-colors"
                   >
-                    {l.label}
+                    {u.label}
                   </Link>
                 ))}
               </nav>
             </div>
 
-            {/* Drawer foot — login + speak to a banker */}
+            {/* Drawer foot */}
             <div className="px-6 py-5 border-t border-bone-200 bg-bone-50/60 space-y-3">
               <Link
                 to="/login"
@@ -367,8 +384,7 @@ export default function Nav() {
         </>
       )}
 
-      {/* Search modal — global; mounted once at the Nav level so the
-          shortcut and the click trigger share state. */}
+      {/* Search modal */}
       <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} />
     </>
   );

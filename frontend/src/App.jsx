@@ -22,6 +22,8 @@ import ProductDetail from "./pages/ProductDetail.jsx";
 import Banking from "./pages/Banking.jsx";
 import Wealth from "./pages/Wealth.jsx";
 import Markets from "./pages/Markets.jsx";
+import Solution from "./pages/Solution.jsx";
+import WhoWeServe from "./pages/WhoWeServe.jsx";
 import OnlineBanking from "./pages/OnlineBanking.jsx";
 import Login from "./pages/Login.jsx";
 import AppDashboard from "./pages/AppDashboard.jsx";
@@ -97,6 +99,10 @@ export default function App() {
               <Route path="/wealth" element={<Wealth />} />
               <Route path="/markets" element={<Markets />} />
               <Route path="/online-banking" element={<OnlineBanking />} />
+
+              {/* Solutions + Who We Serve (nav dropdown destinations) */}
+              <Route path="/solutions/:slug" element={<Solution />} />
+              <Route path="/who-we-serve/:slug" element={<WhoWeServe />} />
 
               {/* App shell — own layout, no public Nav/Footer */}
               <Route path="/login" element={<Login />} />
