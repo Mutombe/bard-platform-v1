@@ -159,20 +159,24 @@ export default function Nav() {
           </div>
         </div>
 
-        {/* Full-width secondary bar — the hovered tab's sub-links, in a row */}
+        {/* Full-width secondary bar — the hovered tab's sub-links. It lives in
+            normal flow (a height reveal), so it takes its OWN space and pushes
+            the brand row down rather than overlaying it, and opens seamlessly.
+            Sub-links are left-aligned to the container edge. */}
         <AnimatePresence>
           {activeItem && (
             <motion.div
-              initial={{ opacity: 0, y: -6 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -6 }}
-              transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
+              key="secbar"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
               onMouseEnter={() => openNow(activeItem.label)}
-              className="hidden md:block absolute left-0 right-0 top-full z-50 bg-white border-b border-bone-200 shadow-[0_16px_40px_rgba(12,10,20,0.12)]"
+              className="hidden md:block overflow-hidden bg-white border-b border-bone-200 relative"
             >
               <div className="absolute top-0 left-0 right-0 h-[2px] bg-orange-500" />
               <div className="container-bank">
-                <div className="flex flex-wrap items-center justify-center gap-x-8 lg:gap-x-10 gap-y-2 py-4">
+                <div className="flex flex-wrap items-center justify-start gap-x-8 lg:gap-x-10 gap-y-2.5 py-4">
                   {activeItem.children.map((c) => (
                     <Link
                       key={c.label}
