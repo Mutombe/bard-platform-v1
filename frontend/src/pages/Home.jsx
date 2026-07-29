@@ -5,6 +5,8 @@ import { ArrowRightIcon, ArrowUpRightIcon } from "@phosphor-icons/react";
 import PageTransition from "../components/PageTransition.jsx";
 import QuickActionStrip from "../components/QuickActionStrip.jsx";
 import PrivateBankingMarquee from "../components/PrivateBankingMarquee.jsx";
+import ScrollSpine from "../components/ScrollSpine.jsx";
+import RevealImage from "../components/RevealImage.jsx";
 import AdvisoryBand from "../components/AdvisoryBand.jsx";
 import TrustRibbon from "../components/TrustRibbon.jsx";
 import SEO, { organizationJsonLd, websiteJsonLd, breadcrumbJsonLd } from "../components/SEO.jsx";
@@ -96,9 +98,9 @@ const INSIGHTS_FEED = [
 // considered, institutional through-line.
 function Index({ n, label, onDark = false }) {
   return (
-    <p className={`eyebrow ${onDark ? "eyebrow-on-dark" : "eyebrow-accent"} flex items-center gap-3`}>
-      <span className="font-display not-italic">{n}</span>
-      <span className="w-6 h-px bg-current opacity-40" />
+    <p className={`eyebrow flex items-center gap-3 ${onDark ? "text-white/80" : "text-navy-500"}`}>
+      <span className={`font-display not-italic ${onDark ? "text-orange-400" : "text-orange-600"}`}>{n}</span>
+      <span className={`w-6 h-px ${onDark ? "bg-orange-400/70" : "bg-orange-500/60"}`} />
       {label}
     </p>
   );
@@ -125,14 +127,13 @@ export default function Home() {
         jsonLd={[organizationJsonLd(), websiteJsonLd(), breadcrumbJsonLd([{ name: "Home", path: "/" }])]}
       />
 
+      <ScrollSpine />
+
       {/* ── ONE-SCREEN HERO ────────────────────────────────────────── */}
       <div className="flex flex-col min-h-[calc(100svh-108px)] md:min-h-[calc(100svh-124px)]">
         <section className="relative flex-1 flex overflow-hidden bg-navy-900">
           <div className="absolute top-0 left-0 right-0 h-[2px] bg-orange-500 z-20" />
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${HERO.home})`, filter: "var(--img-grade)" }}
-          />
+          <RevealImage image={HERO.home} onMount className="absolute inset-0 bg-cover bg-center" />
           <div className="absolute inset-0 hidden md:block bg-gradient-to-r from-navy-950/95 via-navy-900/60 to-navy-950/20" />
           <div className="absolute inset-0 md:hidden bg-gradient-to-t from-navy-950/92 via-navy-950/50 to-navy-950/30" />
 
@@ -168,7 +169,7 @@ export default function Home() {
       </div>
 
       {/* ── 01 · Why we exist — top-aligned editorial split ────────── */}
-      <section className="section bg-milk">
+      <section data-spine="Why we exist" data-spine-n="01" className="section bg-milk">
         <div className="container-bank">
           <div className="grid grid-cols-12 gap-8 md:gap-12 items-start">
             <motion.div {...reveal} className="col-span-12 md:col-span-6">
@@ -189,7 +190,7 @@ export default function Home() {
       </section>
 
       {/* ── 02 · Built around people — image-led cards ─────────────── */}
-      <section className="section bg-cloud border-t border-bone-200">
+      <section data-spine="Built around people" data-spine-n="02" className="section bg-cloud border-t border-bone-200">
         <div className="container-bank">
           <motion.div {...reveal} className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 md:mb-16">
             <div className="max-w-2xl">
@@ -215,9 +216,9 @@ export default function Home() {
               >
                 <Link to={c.to} className="bank-card group flex flex-col h-full">
                   <div className="relative overflow-hidden">
-                    <div
+                    <RevealImage
+                      image={c.image}
                       className="aspect-[5/4] bg-cover bg-center bg-bone-200 transition-transform duration-700 group-hover:scale-[1.04]"
-                      style={{ backgroundImage: `url(${c.image})`, filter: "var(--img-grade)" }}
                     />
                   </div>
                   <div className="bank-card-body lg:!p-12 flex flex-col flex-1">
@@ -242,7 +243,7 @@ export default function Home() {
       <PrivateBankingMarquee />
 
       {/* ── 03 · Digital-first — capabilities split ────────────────── */}
-      <section className="section bg-milk border-t border-bone-200">
+      <section data-spine="Digital-first" data-spine-n="03" className="section bg-milk border-t border-bone-200">
         <div className="container-bank grid grid-cols-12 gap-10 md:gap-16 items-center">
           <motion.div {...reveal} className="col-span-12 md:col-span-5">
             <Index n="03" label="Digital-first" />
@@ -270,7 +271,7 @@ export default function Home() {
       </section>
 
       {/* ── 04 · Insights — from BGFI ──────────────────────────────── */}
-      <section className="section bg-cloud border-t border-bone-200">
+      <section data-spine="Insights" data-spine-n="04" className="section bg-cloud border-t border-bone-200">
         <div className="container-bank">
           <motion.div {...reveal} className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 md:mb-16">
             <div className="max-w-2xl">
@@ -304,9 +305,9 @@ export default function Home() {
                 className="bank-card group flex flex-col h-full"
               >
                 <div className="overflow-hidden">
-                  <div
+                  <RevealImage
+                    image={a.image}
                     className="aspect-[16/10] bg-cover bg-center bg-bone-200 transition-transform duration-700 group-hover:scale-[1.04]"
-                    style={{ backgroundImage: `url(${a.image})`, filter: "var(--img-grade)" }}
                   />
                 </div>
                 <div className="bank-card-body flex flex-col flex-1">
@@ -327,7 +328,7 @@ export default function Home() {
       </section>
 
       {/* ── 05 · Built for Africa — ruled audience index ───────────── */}
-      <section className="bg-navy-700 text-white relative overflow-hidden">
+      <section data-spine="Built for Africa" data-spine-n="05" data-spine-dark="true" className="bg-navy-700 text-white relative overflow-hidden">
         <div className="absolute top-0 left-0 right-0 h-[2px] bg-orange-500" />
         <div className="container-bank py-24 md:py-32">
           <div className="grid grid-cols-12 gap-10 md:gap-16">
