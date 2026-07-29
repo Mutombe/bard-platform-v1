@@ -67,7 +67,7 @@ export default function Login() {
           >
             {/* Brand row */}
             <Link to="/" className="inline-flex items-center mb-5 group">
-              <img src="/logo-bsmfb.png" alt="Bard Santner Microfinance Bank" className="h-10 w-auto object-contain" />
+              <img src="/logo-bsmfb.png" alt="Bard Santner Microfinance Bank" className="h-11 w-auto object-contain" />
             </Link>
 
             {/* Headline — compact, single-instance */}
