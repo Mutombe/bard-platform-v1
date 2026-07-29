@@ -1,101 +1,213 @@
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { ArrowRightIcon, DownloadSimpleIcon } from "@phosphor-icons/react";
+
 import PageTransition from "../components/PageTransition.jsx";
 import PageHero from "../components/PageHero.jsx";
-import GroupRibbon from "../components/GroupRibbon.jsx";
 import AdvisoryBand from "../components/AdvisoryBand.jsx";
 import TrustRibbon from "../components/TrustRibbon.jsx";
-import SEO, { breadcrumbJsonLd, articleJsonLd } from "../components/SEO.jsx";
+import SEO, { breadcrumbJsonLd } from "../components/SEO.jsx";
 import { HERO } from "../data/images.js";
-import { Link } from "react-router-dom";
+import { LEADERSHIP } from "../data/leadership.js";
+
+/**
+ * /about — one page, four anchored sections the About Us dropdown links to:
+ *   #our-story · #manifesto · #vision-purpose-values · #board-of-directors
+ * Copy is taken from the Bard Santner Website Map (2026-07-28).
+ */
+
+const STORY = [
+  "For too long, banking has expected people to fit around its systems. Long queues. Slow approvals. Endless paperwork. Limited access. Banking became something people had to work around instead of something that worked for them.",
+  "We believed there was a better way. So we set out to build a different kind of financial institution — one that combines trusted financial expertise with modern technology to make banking simpler, faster and more accessible for everyone.",
+  "Whether you're opening your first account, growing a business, financing a new opportunity or moving money across borders, banking should help you move forward — not hold you back. That's the future we're building every day.",
+];
+
+const VALUES = ["Bold", "Insight", "Execution", "Responsibility", "Impact"];
 
 export default function About() {
   return (
     <PageTransition>
       <SEO
-        title="About Bard Santner"
-        description="Bard Santner Markets Inc. A modern African financial platform. The history, the ambition, and the obligation a bank inherits the moment it opens its first account."
+        title="About Us"
+        description="Bard Santner Microfinance Bank. Founded in 2022 to make financial services more accessible, practical and valuable for the people and businesses we serve."
         path="/about"
         jsonLd={[
-          breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "About", path: "/about" }]),
-          articleJsonLd({
-            headline: "About Bard Santner",
-            description: "A modern African financial platform. Banking, markets, advisory.",
-            url: "https://bardsantnerbank.com/about",
-            image: "https://bardsantnerbank.com/logo.png",
-            datePublished: "2026-05-30",
-            author: "Bard Santner",
-          }),
+          breadcrumbJsonLd([
+            { name: "Home", path: "/" },
+            { name: "About Us", path: "/about" },
+          ]),
         ]}
       />
 
       <PageHero
-        eyebrow="§ About"
-        headline="A modern African financial platform."
-        body="Bard Santner Markets Inc, Harare. The Microfinance Bank sits at the centre of a group spanning banking, markets, lending, sports finance and editorial."
-        primaryCTA={{ to: "/group", label: "Meet the Group" }}
-        secondaryCTA={{ to: "/leadership", label: "Leadership" }}
+        eyebrow="About Us"
+        headline="Banking should help people move forward."
+        body="Bard Santner was founded in 2022 with a simple purpose — to make financial services more accessible, more practical and more valuable for the people and businesses we serve."
+        primaryCTA={{ to: "/contact", label: "Start a conversation" }}
         image={HERO.about}
         overlayTint="navy"
       />
 
-      {/* Manifesto */}
-      <section className="bg-milk section">
+      {/* ── Our Story ─────────────────────────────────────────────── */}
+      <section id="our-story" className="section bg-milk scroll-mt-28">
         <div className="container-bank">
-          <div className="grid grid-cols-12 gap-7 md:gap-10">
+          <div className="grid grid-cols-12 gap-8 md:gap-12">
             <div className="col-span-12 md:col-span-4">
-              <p className="eyebrow mb-3 md:mb-4">§ The standard</p>
-              <h2 className="display-lg text-navy-600">
-                What we measure ourselves against.
+              <p className="eyebrow eyebrow-accent mb-4">Our Story</p>
+              <h2 className="display-lg text-navy-600 text-balance">
+                We started with one belief: banking should help people move forward.
               </h2>
             </div>
-            <div className="col-span-12 md:col-span-8 max-w-3xl space-y-5 md:space-y-6 text-[15.5px] md:text-[17px] text-bone-600 leading-relaxed">
-              <p>
-                A bank is two things at once. A regulated, capital-bearing institution
-                operating under licence. And a relationship — held by a name, between
-                two people, over the longest horizon either of them can plan for.
+            <div className="col-span-12 md:col-span-8 max-w-2xl space-y-5 text-[16px] md:text-[18px] text-bone-600 leading-relaxed">
+              <p className="font-display text-navy-600 text-[20px] md:text-[24px] leading-snug">
+                And from a diversified financial institution, we have evolved into a
+                microfinance bank.
               </p>
-              <p>
-                Most African financial institutions choose one and ignore the other.
-                The institution forgets the conversation. The conversation forgets
-                the institution. Bard Santner exists because African banking deserves
-                both, in the same building, signed by the same person.
-              </p>
-              <p>
-                Our standard is the standard of the international house. Correspondent
-                banks should be able to verify our discipline and stop counting. Our
-                clients should be able to verify our warmth and stop comparing. The
-                two are not in tension. They are the same job, done well.
-              </p>
+              {STORY.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* The four obligations */}
-      <section className="bg-milk section">
+      {/* ── Our Manifesto ─────────────────────────────────────────── */}
+      <section id="manifesto" className="section bg-navy-700 text-white scroll-mt-28 relative overflow-hidden">
+        <div className="absolute top-0 left-0 right-0 h-[2px] bg-orange-500" />
         <div className="container-bank">
-          <p className="eyebrow text-center mb-4">§ The obligations of a bank</p>
-          <h2 className="display-xl text-navy-600 text-center max-w-2xl mx-auto mb-10 md:mb-12">
-            <span className="md:hidden">Four obligations of a bank, from day one.</span>
-            <span className="hidden md:inline">Four obligations a bank inherits the moment it opens its first account.</span>
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-8 max-w-4xl mx-auto">
-            {[
-              { n: "01", title: "To hold deposits as deposits.", body: "Customer money is customer money. It is not the bank's working capital. We treat it that way before, during and after the crisis we cannot yet name." },
-              { n: "02", title: "To extend credit on the conversation.", body: "A credit decision is the end of a conversation, not the beginning. We sit with the borrower long enough to know whether the loan should be made before we run the model." },
-              { n: "03", title: "To clear the day on the day.", body: "End-of-day discipline is the measure of an institution. Reconcile what cleared, identify what didn't, resolve before tomorrow. Daily. Without exception." },
-              { n: "04", title: "To name the people.", body: "A bank is signed by its people. The CEO is named. The bankers are named. The complaint reaches a person, not a queue. Accountability cannot be abstract." },
-            ].map((o) => (
-              <div key={o.n}>
-                <p className="font-mono text-[12px] text-orange-600 mb-2 md:mb-3">{o.n}</p>
-                <h3 className="font-display text-[20px] md:text-[22px] text-navy-600 mb-2 md:mb-3 leading-tight">{o.title}</h3>
-                <p className="text-[14px] md:text-[14.5px] text-bone-600 leading-relaxed">{o.body}</p>
-              </div>
-            ))}
+          <div className="max-w-3xl">
+            <p className="eyebrow eyebrow-on-dark mb-4">Our Manifesto</p>
+            <h2 className="display-lg text-white text-balance mb-8">
+              Every institution has a history. Ours has a conviction.
+            </h2>
+            <div className="space-y-5 text-[16px] md:text-[18px] text-white/80 leading-relaxed">
+              <p>
+                Bard Santner was founded in 2022 because we believed financial services
+                could be better. As we evolved from a diversified financial institution into
+                a digital-first microfinance bank, one thing never changed: our purpose.
+              </p>
+              <p>
+                We exist to challenge the way banking has always been done, and to build
+                something that works better for the people and businesses we serve.
+              </p>
+              <p>
+                Our manifesto is more than words on a page. It is the standard we hold
+                ourselves to. It shapes every product we build, every decision we make and
+                every relationship we form — because we believe banking should create
+                opportunity, build confidence and enrich lives.
+              </p>
+              <p className="text-white font-medium">This is what we stand for.</p>
+            </div>
+            <a
+              href="#manifesto"
+              className="mt-8 inline-flex items-center gap-2.5 bg-milk text-navy-700 hover:bg-paper px-6 py-3.5 rounded-full font-medium text-[15px] transition-colors"
+            >
+              <DownloadSimpleIcon size={16} weight="bold" />
+              Download our manifesto
+            </a>
           </div>
         </div>
       </section>
 
-      <GroupRibbon />
+      {/* ── Vision, Purpose, Values ───────────────────────────────── */}
+      <section id="vision-purpose-values" className="section bg-milk scroll-mt-28">
+        <div className="container-bank">
+          <p className="eyebrow eyebrow-accent mb-4">Vision, Purpose, Values</p>
+          <h2 className="display-lg text-navy-600 text-balance max-w-2xl mb-10 md:mb-14">
+            What drives us, and how we hold ourselves.
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 mb-6 md:mb-8">
+            <div className="bank-card bank-card-body">
+              <p className="eyebrow mb-3">Vision</p>
+              <p className="font-display text-navy-600 text-[22px] md:text-[26px] leading-snug">
+                Dominating the market with unparalleled innovation, unmatched insights and
+                remaining miles ahead of the rest.
+              </p>
+            </div>
+            <div className="bank-card bank-card-body">
+              <p className="eyebrow mb-3">Purpose</p>
+              <p className="font-display text-navy-600 text-[22px] md:text-[26px] leading-snug">
+                We exist to financially enrich lives differently.
+              </p>
+            </div>
+          </div>
+
+          <div className="rounded-xl border border-bone-200 bg-smoke p-6 md:p-8">
+            <p className="eyebrow mb-5">Our Values</p>
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-5">
+              {VALUES.map((v, i) => (
+                <motion.div
+                  key={v}
+                  initial={{ opacity: 0, y: 14 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ duration: 0.45, delay: i * 0.06, ease: [0.16, 1, 0.3, 1] }}
+                  className="flex flex-col gap-2"
+                >
+                  <span className="font-display text-orange-500 text-[15px]">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="font-display text-navy-600 text-[18px] md:text-[20px]">{v}</span>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Board of Directors ────────────────────────────────────── */}
+      <section id="board-of-directors" className="bg-smoke border-t border-bone-200 section scroll-mt-28">
+        <div className="container-bank">
+          <p className="eyebrow eyebrow-accent mb-4">Board of Directors</p>
+          <h2 className="display-lg text-navy-600 text-balance max-w-2xl mb-10 md:mb-14">
+            Named, accountable, reachable.
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+            {LEADERSHIP.map((p, i) => (
+              <motion.article
+                key={p.slug}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.5, delay: (i % 3) * 0.06, ease: [0.16, 1, 0.3, 1] }}
+                className="bank-card flex flex-col h-full"
+              >
+                <div
+                  className="aspect-[4/5] bg-cover bg-center bg-bone-200"
+                  style={{ backgroundImage: `url(${p.image})`, filter: "saturate(0.9) contrast(1.02)" }}
+                />
+                <div className="h-[3px] bg-orange-500" />
+                <div className="bank-card-body flex flex-col flex-1">
+                  <h3 className="font-display text-navy-600 text-[20px] md:text-[22px] leading-tight">
+                    {p.name}
+                  </h3>
+                  <p className="eyebrow eyebrow-accent mt-2 mb-3">{p.role}</p>
+                  <p className="text-[14.5px] text-bone-600 leading-relaxed">{p.bio}</p>
+                </div>
+              </motion.article>
+            ))}
+          </div>
+          <p className="mt-8 text-[14px] text-bone-500 max-w-2xl">
+            Full profiles and photographs of the Board are published as the Bank formalises
+            its governance disclosures.
+          </p>
+        </div>
+      </section>
+
+      {/* ── Closing CTA ───────────────────────────────────────────── */}
+      <section className="bg-milk border-t-2 border-orange-500">
+        <div className="container-bank py-14 md:py-20 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <h2 className="display-md text-navy-600 max-w-xl text-balance">
+            Let's build your future together.
+          </h2>
+          <Link to="/contact" className="btn btn-navy shrink-0">
+            Start a conversation
+            <ArrowRightIcon size={15} weight="bold" />
+          </Link>
+        </div>
+      </section>
+
       <AdvisoryBand />
       <TrustRibbon />
     </PageTransition>

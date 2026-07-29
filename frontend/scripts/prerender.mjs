@@ -27,11 +27,7 @@ const ORIGIN = `http://localhost:${PORT}`;
 
 const STATIC_ROUTES = [
   "/",
-  "/personal", "/business", "/private-banking", "/international", "/institutional",
-  "/banking", "/wealth", "/markets", "/online-banking", "/login", "/app",
-  "/about", "/group", "/leadership",
-  "/insights",
-  "/contact", "/locations",
+  "/about", "/careers", "/contact",
   "/security", "/legal", "/privacy", "/cookies", "/terms",
   "/regulatory", "/accessibility", "/complaints",
 ];
@@ -90,17 +86,11 @@ function diskPathFor(route) {
 }
 
 async function main() {
-  const [products, insights, group, solutions, segments] = await Promise.all([
-    extractSlugs(path.join(SRC, "data/products.js")),
-    extractSlugs(path.join(SRC, "data/insights.js")),
-    extractSlugs(path.join(SRC, "data/group.js")),
+  const [solutions, segments] = await Promise.all([
     extractSlugs(path.join(SRC, "data/solutions.js")),
     extractSlugs(path.join(SRC, "data/whoWeServe.js")),
   ]);
   const dynamic = [
-    ...products.map((s) => `/products/${s}`),
-    ...insights.map((s) => `/insights/${s}`),
-    ...group.map((s) => `/group/${s}`),
     ...solutions.map((s) => `/solutions/${s}`),
     ...segments.map((s) => `/who-we-serve/${s}`),
   ];
