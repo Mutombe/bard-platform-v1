@@ -82,7 +82,7 @@ export default function Solution() {
               >
                 <div className="md:col-span-5">
                   <div className="flex items-baseline gap-3 mb-3">
-                    <span className="font-display text-orange-500 text-[15px] font-medium">
+                    <span className="font-display text-navy-400 text-[15px] font-medium">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <h2 className="font-display text-navy-600 text-[22px] md:text-[26px] leading-tight">

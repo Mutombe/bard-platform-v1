@@ -11,11 +11,11 @@ import SEO, { organizationJsonLd, websiteJsonLd, breadcrumbJsonLd } from "../com
 import { HERO, AUDIENCE_TILE, INSIGHT } from "../data/images.js";
 
 /**
- * Home — content and direction from the Bard Santner Website Map (2026-07-28),
- * composed as a Fortune-500-grade landing: layered whites, generous air,
- * image-led cards, a furnished Private Banking feature, and a BGFI research
- * rail. The hero + navy quick-action strip fill exactly one viewport, the
- * strip anchored to the bottom edge on first paint.
+ * Home — content from the Bard Santner Website Map (2026-07-28), composed to a
+ * Fortune-500 standard per the design-expert audit: one house image grade,
+ * numbered section index (prospectus register), restrained orange (reserved
+ * for the CTA fill and logo only), layered whites, and a dark closing
+ * crescendo. The hero + navy quick-action strip fill exactly one viewport.
  */
 
 const HOME_ACTIONS = [
@@ -27,7 +27,6 @@ const HOME_ACTIONS = [
 
 const SOLUTION_CARDS = [
   {
-    index: "01",
     eyebrow: "Personal",
     title: "For Individuals",
     body: "Everyday accounts, saving, borrowing and sending money — simple, secure and always within reach.",
@@ -35,7 +34,6 @@ const SOLUTION_CARDS = [
     to: "/solutions/individuals",
   },
   {
-    index: "02",
     eyebrow: "Business",
     title: "For Companies & Institutions",
     body: "Cash management, working capital, trade and payments engineered to keep a growing business moving.",
@@ -43,7 +41,6 @@ const SOLUTION_CARDS = [
     to: "/solutions/companies-institutions",
   },
   {
-    index: "03",
     eyebrow: "Wealth",
     title: "For Investors",
     body: "Managed portfolios, treasury and long-term planning — the disciplined way to build wealth that lasts.",
@@ -95,6 +92,18 @@ const INSIGHTS_FEED = [
   },
 ];
 
+// Numbered section eyebrow — the "prospectus index" that gives the page a
+// considered, institutional through-line.
+function Index({ n, label, onDark = false }) {
+  return (
+    <p className={`eyebrow ${onDark ? "eyebrow-on-dark" : "eyebrow-accent"} flex items-center gap-3`}>
+      <span className="font-display not-italic">{n}</span>
+      <span className="w-6 h-px bg-current opacity-40" />
+      {label}
+    </p>
+  );
+}
+
 const reveal = {
   initial: { opacity: 0, y: 26 },
   whileInView: { opacity: 1, y: 0 },
@@ -122,10 +131,10 @@ export default function Home() {
           <div className="absolute top-0 left-0 right-0 h-[2px] bg-orange-500 z-20" />
           <div
             className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${HERO.home})`, filter: "saturate(0.7) brightness(0.82) contrast(1.05)" }}
+            style={{ backgroundImage: `url(${HERO.home})`, filter: "var(--img-grade)" }}
           />
-          <div className="absolute inset-0 hidden md:block bg-gradient-to-r from-navy-950/95 via-navy-900/55 to-transparent" />
-          <div className="absolute inset-0 md:hidden bg-gradient-to-t from-navy-950/90 via-navy-950/45 to-navy-950/25" />
+          <div className="absolute inset-0 hidden md:block bg-gradient-to-r from-navy-950/95 via-navy-900/60 to-navy-950/20" />
+          <div className="absolute inset-0 md:hidden bg-gradient-to-t from-navy-950/92 via-navy-950/50 to-navy-950/30" />
 
           <div className="relative container-bank flex flex-col justify-center py-12 md:py-16">
             <motion.div
@@ -158,33 +167,34 @@ export default function Home() {
         <QuickActionStrip actions={HOME_ACTIONS} tint="navy" />
       </div>
 
-      {/* ── STATEMENT — Banking should move with you ───────────────── */}
+      {/* ── 01 · Why we exist — top-aligned editorial split ────────── */}
       <section className="section bg-milk">
         <div className="container-bank">
-          <motion.div {...reveal} className="max-w-4xl">
-            <p className="eyebrow eyebrow-accent mb-6">Why we exist</p>
-            <h2 className="display-xl text-navy-600 text-balance">
-              Banking should move with you — not the other way around.
-            </h2>
-          </motion.div>
-          <div className="mt-10 md:mt-14 grid grid-cols-12 gap-8 md:gap-12">
-            <motion.p {...reveal} className="col-span-12 md:col-span-6 md:col-start-7 text-[17px] md:text-[19px] text-bone-600 leading-relaxed">
+          <div className="grid grid-cols-12 gap-8 md:gap-12 items-start">
+            <motion.div {...reveal} className="col-span-12 md:col-span-6">
+              <Index n="01" label="Why we exist" />
+              <h2 className="display-xl text-navy-600 text-balance mt-6">
+                Banking should move with you — not the other way around.
+              </h2>
+            </motion.div>
+            <motion.p {...reveal} className="col-span-12 md:col-span-5 md:col-start-8 text-[17px] md:text-[19px] text-bone-600 leading-relaxed">
               For too long, banking expected people to fit around its systems — long queues,
               slow approvals, endless paperwork. We set out to build a different kind of
               institution: one that pairs trusted financial expertise with modern technology
               to make banking simpler, faster and genuinely more accessible.
             </motion.p>
           </div>
+          <div className="hairline mt-14 md:mt-20" />
         </div>
       </section>
 
-      {/* ── SOLUTIONS CARDS — image-led, premium ───────────────────── */}
-      <section className="section bg-cloud border-y border-bone-200">
+      {/* ── 02 · Built around people — image-led cards ─────────────── */}
+      <section className="section bg-cloud border-t border-bone-200">
         <div className="container-bank">
           <motion.div {...reveal} className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 md:mb-16">
             <div className="max-w-2xl">
-              <p className="eyebrow eyebrow-accent mb-5">Built around people</p>
-              <h2 className="display-lg text-navy-600 text-balance">
+              <Index n="02" label="Built around people" />
+              <h2 className="display-lg text-navy-600 text-balance mt-6">
                 Built around people, not products.
               </h2>
             </div>
@@ -207,13 +217,9 @@ export default function Home() {
                   <div className="relative overflow-hidden">
                     <div
                       className="aspect-[5/4] bg-cover bg-center bg-bone-200 transition-transform duration-700 group-hover:scale-[1.04]"
-                      style={{ backgroundImage: `url(${c.image})`, filter: "saturate(0.85) brightness(0.96)" }}
+                      style={{ backgroundImage: `url(${c.image})`, filter: "var(--img-grade)" }}
                     />
-                    <span className="absolute top-5 left-5 font-display text-white/90 text-[15px] tracking-wide drop-shadow">
-                      {c.index}
-                    </span>
                   </div>
-                  <div className="h-[3px] bg-orange-500" />
                   <div className="bank-card-body lg:!p-12 flex flex-col flex-1">
                     <p className="eyebrow eyebrow-accent mb-4">{c.eyebrow}</p>
                     <h3 className="font-display text-navy-600 text-[24px] md:text-[26px] leading-tight mb-4">
@@ -232,15 +238,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── PRIVATE BANKING — the Lloyds-canonical dark card marquee ── */}
+      {/* ── Private Banking — the dark card marquee ────────────────── */}
       <PrivateBankingMarquee />
 
-      {/* ── DIGITAL — capabilities, split ──────────────────────────── */}
-      <section className="section bg-milk">
+      {/* ── 03 · Digital-first — capabilities split ────────────────── */}
+      <section className="section bg-milk border-t border-bone-200">
         <div className="container-bank grid grid-cols-12 gap-10 md:gap-16 items-center">
           <motion.div {...reveal} className="col-span-12 md:col-span-5">
-            <p className="eyebrow eyebrow-accent mb-5">Digital-first</p>
-            <h2 className="display-lg text-navy-600 text-balance">
+            <Index n="03" label="Digital-first" />
+            <h2 className="display-lg text-navy-600 text-balance mt-6">
               Digital where it matters. Human when it counts.
             </h2>
             <p className="mt-6 text-[17px] md:text-[19px] text-bone-600 leading-relaxed">
@@ -255,7 +261,7 @@ export default function Home() {
           <motion.ul {...reveal} className="col-span-12 md:col-span-6 md:col-start-7 grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-1">
             {CAPABILITIES.map((c) => (
               <li key={c} className="flex items-center gap-4 py-4 border-b border-bone-200 text-[16px] md:text-[17px] text-navy-700">
-                <span className="w-2 h-2 rounded-full bg-orange-500 shrink-0" />
+                <span className="w-1.5 h-1.5 rounded-full bg-navy-500 shrink-0" />
                 {c}
               </li>
             ))}
@@ -263,13 +269,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── INSIGHTS — from BGFI ───────────────────────────────────── */}
-      <section className="section bg-cloud border-y border-bone-200">
+      {/* ── 04 · Insights — from BGFI ──────────────────────────────── */}
+      <section className="section bg-cloud border-t border-bone-200">
         <div className="container-bank">
           <motion.div {...reveal} className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 md:mb-16">
             <div className="max-w-2xl">
-              <p className="eyebrow eyebrow-accent mb-5">Insights</p>
-              <h2 className="display-lg text-navy-600 text-balance">
+              <Index n="04" label="Insights" />
+              <h2 className="display-lg text-navy-600 text-balance mt-6">
                 From the Bard Global Finance Institute.
               </h2>
             </div>
@@ -277,7 +283,7 @@ export default function Home() {
               href="https://bgfi.global"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-[15px] font-medium text-orange-600 hover:text-orange-700 transition-colors"
+              className="inline-flex items-center gap-2 text-[15px] font-medium text-navy-600 hover:text-orange-600 transition-colors"
             >
               All research on BGFI
               <ArrowUpRightIcon size={15} weight="bold" />
@@ -300,10 +306,9 @@ export default function Home() {
                 <div className="overflow-hidden">
                   <div
                     className="aspect-[16/10] bg-cover bg-center bg-bone-200 transition-transform duration-700 group-hover:scale-[1.04]"
-                    style={{ backgroundImage: `url(${a.image})`, filter: "saturate(0.85) brightness(0.95)" }}
+                    style={{ backgroundImage: `url(${a.image})`, filter: "var(--img-grade)" }}
                   />
                 </div>
-                <div className="h-[3px] bg-orange-500" />
                 <div className="bank-card-body flex flex-col flex-1">
                   <p className="eyebrow eyebrow-accent mb-4">{a.category}</p>
                   <h3 className="font-display text-navy-600 text-[21px] md:text-[23px] leading-tight mb-4">
@@ -321,43 +326,53 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── BUILT FOR AFRICA — audience links ──────────────────────── */}
-      <section className="section bg-navy-700 text-white relative overflow-hidden">
+      {/* ── 05 · Built for Africa — ruled audience index ───────────── */}
+      <section className="bg-navy-700 text-white relative overflow-hidden">
         <div className="absolute top-0 left-0 right-0 h-[2px] bg-orange-500" />
-        <div className="container-bank">
-          <motion.div {...reveal} className="max-w-2xl mb-10 md:mb-14">
-            <p className="eyebrow eyebrow-on-dark mb-5">Built for Africa</p>
-            <h2 className="display-lg text-white text-balance">Built for the way Africa works.</h2>
-            <p className="mt-6 text-[17px] md:text-[19px] text-white/80 leading-relaxed">
-              Entrepreneurs are building businesses. Families are creating wealth across
-              generations. Trade is expanding across borders. We're developing solutions for
-              the people driving that ambition.
-            </p>
-          </motion.div>
-          <div className="flex flex-wrap gap-3.5 md:gap-4">
-            {AUDIENCES.map((a) => (
-              <Link
-                key={a.label}
-                to={a.to}
-                className="inline-flex items-center gap-3 rounded-full border border-white/25 hover:border-white hover:bg-white/[0.06] px-7 py-4 text-[15px] font-medium text-white transition-colors"
-              >
-                {a.label}
-                <ArrowRightIcon size={14} weight="bold" className="opacity-60" />
-              </Link>
-            ))}
+        <div className="container-bank py-24 md:py-32">
+          <div className="grid grid-cols-12 gap-10 md:gap-16">
+            <motion.div {...reveal} className="col-span-12 md:col-span-5">
+              <Index n="05" label="Built for Africa" onDark />
+              <h2 className="display-lg text-white text-balance mt-6">Built for the way Africa works.</h2>
+              <p className="mt-6 text-[17px] md:text-[19px] text-white/80 leading-relaxed">
+                Entrepreneurs are building businesses. Families are creating wealth across
+                generations. Trade is expanding across borders. We build for the people
+                driving that ambition.
+              </p>
+            </motion.div>
+            <motion.div {...reveal} className="col-span-12 md:col-span-6 md:col-start-7">
+              <ul className="border-t border-white/12">
+                {AUDIENCES.map((a) => (
+                  <li key={a.label}>
+                    <Link
+                      to={a.to}
+                      className="group flex items-center justify-between gap-4 py-5 border-b border-white/12 text-white/90 hover:text-white transition-colors"
+                    >
+                      <span className="font-display text-[19px] md:text-[21px]">{a.label}</span>
+                      <ArrowRightIcon
+                        size={16}
+                        weight="bold"
+                        className="text-white/40 group-hover:text-orange-400 group-hover:translate-x-1 transition-all shrink-0"
+                      />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* ── LOOKING AHEAD + FINAL CTA ──────────────────────────────── */}
-      <section className="section bg-milk border-t-2 border-orange-500">
-        <div className="container-bank">
+      {/* ── Crescendo — dark closing CTA ───────────────────────────── */}
+      <section className="relative bg-ink text-white overflow-hidden">
+        <div className="absolute top-0 left-0 right-0 h-[2px] bg-orange-500" />
+        <div className="container-bank py-24 md:py-36">
           <motion.div {...reveal} className="max-w-3xl">
-            <p className="eyebrow eyebrow-accent mb-5">Looking ahead</p>
-            <h2 className="display-xl text-navy-600 text-balance">
+            <p className="eyebrow eyebrow-on-dark mb-6">Looking ahead</p>
+            <h2 className="display-xl text-white text-balance">
               Let's build your future together.
             </h2>
-            <p className="mt-7 text-[18px] md:text-[21px] text-bone-600 leading-relaxed max-w-2xl">
+            <p className="mt-7 text-[18px] md:text-[21px] text-white/80 leading-relaxed max-w-2xl">
               Our goal isn't simply to become another bank. It's to become the financial
               partner people trust at every stage of life and every stage of business. Open
               an account, start a conversation, and build your future with Bard Santner.
@@ -367,7 +382,7 @@ export default function Home() {
                 Open an account
                 <ArrowRightIcon size={16} weight="bold" />
               </Link>
-              <Link to="/contact" className="btn btn-ghost-light w-full sm:w-auto justify-center">
+              <Link to="/contact" className="btn btn-hero-ghost w-full sm:w-auto justify-center">
                 Start a conversation
               </Link>
             </div>

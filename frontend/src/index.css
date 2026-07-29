@@ -189,9 +189,13 @@
   --pad-card-md: 2.25rem;     /* 36px — md (≥768) breakpoint */
   --pad-card-lg: 3rem;        /* 48px — lg (≥1024) breakpoint */
 
-  --shadow-card: 0 1px 2px rgba(12,10,20,0.04), 0 8px 24px rgba(12,10,20,0.06);
-  --shadow-card-lift: 0 2px 4px rgba(12,10,20,0.06), 0 16px 40px rgba(12,10,20,0.10);
-  --shadow-hero: 0 24px 80px rgba(12,10,20,0.18);
+  --shadow-card: 0 1px 2px rgba(16,24,40,0.04), 0 4px 12px rgba(16,24,40,0.05);
+  --shadow-card-lift: 0 2px 4px rgba(16,24,40,0.06), 0 10px 24px rgba(16,24,40,0.08);
+  --shadow-hero: 0 18px 50px rgba(16,24,40,0.16);
+
+  /* One house photographic grade — every foreground image shares it so the
+     photo library reads as a single commission, not five different sources. */
+  --img-grade: saturate(0.72) contrast(1.06) brightness(0.9);
 
   /* ─── Card edge tokens ───────────────────────────────────────────────
      When the canvas went pure white, white cards lost their edge: shadows
@@ -201,8 +205,8 @@
      and faint enough that the whitespace still carries the composition.
      On hover the ring warms toward brand orange: the same navy-foundation →
      orange-accent logic the whole system runs on, expressed as motion. */
-  --card-edge:       rgba(49, 47, 77, 0.14);    /* navy-600 @ 14% — cool resting hairline */
-  --card-edge-hover: rgba(238, 125, 54, 0.55);  /* orange-500 @ 55% — warms on engage */
+  --card-edge:       rgba(49, 47, 77, 0.11);    /* navy-600 @ 11% — quiet resting hairline */
+  --card-edge-hover: rgba(49, 47, 77, 0.22);    /* navy-600 @ 22% — deepens on hover (no orange) */
 }
 
 /* ─── Base layer ─── */
@@ -217,7 +221,7 @@
   h1 { font-weight: 600; letter-spacing: -0.028em; }
   p  { color: var(--color-bone-600); margin: 0; }
   a  { color: inherit; text-decoration: none; }
-  ::selection { background: var(--color-orange-500); color: white; }
+  ::selection { background: var(--color-navy-600); color: white; }
   :focus-visible { outline: 2px solid var(--color-orange-500); outline-offset: 3px; border-radius: 2px; }
   img { display: block; max-width: 100%; height: auto; }
 }
@@ -245,19 +249,19 @@
     font-family: var(--font-hero-display);
     font-size: var(--text-display-hero);
     line-height: 1.0;
-    letter-spacing: -0.02em;
-    font-weight: 600;
-    font-variation-settings: "SOFT" 40, "opsz" 96;
-    font-feature-settings: "kern", "liga", "calt", "onum", "lnum";
+    letter-spacing: -0.028em;
+    font-weight: 580;
+    font-variation-settings: "SOFT" 0, "WONK" 0, "opsz" 96;
+    font-feature-settings: "kern", "liga", "calt", "lnum", "tnum";
   }
   .display-xl {
     font-family: var(--font-hero-display);
     font-size: var(--text-display-xl);
     line-height: 1.05;
-    letter-spacing: -0.018em;
+    letter-spacing: -0.02em;
     font-weight: 600;
-    font-variation-settings: "SOFT" 38, "opsz" 72;
-    font-feature-settings: "kern", "liga", "calt", "onum", "lnum";
+    font-variation-settings: "SOFT" 0, "WONK" 0, "opsz" 72;
+    font-feature-settings: "kern", "liga", "calt", "lnum", "tnum";
   }
   .display-lg {
     font-family: var(--font-hero-display);
@@ -265,8 +269,8 @@
     line-height: 1.1;
     letter-spacing: -0.014em;
     font-weight: 620;
-    font-variation-settings: "SOFT" 35, "opsz" 56;
-    font-feature-settings: "kern", "liga", "calt", "onum", "lnum";
+    font-variation-settings: "SOFT" 10, "WONK" 0, "opsz" 56;
+    font-feature-settings: "kern", "liga", "calt", "lnum", "tnum";
   }
   .display-md {
     font-family: var(--font-hero-display);
@@ -274,8 +278,8 @@
     line-height: 1.15;
     letter-spacing: -0.01em;
     font-weight: 640;
-    font-variation-settings: "SOFT" 32, "opsz" 40;
-    font-feature-settings: "kern", "liga", "calt", "onum", "lnum";
+    font-variation-settings: "SOFT" 15, "WONK" 0, "opsz" 40;
+    font-feature-settings: "kern", "liga", "calt", "lnum", "tnum";
   }
 
   /* Legacy alias — .display-hero-serif kept pointing to .display-hero
@@ -284,10 +288,10 @@
     font-family: var(--font-hero-display);
     font-size: var(--text-display-hero);
     line-height: 1.0;
-    letter-spacing: -0.02em;
-    font-weight: 600;
-    font-variation-settings: "SOFT" 40, "opsz" 96;
-    font-feature-settings: "kern", "liga", "calt", "onum", "lnum";
+    letter-spacing: -0.028em;
+    font-weight: 580;
+    font-variation-settings: "SOFT" 0, "WONK" 0, "opsz" 96;
+    font-feature-settings: "kern", "liga", "calt", "lnum", "tnum";
   }
 
   /* No-op kept for backwards-compatibility; italics removed sitewide
@@ -307,11 +311,14 @@
     color: var(--color-navy-700);
   }
   .eyebrow-on-dark { color: rgba(255,255,255,0.55); }
-  .eyebrow-accent  { color: var(--color-orange-600); }
+  /* Section eyebrows read as a quiet slate, not a bright accent — orange is
+     reserved for the CTA fill, the logo and the focus ring. */
+  .eyebrow-accent  { color: var(--color-navy-400); }
 
   /* Buttons — Lloyds-grade interior padding (18/28). Read these tokens
      so every button on the site scales together. */
-  .btn { display: inline-flex; align-items: center; gap: 0.85rem; padding: var(--pad-btn-y) var(--pad-btn-x); font-family: var(--font-body); font-weight: 600; font-size: 1rem; line-height: 1; border-radius: 9999px; transition: all 200ms ease; cursor: pointer; white-space: nowrap; border: 1px solid transparent; }
+  .btn { display: inline-flex; align-items: center; gap: 0.85rem; padding: var(--pad-btn-y) var(--pad-btn-x); font-family: var(--font-body); font-weight: 600; font-size: 1rem; line-height: 1; border-radius: 0.5rem; transition: background-color 180ms cubic-bezier(.4,0,.2,1), border-color 180ms cubic-bezier(.4,0,.2,1), color 180ms cubic-bezier(.4,0,.2,1), box-shadow 180ms cubic-bezier(.4,0,.2,1); cursor: pointer; white-space: nowrap; border: 1px solid transparent; }
+  .btn:focus-visible { outline: none; box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--color-orange-500); }
   .btn-primary { background: var(--color-orange-500); color: white; }
   .btn-primary:hover { background: var(--color-orange-600); }
   .btn-primary:active { background: var(--color-orange-700); }
@@ -328,8 +335,8 @@
      The primary uses a solid white border with a brand-orange hover
      fill; the secondary uses a half-opacity white border with a
      subtle white tint on hover. Same gesture, two weights. */
-  .btn-hero-primary { background: transparent; color: white; border: 2px solid white; padding: calc(var(--pad-btn-y) - 1px) calc(var(--pad-btn-x) - 1px); }
-  .btn-hero-primary:hover { background: var(--color-orange-500); color: white; border-color: var(--color-orange-500); }
+  .btn-hero-primary { background: #ffffff; color: var(--color-navy-700); border: 2px solid #ffffff; padding: calc(var(--pad-btn-y) - 1px) calc(var(--pad-btn-x) - 1px); }
+  .btn-hero-primary:hover { background: var(--color-orange-500); color: #ffffff; border-color: var(--color-orange-500); }
   .btn-hero-ghost { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.45); padding: calc(var(--pad-btn-y) - 1px) calc(var(--pad-btn-x) - 1px); }
   .btn-hero-ghost:hover { background: rgba(255,255,255,0.08); border-color: white; }
 
@@ -380,7 +387,7 @@
      hover) lifts the card just off the canvas so it reads as paper, not an
      outlined box. Both are whisper-quiet — the whitespace still leads.
      On hover the ring warms to orange and the lift deepens. */
-  .bank-card { background: white; border-radius: 0.875rem; overflow: hidden; border: 1px solid var(--card-edge); box-shadow: var(--shadow-card); transition: box-shadow 240ms ease, transform 240ms ease, border-color 240ms ease; }
+  .bank-card { background: white; border-radius: 0.625rem; overflow: hidden; border: 1px solid var(--card-edge); box-shadow: var(--shadow-card); transition: box-shadow 240ms cubic-bezier(.4,0,.2,1), transform 240ms cubic-bezier(.4,0,.2,1), border-color 240ms cubic-bezier(.4,0,.2,1); }
   .bank-card:hover { border-color: var(--card-edge-hover); box-shadow: var(--shadow-card-lift); transform: translateY(-2px); }
   /* Card-body utility — applies the responsive padding rhythm. Mobile
      gets 24px (the institutional sweet spot at 343px content width),
@@ -391,7 +398,7 @@
 
   .section { padding-block: var(--section-pad-y); }
   .section-lg { padding-block: var(--section-pad-y-lg); }
-  .hairline { height: 1px; background: var(--color-bone-200); border: 0; margin: 0; }
+  .hairline { height: 1px; background: #e7eaf0; border: 0; margin: 0; }
   .hairline-dark { height: 1px; background: rgba(255,255,255,0.10); border: 0; margin: 0; }
 
   .monogram-bg { position: relative; isolation: isolate; }

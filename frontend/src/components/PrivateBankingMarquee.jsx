@@ -20,19 +20,19 @@ export default function PrivateBankingMarquee() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="relative max-w-5xl mx-auto bg-ink rounded-2xl overflow-hidden shadow-[0_24px_80px_rgba(12,10,20,0.18)]"
+          className="relative bg-ink rounded-2xl overflow-hidden shadow-[var(--shadow-hero)]"
         >
           {/* Hairline orange top rule — institutional signature */}
           <div className="absolute top-0 left-0 right-0 h-[2px] bg-orange-500 z-10" />
 
-          <div className="grid grid-cols-1 md:grid-cols-2">
+          <div className="grid grid-cols-1 md:grid-cols-12">
             {/* ─── LEFT / TOP — sub-brand mark + architectural photograph ─ */}
-            <div className="relative aspect-[5/4] md:aspect-auto md:min-h-[440px] bg-ink overflow-hidden">
+            <div className="relative aspect-[5/4] md:aspect-auto md:min-h-[520px] md:col-span-7 bg-ink overflow-hidden">
               <div
                 className="absolute inset-0 bg-cover bg-center"
                 style={{
                   backgroundImage: `url(${MARQUEE.wealth})`,
-                  filter: "saturate(0.82) brightness(0.88) contrast(1.06)",
+                  filter: "var(--img-grade)",
                 }}
               />
               <div className="absolute inset-0 bg-gradient-to-r from-ink/55 via-transparent to-ink/45" />
@@ -57,7 +57,7 @@ export default function PrivateBankingMarquee() {
             </div>
 
             {/* ─── RIGHT / BOTTOM — text content + CTA ────────────────── */}
-            <div className="bg-ink p-7 sm:p-9 md:p-10 lg:p-14 flex flex-col justify-center">
+            <div className="md:col-span-5 bg-ink p-7 sm:p-9 md:p-10 lg:p-14 flex flex-col justify-center">
               <h2 className="display-md text-white mb-4 md:mb-5">
                 This is Bard Santner Private Banking
               </h2>

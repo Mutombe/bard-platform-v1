@@ -145,7 +145,7 @@ export default function About() {
                   transition={{ duration: 0.45, delay: i * 0.06, ease: [0.16, 1, 0.3, 1] }}
                   className="flex flex-col gap-2"
                 >
-                  <span className="font-display text-orange-500 text-[15px]">
+                  <span className="font-display text-navy-400 text-[15px]">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <span className="font-display text-navy-600 text-[18px] md:text-[20px]">{v}</span>
@@ -175,9 +175,8 @@ export default function About() {
               >
                 <div
                   className="aspect-[4/5] bg-cover bg-center bg-bone-200"
-                  style={{ backgroundImage: `url(${p.image})`, filter: "saturate(0.9) contrast(1.02)" }}
+                  style={{ backgroundImage: `url(${p.image})`, filter: "var(--img-grade)" }}
                 />
-                <div className="h-[3px] bg-orange-500" />
                 <div className="bank-card-body flex flex-col flex-1">
                   <h3 className="font-display text-navy-600 text-[20px] md:text-[22px] leading-tight">
                     {p.name}
