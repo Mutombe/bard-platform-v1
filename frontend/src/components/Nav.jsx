@@ -204,7 +204,7 @@ export default function Nav() {
                   variants={ROW_V}
                   initial="hidden"
                   animate="show"
-                  className="flex flex-nowrap items-center justify-start py-5 md:py-6 overflow-x-auto no-scrollbar divide-x divide-bone-200"
+                  className="flex flex-nowrap items-center justify-start py-5 md:py-6 overflow-x-auto no-scrollbar divide-x divide-bone-300"
                 >
                   {activeItem.children.map((c) => (
                     <motion.span key={c.label} variants={LINK_V} className="shrink-0 px-2.5 first:pl-0">
