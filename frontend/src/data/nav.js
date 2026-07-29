@@ -50,7 +50,7 @@ export const NAV_MENU = [
       { label: "Our Manifesto", to: "/about#manifesto" },
       { label: "Vision, Purpose, Values", to: "/about#vision-purpose-values" },
       { label: "Board of Directors", to: "/about#board-of-directors" },
-      { label: "Golf", to: "https://bardsantner.com/" },
+      { label: "Golf", to: "https://bardsantnergolf.com/" },
       { label: "Contact", to: "/contact" },
     ],
   },
