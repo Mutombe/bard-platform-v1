@@ -56,9 +56,10 @@ export const NAV_MENU = [
   },
 ];
 
-// Right-aligned utility links kept on the top strip (unchanged from before).
+// Right-aligned utility links kept on the top strip.
+// NOTE: /careers has no page yet — it resolves to the 404 page until built.
 export const NAV_UTILITY = [
-  { label: "Locations", to: "/locations" },
+  { label: "Careers", to: "/careers" },
   { label: "Contact us", to: "/contact" },
   { label: "Bard Santner Group", to: "/group" },
 ];
