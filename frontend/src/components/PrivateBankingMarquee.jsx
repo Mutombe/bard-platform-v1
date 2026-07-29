@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRightIcon } from "@phosphor-icons/react";
 import { MARQUEE } from "../data/images.js";
+import RevealImage from "./RevealImage.jsx";
 
 /**
  * Private Banking marquee — the Lloyds-canonical single dark card, ours.
@@ -28,13 +29,7 @@ export default function PrivateBankingMarquee() {
           <div className="grid grid-cols-1 md:grid-cols-12">
             {/* ─── LEFT / TOP — sub-brand mark + architectural photograph ─ */}
             <div className="relative aspect-[5/4] md:aspect-auto md:min-h-[520px] md:col-span-7 bg-ink overflow-hidden">
-              <div
-                className="absolute inset-0 bg-cover bg-center"
-                style={{
-                  backgroundImage: `url(${MARQUEE.wealth})`,
-                  filter: "var(--img-grade)",
-                }}
-              />
+              <RevealImage image={MARQUEE.wealth} className="absolute inset-0 bg-cover bg-center" />
               <div className="absolute inset-0 bg-gradient-to-r from-ink/55 via-transparent to-ink/45" />
               <div className="absolute inset-0 md:hidden bg-gradient-to-b from-transparent via-transparent to-ink/85" />
 

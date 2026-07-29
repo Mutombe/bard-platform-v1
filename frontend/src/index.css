@@ -310,7 +310,9 @@
     background: white;
     color: var(--color-navy-700);
   }
-  .eyebrow-on-dark { color: rgba(255,255,255,0.55); }
+  /* On dark grounds the eyebrow is crisp white, not muddy grey; numbered
+     section indexes take an orange accent (see the Index component). */
+  .eyebrow-on-dark { color: rgba(255,255,255,0.78); }
   /* Section eyebrows read as a quiet slate, not a bright accent — orange is
      reserved for the CTA fill, the logo and the focus ring. */
   .eyebrow-accent  { color: var(--color-navy-400); }
