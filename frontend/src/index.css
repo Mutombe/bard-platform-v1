@@ -137,19 +137,26 @@
   --font-hero-display: "Fraunces Variable", "Fraunces", "Iowan Old Style",
                         "Garamond", "Hoefler Text", "Times New Roman", serif;
 
-  /* Hero unchanged. The other display tiers bumped ~10% to deliver the
-     "everything reads a touch bigger" institutional confidence the brief
-     calls for, without losing the type-scale ratio. */
-  --text-display-hero:  clamp(2.75rem, 7vw, 6.5rem);
-  --text-display-xl:    clamp(2.5rem, 6vw, 5rem);
-  --text-display-lg:    clamp(2rem, 4.5vw, 3.5rem);
-  --text-display-md:    clamp(1.75rem, 3.4vw, 2.5rem);
+  /* ─── Type scale — Fortune-500 premium sizing ────────────────────────
+     Mapped to the 8-point enterprise scale used by Apple / JPMorgan /
+     Stripe / Goldman, adapted to this brand (Fraunces carries the display
+     tiers, Onest the body). Each tier is a clamp() from its mobile floor to
+     its desktop ceiling:
+       hero  40 → 72   (Hero Display)
+       xl    32 → 56   (H1)
+       lg    28 → 40   (H2 / Section heading)
+       md    24 → 32   (H3 / Sub heading)
+     Card headings (24 / 20) and labels are applied inline where used. */
+  --text-display-hero:  clamp(2.5rem, 5.2vw, 4.5rem);    /* 40 → 72 */
+  --text-display-xl:    clamp(2rem, 4vw, 3.5rem);        /* 32 → 56 */
+  --text-display-lg:    clamp(1.75rem, 3vw, 2.5rem);     /* 28 → 40 */
+  --text-display-md:    clamp(1.5rem, 2.2vw, 2rem);      /* 24 → 32 */
 
-  /* Body scale up to 17px so all paragraph text inherits the strategic
-     bump. Headings carry their own clamp() above. */
-  --text-body-base: 1.0625rem;   /* 17px */
-  --text-body-lg:   1.1875rem;   /* 19px */
-  --text-body-xl:   1.3125rem;   /* 21px */
+  /* Body scale — 16px reading default (never below 16 on mobile), with an
+     18px "large" for lead paragraphs and 20px for the occasional standfirst. */
+  --text-body-base: 1rem;        /* 16px */
+  --text-body-lg:   1.125rem;    /* 18px */
+  --text-body-xl:   1.25rem;     /* 20px */
 
   /* Section + container padding.
      Mobile floor lifted: section bottom-/top-padding floors at 4.5rem
@@ -194,14 +201,13 @@
 /* ─── Base layer ─── */
 @layer base {
   html { scroll-behavior: smooth; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-  /* Body bumped to 17px / 1.6 line-height as the institutional reading default.
-     Every paragraph inherits, every component picks it up through em-based sizing,
-     so symmetry holds across the system. */
-  body { font-family: var(--font-body); color: var(--color-bone-700); background: var(--color-milk); font-feature-settings: "kern","liga","calt","ss01"; font-size: var(--text-body-base); line-height: 1.6; margin: 0; }
-  /* All headings live on Gellix Regular (400). Letter-spacing tightens
-     slightly to give large display sizes the right optical density. */
-  h1, h2, h3, h4 { font-family: var(--font-display); color: var(--color-navy-600); font-weight: 500; letter-spacing: -0.022em; line-height: 1.08; margin: 0; }
-  h1 { font-weight: 500; letter-spacing: -0.028em; }
+  /* Body — 16px / 1.7 line-height, the premium reading default. Every
+     paragraph inherits; components pick it up through em-based sizing. */
+  body { font-family: var(--font-body); color: var(--color-bone-700); background: var(--color-milk); font-feature-settings: "kern","liga","calt","ss01"; font-size: var(--text-body-base); line-height: 1.7; margin: 0; }
+  /* Headings carry a confident 600 weight (premium enterprise convention)
+     with tightening letter-spacing as size climbs. Fraunces renders these. */
+  h1, h2, h3, h4 { font-family: var(--font-display); color: var(--color-navy-600); font-weight: 600; letter-spacing: -0.02em; line-height: 1.12; margin: 0; }
+  h1 { font-weight: 600; letter-spacing: -0.028em; }
   p  { color: var(--color-bone-600); margin: 0; }
   a  { color: inherit; text-decoration: none; }
   ::selection { background: var(--color-orange-500); color: white; }
@@ -231,36 +237,36 @@
   .display-hero {
     font-family: var(--font-hero-display);
     font-size: var(--text-display-hero);
-    line-height: 1.02;
-    letter-spacing: -0.014em;
-    font-weight: 520;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    font-weight: 600;
     font-variation-settings: "SOFT" 40, "opsz" 96;
     font-feature-settings: "kern", "liga", "calt", "onum", "lnum";
   }
   .display-xl {
     font-family: var(--font-hero-display);
     font-size: var(--text-display-xl);
-    line-height: 1.04;
-    letter-spacing: -0.012em;
-    font-weight: 540;
+    line-height: 1.05;
+    letter-spacing: -0.018em;
+    font-weight: 600;
     font-variation-settings: "SOFT" 38, "opsz" 72;
     font-feature-settings: "kern", "liga", "calt", "onum", "lnum";
   }
   .display-lg {
     font-family: var(--font-hero-display);
     font-size: var(--text-display-lg);
-    line-height: 1.08;
-    letter-spacing: -0.008em;
-    font-weight: 540;
+    line-height: 1.1;
+    letter-spacing: -0.014em;
+    font-weight: 620;
     font-variation-settings: "SOFT" 35, "opsz" 56;
     font-feature-settings: "kern", "liga", "calt", "onum", "lnum";
   }
   .display-md {
     font-family: var(--font-hero-display);
     font-size: var(--text-display-md);
-    line-height: 1.12;
-    letter-spacing: -0.006em;
-    font-weight: 540;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    font-weight: 640;
     font-variation-settings: "SOFT" 32, "opsz" 40;
     font-feature-settings: "kern", "liga", "calt", "onum", "lnum";
   }
@@ -270,9 +276,9 @@
   .display-hero-serif {
     font-family: var(--font-hero-display);
     font-size: var(--text-display-hero);
-    line-height: 1.02;
-    letter-spacing: -0.014em;
-    font-weight: 520;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    font-weight: 600;
     font-variation-settings: "SOFT" 40, "opsz" 96;
     font-feature-settings: "kern", "liga", "calt", "onum", "lnum";
   }
