@@ -66,16 +66,8 @@ export default function Login() {
             className="w-full max-w-md"
           >
             {/* Brand row */}
-            <Link to="/" className="inline-flex items-center gap-2.5 mb-5 group">
-              <img src="/favicon.png" alt="" className="h-9 w-9 object-contain" />
-              <span className="flex flex-col leading-none">
-                <span className="font-display text-[14px] tracking-[0.04em] uppercase font-medium text-navy-600">
-                  Bard Santner
-                </span>
-                <span className="text-[9.5px] tracking-[0.18em] text-bone-500 uppercase mt-0.5">
-                  Online Banking
-                </span>
-              </span>
+            <Link to="/" className="inline-flex items-center mb-5 group">
+              <img src="/logo-bsmfb.png" alt="Bard Santner Microfinance Bank" className="h-10 w-auto object-contain" />
             </Link>
 
             {/* Headline — compact, single-instance */}

@@ -233,22 +233,14 @@ export default function Nav() {
       >
         <div className="container-bank">
           <div className="flex items-center justify-between h-16 md:h-20">
-            {/* Brand mark */}
-            <Link to="/" className="flex items-center gap-3 shrink-0" aria-label="Bard Santner home">
+            {/* Brand mark — full BSMFB lockup */}
+            <Link to="/" className="flex items-center shrink-0" aria-label="Bard Santner Microfinance Bank home">
               <img
-                src="/favicon.png"
-                alt=""
-                className="h-9 w-9 md:h-10 md:w-10 object-contain"
+                src="/logo-bsmfb.png"
+                alt="Bard Santner Microfinance Bank"
+                className="h-9 md:h-11 w-auto object-contain"
                 loading="eager"
               />
-              <span className="flex flex-col leading-none">
-                <span className="font-display text-[14px] md:text-[17px] tracking-[0.04em] text-navy-600 font-medium uppercase">
-                  Bard Santner
-                </span>
-                <span className="hidden sm:inline-block text-[9.5px] tracking-[0.18em] text-bone-500 uppercase mt-0.5">
-                  Markets Inc
-                </span>
-              </span>
             </Link>
 
             {/* Centre — deliberately empty (primary nav removed per direction) */}
@@ -309,11 +301,8 @@ export default function Nav() {
           >
             {/* Drawer head */}
             <div className="px-6 pt-5 pb-4 border-b border-bone-200 flex items-center justify-between">
-              <Link to="/" onClick={() => setMobileOpen(false)} className="flex items-center gap-3">
-                <img src="/favicon.png" alt="" className="h-8 w-8 object-contain" />
-                <span className="font-display text-[15px] tracking-[0.04em] text-navy-600 uppercase font-medium">
-                  Bard Santner
-                </span>
+              <Link to="/" onClick={() => setMobileOpen(false)} className="flex items-center">
+                <img src="/logo-bsmfb.png" alt="Bard Santner Microfinance Bank" className="h-8 w-auto object-contain" />
               </Link>
               <button
                 onClick={() => setMobileOpen(false)}
