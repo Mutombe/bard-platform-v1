@@ -4,6 +4,7 @@ import { ArrowRightIcon, ArrowUpRightIcon } from "@phosphor-icons/react";
 
 import PageTransition from "../components/PageTransition.jsx";
 import QuickActionStrip from "../components/QuickActionStrip.jsx";
+import PrivateBankingMarquee from "../components/PrivateBankingMarquee.jsx";
 import AdvisoryBand from "../components/AdvisoryBand.jsx";
 import TrustRibbon from "../components/TrustRibbon.jsx";
 import SEO, { organizationJsonLd, websiteJsonLd, breadcrumbJsonLd } from "../components/SEO.jsx";
@@ -49,13 +50,6 @@ const SOLUTION_CARDS = [
     image: AUDIENCE_TILE.private,
     to: "/solutions/investors",
   },
-];
-
-const PRIVATE_OFFERINGS = [
-  "Discretionary portfolios",
-  "A dedicated private banker",
-  "Cross-border allocation",
-  "Succession & legacy planning",
 ];
 
 const CAPABILITIES = [
@@ -238,54 +232,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── PRIVATE BANKING — furnished, cinematic feature ─────────── */}
-      <section className="relative bg-navy-950 text-white overflow-hidden">
-        <div className="absolute top-0 left-0 right-0 h-[2px] bg-orange-500 z-20" />
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${HERO.private})`, filter: "saturate(0.6) brightness(0.55) contrast(1.05)" }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-navy-950 via-navy-950/85 to-navy-950/35" />
-        <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-transparent to-navy-950/40" />
-
-        <div className="relative container-bank py-24 md:py-36">
-          <motion.div {...reveal} className="max-w-2xl">
-            <div className="flex items-center gap-3.5 mb-7">
-              <span className="h-[2px] w-12 bg-orange-500" />
-              <p className="font-mono text-[11px] tracking-[0.24em] uppercase text-orange-300">
-                Bard Santner · Private Banking
-              </p>
-            </div>
-            <h2 className="display-xl text-white text-balance">
-              Relationship-led private banking, for lives with weight.
-            </h2>
-            <p className="mt-7 text-[17px] md:text-[19px] text-white/80 leading-relaxed max-w-xl">
-              For established wealth, the account is the least of it. A private banker who
-              knows your name, your family and your horizon — pairing discretionary expertise
-              with the patience that survives more than one market cycle.
-            </p>
-
-            <div className="mt-9 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 max-w-xl">
-              {PRIVATE_OFFERINGS.map((o) => (
-                <div key={o} className="flex items-center gap-3 py-2 border-b border-white/10 text-[15px] text-white/90">
-                  <span className="w-1.5 h-1.5 rounded-full bg-orange-500 shrink-0" />
-                  {o}
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-11 flex flex-col sm:flex-row gap-4">
-              <Link to="/solutions/investors" className="btn btn-primary w-full sm:w-auto justify-center">
-                Explore Private Banking
-                <ArrowRightIcon size={16} weight="bold" />
-              </Link>
-              <Link to="/contact" className="btn btn-hero-ghost w-full sm:w-auto justify-center">
-                Speak to a Private Banker
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      {/* ── PRIVATE BANKING — the Lloyds-canonical dark card marquee ── */}
+      <PrivateBankingMarquee />
 
       {/* ── DIGITAL — capabilities, split ──────────────────────────── */}
       <section className="section bg-milk">
