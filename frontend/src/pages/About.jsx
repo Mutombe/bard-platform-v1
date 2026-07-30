@@ -187,8 +187,8 @@ export default function About() {
             ))}
           </div>
           <p className="mt-8 text-[14px] text-bone-500 max-w-2xl">
-            Full profiles and photographs of the Board are published as the Bank formalises
-            its governance disclosures.
+            Full Board profiles are published as the Bank formalises its governance
+            disclosures.
           </p>
         </div>
       </section>
