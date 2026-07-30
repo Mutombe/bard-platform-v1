@@ -1,6 +1,5 @@
-import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRightIcon, DownloadSimpleIcon } from "@phosphor-icons/react";
+import { DownloadSimpleIcon } from "@phosphor-icons/react";
 
 import PageTransition from "../components/PageTransition.jsx";
 import PageHero from "../components/PageHero.jsx";
@@ -191,19 +190,6 @@ export default function About() {
             Full profiles and photographs of the Board are published as the Bank formalises
             its governance disclosures.
           </p>
-        </div>
-      </section>
-
-      {/* ── Closing CTA ───────────────────────────────────────────── */}
-      <section className="bg-milk border-t-2 border-orange-500">
-        <div className="container-bank py-14 md:py-20 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-          <h2 className="display-md text-navy-600 max-w-xl text-balance">
-            Let's build your future together.
-          </h2>
-          <Link to="/contact" className="btn btn-navy shrink-0">
-            Start a conversation
-            <ArrowRightIcon size={15} weight="bold" />
-          </Link>
         </div>
       </section>
 
