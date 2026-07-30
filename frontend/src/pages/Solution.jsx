@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
+import { ArrowUpRightIcon } from "@phosphor-icons/react";
 
 import PageTransition from "../components/PageTransition.jsx";
 import PageHero from "../components/PageHero.jsx";
@@ -81,16 +82,19 @@ export default function Solution() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.55, delay: (i % 2) * 0.06, ease: [0.16, 1, 0.3, 1] }}
-                className="bank-card bank-card-body lg:!p-10 flex flex-col"
+                className="group bank-card bank-card-body lg:!p-10 flex flex-col"
               >
-                <div className="flex items-baseline gap-4 mb-4">
+                <div className="flex items-center justify-between mb-5">
                   <span className="font-display font-bold text-orange-500 text-[34px] leading-none tabular-nums">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <h3 className="font-display text-navy-600 text-[22px] md:text-[24px] font-medium leading-tight">
-                    {b.heading}
-                  </h3>
+                  <span className="w-10 h-10 rounded-full border-2 border-bone-300 group-hover:border-orange-500 flex items-center justify-center transition-colors">
+                    <ArrowUpRightIcon size={16} weight="bold" className="text-navy-500 group-hover:text-orange-500 transition-colors" />
+                  </span>
                 </div>
+                <h3 className="font-display text-navy-600 text-[22px] md:text-[24px] font-medium leading-tight mb-4">
+                  {b.heading}
+                </h3>
                 <p className="text-bone-600 text-[15px] md:text-[16px] leading-relaxed mb-7">
                   {b.body}
                 </p>

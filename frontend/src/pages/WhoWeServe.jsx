@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRightIcon } from "@phosphor-icons/react";
 
 import PageTransition from "../components/PageTransition.jsx";
 import PageHero from "../components/PageHero.jsx";
@@ -74,21 +73,21 @@ export default function WhoWeServe() {
             <span className="h-[2px] w-12 bg-orange-500" />
             <h2 className="display-md text-navy-600">{seg.listTitle}</h2>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 border-t border-l border-bone-200">
             {seg.items.map((it, i) => (
               <motion.div
                 key={it}
-                initial={{ opacity: 0, y: 16 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.5, delay: (i % 3) * 0.05, ease: [0.22, 1, 0.36, 1] }}
-                className="bank-card bank-card-body flex items-center justify-between gap-4"
+                transition={{ duration: 0.45, delay: (i % 3) * 0.05, ease: [0.22, 1, 0.36, 1] }}
+                className="group flex items-start gap-4 border-b border-r border-bone-200 bg-white p-6 md:p-7 hover:bg-orange-50/40 transition-colors"
               >
-                <span className="font-display text-navy-600 text-[17px] md:text-[19px] leading-tight">
-                  {it}
+                <span className="w-9 h-9 rounded-full border-2 border-orange-500 text-orange-600 font-display font-bold text-[13px] tabular-nums flex items-center justify-center shrink-0">
+                  {String(i + 1).padStart(2, "0")}
                 </span>
-                <span className="w-9 h-9 rounded-full bg-navy-50 flex items-center justify-center shrink-0">
-                  <ArrowRightIcon size={14} weight="bold" className="text-navy-600" />
+                <span className="font-display text-navy-600 text-[17px] md:text-[19px] leading-snug pt-1.5">
+                  {it}
                 </span>
               </motion.div>
             ))}
