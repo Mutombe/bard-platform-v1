@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { PhoneIcon, EnvelopeSimpleIcon, ChatCircleIcon, ArrowRightIcon } from "@phosphor-icons/react";
+import { PhoneIcon, EnvelopeSimpleIcon, ChatCircleIcon, ArrowRightIcon, ArrowSquareOutIcon } from "@phosphor-icons/react";
 import { BRAND } from "../data/images.js";
 
 /**
@@ -111,7 +111,11 @@ function ChannelRow({ href, Icon, primary, secondary, truncate = false, external
         </p>
         <p className="text-[12px] text-white/60 mt-0.5 leading-snug">{secondary}</p>
       </div>
-      <ArrowRightIcon size={13} weight="bold" className="text-white/40 group-hover:text-orange-400 shrink-0 transition-colors" />
+      {external ? (
+        <ArrowSquareOutIcon size={14} weight="bold" className="text-white/40 group-hover:text-orange-400 shrink-0 transition-colors" aria-label="opens in a new tab" />
+      ) : (
+        <ArrowRightIcon size={13} weight="bold" className="text-white/40 group-hover:text-orange-400 shrink-0 transition-colors" />
+      )}
     </a>
   );
 }

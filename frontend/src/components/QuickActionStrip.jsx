@@ -10,9 +10,9 @@ export default function QuickActionStrip({ actions = [], tint = "navy" }) {
   const tintBg = tint === "orange" ? "bg-orange-600" : "bg-navy-600";
 
   return (
-    <section className={`${tintBg} text-white`}>
+    <section className={`${tintBg} text-white border-t border-white/25`}>
       <div className="container-bank">
-        <div className="grid grid-cols-2 md:grid-cols-4 md:divide-x divide-white/30 border-t border-white/25">
+        <div className="grid grid-cols-2 md:grid-cols-4 md:divide-x divide-white/30">
           {actions.map((a) => {
             const Comp = a.external ? "a" : Link;
             const linkProps = a.external

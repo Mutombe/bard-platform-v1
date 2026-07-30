@@ -4,7 +4,7 @@ import PageTransition from "../components/PageTransition.jsx";
 import PageHero from "../components/PageHero.jsx";
 import SEO, { breadcrumbJsonLd } from "../components/SEO.jsx";
 import { BRAND } from "../data/images.js";
-import { PhoneIcon, EnvelopeSimpleIcon, ChatCircleIcon, MapPinIcon, ArrowRightIcon, CheckCircleIcon } from "@phosphor-icons/react";
+import { PhoneIcon, EnvelopeSimpleIcon, ChatCircleIcon, MapPinIcon, ArrowRightIcon, CheckCircleIcon, ArrowSquareOutIcon } from "@phosphor-icons/react";
 import { AUDIENCES } from "../data/audiences.js";
 import { StackedAside } from "../components/PageHeroAsides.jsx";
 
@@ -63,8 +63,22 @@ export default function Contact() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 md:gap-5 mb-12 md:mb-16">
             {CHANNELS.map((c) => {
               const Icon = c.icon;
+              const external = /^https?:\/\//.test(c.href);
               return (
-                <a key={c.title} href={c.href} className="block p-5 md:p-9 rounded-xl border border-bone-200 hover:border-orange-500 hover:shadow-[var(--shadow-card)] transition-all">
+                <a
+                  key={c.title}
+                  href={c.href}
+                  {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                  className="relative block p-5 md:p-9 rounded-xl border border-bone-200 hover:border-orange-500 hover:shadow-[var(--shadow-card)] transition-all"
+                >
+                  {external && (
+                    <ArrowSquareOutIcon
+                      size={15}
+                      weight="bold"
+                      className="absolute top-4 right-4 text-bone-400"
+                      aria-label="opens in a new tab"
+                    />
+                  )}
                   <div className="w-11 h-11 rounded-lg bg-orange-50 flex items-center justify-center mb-4 md:mb-5">
                     <Icon size={20} weight="regular" className="text-orange-600" />
                   </div>
