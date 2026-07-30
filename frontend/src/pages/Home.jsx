@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRightIcon, ArrowUpRightIcon } from "@phosphor-icons/react";
+import { ArrowRightIcon, ArrowUpRightIcon, ArrowSquareOutIcon } from "@phosphor-icons/react";
 
 import PageTransition from "../components/PageTransition.jsx";
 import QuickActionStrip from "../components/QuickActionStrip.jsx";
 import PrivateBankingMarquee from "../components/PrivateBankingMarquee.jsx";
 import RevealImage from "../components/RevealImage.jsx";
+import Typewriter from "../components/Typewriter.jsx";
 import BgfiCards from "../components/BgfiCards.jsx";
 import AdvisoryBand from "../components/AdvisoryBand.jsx";
 import TrustRibbon from "../components/TrustRibbon.jsx";
@@ -19,6 +20,19 @@ import { BRAND, HERO_VIDEO } from "../data/images.js";
  * for the CTA fill and logo only), layered whites, and a dark closing
  * crescendo. The hero + navy quick-action strip fill exactly one viewport.
  */
+
+// Interchangeable tails for "Banking that helps you ___", each drawn from the
+// manifesto: move forward (purpose), seize opportunity / build confidence
+// (create opportunity, build confidence), grow bolder (the value "Bold"),
+// live differently (purpose: financially enrich lives differently).
+const HERO_PHRASES = [
+  "move forward.",
+  "seize opportunity.",
+  "build confidence.",
+  "grow bolder.",
+  "live differently.",
+  "rise higher.",
+];
 
 const HOME_ACTIONS = [
   { label: "Open an account", path: "/solutions/individuals" },
@@ -51,21 +65,30 @@ const SOLUTION_CARDS = [
   },
 ];
 
+// `pos` sets each photo's focal point (background-position) so the person AND
+// what they are holding/doing both sit in the visible band above the caption,
+// on the narrow desktop column and the wider mobile card alike.
 const DIGITAL_CARDS = [
   {
     image: BRAND.smeHospitality,
+    pos: "60% 30%",
     title: "Open in minutes",
     body: "Apply, verify your identity and start banking from your phone. No branch queue.",
     to: "/solutions/individuals",
   },
   {
     image: BRAND.smeNursery,
+    pos: "50% 32%",
     title: "Run your business",
     body: "Payments, payroll and working capital, managed from a single dashboard.",
     to: "/solutions/companies-institutions",
   },
   {
     image: BRAND.mobileBanking,
+    // Wide source (1024x540): a light vertical zoom lifts her hands and phone
+    // into the frame while keeping her face, so the action still reads.
+    pos: "50% 62%",
+    size: "auto 118%",
     title: "Send across borders",
     body: "Move money to family and suppliers at rates you can see up front.",
     to: "/who-we-serve/diaspora-international",
@@ -158,8 +181,12 @@ export default function Home() {
               className="max-w-3xl"
             >
               <p className="eyebrow eyebrow-on-dark mb-6 md:mb-7 [text-shadow:0_1px_10px_rgba(0,0,0,0.35)]">Bard Santner Microfinance Bank</p>
-              <h1 className="display-hero text-white text-balance [text-shadow:0_2px_28px_rgba(0,0,0,0.5)]">
-                Banking that helps you <span className="font-bold">move forward.</span>
+              <h1 className="display-hero text-white [text-shadow:0_2px_28px_rgba(0,0,0,0.5)]">
+                <span className="block">Banking that helps you</span>
+                <span className="block font-bold">
+                  <Typewriter phrases={HERO_PHRASES} />
+                </span>
+                <span className="sr-only">move forward.</span>
               </h1>
               <p className="mt-7 md:mt-9 text-white/90 max-w-xl text-[17px] md:text-[20px] leading-relaxed [text-shadow:0_1px_16px_rgba(0,0,0,0.45)]">
                 A digital-first bank built for the way Africa works. Simple enough for
@@ -284,10 +311,16 @@ export default function Home() {
                 className="group relative block rounded-2xl overflow-hidden aspect-[3/4] sm:aspect-[2/3]"
               >
                 <div
-                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-                  style={{ backgroundImage: `url(${c.image})` }}
+                  className="absolute inset-0 bg-no-repeat transition-transform duration-700 group-hover:scale-105"
+                  style={{ backgroundImage: `url(${c.image})`, backgroundPosition: c.pos, backgroundSize: c.size || "cover" }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/45 to-transparent" />
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    background:
+                      "linear-gradient(to top, rgba(12,10,20,0.95) 0%, rgba(12,10,20,0.78) 24%, rgba(12,10,20,0.28) 50%, transparent 74%)",
+                  }}
+                />
                 <div className="absolute inset-0 p-5 md:p-6 flex flex-col justify-end">
                   <h3 className="font-display font-medium text-white text-[19px] md:text-[20px] leading-tight mb-2">
                     {c.title}
@@ -325,7 +358,7 @@ export default function Home() {
               className="inline-flex items-center gap-2 text-[15px] font-medium text-navy-600 hover:text-orange-600 transition-colors"
             >
               All research on BGFI
-              <ArrowUpRightIcon size={15} weight="bold" />
+              <ArrowSquareOutIcon size={15} weight="bold" aria-label="opens in a new tab" />
             </a>
           </motion.div>
 

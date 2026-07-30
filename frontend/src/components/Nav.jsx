@@ -9,6 +9,7 @@ import {
   XIcon,
   ArrowRightIcon,
   CaretDownIcon,
+  ArrowSquareOutIcon,
 } from "@phosphor-icons/react";
 import { NAV_MENU, NAV_UTILITY } from "../data/nav.js";
 import SearchModal from "./SearchModal.jsx";
@@ -43,6 +44,12 @@ function NavItem({ to, className, onClick, children }) {
     return (
       <a href={to} target="_blank" rel="noopener noreferrer" className={className} onClick={onClick}>
         {children}
+        <ArrowSquareOutIcon
+          size={12}
+          weight="bold"
+          className="inline-block ml-1 translate-y-[1px] opacity-60"
+          aria-label="opens in a new tab"
+        />
       </a>
     );
   }

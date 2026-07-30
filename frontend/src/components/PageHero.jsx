@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRightIcon } from "@phosphor-icons/react";
+import { ArrowRightIcon, ArrowSquareOutIcon } from "@phosphor-icons/react";
 
 // CTA helper — when the destination starts with http(s) we render an
 // anchor (and open it in a new tab); otherwise the standard Router Link.
@@ -13,7 +13,11 @@ function HeroCTA({ cta, className, withArrow = false }) {
   const inner = (
     <>
       {cta.label}
-      {withArrow && <ArrowRightIcon size={14} weight="bold" />}
+      {isExternal ? (
+        <ArrowSquareOutIcon size={14} weight="bold" aria-label="opens in a new tab" />
+      ) : (
+        withArrow && <ArrowRightIcon size={14} weight="bold" />
+      )}
     </>
   );
   if (isExternal) {

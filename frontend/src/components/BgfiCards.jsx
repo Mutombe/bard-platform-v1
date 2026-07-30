@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ArrowUpRightIcon } from "@phosphor-icons/react";
+import { ArrowSquareOutIcon } from "@phosphor-icons/react";
 import { INSIGHT } from "../data/images.js";
 
 /**
@@ -104,10 +104,11 @@ export default function BgfiCards() {
             )}
             <span className="mt-6 inline-flex items-center gap-2 text-[14.5px] font-medium text-navy-600 group-hover:text-orange-600 transition-colors">
               Read on BGFI
-              <ArrowUpRightIcon
+              <ArrowSquareOutIcon
                 size={14}
                 weight="bold"
                 className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                aria-label="opens in a new tab"
               />
             </span>
           </div>

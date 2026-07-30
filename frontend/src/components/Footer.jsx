@@ -6,6 +6,7 @@ import {
   InstagramLogoIcon,
   YoutubeLogoIcon,
   GlobeIcon,
+  ArrowSquareOutIcon,
 } from "@phosphor-icons/react";
 
 /**
@@ -20,6 +21,12 @@ function FooterLink({ to, className, children }) {
     return (
       <a href={to} target="_blank" rel="noopener noreferrer" className={className}>
         {children}
+        <ArrowSquareOutIcon
+          size={12}
+          weight="bold"
+          className="inline-block ml-1 translate-y-[1px] opacity-55"
+          aria-label="opens in a new tab"
+        />
       </a>
     );
   }
