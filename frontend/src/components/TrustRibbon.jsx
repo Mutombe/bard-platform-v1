@@ -68,7 +68,7 @@ export default function TrustRibbon() {
               }}
             />
             <div className="relative flex flex-col h-full">
-            <p className="eyebrow eyebrow-on-dark mb-5">§ 07 · Trust architecture</p>
+            <p className="eyebrow eyebrow-on-dark mb-5">Trust architecture</p>
             <h2 className="display-md text-white text-balance">
               The obligations a bank inherits the moment it opens its first account.
             </h2>
