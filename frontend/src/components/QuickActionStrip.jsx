@@ -2,28 +2,17 @@ import { Link } from "react-router-dom";
 import { CaretRightIcon } from "@phosphor-icons/react";
 
 /**
- * Quick-action strip — the Lloyds pattern. A thin band of 3-5 pills,
- * placed under the hero, containing the most likely user actions for
- * the audience in context.
- *
- * Brand colour band (navy) with white pills on top. The hover-state
- * is a subtle lift, not a colour swap, because the entire strip already
- * lives inside a brand-coloured panel.
+ * Quick-action strip — the Lloyds pattern: a short band of flat cells split by
+ * hairline dividers, each a label + chevron. Clean bold lines, low height (one
+ * row on desktop, 2×2 on mobile), sitting on the brand colour band.
  */
 export default function QuickActionStrip({ actions = [], tint = "navy" }) {
-  const tintBg =
-    tint === "orange"
-      ? "bg-orange-600"
-      : "bg-navy-600";
+  const tintBg = tint === "orange" ? "bg-orange-600" : "bg-navy-600";
 
   return (
     <section className={`${tintBg} text-white`}>
-      {/* Mobile padding lifts to py-7 (28px) — same as desktop — so the
-          strip reads as a confident band, not a compressed one. Pills
-          stack 2×2 on mobile with a slightly wider gap (gap-2.5 → gap-3)
-          to keep symmetry with the rest of the system's spacing rhythm. */}
-      <div className="container-bank py-7 md:py-7">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 md:gap-3">
+      <div className="container-bank">
+        <div className="grid grid-cols-2 md:grid-cols-4 md:divide-x divide-white/15 border-t border-white/10">
           {actions.map((a) => {
             const Comp = a.external ? "a" : Link;
             const linkProps = a.external
@@ -33,12 +22,16 @@ export default function QuickActionStrip({ actions = [], tint = "navy" }) {
               <Comp
                 key={a.label}
                 {...linkProps}
-                className="pill pill-outline"
+                className="group flex items-center justify-between gap-3 px-4 md:px-7 py-4 md:py-5 hover:bg-white/[0.07] transition-colors border-b border-white/10 md:border-b-0"
               >
-                <span className="text-[12.5px] md:text-[14px] font-medium leading-tight pr-1.5">
+                <span className="text-[13.5px] md:text-[15px] font-medium leading-tight">
                   {a.label}
                 </span>
-                <CaretRightIcon size={13} weight="bold" className="shrink-0" />
+                <CaretRightIcon
+                  size={14}
+                  weight="bold"
+                  className="shrink-0 opacity-70 group-hover:translate-x-1 transition-transform"
+                />
               </Comp>
             );
           })}
