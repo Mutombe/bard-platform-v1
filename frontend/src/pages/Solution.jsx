@@ -1,6 +1,6 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowUpRightIcon } from "@phosphor-icons/react";
+import { ArrowUpRightIcon, ArrowRightIcon } from "@phosphor-icons/react";
 
 import PageTransition from "../components/PageTransition.jsx";
 import PageHero from "../components/PageHero.jsx";
@@ -51,7 +51,13 @@ export default function Solution() {
         <div className="container-bank grid grid-cols-12 gap-8 md:gap-12 items-start">
           <div className="col-span-12 md:col-span-4">
             <p className="eyebrow eyebrow-accent mb-4">{s.title}</p>
-            <span className="block h-[3px] w-14 bg-orange-500" />
+            <span className="block h-[3px] w-14 bg-orange-500 mb-8 md:mb-10" />
+            {s.cta && (
+              <Link to={s.cta.to} className="btn btn-outline">
+                {s.cta.label}
+                <ArrowRightIcon size={15} weight="bold" />
+              </Link>
+            )}
           </div>
           <div className="col-span-12 md:col-span-8 space-y-5">
             {s.intro.map((p, i) => (
