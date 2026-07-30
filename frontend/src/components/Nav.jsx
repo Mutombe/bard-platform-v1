@@ -293,25 +293,25 @@ export default function Nav() {
                   listening ? "border-orange-500" : "border-navy-600 hover:border-orange-500"
                 }`}
               >
-                <MagnifyingGlassIcon size={19} weight="regular" className="text-bone-500 shrink-0" />
+                <MagnifyingGlassIcon size={20} weight="bold" className="text-navy-700 shrink-0" />
                 <button
                   onClick={() => setSearchOpen(true)}
                   aria-label="Search Bard Santner"
-                  className="flex-1 text-left text-[15px] text-bone-400 truncate"
+                  className="flex-1 text-left text-[15px] font-semibold text-navy-600 truncate"
                 >
                   Search Bard Santner…
                 </button>
-                <kbd className="hidden lg:inline-flex items-center justify-center min-w-[22px] h-[22px] px-1 rounded border border-bone-300 bg-paper text-bone-500 font-mono text-[11px] leading-none">
+                <kbd className="hidden lg:inline-flex items-center justify-center min-w-[23px] h-[23px] px-1 rounded border-2 border-bone-300 bg-paper text-navy-600 font-mono text-[11px] font-bold leading-none">
                   /
                 </kbd>
                 <button
                   onClick={startVoice}
                   aria-label="Search by voice"
                   className={`w-9 h-9 rounded-full flex items-center justify-center transition-colors shrink-0 ${
-                    listening ? "bg-orange-500 text-white animate-pulse" : "text-navy-600 hover:bg-smoke"
+                    listening ? "bg-orange-500 text-white animate-pulse" : "bg-navy-700 text-white hover:bg-orange-500"
                   }`}
                 >
-                  <MicrophoneIcon size={18} weight={listening ? "fill" : "regular"} />
+                  <MicrophoneIcon size={18} weight={listening ? "fill" : "bold"} />
                 </button>
               </div>
             </div>
@@ -323,8 +323,8 @@ export default function Nav() {
                 aria-label="Log in to Online Banking"
                 className="group hidden md:inline-flex items-center gap-3 h-12 pl-2 pr-6 rounded-full bg-white border-2 border-navy-600 hover:border-orange-500 transition-all duration-300 shadow-[0_1px_2px_rgba(12,10,20,0.04)] hover:shadow-[0_6px_18px_rgba(12,10,20,0.12)] hover:-translate-y-[1px]"
               >
-                <span className="w-9 h-9 rounded-full border-2 border-navy-600 group-hover:border-orange-500 flex items-center justify-center transition-colors duration-300">
-                  <LockIcon size={19} weight="duotone" className="text-navy-700 group-hover:text-orange-500 transition-colors duration-300" />
+                <span className="w-9 h-9 rounded-full bg-navy-700 group-hover:bg-orange-500 flex items-center justify-center transition-colors duration-300 shadow-[inset_0_-1px_0_rgba(0,0,0,0.12)]">
+                  <LockIcon size={17} weight="duotone" className="text-white" />
                 </span>
                 <span className="text-[16px] font-medium text-navy-700 group-hover:text-navy-900 transition-colors">
                   Log in

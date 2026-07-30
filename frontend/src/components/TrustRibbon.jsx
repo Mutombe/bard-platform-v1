@@ -49,7 +49,6 @@ export default function TrustRibbon() {
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 md:gap-5 items-stretch">
           {/* Statement card — dark, left */}
           <div className="lg:col-span-2 relative overflow-hidden rounded-2xl bg-navy-900 text-white p-8 md:p-10 flex flex-col shadow-[var(--shadow-hero)]">
-            <div className="absolute top-0 left-0 right-0 h-[3px] bg-orange-500" />
             <p className="eyebrow eyebrow-on-dark mb-5">§ 07 · Trust architecture</p>
             <h2 className="display-md text-white text-balance">
               The obligations a bank inherits the moment it opens its first account.
