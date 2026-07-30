@@ -76,7 +76,7 @@ const AUDIENCES = [
 function Index({ n, label, onDark = false }) {
   return (
     <p className={`eyebrow flex items-center gap-3 ${onDark ? "text-white/80" : "text-navy-500"}`}>
-      <span className={`font-display not-italic ${onDark ? "text-orange-400" : "text-orange-600"}`}>{n}</span>
+      <span className={`font-display font-bold not-italic ${onDark ? "text-orange-400" : "text-orange-600"}`}>{n}</span>
       <span className={`w-6 h-px ${onDark ? "bg-orange-400/70" : "bg-orange-500/60"}`} />
       {label}
     </p>
@@ -123,7 +123,7 @@ export default function Home() {
             >
               <p className="eyebrow eyebrow-on-dark mb-6 md:mb-7">Bard Santner Microfinance Bank</p>
               <h1 className="display-hero text-white text-balance">
-                Banking that helps you move forward.
+                Banking that helps you <span className="font-bold">move forward.</span>
               </h1>
               <p className="mt-7 md:mt-9 text-white/85 max-w-xl text-[17px] md:text-[20px] leading-relaxed">
                 A digital-first bank built for the way Africa works — simple enough for
@@ -152,7 +152,8 @@ export default function Home() {
             <motion.div {...reveal} className="col-span-12 md:col-span-6">
               <Index n="01" label="Why we exist" />
               <h2 className="display-xl text-navy-600 text-balance mt-6">
-                Banking should move with you — not the other way around.
+                Banking should <span className="italic font-light">move with you</span> — not the
+                other way around.
               </h2>
             </motion.div>
             <motion.p {...reveal} className="col-span-12 md:col-span-5 md:col-start-8 text-[17px] md:text-[19px] text-bone-600 leading-relaxed">
@@ -173,7 +174,7 @@ export default function Home() {
             <div className="max-w-2xl">
               <Index n="02" label="Built around people" />
               <h2 className="display-lg text-navy-600 text-balance mt-6">
-                Built around people, not products.
+                Built around <span className="font-bold">people</span>, not products.
               </h2>
             </div>
             <p className="text-[16px] md:text-[17px] text-bone-600 leading-relaxed max-w-sm">
@@ -225,7 +226,7 @@ export default function Home() {
           <motion.div {...reveal} className="col-span-12 md:col-span-5">
             <Index n="03" label="Digital-first" />
             <h2 className="display-lg text-navy-600 text-balance mt-6">
-              Digital where it matters. Human when it counts.
+              Digital where it matters. <span className="font-bold">Human</span> when it counts.
             </h2>
             <p className="mt-6 text-[17px] md:text-[19px] text-bone-600 leading-relaxed">
               Technology should remove complexity, not create it. Bank whenever and wherever
@@ -279,7 +280,9 @@ export default function Home() {
           <div className="grid grid-cols-12 gap-10 md:gap-16">
             <motion.div {...reveal} className="col-span-12 md:col-span-5">
               <Index n="05" label="Built for Africa" onDark />
-              <h2 className="display-lg text-white text-balance mt-6">Built for the way Africa works.</h2>
+              <h2 className="display-lg text-white text-balance mt-6">
+                Built for the way <span className="font-bold">Africa</span> works.
+              </h2>
               <p className="mt-6 text-[17px] md:text-[19px] text-white/80 leading-relaxed">
                 Entrepreneurs are building businesses. Families are creating wealth across
                 generations. Trade is expanding across borders. We build for the people

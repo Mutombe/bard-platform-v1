@@ -11,6 +11,10 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
+// Italics — used for editorial taglines and emphasis, so the one family reads
+// as typography (slim / regular / bold / italic in context), not a flat face.
+import "@fontsource/roboto/300-italic.css";
+import "@fontsource/roboto/400-italic.css";
 
 import "./index.css";
 import App from "./App.jsx";
