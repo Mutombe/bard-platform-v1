@@ -83,35 +83,9 @@ function FullBleedHero({
   primaryCTA,
   secondaryCTA,
   image,
-  overlayTint = "navy",
   align = "left",
   noteUnderCTA,
 }) {
-  const tints = {
-    navy: {
-      multiply: "bg-navy-900/15",
-      from: "from-navy-950/95",
-      via: "via-navy-900/55",
-      to: "to-transparent",
-      mobileBottom: "from-navy-950/85",
-    },
-    ink: {
-      multiply: "bg-ink/15",
-      from: "from-ink/95",
-      via: "via-ink/55",
-      to: "to-transparent",
-      mobileBottom: "from-ink/85",
-    },
-    orange: {
-      multiply: "bg-orange-900/12",
-      from: "from-orange-950/90",
-      via: "via-orange-900/45",
-      to: "to-transparent",
-      mobileBottom: "from-orange-950/85",
-    },
-  };
-  const t = tints[overlayTint] || tints.navy;
-
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -123,32 +97,39 @@ function FullBleedHero({
   const textOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0.4]);
 
   return (
-    <section ref={heroRef} className="relative overflow-hidden bg-navy-900">
+    <section ref={heroRef} className="relative overflow-hidden bg-[#140d05]">
       {/* L1 — orange accent rule at the top edge */}
       <div className="absolute top-0 left-0 right-0 h-[2px] bg-orange-500 z-20" />
 
-      {/* L2 — photograph with editorial filter + parallax */}
+      {/* L2 — photograph, warmed (not cooled) + parallax */}
       <motion.div
         className="absolute inset-0 bg-cover bg-center"
         style={{
           backgroundImage: image ? `url(${image})` : undefined,
-          filter: image ? "saturate(0.7) brightness(0.88) contrast(1.05)" : undefined,
+          filter: image ? "saturate(1.05) contrast(1.03) brightness(0.92) sepia(0.14)" : undefined,
           y: photoY,
           scale: photoScale,
         }}
       />
 
-      {/* L3 — light multiply tint */}
-      <div className={`absolute inset-0 ${t.multiply} mix-blend-multiply`} />
-
-      {/* L4 — text canvas. Desktop horizontal (Lloyds), mobile vertical
-          (bottom-up) so the white headline always lands on dark canvas
-          regardless of how narrow the column gets. */}
-      <div className={`absolute inset-0 hidden md:block bg-gradient-to-r ${t.from} ${t.via} ${t.to}`} />
-      <div className={`absolute inset-0 md:hidden bg-gradient-to-t ${t.mobileBottom} via-ink/55 via-50% to-ink/30`} />
-
-      {/* L5 — soft top dim */}
-      <div className="absolute inset-0 bg-gradient-to-b from-ink/30 via-transparent to-transparent" />
+      {/* Warm overlay only (matching the home hero): an even warm veil keeps
+          the whole photo visible, then a gentle warm lift on the copy side
+          plus an orange glow carries legibility — no cold navy scrim. */}
+      <div className="absolute inset-0 pointer-events-none" style={{ background: "rgba(18,11,4,0.30)" }} />
+      <div
+        className="absolute inset-0 hidden md:block pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(to right, rgba(14,9,3,0.64) 0%, rgba(14,9,3,0.3) 38%, rgba(14,9,3,0.04) 68%, transparent 100%), linear-gradient(to top, rgba(14,9,3,0.5) 0%, rgba(14,9,3,0.12) 44%, transparent 74%), radial-gradient(92% 96% at 18% 52%, rgba(238,125,54,0.15), transparent 60%)",
+        }}
+      />
+      <div
+        className="absolute inset-0 md:hidden pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(to top, rgba(14,9,3,0.9) 0%, rgba(14,9,3,0.55) 40%, rgba(14,9,3,0.25) 100%), radial-gradient(110% 70% at 50% 82%, rgba(238,125,54,0.14), transparent 66%)",
+        }}
+      />
 
       <div className="relative container-bank min-h-[calc(100svh-280px)] md:min-h-[calc(100svh-236px)] flex flex-col justify-center pt-14 md:pt-28 pb-14 md:pb-28">
         <motion.div
@@ -160,7 +141,7 @@ function FullBleedHero({
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.05 }}
-              className="eyebrow eyebrow-on-dark mb-5 md:mb-6"
+              className="eyebrow eyebrow-on-dark mb-5 md:mb-6 [text-shadow:0_1px_10px_rgba(0,0,0,0.4)]"
             >
               {eyebrow}
             </motion.p>
@@ -169,7 +150,7 @@ function FullBleedHero({
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-            className="display-hero text-white text-balance"
+            className="display-hero text-white text-balance [text-shadow:0_2px_28px_rgba(0,0,0,0.5)]"
           >
             {headline}
             {italicTail && (
@@ -184,7 +165,7 @@ function FullBleedHero({
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.25 }}
-              className="mt-6 md:mt-9 text-white/85 max-w-xl text-[16px] md:text-[19px] leading-relaxed"
+              className="mt-6 md:mt-9 text-white/90 max-w-xl text-[16px] md:text-[19px] leading-relaxed [text-shadow:0_1px_16px_rgba(0,0,0,0.45)]"
             >
               {body}
             </motion.p>
