@@ -168,8 +168,9 @@ export default function Home() {
       </section>
 
       {/* ── 02 · Built around people — image-led cards ─────────────── */}
-      <section data-spine="Built around people" data-spine-n="02" className="section bg-cloud border-t border-bone-200">
-        <div className="container-bank">
+      <section data-spine="Built around people" data-spine-n="02" className="section bg-cloud border-t border-bone-200 relative overflow-hidden">
+        <div className="absolute inset-0 pattern-lattice bg-navy-600 opacity-[0.04] pointer-events-none" />
+        <div className="container-bank relative">
           <motion.div {...reveal} className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 md:mb-16">
             <div className="max-w-2xl">
               <Index n="02" label="Built around people" />
@@ -275,7 +276,8 @@ export default function Home() {
 
       {/* ── 05 · Built for Africa — ruled audience index ───────────── */}
       <section data-spine="Built for Africa" data-spine-n="05" data-spine-dark="true" className="bg-navy-700 text-white relative overflow-hidden">
-        <div className="absolute top-0 left-0 right-0 h-[2px] bg-orange-500" />
+        <div className="absolute top-0 left-0 right-0 h-[2px] bg-orange-500 z-10" />
+        <div className="absolute inset-0 pattern-lattice bg-white opacity-[0.06] pointer-events-none" />
         <div className="container-bank py-24 md:py-32">
           <div className="grid grid-cols-12 gap-10 md:gap-16">
             <motion.div {...reveal} className="col-span-12 md:col-span-5">

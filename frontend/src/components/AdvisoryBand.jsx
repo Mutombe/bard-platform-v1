@@ -9,10 +9,6 @@ import { ART } from "../data/images.js";
  * the right. One responsive composition, mobile → desktop. Rendered without a
  * scroll-reveal so the primary CTA is always visible.
  */
-const GRID =
-  "linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px)," +
-  "linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)";
-
 export default function AdvisoryBand() {
   return (
     <section className="relative overflow-hidden bg-navy-950 text-white">
@@ -30,16 +26,8 @@ export default function AdvisoryBand() {
         className="absolute inset-0"
         style={{ background: "radial-gradient(120% 90% at 16% 22%, rgba(238,125,54,0.22), transparent 55%)" }}
       />
-      {/* A little bit of grid */}
-      <div
-        className="absolute inset-0 opacity-70"
-        style={{
-          backgroundImage: GRID,
-          backgroundSize: "46px 46px",
-          maskImage: "linear-gradient(to bottom, transparent, #000 28%, #000 82%, transparent)",
-          WebkitMaskImage: "linear-gradient(to bottom, transparent, #000 28%, #000 82%, transparent)",
-        }}
-      />
+      {/* Brand monogram pattern — a subtle warm graphic device */}
+      <div className="absolute inset-0 pattern-monogram bg-orange-300 opacity-[0.08] pointer-events-none" />
       {/* Orange top rule */}
       <div className="absolute top-0 left-0 right-0 h-[2px] bg-orange-500" />
 

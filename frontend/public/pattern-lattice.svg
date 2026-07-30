@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Bard Santner brand "Pattern 1" — art-deco diamond lattice (graphic device
+     from the brand manual). Drawn in black so it can be used as a CSS mask and
+     tinted to any brand colour by the consuming element's background-color. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="88" height="88" viewBox="0 0 88 88">
+  <g fill="none" stroke="#000" stroke-width="1.1">
+    <!-- Outer diamond (tessellates on repeat) -->
+    <path d="M44 0 L88 44 L44 88 L0 44 Z"/>
+    <!-- Inner diamond -->
+    <path d="M44 18 L70 44 L44 70 L18 44 Z"/>
+    <!-- Vertical + horizontal bisectors -->
+    <path d="M44 0 L44 88 M0 44 L88 44"/>
+  </g>
+</svg>
