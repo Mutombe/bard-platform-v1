@@ -238,6 +238,8 @@ export const BRAND = {
   // Defocused retail bank interior with brand-orange queue barriers — a
   // soft, atmospheric banking-context backdrop.
   branchInterior:    "/images/branch-interior.jpg",
+  // Woman banking on her phone at home — warm, everyday mobile banking.
+  mobileBanking:     "/images/digital-mobile.jpg",
 };
 
 export const HERO_VIDEO = "/images/hero-future.mp4"; // father + child, "the future"

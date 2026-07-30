@@ -65,7 +65,7 @@ const DIGITAL_CARDS = [
     to: "/solutions/companies-institutions",
   },
   {
-    image: BRAND.smeFlorist,
+    image: BRAND.mobileBanking,
     title: "Send across borders",
     body: "Move money to family and suppliers at rates you can see up front.",
     to: "/who-we-serve/diaspora-international",
