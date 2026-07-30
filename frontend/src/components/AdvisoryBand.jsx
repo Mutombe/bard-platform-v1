@@ -26,8 +26,6 @@ export default function AdvisoryBand() {
         className="absolute inset-0"
         style={{ background: "radial-gradient(120% 90% at 16% 22%, rgba(238,125,54,0.22), transparent 55%)" }}
       />
-      {/* Brand monogram pattern — a subtle warm graphic device */}
-      <div className="absolute inset-0 pattern-monogram bg-orange-300 opacity-[0.08] pointer-events-none" />
       {/* Orange top rule */}
       <div className="absolute top-0 left-0 right-0 h-[2px] bg-orange-500" />
 
@@ -49,12 +47,20 @@ export default function AdvisoryBand() {
               trust at every stage of life and business. Open an account, or start a
               conversation with a banker who will still be here in a decade.
             </p>
-            <div className="mt-9 flex flex-col sm:flex-row gap-4">
-              <Link to="/solutions/individuals" className="btn btn-primary w-full sm:w-auto justify-center">
+            <div className="mt-10 flex flex-col sm:flex-row gap-3.5">
+              <Link
+                to="/solutions/individuals"
+                className="group inline-flex items-center justify-between gap-5 bg-orange-500 hover:bg-orange-600 text-white pl-7 pr-2 py-2 rounded-full font-bold text-[16px] transition-colors"
+              >
                 Open an account
-                <ArrowRightIcon size={16} weight="bold" />
+                <span className="w-11 h-11 rounded-full bg-white/20 group-hover:bg-white/30 flex items-center justify-center transition-colors">
+                  <ArrowRightIcon size={17} weight="bold" className="group-hover:translate-x-0.5 transition-transform" />
+                </span>
               </Link>
-              <Link to="/contact" className="btn btn-hero-ghost w-full sm:w-auto justify-center">
+              <Link
+                to="/contact"
+                className="inline-flex items-center justify-center gap-2.5 border-2 border-white/40 hover:border-white text-white px-7 py-4 rounded-full font-bold text-[16px] transition-colors"
+              >
                 Talk to a banker
               </Link>
             </div>

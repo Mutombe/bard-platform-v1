@@ -1,4 +1,12 @@
 import { Link } from "react-router-dom";
+import {
+  LinkedinLogoIcon,
+  XLogoIcon,
+  FacebookLogoIcon,
+  InstagramLogoIcon,
+  YoutubeLogoIcon,
+  GlobeIcon,
+} from "@phosphor-icons/react";
 
 /**
  * Institutional footer, aligned to the current information architecture:
@@ -63,6 +71,14 @@ const COLUMNS = [
   },
 ];
 
+const SOCIALS = [
+  { label: "LinkedIn", to: "https://www.linkedin.com/company/bard-santner", Icon: LinkedinLogoIcon },
+  { label: "X", to: "https://x.com/bardsantner", Icon: XLogoIcon },
+  { label: "Facebook", to: "https://www.facebook.com/bardsantner", Icon: FacebookLogoIcon },
+  { label: "Instagram", to: "https://www.instagram.com/bardsantner", Icon: InstagramLogoIcon },
+  { label: "YouTube", to: "https://www.youtube.com/@bardsantner", Icon: YoutubeLogoIcon },
+];
+
 const LOCATIONS = [
   { city: "Harare", line: "5th Floor Beverly Court, 100 Nelson Mandela Avenue" },
   { city: "Bulawayo", line: "Branch coming 2026 Q3" },
@@ -72,7 +88,8 @@ const LOCATIONS = [
 
 export default function Footer() {
   return (
-    <footer className="bg-ink text-white">
+    <footer className="relative bg-ink text-white">
+      <div className="absolute top-0 left-0 right-0 h-[3px] bg-orange-500" />
       {/* ─── Top — brand row + columns ─── */}
       <div className="container-bank pt-14 md:pt-24 pb-10 md:pb-12">
         <div className="grid grid-cols-12 gap-8 md:gap-12">
@@ -91,6 +108,21 @@ export default function Footer() {
             <Link to="/solutions/individuals" className="btn btn-primary text-[14px] py-3 px-5">
               Get started
             </Link>
+
+            <div className="mt-8 flex items-center gap-2.5">
+              {SOCIALS.map(({ label, to, Icon }) => (
+                <a
+                  key={label}
+                  href={to}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="w-10 h-10 rounded-full border border-white/15 hover:border-orange-500 hover:bg-orange-500 flex items-center justify-center text-white/70 hover:text-white transition-colors"
+                >
+                  <Icon size={18} weight="regular" />
+                </a>
+              ))}
+            </div>
           </div>
 
           {COLUMNS.map((col) => (
@@ -147,12 +179,18 @@ export default function Footer() {
             <Link to="/terms" className="hover-line hover:text-white">Terms</Link>
             <Link to="/regulatory" className="hover-line hover:text-white">Regulatory</Link>
           </div>
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="hover-line hover:text-white self-start md:self-auto"
-          >
-            Back to top ↑
-          </button>
+          <div className="flex items-center gap-5 self-start md:self-auto">
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/15 px-3.5 py-1.5 text-[12.5px] text-white/70">
+              <GlobeIcon size={15} weight="regular" />
+              Zimbabwe · English
+            </span>
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="hover-line hover:text-white"
+            >
+              Back to top ↑
+            </button>
+          </div>
         </div>
 
         <p className="mt-5 md:mt-6 text-[12px] text-white/40 leading-relaxed max-w-4xl">

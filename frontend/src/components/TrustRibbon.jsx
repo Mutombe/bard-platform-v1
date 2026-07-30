@@ -1,8 +1,15 @@
-import { ShieldCheckIcon, BankIcon, LockKeyIcon, ScalesIcon } from "@phosphor-icons/react";
+import {
+  ShieldCheckIcon,
+  BankIcon,
+  LockKeyIcon,
+  ScalesIcon,
+  ArrowUpRightIcon,
+} from "@phosphor-icons/react";
 
 /**
- * Trust ribbon — embedded throughout the site. Communicates the four
- * trust pillars any serious bank shows on the home page:
+ * Trust ribbon — a bento composition (dark statement card on the left, four
+ * colour-blocked pillar cards on the right, each with a corner ↗ badge). It
+ * communicates the four trust pillars any serious bank shows on the home page:
  *   1. Regulated and supervised
  *   2. Deposit protection
  *   3. Encryption and security
@@ -12,22 +19,26 @@ const TRUST_PILLARS = [
   {
     icon: BankIcon,
     title: "Regulated",
-    body: "BSMFB operates under licence from the prudential authority and is supervised in line with international banking standards.",
+    body: "Licensed by the prudential authority and supervised to international banking standards.",
+    tint: "orange",
   },
   {
     icon: ShieldCheckIcon,
     title: "Deposits protected",
-    body: "Customer deposits are held in compliance with the Deposit Protection framework. Coverage limits and terms apply.",
+    body: "Deposits held under the Deposit Protection framework. Coverage limits and terms apply.",
+    tint: "navy",
   },
   {
     icon: LockKeyIcon,
     title: "Security first",
-    body: "All transactions are encrypted end-to-end. Biometric, device-bound and adaptive authentication on every channel.",
+    body: "End-to-end encryption. Biometric, device-bound and adaptive authentication on every channel.",
+    tint: "navy",
   },
   {
     icon: ScalesIcon,
     title: "AML compliant",
-    body: "Customer due diligence, transaction monitoring and reporting performed to international AML / CFT standards.",
+    body: "Due diligence, transaction monitoring and reporting to international AML / CFT standards.",
+    tint: "orange",
   },
 ];
 
@@ -35,33 +46,57 @@ export default function TrustRibbon() {
   return (
     <section className="section bg-milk border-t border-bone-200">
       <div className="container-bank">
-        <div className="text-center mb-10 md:mb-12">
-          <p className="eyebrow mb-4">§ 07 · Trust architecture</p>
-          {/* Headline reads differently mobile vs desktop. Mobile gets
-              the shorter, punchier version; desktop carries the full
-              clause that breathes inside max-w-2xl. */}
-          <h2 className="display-lg text-navy-600 max-w-2xl mx-auto">
-            <span className="md:hidden">The obligations of a bank, from day one.</span>
-            <span className="hidden md:inline">The obligations a bank inherits the moment it opens its first account.</span>
-          </h2>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-7 md:gap-8">
-          {TRUST_PILLARS.map((p) => {
-            const Icon = p.icon;
-            return (
-              <div key={p.title}>
-                <div className="w-12 h-12 md:w-14 md:h-14 rounded-lg bg-navy-50 flex items-center justify-center mb-4 md:mb-5">
-                  <Icon size={24} weight="regular" className="text-navy-600" />
-                </div>
-                <p className="font-display text-[18px] md:text-[20px] text-navy-600 mb-2 md:mb-3">
-                  {p.title}
-                </p>
-                <p className="text-[14px] md:text-[14.5px] text-bone-600 leading-relaxed">
-                  {p.body}
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 md:gap-5 items-stretch">
+          {/* Statement card — dark, left */}
+          <div className="lg:col-span-2 relative overflow-hidden rounded-2xl bg-navy-900 text-white p-8 md:p-10 flex flex-col shadow-[var(--shadow-hero)]">
+            <div className="absolute top-0 left-0 right-0 h-[3px] bg-orange-500" />
+            <p className="eyebrow eyebrow-on-dark mb-5">§ 07 · Trust architecture</p>
+            <h2 className="display-md text-white text-balance">
+              The obligations a bank inherits the moment it opens its first account.
+            </h2>
+            <p className="mt-5 text-[15px] md:text-[16px] text-white/75 leading-relaxed">
+              Regulation, protection and security are not features. They are the
+              foundation everything else is built on.
+            </p>
+            <div className="mt-auto pt-8">
+              <div className="flex items-center gap-3 border-t border-white/12 pt-6">
+                <span className="w-9 h-9 rounded-full bg-orange-500/15 flex items-center justify-center shrink-0">
+                  <ShieldCheckIcon size={18} weight="regular" className="text-orange-400" />
+                </span>
+                <p className="text-[13px] text-white/70 leading-snug">
+                  Regulated &amp; supervised by the prudential authority.
                 </p>
               </div>
-            );
-          })}
+            </div>
+          </div>
+
+          {/* Pillar cards — colour-blocked, right */}
+          <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
+            {TRUST_PILLARS.map((p) => {
+              const Icon = p.icon;
+              const isOrange = p.tint === "orange";
+              const cardBg = isOrange ? "bg-orange-500" : "bg-navy-700";
+              return (
+                <div
+                  key={p.title}
+                  className={`${cardBg} text-white rounded-2xl p-6 md:p-7 flex flex-col`}
+                >
+                  <div className="flex items-start justify-between mb-6">
+                    <Icon size={30} weight="regular" className="text-white" />
+                    <span className="w-9 h-9 rounded-full border-2 border-white/45 flex items-center justify-center shrink-0">
+                      <ArrowUpRightIcon size={15} weight="bold" className="text-white" />
+                    </span>
+                  </div>
+                  <p className="font-display font-medium text-white text-[19px] md:text-[20px] leading-tight mb-2">
+                    {p.title}
+                  </p>
+                  <p className="text-[13.5px] md:text-[14px] text-white/85 leading-relaxed">
+                    {p.body}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

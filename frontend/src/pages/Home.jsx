@@ -244,14 +244,22 @@ export default function Home() {
               <ArrowRightIcon size={16} weight="bold" />
             </Link>
           </motion.div>
-          <motion.ul {...reveal} className="col-span-12 md:col-span-6 md:col-start-7 grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-1">
-            {CAPABILITIES.map((c) => (
-              <li key={c} className="flex items-center gap-4 py-4 border-b border-bone-200 text-[16px] md:text-[17px] text-navy-700">
-                <span className="w-1.5 h-1.5 rounded-full bg-navy-500 shrink-0" />
-                {c}
-              </li>
-            ))}
-          </motion.ul>
+          <motion.div {...reveal} className="col-span-12 md:col-span-6 md:col-start-7">
+            <div className="relative overflow-hidden rounded-2xl bg-navy-900 text-white p-7 md:p-9 shadow-[var(--shadow-hero)]">
+              <div className="absolute top-0 left-0 right-0 h-[3px] bg-orange-500" />
+              <p className="eyebrow eyebrow-on-dark mb-6">Everyday, in the app</p>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8">
+                {CAPABILITIES.map((c, i) => (
+                  <li key={c} className="flex items-baseline gap-3.5 py-3.5 border-b border-white/10">
+                    <span className="font-display font-bold text-orange-400 text-[14px] tabular-nums w-6 shrink-0">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="text-[15px] md:text-[16px] font-medium text-white/90 leading-snug">{c}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -298,23 +306,22 @@ export default function Home() {
               </p>
             </motion.div>
             <motion.div {...reveal} className="col-span-12 md:col-span-6 md:col-start-7">
-              <ul className="border-t border-white/12">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 {AUDIENCES.map((a) => (
-                  <li key={a.label}>
-                    <Link
-                      to={a.to}
-                      className="group flex items-center justify-between gap-4 py-5 border-b border-white/12 text-white/90 hover:text-white transition-colors"
-                    >
-                      <span className="font-display text-[19px] md:text-[21px]">{a.label}</span>
-                      <ArrowRightIcon
-                        size={16}
-                        weight="bold"
-                        className="text-white/40 group-hover:text-orange-400 group-hover:translate-x-1 transition-all shrink-0"
-                      />
-                    </Link>
-                  </li>
+                  <Link
+                    key={a.label}
+                    to={a.to}
+                    className="group flex items-center justify-between gap-3 rounded-xl border-2 border-white/15 hover:border-orange-400 bg-white/[0.04] hover:bg-white/[0.07] px-5 py-5 transition-colors"
+                  >
+                    <span className="font-display font-medium text-[17px] md:text-[18px] text-white leading-tight">
+                      {a.label}
+                    </span>
+                    <span className="w-9 h-9 rounded-full bg-orange-500 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                      <ArrowUpRightIcon size={16} weight="bold" className="text-white" />
+                    </span>
+                  </Link>
                 ))}
-              </ul>
+              </div>
             </motion.div>
           </div>
         </div>
