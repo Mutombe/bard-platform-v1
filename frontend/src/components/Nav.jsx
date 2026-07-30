@@ -9,6 +9,7 @@ import {
   XIcon,
   ArrowRightIcon,
   CaretDownIcon,
+  CaretRightIcon,
   ArrowSquareOutIcon,
 } from "@phosphor-icons/react";
 import { NAV_MENU, NAV_UTILITY } from "../data/nav.js";
@@ -231,8 +232,9 @@ export default function Nav() {
         {/* Full-width secondary bar — the hovered tab's sub-links. It lives in
             normal flow (a height reveal), so it takes its OWN space and pushes
             the brand row down rather than overlaying it, and opens seamlessly.
-            Sub-links are left-aligned and held to a single line (they scroll
-            rather than wrap, so long menus like "Who We Serve" never break). */}
+            Sub-links render as a symmetric grid of bordered tiles so each one
+            reads as a distinct, tappable entity (the column count adapts to the
+            item count to keep the grid balanced). */}
         <AnimatePresence>
           {activeItem && (
             <motion.div
@@ -251,18 +253,43 @@ export default function Nav() {
                   variants={ROW_V}
                   initial="hidden"
                   animate="show"
-                  className="flex flex-nowrap items-center justify-start py-5 md:py-6 overflow-x-auto no-scrollbar divide-x divide-bone-300"
+                  className={`grid gap-3 py-6 ${
+                    activeItem.children.length <= 2
+                      ? "grid-cols-2"
+                      : activeItem.children.length === 3
+                      ? "grid-cols-3"
+                      : activeItem.children.length === 4
+                      ? "grid-cols-2 lg:grid-cols-4"
+                      : activeItem.children.length <= 6
+                      ? "grid-cols-2 lg:grid-cols-3"
+                      : "grid-cols-2 lg:grid-cols-4"
+                  }`}
                 >
-                  {activeItem.children.map((c) => (
-                    <motion.span key={c.label} variants={LINK_V} className="shrink-0 px-2.5 first:pl-0">
-                      <NavItem
-                        to={c.to}
-                        className="hover-line text-[13.5px] xl:text-[14px] font-semibold text-navy-600 hover:text-orange-600 tracking-[0.005em] transition-colors whitespace-nowrap"
-                      >
-                        {c.label}
-                      </NavItem>
-                    </motion.span>
-                  ))}
+                  {activeItem.children.map((c) => {
+                    const ext = isExternal(c.to);
+                    const Tag = ext ? "a" : Link;
+                    const linkProps = ext
+                      ? { href: c.to, target: "_blank", rel: "noopener noreferrer" }
+                      : { to: c.to };
+                    const Icon = ext ? ArrowSquareOutIcon : CaretRightIcon;
+                    return (
+                      <motion.div key={c.label} variants={LINK_V}>
+                        <Tag
+                          {...linkProps}
+                          className="group flex h-full items-center justify-between gap-3 rounded-xl border-2 border-bone-200 bg-white hover:border-orange-500 hover:bg-orange-50/60 px-4 py-3.5 transition-colors"
+                        >
+                          <span className="text-[13.5px] xl:text-[14px] font-semibold text-navy-700 group-hover:text-orange-700 leading-snug transition-colors">
+                            {c.label}
+                          </span>
+                          <Icon
+                            size={14}
+                            weight="bold"
+                            className="shrink-0 text-bone-400 group-hover:text-orange-500 group-hover:translate-x-0.5 transition-all"
+                          />
+                        </Tag>
+                      </motion.div>
+                    );
+                  })}
                 </motion.div>
               </div>
             </motion.div>

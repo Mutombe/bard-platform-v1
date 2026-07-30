@@ -1,9 +1,6 @@
 import { Link } from "react-router-dom";
 import {
-  LinkedinLogoIcon,
   XLogoIcon,
-  FacebookLogoIcon,
-  InstagramLogoIcon,
   YoutubeLogoIcon,
   GlobeIcon,
   ArrowSquareOutIcon,
@@ -79,10 +76,7 @@ const COLUMNS = [
 ];
 
 const SOCIALS = [
-  { label: "LinkedIn", to: "https://www.linkedin.com/company/bard-santner", Icon: LinkedinLogoIcon },
   { label: "X", to: "https://x.com/bardsantner", Icon: XLogoIcon },
-  { label: "Facebook", to: "https://www.facebook.com/bardsantner", Icon: FacebookLogoIcon },
-  { label: "Instagram", to: "https://www.instagram.com/bardsantner", Icon: InstagramLogoIcon },
   { label: "YouTube", to: "https://www.youtube.com/@bardsantner", Icon: YoutubeLogoIcon },
 ];
 

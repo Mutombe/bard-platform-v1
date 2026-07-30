@@ -36,7 +36,7 @@ export default function AdvisoryBand() {
             <div className="flex items-center gap-3.5 mb-6">
               <span className="h-[2px] w-12 bg-orange-500" />
               <p className="font-mono text-[11px] tracking-[0.24em] uppercase text-orange-300">
-                § 06 · Advisory
+                Advisory
               </p>
             </div>
             <h2 className="display-xl text-white text-balance">
