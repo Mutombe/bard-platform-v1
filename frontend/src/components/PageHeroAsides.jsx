@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { HERO, INSIGHT } from "../data/images.js";
+import { HERO, INSIGHT, BRAND } from "../data/images.js";
 
 /**
  * Four creative aside compositions for the editorial PageHero variant.
@@ -98,9 +98,9 @@ export function HoneycombAside() {
 // stack, like polaroids on a desk. For /contact.
 export function StackedAside() {
   const photos = [
-    HERO.contact,
+    BRAND.branchInterior,
     HERO.business,
-    HERO.leadership,
+    HERO.contact,
   ];
   const transforms = [
     { rot: -4, x: -28, y: 20, z: 1 },

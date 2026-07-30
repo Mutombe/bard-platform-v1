@@ -117,7 +117,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="w-10 h-10 rounded-full border border-white/15 hover:border-orange-500 hover:bg-orange-500 flex items-center justify-center text-white/70 hover:text-white transition-colors"
+                  className="w-10 h-10 rounded-full border border-white/25 hover:border-orange-500 hover:bg-orange-500 flex items-center justify-center text-white/70 hover:text-white transition-colors"
                 >
                   <Icon size={18} weight="regular" />
                 </a>
@@ -180,7 +180,7 @@ export default function Footer() {
             <Link to="/regulatory" className="hover-line hover:text-white">Regulatory</Link>
           </div>
           <div className="flex items-center gap-5 self-start md:self-auto">
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/15 px-3.5 py-1.5 text-[12.5px] text-white/70">
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/25 px-3.5 py-1.5 text-[12.5px] text-white/70">
               <GlobeIcon size={15} weight="regular" />
               Zimbabwe · English
             </span>

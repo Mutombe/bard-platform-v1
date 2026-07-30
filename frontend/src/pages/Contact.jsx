@@ -51,7 +51,7 @@ export default function Contact() {
         eyebrow="§ Contact"
         headline="Open a conversation. It commits nothing."
         body="The first call tells us if we are the right bank for you, and tells you if we are a partner worth a decade."
-        image={BRAND.relationship}
+        image={BRAND.branchInterior}
         overlayTint="navy"
         variant="editorial"
         aside={<StackedAside />}

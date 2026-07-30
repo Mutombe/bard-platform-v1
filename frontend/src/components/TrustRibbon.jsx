@@ -5,6 +5,7 @@ import {
   ScalesIcon,
   ArrowUpRightIcon,
 } from "@phosphor-icons/react";
+import { BRAND } from "../data/images.js";
 
 /**
  * Trust ribbon — a bento composition (dark statement card on the left, four
@@ -49,6 +50,24 @@ export default function TrustRibbon() {
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 md:gap-5 items-stretch">
           {/* Statement card — dark, left */}
           <div className="lg:col-span-2 relative overflow-hidden rounded-2xl bg-navy-900 text-white p-8 md:p-10 flex flex-col shadow-[var(--shadow-hero)]">
+            {/* Blended architectural photograph — Lloyd's of London, exposed
+                services. Darkened and washed navy so it reads as texture and
+                depth beneath the copy rather than a picture behind it. */}
+            <div
+              className="absolute inset-0 bg-cover bg-center"
+              style={{
+                backgroundImage: `url(${BRAND.trustArchitecture})`,
+                filter: "saturate(0.6) brightness(0.5) contrast(1.05)",
+              }}
+            />
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(165deg, rgba(17,16,28,0.72) 0%, rgba(17,16,28,0.86) 48%, rgba(8,7,15,0.95) 100%)",
+              }}
+            />
+            <div className="relative flex flex-col h-full">
             <p className="eyebrow eyebrow-on-dark mb-5">§ 07 · Trust architecture</p>
             <h2 className="display-md text-white text-balance">
               The obligations a bank inherits the moment it opens its first account.
@@ -58,7 +77,7 @@ export default function TrustRibbon() {
               foundation everything else is built on.
             </p>
             <div className="mt-auto pt-8">
-              <div className="flex items-center gap-3 border-t border-white/12 pt-6">
+              <div className="flex items-center gap-3 border-t border-white/20 pt-6">
                 <span className="w-9 h-9 rounded-full bg-orange-500/15 flex items-center justify-center shrink-0">
                   <ShieldCheckIcon size={18} weight="regular" className="text-orange-400" />
                 </span>
@@ -66,6 +85,7 @@ export default function TrustRibbon() {
                   Regulated &amp; supervised by the prudential authority.
                 </p>
               </div>
+            </div>
             </div>
           </div>
 

@@ -59,7 +59,7 @@ export default function AdvisoryBand() {
               </Link>
               <Link
                 to="/contact"
-                className="inline-flex items-center justify-center gap-2.5 border-2 border-white/40 hover:border-white text-white px-7 py-4 rounded-full font-bold text-[16px] transition-colors"
+                className="inline-flex items-center justify-center gap-2.5 border-2 border-white/70 hover:border-white text-white px-7 py-4 rounded-full font-bold text-[16px] transition-colors"
               >
                 Talk to a banker
               </Link>
@@ -68,7 +68,7 @@ export default function AdvisoryBand() {
 
           {/* Right — contact card */}
           <div className="lg:col-span-5">
-            <div className="rounded-2xl border border-white/12 bg-white/[0.05] backdrop-blur-sm p-6 md:p-8 shadow-[0_24px_60px_rgba(0,0,0,0.38)]">
+            <div className="rounded-2xl border border-white/20 bg-white/[0.05] backdrop-blur-sm p-6 md:p-8 shadow-[0_24px_60px_rgba(0,0,0,0.38)]">
               <div className="flex items-center gap-3 mb-6">
                 <span className="h-[2px] w-8 bg-orange-500" />
                 <p className="font-mono text-[10px] tracking-[0.22em] uppercase text-white/70">
@@ -100,7 +100,7 @@ function ChannelRow({ href, Icon, primary, secondary, truncate = false, external
   return (
     <a
       {...props}
-      className="flex items-center gap-3.5 p-3.5 rounded-xl border border-white/10 hover:border-orange-400/60 hover:bg-white/[0.04] transition-colors group"
+      className="flex items-center gap-3.5 p-3.5 rounded-xl border border-white/20 hover:border-orange-400/70 hover:bg-white/[0.04] transition-colors group"
     >
       <span className="w-10 h-10 rounded-lg bg-orange-500/15 flex items-center justify-center shrink-0 group-hover:bg-orange-500/25 transition-colors">
         <Icon size={18} weight="regular" className="text-orange-400" />

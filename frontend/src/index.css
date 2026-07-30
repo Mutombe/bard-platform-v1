@@ -216,8 +216,8 @@
      and faint enough that the whitespace still carries the composition.
      On hover the ring warms toward brand orange: the same navy-foundation →
      orange-accent logic the whole system runs on, expressed as motion. */
-  --card-edge:       rgba(49, 47, 77, 0.11);    /* navy-600 @ 11% — quiet resting hairline */
-  --card-edge-hover: rgba(49, 47, 77, 0.22);    /* navy-600 @ 22% — deepens on hover (no orange) */
+  --card-edge:       rgba(49, 47, 77, 0.18);    /* navy-600 @ 18% — crisp Lloyds-grade hairline */
+  --card-edge-hover: rgba(49, 47, 77, 0.34);    /* navy-600 @ 34% — deepens on hover (no orange) */
 }
 
 /* ─── Base layer ─── */
@@ -338,8 +338,8 @@
      actions on cards; the solid fills stay reserved for hero + key conversion. */
   .btn-outline { background: transparent; color: var(--color-navy-700); border: 2px solid var(--color-navy-700); padding: calc(var(--pad-btn-y) - 1px) calc(var(--pad-btn-x) - 1px); }
   .btn-outline:hover { background: var(--color-navy-700); color: #ffffff; border-color: var(--color-navy-700); }
-  .btn-ghost-dark { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.55); padding: calc(var(--pad-btn-y) - 1px) calc(var(--pad-btn-x) - 1px); }
-  .btn-ghost-dark:hover { background: rgba(255,255,255,0.08); border-color: white; }
+  .btn-ghost-dark { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.8); padding: calc(var(--pad-btn-y) - 1px) calc(var(--pad-btn-x) - 1px); }
+  .btn-ghost-dark:hover { background: rgba(255,255,255,0.1); border-color: white; }
 
   /* Hero CTAs — outline-only, bold 2px border. The buttons under a
      full-bleed hero need to NOT compete with the photograph for
@@ -349,8 +349,8 @@
      subtle white tint on hover. Same gesture, two weights. */
   .btn-hero-primary { background: var(--color-orange-500); color: #ffffff; border: 2px solid var(--color-orange-500); padding: calc(var(--pad-btn-y) - 1px) calc(var(--pad-btn-x) - 1px); }
   .btn-hero-primary:hover { background: #ffffff; color: var(--color-navy-700); border-color: #ffffff; }
-  .btn-hero-ghost { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.45); padding: calc(var(--pad-btn-y) - 1px) calc(var(--pad-btn-x) - 1px); }
-  .btn-hero-ghost:hover { background: rgba(255,255,255,0.08); border-color: white; }
+  .btn-hero-ghost { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.9); padding: calc(var(--pad-btn-y) - 1px) calc(var(--pad-btn-x) - 1px); text-shadow: 0 1px 12px rgba(0,0,0,0.35); }
+  .btn-hero-ghost:hover { background: rgba(255,255,255,0.1); border-color: white; }
 
   /* Pills — Lloyds quick-action strip pattern. Generous interior padding
      (18/28) signals confidence in the same gesture Lloyds uses to push
@@ -410,8 +410,8 @@
 
   .section { padding-block: var(--section-pad-y); }
   .section-lg { padding-block: var(--section-pad-y-lg); }
-  .hairline { height: 1px; background: #e7eaf0; border: 0; margin: 0; }
-  .hairline-dark { height: 1px; background: rgba(255,255,255,0.10); border: 0; margin: 0; }
+  .hairline { height: 1px; background: #d3d8e2; border: 0; margin: 0; }
+  .hairline-dark { height: 1px; background: rgba(255,255,255,0.18); border: 0; margin: 0; }
 
   .monogram-bg { position: relative; isolation: isolate; }
   .monogram-bg::before { content: ""; position: absolute; inset: 0; background-image: url("/monogram-pattern.svg"); background-size: 120px; background-repeat: repeat; opacity: 0.04; z-index: -1; pointer-events: none; }

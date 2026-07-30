@@ -232,6 +232,12 @@ export const BRAND = {
   smeNursery:     "/images/sme-nursery.jpg",        // plant nursery entrepreneur
   smeFlorist:     "/images/sme-florist.jpg",        // florist entrepreneur
   heroPoster:     "/images/hero-future-poster.jpg", // poster frame for hero video
+  // Lloyd's of London — exposed-services architecture shot looking up.
+  // Literal "trust architecture"; deep steel tones blend into a dark card.
+  trustArchitecture: "/images/lloyds-architecture.jpg",
+  // Defocused retail bank interior with brand-orange queue barriers — a
+  // soft, atmospheric banking-context backdrop.
+  branchInterior:    "/images/branch-interior.jpg",
 };
 
 export const HERO_VIDEO = "/images/hero-future.mp4"; // father + child, "the future"
