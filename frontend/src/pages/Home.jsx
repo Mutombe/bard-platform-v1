@@ -85,10 +85,9 @@ const DIGITAL_CARDS = [
   },
   {
     image: BRAND.mobileBanking,
-    // Wide source (1024x540): a light vertical zoom lifts her hands and phone
-    // into the frame while keeping her face, so the action still reads.
-    pos: "50% 62%",
-    size: "auto 118%",
+    // Professional on her phone with documents in a business district — the
+    // phone sits at ear level, so face and action frame cleanly under cover.
+    pos: "54% 42%",
     title: "Send across borders",
     body: "Move money to family and suppliers at rates you can see up front.",
     to: "/who-we-serve/diaspora-international",
