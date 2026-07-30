@@ -65,7 +65,7 @@ function buildIndex() {
     { title: "Board of Directors", path: "/about#board-of-directors", summary: "Named, accountable, reachable" },
     { title: "Careers", path: "/careers", summary: "Build a better bank with us" },
     { title: "Contact us", path: "/contact", summary: "Telephone, email, WhatsApp, by appointment" },
-    { title: "Log in", path: "/login", summary: "Online Banking — continue with Google, Apple or email" },
+    { title: "Log in", path: "/login", summary: "Online Banking: continue with Google, Apple or email" },
     { title: "Online Banking dashboard", path: "/app", summary: "Accounts, transfers, statements" },
     { title: "Security", path: "/security", summary: "Fraud, encryption and staying safe" },
     { title: "Privacy", path: "/privacy", summary: "How we handle your data" },

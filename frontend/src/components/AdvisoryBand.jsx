@@ -45,9 +45,9 @@ export default function AdvisoryBand() {
               Let's build your <span className="font-bold">future</span> together.
             </h2>
             <p className="mt-6 text-[17px] md:text-[19px] text-white/85 leading-relaxed max-w-xl">
-              Our goal isn't simply to become another bank — it's to become the financial
-              partner you trust at every stage of life and business. Open an account, or start
-              a conversation with a banker who will still be here in a decade.
+              We're not trying to be another bank. We want to be the financial partner you
+              trust at every stage of life and business. Open an account, or start a
+              conversation with a banker who will still be here in a decade.
             </p>
             <div className="mt-9 flex flex-col sm:flex-row gap-4">
               <Link to="/solutions/individuals" className="btn btn-primary w-full sm:w-auto justify-center">

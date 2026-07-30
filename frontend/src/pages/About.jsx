@@ -18,8 +18,8 @@ import { LEADERSHIP } from "../data/leadership.js";
 
 const STORY = [
   "For too long, banking has expected people to fit around its systems. Long queues. Slow approvals. Endless paperwork. Limited access. Banking became something people had to work around instead of something that worked for them.",
-  "We believed there was a better way. So we set out to build a different kind of financial institution — one that combines trusted financial expertise with modern technology to make banking simpler, faster and more accessible for everyone.",
-  "Whether you're opening your first account, growing a business, financing a new opportunity or moving money across borders, banking should help you move forward — not hold you back. That's the future we're building every day.",
+  "We believed there was a better way. So we set out to build a different kind of financial institution, one that combines trusted financial expertise with modern technology to make banking simpler, faster and more accessible for everyone.",
+  "Whether you're opening your first account, growing a business, financing a new opportunity or moving money across borders, banking should help you move forward, not hold you back.",
 ];
 
 const VALUES = ["Bold", "Insight", "Execution", "Responsibility", "Impact"];
@@ -42,7 +42,7 @@ export default function About() {
       <PageHero
         eyebrow="About Us"
         headline="Banking should help people move forward."
-        body="Bard Santner was founded in 2022 with a simple purpose — to make financial services more accessible, more practical and more valuable for the people and businesses we serve."
+        body="Bard Santner was founded in 2022 with a simple purpose: to make financial services more accessible, more practical and more valuable for the people and businesses we serve."
         primaryCTA={{ to: "/contact", label: "Start a conversation" }}
         image={HERO.about}
         overlayTint="navy"
@@ -93,7 +93,7 @@ export default function About() {
               <p>
                 Our manifesto is more than words on a page. It is the standard we hold
                 ourselves to. It shapes every product we build, every decision we make and
-                every relationship we form — because we believe banking should create
+                every relationship we form, because we believe banking should create
                 opportunity, build confidence and enrich lives.
               </p>
               <p className="text-white font-medium">This is what we stand for.</p>

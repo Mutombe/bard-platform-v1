@@ -32,7 +32,7 @@ const SOLUTION_CARDS = [
   {
     eyebrow: "Personal",
     title: "For Individuals",
-    body: "Everyday accounts, saving, borrowing and sending money — simple, secure and always within reach.",
+    body: "Everyday accounts, saving, borrowing and sending money. Simple, secure and always within reach.",
     image: AUDIENCE_TILE.personal,
     to: "/solutions/individuals",
   },
@@ -46,7 +46,7 @@ const SOLUTION_CARDS = [
   {
     eyebrow: "Wealth",
     title: "For Investors",
-    body: "Managed portfolios, treasury and long-term planning — the disciplined way to build wealth that lasts.",
+    body: "Managed portfolios, treasury and long-term planning. The disciplined way to build wealth that lasts.",
     image: AUDIENCE_TILE.private,
     to: "/solutions/investors",
   },
@@ -95,7 +95,7 @@ export default function Home() {
     <PageTransition>
       <SEO
         title="A digital-first bank, built for the way Africa works"
-        description="Bard Santner Microfinance Bank. Banking that helps people and businesses move forward — simple enough for everyday life, powerful enough for a growing business."
+        description="Bard Santner Microfinance Bank. Banking that helps people and businesses move forward. Simple enough for everyday life, powerful enough for a growing business."
         path="/"
         keywords={[
           "Bard Santner", "Microfinance Bank", "BSMFB", "digital banking Zimbabwe",
@@ -126,7 +126,7 @@ export default function Home() {
                 Banking that helps you <span className="font-bold">move forward.</span>
               </h1>
               <p className="mt-7 md:mt-9 text-white/85 max-w-xl text-[17px] md:text-[20px] leading-relaxed">
-                A digital-first bank built for the way Africa works — simple enough for
+                A digital-first bank built for the way Africa works. Simple enough for
                 everyday life, powerful enough for a growing business.
               </p>
               <div className="mt-9 md:mt-11 flex flex-col sm:flex-row gap-4">
@@ -152,15 +152,15 @@ export default function Home() {
             <motion.div {...reveal} className="col-span-12 md:col-span-6">
               <Index n="01" label="Why we exist" />
               <h2 className="display-xl text-navy-600 text-balance mt-6">
-                Banking should <span className="italic font-light">move with you</span> — not the
+                Banking should <span className="italic font-light">move with you</span>, not the
                 other way around.
               </h2>
             </motion.div>
             <motion.p {...reveal} className="col-span-12 md:col-span-5 md:col-start-8 text-[17px] md:text-[19px] text-bone-600 leading-relaxed">
-              For too long, banking expected people to fit around its systems — long queues,
+              For too long, banking expected people to fit around its systems. Long queues,
               slow approvals, endless paperwork. We set out to build a different kind of
-              institution: one that pairs trusted financial expertise with modern technology
-              to make banking simpler, faster and genuinely more accessible.
+              institution, one that pairs trusted financial expertise with modern technology
+              to make banking simpler, faster and more accessible.
             </motion.p>
           </div>
           <div className="hairline mt-14 md:mt-20" />
@@ -231,7 +231,7 @@ export default function Home() {
             </h2>
             <p className="mt-6 text-[17px] md:text-[19px] text-bone-600 leading-relaxed">
               Technology should remove complexity, not create it. Bank whenever and wherever
-              you choose — and whenever you need advice, our people are ready to help.
+              you choose. Whenever you need advice, our people are ready to help.
             </p>
             <Link to="/login" className="btn btn-navy mt-9">
               Explore Online Banking

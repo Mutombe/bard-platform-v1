@@ -14,7 +14,7 @@ export default function Terms() {
         },
         {
           heading: "Intellectual property",
-          body: "All content on this website — text, images, logos, code — is the property of Bard Santner Markets Inc or its licensors and is protected by copyright, trademark and other applicable laws. You may view, share and print content for personal, non-commercial use; any other use requires written permission.",
+          body: "All content on this website (text, images, logos, code) is the property of Bard Santner Microfinance Bank or its licensors and is protected by copyright, trademark and other applicable laws. You may view, share and print content for personal, non-commercial use; any other use requires written permission.",
         },
         {
           heading: "Links to other sites",

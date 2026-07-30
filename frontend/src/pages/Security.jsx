@@ -11,7 +11,7 @@ export default function Security() {
       sections={[
         {
           heading: "Our security commitment",
-          body: "Customer security is a board-level concern at Bard Santner. Every digital channel — online banking, mobile app, USSD, branch terminals — is encrypted end-to-end and authenticated against device, biometric and behavioural signals.\n\nThe bank's security operations team monitors transactions and channel activity continuously. Suspicious activity is escalated, customers are contacted, and accounts can be paused within minutes when needed.",
+          body: "Customer security is a board-level concern at Bard Santner. Every digital channel (online banking, mobile app, USSD, branch terminals) is encrypted end-to-end and authenticated against device, biometric and behavioural signals.\n\nThe bank's security operations team monitors transactions and channel activity continuously. Suspicious activity is escalated, customers are contacted, and accounts can be paused within minutes when needed.",
         },
         {
           heading: "Authentication on every channel",
@@ -27,7 +27,7 @@ export default function Security() {
         },
         {
           heading: "Reporting a concern",
-          body: "If you suspect fraudulent activity on your account, call our 24-hour fraud line on +263 861 200 0700 (option 9) immediately.\n\nFor non-urgent concerns — a suspicious email, an unfamiliar website pretending to be us — email security@bardsantner.com with as much detail as you can provide.",
+          body: "If you suspect fraudulent activity on your account, call our 24-hour fraud line on +263 861 200 0700 (option 9) immediately.\n\nFor non-urgent concerns (a suspicious email, an unfamiliar website pretending to be us), email security@bardsantner.com with as much detail as you can provide.",
         },
       ]}
     />

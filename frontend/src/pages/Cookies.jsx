@@ -14,7 +14,7 @@ export default function Cookies() {
         },
         {
           heading: "Managing cookies",
-          body: "Strictly necessary cookies cannot be disabled — the site will not function without them. Preference and analytics cookies can be managed through your browser settings or through the cookie banner shown on first visit.\n\nClearing cookies will reset your preferences and log you out of online banking.",
+          body: "Strictly necessary cookies cannot be disabled; the site will not function without them. Preference and analytics cookies can be managed through your browser settings or through the cookie banner shown on first visit.\n\nClearing cookies will reset your preferences and log you out of online banking.",
         },
       ]}
     />
