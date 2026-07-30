@@ -51,14 +51,25 @@ const SOLUTION_CARDS = [
   },
 ];
 
-const CAPABILITIES = [
-  "Open an account in minutes",
-  "Apply for finance online",
-  "Move money securely",
-  "Manage investments",
-  "Pay suppliers",
-  "Send money across borders",
-  "Track your finances in real time",
+const DIGITAL_CARDS = [
+  {
+    image: BRAND.smeHospitality,
+    title: "Open in minutes",
+    body: "Apply, verify your identity and start banking from your phone. No branch queue.",
+    to: "/solutions/individuals",
+  },
+  {
+    image: BRAND.smeNursery,
+    title: "Run your business",
+    body: "Payments, payroll and working capital, managed from a single dashboard.",
+    to: "/solutions/companies-institutions",
+  },
+  {
+    image: BRAND.smeFlorist,
+    title: "Send across borders",
+    body: "Move money to family and suppliers at rates you can see up front.",
+    to: "/who-we-serve/diaspora-international",
+  },
 ];
 
 const AUDIENCES = [
@@ -245,38 +256,54 @@ export default function Home() {
       {/* ── Private Banking — the dark card marquee ────────────────── */}
       <PrivateBankingMarquee />
 
-      {/* ── 03 · Digital-first — capabilities split ────────────────── */}
+      {/* ── 03 · Digital-first — heading + tall photo cards ────────── */}
       <section data-spine="Digital-first" data-spine-n="03" className="section bg-milk border-t border-bone-200">
-        <div className="container-bank grid grid-cols-12 gap-10 md:gap-16 items-center">
-          <motion.div {...reveal} className="col-span-12 md:col-span-5">
+        <div className="container-bank grid grid-cols-12 gap-10 md:gap-12 items-start">
+          {/* Left — heading + intro + CTA */}
+          <motion.div {...reveal} className="col-span-12 lg:col-span-4">
             <Index n="03" label="Digital-first" />
             <h2 className="display-lg text-navy-600 text-balance mt-6">
               Digital where it matters. <span className="font-bold">Human</span> when it counts.
             </h2>
             <p className="mt-6 text-[17px] md:text-[19px] text-bone-600 leading-relaxed">
-              Technology should remove complexity, not create it. Bank whenever and wherever
-              you choose. Whenever you need advice, our people are ready to help.
+              Technology should remove complexity, not create it. Bank whenever and
+              wherever you choose, and reach a real person the moment you need one.
             </p>
             <Link to="/login" className="btn btn-navy mt-9">
               Explore Online Banking
               <ArrowRightIcon size={16} weight="bold" />
             </Link>
           </motion.div>
-          <motion.div {...reveal} className="col-span-12 md:col-span-6 md:col-start-7">
-            <div className="relative overflow-hidden rounded-2xl bg-navy-900 text-white p-7 md:p-9 shadow-[var(--shadow-hero)]">
-              <div className="absolute top-0 left-0 right-0 h-[3px] bg-orange-500" />
-              <p className="eyebrow eyebrow-on-dark mb-6">Everyday, in the app</p>
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8">
-                {CAPABILITIES.map((c, i) => (
-                  <li key={c} className="flex items-baseline gap-3.5 py-3.5 border-b border-white/10">
-                    <span className="font-display font-bold text-orange-400 text-[14px] tabular-nums w-6 shrink-0">
-                      {String(i + 1).padStart(2, "0")}
+
+          {/* Right — three tall photo cards */}
+          <motion.div {...reveal} className="col-span-12 lg:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-5">
+            {DIGITAL_CARDS.map((c) => (
+              <Link
+                key={c.title}
+                to={c.to}
+                className="group relative block rounded-2xl overflow-hidden aspect-[3/4] sm:aspect-[2/3]"
+              >
+                <div
+                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                  style={{ backgroundImage: `url(${c.image})` }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/45 to-transparent" />
+                <div className="absolute inset-0 p-5 md:p-6 flex flex-col justify-end">
+                  <h3 className="font-display font-medium text-white text-[19px] md:text-[20px] leading-tight mb-2">
+                    {c.title}
+                  </h3>
+                  <p className="text-[13px] md:text-[13.5px] text-white/80 leading-relaxed mb-5">
+                    {c.body}
+                  </p>
+                  <span className="inline-flex items-center gap-2 self-start rounded-full border-2 border-white/40 group-hover:border-white pl-4 pr-1.5 py-1.5 text-[11.5px] font-bold uppercase tracking-[0.08em] text-white transition-colors">
+                    Learn more
+                    <span className="w-6 h-6 rounded-full bg-white/20 group-hover:bg-orange-500 flex items-center justify-center transition-colors">
+                      <ArrowUpRightIcon size={12} weight="bold" className="text-white" />
                     </span>
-                    <span className="text-[15px] md:text-[16px] font-medium text-white/90 leading-snug">{c}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+                  </span>
+                </div>
+              </Link>
+            ))}
           </motion.div>
         </div>
       </section>

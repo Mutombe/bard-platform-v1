@@ -23,9 +23,6 @@ export default function PrivateBankingMarquee() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="relative bg-ink rounded-2xl overflow-hidden shadow-[var(--shadow-hero)]"
         >
-          {/* Hairline orange top rule — institutional signature */}
-          <div className="absolute top-0 left-0 right-0 h-[2px] bg-orange-500 z-10" />
-
           <div className="grid grid-cols-1 md:grid-cols-12">
             {/* ─── LEFT / TOP — sub-brand mark + architectural photograph ─ */}
             <div className="relative aspect-[5/4] md:aspect-auto md:min-h-[520px] md:col-span-7 bg-ink overflow-hidden">
