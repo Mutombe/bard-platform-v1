@@ -48,7 +48,7 @@ export default function ScrollSpine() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -4 }}
           transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-          className="font-display text-[14px] tabular-nums text-orange-500 leading-none"
+          className="font-display font-bold text-[14px] tabular-nums text-orange-500 leading-none"
         >
           {active.n}
         </motion.span>

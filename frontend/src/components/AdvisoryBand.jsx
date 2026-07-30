@@ -54,7 +54,7 @@ export default function AdvisoryBand() {
               </p>
             </div>
             <h2 className="display-xl text-white text-balance">
-              Let's build your future together.
+              Let's build your <span className="font-bold">future</span> together.
             </h2>
             <p className="mt-6 text-[17px] md:text-[19px] text-white/85 leading-relaxed max-w-xl">
               Our goal isn't simply to become another bank — it's to become the financial

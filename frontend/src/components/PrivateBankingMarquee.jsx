@@ -54,9 +54,9 @@ export default function PrivateBankingMarquee() {
             {/* ─── RIGHT / BOTTOM — text content + CTA ────────────────── */}
             <div className="md:col-span-5 bg-ink p-7 sm:p-9 md:p-10 lg:p-14 flex flex-col justify-center">
               <h2 className="display-md text-white mb-4 md:mb-5">
-                This is Bard Santner Private Banking
+                This is Bard Santner <span className="font-bold">Private Banking</span>
               </h2>
-              <p className="text-[15px] md:text-[16px] text-white/85 leading-relaxed mb-3 md:mb-4">
+              <p className="text-[16px] md:text-[17px] text-white/85 leading-relaxed mb-3 md:mb-4 italic font-light">
                 Relationship-led. Discreet. Patient.
               </p>
               <p className="text-[14.5px] md:text-[15px] text-white/70 leading-relaxed mb-7 md:mb-8 max-w-md">
