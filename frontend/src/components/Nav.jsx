@@ -286,8 +286,8 @@ export default function Nav() {
             {/* Wide search bar with voice (desktop) — the Lloyds pattern */}
             <div className="hidden md:flex flex-1 min-w-0 justify-center">
               <div
-                className={`w-full max-w-lg flex items-center gap-2.5 h-12 pl-4 pr-1.5 rounded-full bg-white border transition-colors ${
-                  listening ? "border-orange-500" : "border-bone-300 hover:border-navy-600"
+                className={`w-full max-w-lg flex items-center gap-2.5 h-12 pl-4 pr-1.5 rounded-full bg-white border-2 transition-colors ${
+                  listening ? "border-orange-500" : "border-navy-600 hover:border-orange-500"
                 }`}
               >
                 <MagnifyingGlassIcon size={19} weight="regular" className="text-bone-500 shrink-0" />
@@ -318,7 +318,7 @@ export default function Nav() {
               <Link
                 to="/login"
                 aria-label="Log in to Online Banking"
-                className="group hidden md:inline-flex items-center gap-3 h-12 pl-2 pr-6 rounded-full bg-white border border-bone-300 hover:border-navy-600 transition-all duration-300 shadow-[0_1px_2px_rgba(12,10,20,0.04)] hover:shadow-[0_6px_18px_rgba(12,10,20,0.12)] hover:-translate-y-[1px]"
+                className="group hidden md:inline-flex items-center gap-3 h-12 pl-2 pr-6 rounded-full bg-white border-2 border-navy-600 hover:border-orange-500 transition-all duration-300 shadow-[0_1px_2px_rgba(12,10,20,0.04)] hover:shadow-[0_6px_18px_rgba(12,10,20,0.12)] hover:-translate-y-[1px]"
               >
                 <span className="w-9 h-9 rounded-full bg-navy-700 group-hover:bg-orange-500 flex items-center justify-center transition-colors duration-300 shadow-[inset_0_-1px_0_rgba(0,0,0,0.12)]">
                   <LockIcon size={15} weight="bold" className="text-white" />
