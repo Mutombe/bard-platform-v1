@@ -12,7 +12,7 @@ export default function QuickActionStrip({ actions = [], tint = "navy" }) {
   return (
     <section className={`${tintBg} text-white`}>
       <div className="container-bank">
-        <div className="grid grid-cols-2 md:grid-cols-4 md:divide-x divide-white/15 border-t border-white/10">
+        <div className="grid grid-cols-2 md:grid-cols-4 md:divide-x divide-white/30 border-t border-white/25">
           {actions.map((a) => {
             const Comp = a.external ? "a" : Link;
             const linkProps = a.external
@@ -22,7 +22,7 @@ export default function QuickActionStrip({ actions = [], tint = "navy" }) {
               <Comp
                 key={a.label}
                 {...linkProps}
-                className="group flex items-center justify-between gap-3 px-4 md:px-7 py-4 md:py-5 hover:bg-white/[0.07] transition-colors border-b border-white/10 md:border-b-0"
+                className="group flex items-center justify-between gap-3 px-4 md:px-7 py-4 md:py-5 hover:bg-white/[0.07] transition-colors border-b border-white/25 md:border-b-0"
               >
                 <span className="text-[13.5px] md:text-[15px] font-bold leading-tight">
                   {a.label}
