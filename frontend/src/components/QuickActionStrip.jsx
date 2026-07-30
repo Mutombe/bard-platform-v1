@@ -24,7 +24,7 @@ export default function QuickActionStrip({ actions = [], tint = "navy" }) {
                 {...linkProps}
                 className="group flex items-center justify-between gap-3 px-4 md:px-7 py-4 md:py-5 hover:bg-white/[0.07] transition-colors border-b border-white/10 md:border-b-0"
               >
-                <span className="text-[13.5px] md:text-[15px] font-medium leading-tight">
+                <span className="text-[13.5px] md:text-[15px] font-bold leading-tight">
                   {a.label}
                 </span>
                 <CaretRightIcon

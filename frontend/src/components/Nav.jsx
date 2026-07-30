@@ -188,7 +188,7 @@ export default function Nav() {
                     onMouseEnter={() => openNow(item.label)}
                     onFocus={() => openNow(item.label)}
                     onClick={() => setOpenMenu(open ? null : item.label)}
-                    className={`flex items-center gap-1.5 px-5 lg:px-6 text-[13px] tracking-[0.04em] font-medium transition-colors whitespace-nowrap ${
+                    className={`flex items-center gap-1.5 px-5 lg:px-6 text-[13px] tracking-[0.04em] font-bold transition-colors whitespace-nowrap ${
                       active || open
                         ? "tab-active"
                         : "text-white/85 hover:text-white hover:bg-white/5"
@@ -211,7 +211,7 @@ export default function Nav() {
             </span>
 
             {/* Utility links — right */}
-            <div className="ml-auto hidden md:flex items-center gap-7 text-[13px] text-white/70 pr-1">
+            <div className="ml-auto hidden md:flex items-center gap-7 text-[13px] font-semibold text-white/75 pr-1">
               {NAV_UTILITY.map((u) => (
                 <NavItem key={u.to} to={u.to} className="hover:text-white transition-colors">
                   {u.label}
@@ -250,7 +250,7 @@ export default function Nav() {
                     <motion.span key={c.label} variants={LINK_V} className="shrink-0 px-2.5 first:pl-0">
                       <NavItem
                         to={c.to}
-                        className="hover-line text-[13.5px] xl:text-[14px] font-medium text-navy-600 hover:text-orange-600 tracking-[0.005em] transition-colors whitespace-nowrap"
+                        className="hover-line text-[13.5px] xl:text-[14px] font-semibold text-navy-600 hover:text-orange-600 tracking-[0.005em] transition-colors whitespace-nowrap"
                       >
                         {c.label}
                       </NavItem>
@@ -272,7 +272,7 @@ export default function Nav() {
         }`}
       >
         <div className="container-bank">
-          <div className="flex items-center gap-4 lg:gap-8 h-16 md:h-20">
+          <div className="flex items-center gap-3 md:gap-4 h-16 md:h-20">
             {/* Brand mark — full BSMFB lockup */}
             <Link to="/" className="flex items-center shrink-0" aria-label="Bard Santner Microfinance Bank home">
               <img
@@ -283,10 +283,13 @@ export default function Nav() {
               />
             </Link>
 
-            {/* Wide search bar with voice (desktop) — the Lloyds pattern */}
-            <div className="hidden md:flex flex-1 min-w-0 justify-center">
+            {/* Spacer — pushes search + login to the right wing */}
+            <div className="flex-1" />
+
+            {/* Search bar with voice — winged right, beside Log in */}
+            <div className="hidden md:block w-60 lg:w-80 shrink-0">
               <div
-                className={`w-full max-w-lg flex items-center gap-2.5 h-12 pl-4 pr-1.5 rounded-full bg-white border-2 transition-colors ${
+                className={`w-full flex items-center gap-2 h-12 pl-4 pr-1.5 rounded-full bg-white border-2 transition-colors ${
                   listening ? "border-orange-500" : "border-navy-600 hover:border-orange-500"
                 }`}
               >
