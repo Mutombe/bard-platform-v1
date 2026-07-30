@@ -6,7 +6,7 @@ import PageTransition from "../components/PageTransition.jsx";
 import PageHero from "../components/PageHero.jsx";
 import TrustRibbon from "../components/TrustRibbon.jsx";
 import SEO, { breadcrumbJsonLd } from "../components/SEO.jsx";
-import { HERO } from "../data/images.js";
+import { BRAND } from "../data/images.js";
 
 /**
  * /careers — the doc has no dedicated careers copy, so this is built around
@@ -41,7 +41,7 @@ export default function Careers() {
         headline="Build a better bank with us."
         body="We're building a digital-first financial institution for the way Africa works. If you want to do the most meaningful work of your career, we'd like to meet you."
         primaryCTA={{ to: "/contact", label: "Get in touch" }}
-        image={HERO.leadership}
+        image={BRAND.careersTeam}
         overlayTint="navy"
       />
 

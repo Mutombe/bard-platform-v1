@@ -19,7 +19,7 @@ export const SOLUTIONS = [
       "Running a business means making hundreds of financial decisions every day. You need a banking partner that helps you manage cash, unlock capital, simplify payments and support growth, not slow it down.",
       "Whether you're a growing business, corporate, NGO, school, healthcare provider or government institution, our digital-first banking platform gives you the tools to operate more efficiently.",
     ],
-    image: BRAND.institutional,
+    image: BRAND.boardroom,
     blocks: [
       {
         heading: "Manage your cash with confidence",

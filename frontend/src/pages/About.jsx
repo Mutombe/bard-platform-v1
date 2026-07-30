@@ -6,7 +6,7 @@ import PageHero from "../components/PageHero.jsx";
 import AdvisoryBand from "../components/AdvisoryBand.jsx";
 import TrustRibbon from "../components/TrustRibbon.jsx";
 import SEO, { breadcrumbJsonLd } from "../components/SEO.jsx";
-import { HERO } from "../data/images.js";
+import { BRAND } from "../data/images.js";
 import { LEADERSHIP } from "../data/leadership.js";
 
 /**
@@ -43,7 +43,7 @@ export default function About() {
         headline="Banking should help people move forward."
         body="Bard Santner was founded in 2022 with a simple purpose: to make financial services more accessible, more practical and more valuable for the people and businesses we serve."
         primaryCTA={{ to: "/contact", label: "Start a conversation" }}
-        image={HERO.about}
+        image={BRAND.africaLandscape}
         overlayTint="navy"
       />
 
@@ -79,17 +79,17 @@ export default function About() {
             <h2 className="display-lg text-white text-balance mb-8">
               Every institution has a history. Ours has a conviction.
             </h2>
-            <div className="space-y-5 text-[16px] md:text-[18px] text-white/80 leading-relaxed">
-              <p>
+            <div className="space-y-5 text-[16px] md:text-[18px] leading-relaxed">
+              <p className="text-white/80">
                 Bard Santner was founded in 2022 because we believed financial services
                 could be better. As we evolved from a diversified financial institution into
                 a digital-first microfinance bank, one thing never changed: our purpose.
               </p>
-              <p>
+              <p className="text-white/80">
                 We exist to challenge the way banking has always been done, and to build
                 something that works better for the people and businesses we serve.
               </p>
-              <p>
+              <p className="text-white/80">
                 Our manifesto is more than words on a page. It is the standard we hold
                 ourselves to. It shapes every product we build, every decision we make and
                 every relationship we form, because we believe banking should create
