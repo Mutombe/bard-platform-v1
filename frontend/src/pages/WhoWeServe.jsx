@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRightIcon } from "@phosphor-icons/react";
 
@@ -96,16 +96,12 @@ export default function WhoWeServe() {
         </div>
       </section>
 
-      {/* Closing line + CTA */}
-      <section className="bg-milk border-t-2 border-orange-500">
-        <div className="container-bank py-14 md:py-20 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-          <h2 className="display-md text-navy-600 max-w-2xl text-balance">
+      {/* Closing statement (the Advisory band below carries the CTA) */}
+      <section className="bg-milk">
+        <div className="container-bank section text-center">
+          <h2 className="display-md text-navy-600 max-w-2xl mx-auto text-balance">
             {seg.closing || "Whatever your mission, we're ready to help."}
           </h2>
-          <Link to={seg.cta.to} className="btn btn-navy shrink-0">
-            {seg.cta.label}
-            <ArrowRightIcon size={15} weight="bold" />
-          </Link>
         </div>
       </section>
 

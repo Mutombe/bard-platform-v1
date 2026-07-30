@@ -166,8 +166,19 @@
      (72px) so the rhythm reads "confident" not "compressed" on a 375px
      viewport. Container-x floors at 1.5rem (24px) — the Lloyds breathing
      margin. The same clamps still scale up at desktop. */
-  /* Section rhythm — deliberately generous. Premium institutional sites let
-     content breathe; the vertical air is doing as much work as the type. */
+  /* ─── Proportion system (governance) ─────────────────────────────────
+     Everything snaps to a 4/8-pt scale so the page reads as one governed
+     grid, not ad-hoc spacing. Canonical steps (Tailwind units in brackets):
+       4[1] 8[2] 12[3] 16[4] 24[6] 32[8] 40[10] 48[12] 64[16] 80[20] 96[24]
+     Semantic element rhythm (applied consistently across pages):
+       eyebrow → heading        24  (mt-6)
+       heading → lead/body      24  (mt-6)
+       lead → CTA               32–36 (mt-8 / mt-9)
+       section header → content 48 mobile / 64 desktop (mb-12 md:mb-16)
+       card title → description 12  (mb-3)
+       grid gutters             24 mobile / 32 desktop (gap-6 md:gap-8)
+     Sizing: icons 14 (inline) / 16 (CTA) / 20 (UI) / 24 (feature); one button
+     height scale via the pad-btn tokens; one card padding/radius. */
   --section-pad-y:    clamp(5rem, 9vw, 10rem);    /* 80 → 160 */
   --section-pad-y-lg: clamp(7rem, 13vw, 13rem);
   --container-pad-x:  clamp(1.5rem, 4vw, 2.75rem);
