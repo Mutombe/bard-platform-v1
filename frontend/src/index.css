@@ -128,19 +128,17 @@
   --color-error:   #88120e;
   --color-warn:    #c9a04d;
 
-  /* ─── Typography ─── Onest everywhere. One family. */
-  --font-display: "Onest Variable", "Gellix", "Inter", system-ui, sans-serif;
-  --font-display-alt: "Onest Variable", "Gellix", "Inter", system-ui, sans-serif;
-  --font-body: "Onest Variable", "Gellix", "Inter", "Avenir Next", system-ui, sans-serif;
-  --font-mono: "Onest Variable", "Gellix", "Inter", system-ui, sans-serif;
+  /* ─── Typography ─── Roboto everywhere — the Bard Santner Group face
+     (bardsantner.com), so the Microfinance Bank reads as part of the family.
+     One family across body and display, governed by size, weight and case. */
+  --font-display: "Roboto", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  --font-display-alt: "Roboto", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  --font-body: "Roboto", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  --font-mono: "Roboto", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
 
-  /* Hero-only display serif — Fraunces Variable. Used on the home
-     carousel headline as the editorial counterpoint to the all-Onest
-     system. The whole point is to break the institutional default
-     in exactly one place and see if the bank can carry a literary
-     voice. Iowan Old Style / Garamond as native fallbacks. */
-  --font-hero-display: "Fraunces Variable", "Fraunces", "Iowan Old Style",
-                        "Garamond", "Hoefler Text", "Times New Roman", serif;
+  /* Display tiers now share the one family (Roboto), lighter at large sizes
+     per the group's headline style. */
+  --font-hero-display: "Roboto", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
 
   /* ─── Type scale — Fortune-500 premium sizing ────────────────────────
      Mapped to the 8-point enterprise scale used by Apple / JPMorgan /
@@ -215,10 +213,9 @@
   /* Body — 16px / 1.7 line-height, the premium reading default. Every
      paragraph inherits; components pick it up through em-based sizing. */
   body { font-family: var(--font-body); color: var(--color-bone-700); background: var(--color-milk); font-feature-settings: "kern","liga","calt","ss01"; font-size: var(--text-body-base); line-height: 1.7; margin: 0; }
-  /* Headings carry a confident 600 weight (premium enterprise convention)
-     with tightening letter-spacing as size climbs. Fraunces renders these. */
-  h1, h2, h3, h4 { font-family: var(--font-display); color: var(--color-navy-600); font-weight: 600; letter-spacing: -0.02em; line-height: 1.12; margin: 0; }
-  h1 { font-weight: 600; letter-spacing: -0.028em; }
+  /* Headings — Roboto medium, tightening letter-spacing as size climbs. */
+  h1, h2, h3, h4 { font-family: var(--font-display); color: var(--color-navy-600); font-weight: 500; letter-spacing: -0.018em; line-height: 1.15; margin: 0; }
+  h1 { font-weight: 500; letter-spacing: -0.022em; }
   p  { color: var(--color-bone-600); margin: 0; }
   a  { color: inherit; text-decoration: none; }
   ::selection { background: var(--color-navy-600); color: white; }
@@ -248,37 +245,33 @@
   .display-hero {
     font-family: var(--font-hero-display);
     font-size: var(--text-display-hero);
-    line-height: 1.0;
-    letter-spacing: -0.028em;
-    font-weight: 580;
-    font-variation-settings: "SOFT" 0, "WONK" 0, "opsz" 96;
+    line-height: 1.03;
+    letter-spacing: -0.02em;
+    font-weight: 300;
     font-feature-settings: "kern", "liga", "calt", "lnum", "tnum";
   }
   .display-xl {
     font-family: var(--font-hero-display);
     font-size: var(--text-display-xl);
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    font-weight: 600;
-    font-variation-settings: "SOFT" 0, "WONK" 0, "opsz" 72;
+    line-height: 1.06;
+    letter-spacing: -0.018em;
+    font-weight: 400;
     font-feature-settings: "kern", "liga", "calt", "lnum", "tnum";
   }
   .display-lg {
     font-family: var(--font-hero-display);
     font-size: var(--text-display-lg);
-    line-height: 1.1;
-    letter-spacing: -0.014em;
-    font-weight: 620;
-    font-variation-settings: "SOFT" 10, "WONK" 0, "opsz" 56;
+    line-height: 1.12;
+    letter-spacing: -0.012em;
+    font-weight: 500;
     font-feature-settings: "kern", "liga", "calt", "lnum", "tnum";
   }
   .display-md {
     font-family: var(--font-hero-display);
     font-size: var(--text-display-md);
-    line-height: 1.15;
-    letter-spacing: -0.01em;
-    font-weight: 640;
-    font-variation-settings: "SOFT" 15, "WONK" 0, "opsz" 40;
+    line-height: 1.18;
+    letter-spacing: -0.008em;
+    font-weight: 500;
     font-feature-settings: "kern", "liga", "calt", "lnum", "tnum";
   }
 
@@ -287,10 +280,9 @@
   .display-hero-serif {
     font-family: var(--font-hero-display);
     font-size: var(--text-display-hero);
-    line-height: 1.0;
-    letter-spacing: -0.028em;
-    font-weight: 580;
-    font-variation-settings: "SOFT" 0, "WONK" 0, "opsz" 96;
+    line-height: 1.03;
+    letter-spacing: -0.02em;
+    font-weight: 300;
     font-feature-settings: "kern", "liga", "calt", "lnum", "tnum";
   }
 
