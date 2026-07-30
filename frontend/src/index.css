@@ -113,14 +113,14 @@
      orange feels at home on it) and smoke (the secondary surface,
      deeper and more textural). The institution earns its complexion
      the same way its photographs do. */
-  /* A family of whites, not one. Sections alternate across these four so the
-     page reads as layered light rather than flat #fff — the quiet luxury of a
-     Fortune-500 canvas. */
-  --color-milk:  #ffffff;   /* pure white — primary canvas (authority) */
-  --color-cloud: #fbfcfd;   /* faintest cool white — subtle alternating band */
-  --color-smoke: #f4f6f9;   /* light cool grey — secondary surface */
-  --color-mist:  #eceff5;   /* deeper cool band for contrast sections */
-  --color-paper: #ffffff;   /* cards — white, lifting via borders + soft shadow */
+  /* A family of milky whites — a warm, soft off-white canvas (not clinical
+     #fff) that makes the brand navy and orange read crisper by contrast. Cards
+     stay pure white so they lift off the milk. */
+  --color-milk:  #fdfcf9;   /* milky white — primary canvas */
+  --color-cloud: #f9f8f3;   /* faint milky band */
+  --color-smoke: #f3f2ec;   /* soft warm-grey surface */
+  --color-mist:  #ebe9e1;   /* deeper warm band for contrast sections */
+  --color-paper: #ffffff;   /* cards — crisp pure white, lifting off the milk */
 
   /* ─── Functional accents — used very sparingly ─── */
   --color-signal:  #b35419;
@@ -397,6 +397,23 @@
 
   .monogram-bg { position: relative; isolation: isolate; }
   .monogram-bg::before { content: ""; position: absolute; inset: 0; background-image: url("/monogram-pattern.svg"); background-size: 120px; background-repeat: repeat; opacity: 0.04; z-index: -1; pointer-events: none; }
+
+  /* ─── Brand graphic-device patterns ──────────────────────────────────
+     The brand manual's two patterns (diamond lattice + BS-monogram repeat)
+     used as subtle section accents. Driven as CSS masks so a single asset
+     tints to any brand colour via the element's background-color — set the
+     colour + opacity with utility classes (e.g. bg-white opacity-[0.06]). */
+  .pattern-lattice, .pattern-monogram {
+    -webkit-mask-repeat: repeat; mask-repeat: repeat;
+  }
+  .pattern-lattice {
+    -webkit-mask-image: url("/pattern-lattice.svg"); mask-image: url("/pattern-lattice.svg");
+    -webkit-mask-size: 88px 88px; mask-size: 88px 88px;
+  }
+  .pattern-monogram {
+    -webkit-mask-image: url("/monogram-pattern.svg"); mask-image: url("/monogram-pattern.svg");
+    -webkit-mask-size: 128px 128px; mask-size: 128px 128px;
+  }
 }
 
 @layer utilities {
