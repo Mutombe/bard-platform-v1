@@ -45,7 +45,7 @@ const COLUMNS = [
       { label: "About Us", to: "/about" },
       { label: "Careers", to: "/careers" },
       { label: "Contact us", to: "/contact" },
-      { label: "Insights — BGFI", to: "https://bgfi.global" },
+      { label: "Insights · BGFI", to: "https://bgfi.global" },
       { label: "Bard Santner Group", to: "https://bardsantner.com/" },
       { label: "Online Banking", to: "/login" },
     ],

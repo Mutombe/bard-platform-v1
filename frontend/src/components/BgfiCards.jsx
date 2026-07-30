@@ -30,7 +30,7 @@ const FALLBACK = [
   {
     title: "The corridors moving African trade.",
     category: "Research",
-    excerpt: "Why the rails carrying goods between the continent's ports will be African-built within the decade — and what that unlocks.",
+    excerpt: "Why the rails carrying goods between the continent's ports will be African-built within the decade, and what that unlocks.",
     image: INSIGHT["treasury-and-the-discipline-of-the-end-of-day"],
     url: "https://bgfi.global",
   },

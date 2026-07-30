@@ -16,7 +16,7 @@ export const SOLUTIONS = [
     eyebrow: "Solutions",
     headline: "Grow your business with banking that works as hard as you do.",
     intro: [
-      "Running a business means making hundreds of financial decisions every day. You need a banking partner that helps you manage cash, unlock capital, simplify payments and support growth — not slow it down.",
+      "Running a business means making hundreds of financial decisions every day. You need a banking partner that helps you manage cash, unlock capital, simplify payments and support growth, not slow it down.",
       "Whether you're a growing business, corporate, NGO, school, healthcare provider or government institution, our digital-first banking platform gives you the tools to operate more efficiently.",
     ],
     image: HERO.business,

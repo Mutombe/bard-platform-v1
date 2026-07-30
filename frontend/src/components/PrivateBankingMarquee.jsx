@@ -61,7 +61,7 @@ export default function PrivateBankingMarquee() {
               </p>
               <p className="text-[14.5px] md:text-[15px] text-white/70 leading-relaxed mb-7 md:mb-8 max-w-md">
                 Discretionary mandates, advisory portfolios and the long counsel of an
-                international house — for established wealth, anchored in Africa.
+                international house, for established wealth anchored in Africa.
               </p>
 
               <Link

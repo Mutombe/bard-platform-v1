@@ -213,7 +213,7 @@ export default function Login() {
                 Banking that travels with you.
               </h2>
               <p className="text-white/80 text-[14.5px] leading-relaxed">
-                The same bank, the same banker — without the queue.
+                The same bank, the same banker, without the queue.
               </p>
             </div>
 

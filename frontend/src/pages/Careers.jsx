@@ -18,7 +18,7 @@ const VALUES = [
   { name: "Insight", body: "We look beyond the headline. Better decisions come from understanding where a person or a business is actually going." },
   { name: "Execution", body: "Ideas are cheap; delivery is the work. We close the day on the day and ship what we promise." },
   { name: "Responsibility", body: "We hold customer money as customer money and name the people accountable for every decision." },
-  { name: "Impact", body: "We measure ourselves by lives enriched — not products sold. Impact is the point." },
+  { name: "Impact", body: "We measure ourselves by lives enriched, not products sold. Impact is the point." },
 ];
 
 export default function Careers() {
@@ -84,7 +84,7 @@ export default function Careers() {
               We're always looking for exceptional people.
             </h2>
             <p className="text-[16px] md:text-[18px] text-bone-600 leading-relaxed mb-9">
-              We don't have public vacancies listed right now — but we hire ahead of need for
+              We don't have public vacancies listed right now, but we hire ahead of need for
               people who are unmistakably right. Send us your CV and a short note on the work
               you want to do, and we'll be in touch when there's a fit.
             </p>
