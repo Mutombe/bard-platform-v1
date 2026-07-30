@@ -241,6 +241,16 @@ export const BRAND = {
   // Professional on her phone with documents in a business district —
   // banking on the move, connected.
   mobileBanking:     "/images/digital-mobile.jpg",
+
+  // ── Inner-page hero photography (contextual, licence-pending iStock) ──
+  diaspora:      "/images/diaspora.jpg",       // older woman on a family video call
+  mining:        "/images/mining.jpg",          // ore-processing plant at dusk
+  agriculture:   "/images/agriculture.jpg",     // farmer with a basket of produce
+  technology:    "/images/technology.jpg",      // young professional, laptop, tech office
+  nonProfit:     "/images/non-profit.jpg",      // community volunteers in the field
+  boardroom:     "/images/companies-boardroom.jpg", // exec presenting to a team
+  careersTeam:   "/images/careers-team.jpg",    // diverse team in a modern office
+  africaLandscape: "/images/about-africa.jpg",  // Kilimanjaro, acacia and giraffe
 };
 
 export const HERO_VIDEO = "/images/hero-future.mp4"; // father + child, "the future"
