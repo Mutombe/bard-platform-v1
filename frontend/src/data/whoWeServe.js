@@ -6,7 +6,7 @@
 // existing HERO catalogue as thematic stand-ins — replace with commissioned
 // photography before launch.
 
-import { HERO } from "./images.js";
+import { HERO, BRAND } from "./images.js";
 
 export const SEGMENTS = [
   {
@@ -51,7 +51,7 @@ export const SEGMENTS = [
     ],
     closing: null,
     cta: { label: "Speak to a Business Banker", to: "/contact" },
-    image: HERO.business,
+    image: BRAND.smeHospitality,
   },
   {
     slug: "agriculture",
@@ -73,7 +73,7 @@ export const SEGMENTS = [
     ],
     closing: "Because when agriculture grows, Zimbabwe grows.",
     cta: { label: "Talk to our Agriculture Banking specialists", to: "/contact" },
-    image: HERO.about,
+    image: BRAND.smeNursery,
   },
   {
     slug: "financial-institutions",
@@ -95,7 +95,7 @@ export const SEGMENTS = [
     ],
     closing: null,
     cta: { label: "Connect with our Institutional Banking team", to: "/contact" },
-    image: HERO.institutional,
+    image: BRAND.institutional,
   },
   {
     slug: "technology-innovation",
@@ -138,7 +138,7 @@ export const SEGMENTS = [
     ],
     closing: "Building stronger institutions through better banking.",
     cta: { label: "Speak to our Public Sector specialists", to: "/contact" },
-    image: HERO.group,
+    image: BRAND.gallery,
   },
   {
     slug: "non-profit-development",
@@ -160,7 +160,7 @@ export const SEGMENTS = [
     ],
     closing: "Helping those who help others.",
     cta: { label: "Talk to our Development Banking team", to: "/contact" },
-    image: HERO.contact,
+    image: BRAND.relationship,
   },
 ];
 

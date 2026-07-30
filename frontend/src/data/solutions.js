@@ -7,7 +7,7 @@
 // existing HERO catalogue as thematic stand-ins — swap for commissioned
 // photography (or product-specific art) before launch.
 
-import { HERO } from "./images.js";
+import { BRAND } from "./images.js";
 
 export const SOLUTIONS = [
   {
@@ -19,7 +19,7 @@ export const SOLUTIONS = [
       "Running a business means making hundreds of financial decisions every day. You need a banking partner that helps you manage cash, unlock capital, simplify payments and support growth, not slow it down.",
       "Whether you're a growing business, corporate, NGO, school, healthcare provider or government institution, our digital-first banking platform gives you the tools to operate more efficiently.",
     ],
-    image: HERO.business,
+    image: BRAND.institutional,
     blocks: [
       {
         heading: "Manage your cash with confidence",
@@ -80,7 +80,7 @@ export const SOLUTIONS = [
       "Whether you're opening your first account, saving for your family's future or managing your day-to-day finances, banking should be simple, secure and always within reach.",
       "Our digital-first banking experience puts you in control wherever life takes you.",
     ],
-    image: HERO.personal,
+    image: BRAND.individual,
     blocks: [
       {
         heading: "Bank anywhere",
@@ -131,7 +131,7 @@ export const SOLUTIONS = [
       "Growing wealth takes more than good investments. It takes thoughtful planning, disciplined investing and a partner who understands your long-term goals.",
       "Whether you're building your portfolio, protecting capital or planning your legacy, we're here to help.",
     ],
-    image: HERO.wealth,
+    image: BRAND.advisory,
     blocks: [
       {
         heading: "Invest with confidence",

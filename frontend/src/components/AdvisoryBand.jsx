@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { PhoneIcon, EnvelopeSimpleIcon, ChatCircleIcon, ArrowRightIcon } from "@phosphor-icons/react";
-import { ART } from "../data/images.js";
+import { BRAND } from "../data/images.js";
 
 /**
  * Advisory band — the site's single closing CTA (it now carries the former
@@ -16,7 +16,7 @@ export default function AdvisoryBand() {
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: `url(${ART.advisoryHallway})`,
+          backgroundImage: `url(${BRAND.gallery})`,
           filter: "saturate(1.15) brightness(0.42) sepia(0.28) contrast(1.05)",
         }}
       />
