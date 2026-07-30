@@ -115,11 +115,29 @@ export default function Home() {
             playsInline
             preload="metadata"
             poster={BRAND.heroPoster}
+            style={{ filter: "saturate(1.08) contrast(1.03) brightness(0.94) sepia(0.16)" }}
           >
             <source src={HERO_VIDEO} type="video/mp4" />
           </video>
-          <div className="absolute inset-0 hidden md:block bg-gradient-to-r from-navy-950/95 via-navy-900/60 to-navy-950/20" />
-          <div className="absolute inset-0 md:hidden bg-gradient-to-t from-navy-950/92 via-navy-950/50 to-navy-950/30" />
+          {/* Warm veil — an even, light wash so the whole frame stays visible
+              while the footage reads warm rather than cold-navy. */}
+          <div className="absolute inset-0 pointer-events-none" style={{ background: "rgba(18,11,4,0.30)" }} />
+          {/* Legibility lift — a gentle bottom-up warmth + an orange glow behind
+              the copy. No left scrim; the background reads through everywhere. */}
+          <div
+            className="absolute inset-0 hidden md:block pointer-events-none"
+            style={{
+              background:
+                "linear-gradient(to top, rgba(14,9,3,0.74) 0%, rgba(14,9,3,0.34) 30%, rgba(14,9,3,0.08) 56%, transparent 80%), radial-gradient(100% 92% at 20% 56%, rgba(238,125,54,0.17), transparent 62%)",
+            }}
+          />
+          <div
+            className="absolute inset-0 md:hidden pointer-events-none"
+            style={{
+              background:
+                "linear-gradient(to top, rgba(14,9,3,0.9) 0%, rgba(14,9,3,0.5) 38%, rgba(14,9,3,0.2) 100%), radial-gradient(110% 70% at 50% 82%, rgba(238,125,54,0.14), transparent 66%)",
+            }}
+          />
 
           <div className="relative container-bank flex flex-col justify-center py-12 md:py-16">
             <motion.div
@@ -128,11 +146,11 @@ export default function Home() {
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="max-w-3xl"
             >
-              <p className="eyebrow eyebrow-on-dark mb-6 md:mb-7">Bard Santner Microfinance Bank</p>
-              <h1 className="display-hero text-white text-balance">
+              <p className="eyebrow eyebrow-on-dark mb-6 md:mb-7 [text-shadow:0_1px_10px_rgba(0,0,0,0.35)]">Bard Santner Microfinance Bank</p>
+              <h1 className="display-hero text-white text-balance [text-shadow:0_2px_28px_rgba(0,0,0,0.5)]">
                 Banking that helps you <span className="font-bold">move forward.</span>
               </h1>
-              <p className="mt-7 md:mt-9 text-white/85 max-w-xl text-[17px] md:text-[20px] leading-relaxed">
+              <p className="mt-7 md:mt-9 text-white/90 max-w-xl text-[17px] md:text-[20px] leading-relaxed [text-shadow:0_1px_16px_rgba(0,0,0,0.45)]">
                 A digital-first bank built for the way Africa works. Simple enough for
                 everyday life, powerful enough for a growing business.
               </p>
