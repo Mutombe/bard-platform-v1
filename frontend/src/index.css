@@ -104,8 +104,10 @@
   --color-bone-300: #d4d7df;
   --color-bone-400: #a8a59a;
   --color-bone-500: #6b6960;
-  --color-bone-600: #4a4942;
-  --color-bone-700: #2f2e2a;
+  /* Body text runs dark — near-black / very dark grey — so it reads crisp and
+     lets the milky whites feel prominent. */
+  --color-bone-600: #2a2824;   /* paragraphs — very dark grey */
+  --color-bone-700: #15140f;   /* strong body text — near black */
 
   /* ─── Our own whites ───
      The institution doesn't use browser default #ffffff. It uses milk
