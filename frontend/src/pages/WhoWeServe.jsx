@@ -45,18 +45,21 @@ export default function WhoWeServe() {
         overlayTint="navy"
       />
 
-      {/* Intro */}
+      {/* Intro — editorial split: side label + lead statement */}
       <section className="section bg-milk">
-        <div className="container-bank max-w-3xl">
-          <p className="eyebrow eyebrow-accent mb-5">{seg.title}</p>
-          <div className="space-y-5">
+        <div className="container-bank grid grid-cols-12 gap-8 md:gap-12 items-start">
+          <div className="col-span-12 md:col-span-4">
+            <p className="eyebrow eyebrow-accent mb-4">{seg.title}</p>
+            <span className="block h-[3px] w-14 bg-orange-500" />
+          </div>
+          <div className="col-span-12 md:col-span-8 space-y-5">
             {seg.intro.map((p, i) => (
               <p
                 key={i}
                 className={
                   i === 0
-                    ? "font-display text-navy-600 text-[22px] md:text-[26px] leading-snug text-balance"
-                    : "text-bone-600 text-[16px] md:text-[17px] leading-relaxed"
+                    ? "font-display text-navy-600 text-[24px] md:text-[31px] leading-snug text-balance"
+                    : "text-bone-600 text-[16px] md:text-[18px] leading-relaxed"
                 }
               >
                 {p}
