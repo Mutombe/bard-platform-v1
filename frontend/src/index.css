@@ -331,6 +331,11 @@
   .btn-navy:hover { background: var(--color-navy-700); }
   .btn-ghost-light { background: var(--color-paper); color: var(--color-navy-600); border-color: var(--color-bone-300); }
   .btn-ghost-light:hover { background: var(--color-milk); border-color: var(--color-navy-600); }
+  /* Card button — the Lloyds treatment: transparent with a bold 2px navy
+     border and bold label, filling navy on hover. For secondary/navigational
+     actions on cards; the solid fills stay reserved for hero + key conversion. */
+  .btn-outline { background: transparent; color: var(--color-navy-700); border: 2px solid var(--color-navy-700); padding: calc(var(--pad-btn-y) - 1px) calc(var(--pad-btn-x) - 1px); }
+  .btn-outline:hover { background: var(--color-navy-700); color: #ffffff; border-color: var(--color-navy-700); }
   .btn-ghost-dark { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.55); padding: calc(var(--pad-btn-y) - 1px) calc(var(--pad-btn-x) - 1px); }
   .btn-ghost-dark:hover { background: rgba(255,255,255,0.08); border-color: white; }
 

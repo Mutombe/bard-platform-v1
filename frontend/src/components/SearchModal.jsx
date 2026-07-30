@@ -12,6 +12,7 @@ import {
   ArrowUpIcon,
   ArrowDownIcon,
   CornersOutIcon,
+  ClockCounterClockwiseIcon,
 } from "@phosphor-icons/react";
 import { SOLUTIONS } from "../data/solutions.js";
 import { SEGMENTS } from "../data/whoWeServe.js";
@@ -105,13 +106,35 @@ const SUGGESTIONS = [
   { label: "Speak to a banker", path: "/contact" },
 ];
 
-export default function SearchModal({ open, onClose }) {
+const RECENT_KEY = "bs_recent_searches";
+function loadRecents() {
+  try { return JSON.parse(localStorage.getItem(RECENT_KEY) || "[]"); } catch { return []; }
+}
+
+export default function SearchModal({ open, onClose, initialQuery = "" }) {
   const [query, setQuery] = useState("");
   const [highlighted, setHighlighted] = useState(0);
+  const [recents, setRecents] = useState(loadRecents);
   const inputRef = useRef(null);
   const navigate = useNavigate();
 
   const index = useMemo(() => buildIndex(), []);
+
+  // Record capability — remember recent queries (deduped, most recent first).
+  const record = (q) => {
+    const t = (q || "").trim();
+    if (!t) return;
+    setRecents((prev) => {
+      const next = [t, ...prev.filter((x) => x.toLowerCase() !== t.toLowerCase())].slice(0, 6);
+      try { localStorage.setItem(RECENT_KEY, JSON.stringify(next)); } catch { /* ignore */ }
+      return next;
+    });
+  };
+  const go = (path) => { record(query); navigate(path); onClose(); };
+  const clearRecents = () => {
+    setRecents([]);
+    try { localStorage.removeItem(RECENT_KEY); } catch { /* ignore */ }
+  };
 
   // Filter + group results. Empty query → empty results (we show
   // suggestions instead). Non-empty → case-insensitive includes match
@@ -135,7 +158,7 @@ export default function SearchModal({ open, onClose }) {
   // Reset on open
   useEffect(() => {
     if (open) {
-      setQuery("");
+      setQuery(initialQuery || "");
       setHighlighted(0);
       // Focus the input on next tick (after the modal is in DOM)
       requestAnimationFrame(() => inputRef.current?.focus());
@@ -168,6 +191,7 @@ export default function SearchModal({ open, onClose }) {
         const target = flat[highlighted];
         if (target) {
           e.preventDefault();
+          record(query);
           navigate(target.path);
           onClose();
         }
@@ -231,7 +255,12 @@ export default function SearchModal({ open, onClose }) {
             {/* Body — suggestions when empty, grouped results otherwise */}
             <div className="flex-1 overflow-y-auto">
               {query.trim() === "" ? (
-                <EmptyState onPick={(path) => { navigate(path); onClose(); }} />
+                <EmptyState
+                  onPick={(path) => { navigate(path); onClose(); }}
+                  recents={recents}
+                  onPickRecent={(term) => { setQuery(term); inputRef.current?.focus(); }}
+                  onClearRecents={clearRecents}
+                />
               ) : flat.length === 0 ? (
                 <NoResults query={query} />
               ) : (
@@ -258,7 +287,7 @@ export default function SearchModal({ open, onClose }) {
                                 <button
                                   type="button"
                                   onMouseEnter={() => setHighlighted(i)}
-                                  onClick={() => { navigate(it.path); onClose(); }}
+                                  onClick={() => go(it.path)}
                                   className={`w-full text-left px-6 py-3.5 flex items-center gap-4 transition-colors ${
                                     active ? "bg-orange-50/70" : "hover:bg-orange-50/40"
                                   }`}
@@ -320,9 +349,34 @@ export default function SearchModal({ open, onClose }) {
   );
 }
 
-function EmptyState({ onPick }) {
+function EmptyState({ onPick, recents = [], onPickRecent, onClearRecents }) {
   return (
     <div className="px-6 py-7">
+      {recents.length > 0 && (
+        <div className="mb-7">
+          <div className="flex items-center justify-between mb-4">
+            <p className="eyebrow">Recent searches</p>
+            <button
+              onClick={onClearRecents}
+              className="text-[12px] text-bone-500 hover:text-navy-600 transition-colors"
+            >
+              Clear
+            </button>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {recents.map((t) => (
+              <button
+                key={t}
+                onClick={() => onPickRecent(t)}
+                className="inline-flex items-center gap-2 rounded-full border border-bone-200 bg-paper px-3.5 py-2 text-[13px] text-navy-700 hover:border-orange-500 hover:text-orange-600 transition-colors"
+              >
+                <ClockCounterClockwiseIcon size={13} weight="regular" className="text-bone-400" />
+                {t}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
       <p className="eyebrow mb-4">Frequently asked</p>
       <ul className="space-y-1">
         {SUGGESTIONS.map((s) => (

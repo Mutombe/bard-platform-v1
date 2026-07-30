@@ -213,9 +213,8 @@ export default function Home() {
                       {c.title}
                     </h3>
                     <p className="text-[15.5px] text-bone-600 leading-relaxed flex-1">{c.body}</p>
-                    <span className="mt-8 inline-flex items-center gap-2.5 text-[15px] font-medium text-navy-600 group-hover:text-orange-600 transition-colors">
+                    <span className="btn btn-outline w-full justify-center mt-8 group-hover:bg-navy-700 group-hover:text-white group-hover:border-navy-700">
                       Explore {c.title.replace("For ", "")}
-                      <ArrowRightIcon size={14} weight="bold" className="group-hover:translate-x-1 transition-transform" />
                     </span>
                   </div>
                 </Link>

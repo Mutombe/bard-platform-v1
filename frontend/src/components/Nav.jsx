@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   MagnifyingGlassIcon,
+  MicrophoneIcon,
   LockIcon,
   ListIcon,
   XIcon,
@@ -74,8 +75,29 @@ export default function Nav() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [openMenu, setOpenMenu] = useState(null);       // desktop dropdown (by label)
   const [mobileSection, setMobileSection] = useState(null); // drawer accordion (by label)
+  const [listening, setListening] = useState(false);    // voice search active
+  const [voiceQuery, setVoiceQuery] = useState("");     // transcript seeded into modal
   const closeTimer = useRef(null);
   const loc = useLocation();
+
+  // Voice ("record") search — Web Speech API. Falls back to opening the modal.
+  const startVoice = () => {
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SR) { setSearchOpen(true); return; }
+    const r = new SR();
+    r.lang = "en-US";
+    r.interimResults = false;
+    r.maxAlternatives = 1;
+    r.onstart = () => setListening(true);
+    r.onerror = () => setListening(false);
+    r.onend = () => setListening(false);
+    r.onresult = (e) => {
+      const t = e.results[0][0].transcript;
+      setVoiceQuery(t);
+      setSearchOpen(true);
+    };
+    try { r.start(); } catch { setSearchOpen(true); }
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -250,7 +272,7 @@ export default function Nav() {
         }`}
       >
         <div className="container-bank">
-          <div className="flex items-center justify-between h-16 md:h-20">
+          <div className="flex items-center gap-4 lg:gap-8 h-16 md:h-20">
             {/* Brand mark — full BSMFB lockup */}
             <Link to="/" className="flex items-center shrink-0" aria-label="Bard Santner Microfinance Bank home">
               <img
@@ -261,23 +283,38 @@ export default function Nav() {
               />
             </Link>
 
-            {/* Centre — deliberately empty (primary nav removed per direction) */}
-
-            {/* Trailing actions */}
-            <div className="flex items-center gap-2 md:gap-3">
-              <button
-                onClick={() => setSearchOpen(true)}
-                aria-label="Search Bard Santner"
-                className="group hidden md:inline-flex items-center gap-3 h-12 pl-4 pr-3.5 rounded-full hover:bg-smoke text-navy-600 transition-colors border border-transparent hover:border-bone-300"
+            {/* Wide search bar with voice (desktop) — the Lloyds pattern */}
+            <div className="hidden md:flex flex-1 min-w-0 justify-center">
+              <div
+                className={`w-full max-w-lg flex items-center gap-2.5 h-12 pl-4 pr-1.5 rounded-full bg-white border transition-colors ${
+                  listening ? "border-orange-500" : "border-bone-300 hover:border-navy-600"
+                }`}
               >
-                <MagnifyingGlassIcon size={20} weight="regular" />
-                <span className="hidden lg:inline text-[16px] font-medium text-bone-500 group-hover:text-navy-600 transition-colors">
-                  Search
-                </span>
+                <MagnifyingGlassIcon size={19} weight="regular" className="text-bone-500 shrink-0" />
+                <button
+                  onClick={() => setSearchOpen(true)}
+                  aria-label="Search Bard Santner"
+                  className="flex-1 text-left text-[15px] text-bone-400 truncate"
+                >
+                  Search Bard Santner…
+                </button>
                 <kbd className="hidden lg:inline-flex items-center justify-center min-w-[22px] h-[22px] px-1 rounded border border-bone-300 bg-paper text-bone-500 font-mono text-[11px] leading-none">
                   /
                 </kbd>
-              </button>
+                <button
+                  onClick={startVoice}
+                  aria-label="Search by voice"
+                  className={`w-9 h-9 rounded-full flex items-center justify-center transition-colors shrink-0 ${
+                    listening ? "bg-orange-500 text-white animate-pulse" : "text-navy-600 hover:bg-smoke"
+                  }`}
+                >
+                  <MicrophoneIcon size={18} weight={listening ? "fill" : "regular"} />
+                </button>
+              </div>
+            </div>
+
+            {/* Trailing actions */}
+            <div className="flex items-center gap-2 md:gap-3 shrink-0">
               <Link
                 to="/login"
                 aria-label="Log in to Online Banking"
@@ -429,7 +466,11 @@ export default function Nav() {
       )}
 
       {/* Search modal */}
-      <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} />
+      <SearchModal
+        open={searchOpen}
+        onClose={() => { setSearchOpen(false); setVoiceQuery(""); }}
+        initialQuery={voiceQuery}
+      />
     </>
   );
 }
