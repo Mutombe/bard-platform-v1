@@ -217,3 +217,21 @@ export const INSIGHT = {
   // as drafting. The bank under design before it is under operation.
   "becoming-a-bank":                                unsplash("1503387762-592deb58ef4e", 1600),
 };
+
+// ─── Brand photography (real, licence-pending iStock) ─────────────────────
+// Copied into /public/images. These are the client-approved shots (to be
+// purchased on iStock once concepts are signed off) and replace the generic
+// stock in heroes, cards and features. The hero uses a short looping video.
+export const BRAND = {
+  relationship:   "/images/relationship.jpg",     // warm advisory handshake
+  institutional:  "/images/institutional.jpg",    // corporate glass lobby
+  advisory:       "/images/advisory-meeting.jpg",  // investor / advisory desk
+  individual:     "/images/individual.jpg",        // personal banking, on phone
+  gallery:        "/images/gallery.jpg",           // museum / gallery
+  smeHospitality: "/images/sme-hospitality.jpg",   // SME owner, card + laptop
+  smeNursery:     "/images/sme-nursery.jpg",        // plant nursery entrepreneur
+  smeFlorist:     "/images/sme-florist.jpg",        // florist entrepreneur
+  heroPoster:     "/images/hero-future-poster.jpg", // poster frame for hero video
+};
+
+export const HERO_VIDEO = "/images/hero-future.mp4"; // father + child, "the future"

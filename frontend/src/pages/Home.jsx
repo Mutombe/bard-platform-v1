@@ -5,13 +5,12 @@ import { ArrowRightIcon, ArrowUpRightIcon } from "@phosphor-icons/react";
 import PageTransition from "../components/PageTransition.jsx";
 import QuickActionStrip from "../components/QuickActionStrip.jsx";
 import PrivateBankingMarquee from "../components/PrivateBankingMarquee.jsx";
-import ScrollSpine from "../components/ScrollSpine.jsx";
 import RevealImage from "../components/RevealImage.jsx";
 import BgfiCards from "../components/BgfiCards.jsx";
 import AdvisoryBand from "../components/AdvisoryBand.jsx";
 import TrustRibbon from "../components/TrustRibbon.jsx";
 import SEO, { organizationJsonLd, websiteJsonLd, breadcrumbJsonLd } from "../components/SEO.jsx";
-import { HERO, AUDIENCE_TILE } from "../data/images.js";
+import { BRAND, HERO_VIDEO } from "../data/images.js";
 
 /**
  * Home — content from the Bard Santner Website Map (2026-07-28), composed to a
@@ -33,21 +32,21 @@ const SOLUTION_CARDS = [
     eyebrow: "Personal",
     title: "For Individuals",
     body: "Everyday accounts, saving, borrowing and sending money. Simple, secure and always within reach.",
-    image: AUDIENCE_TILE.personal,
+    image: BRAND.individual,
     to: "/solutions/individuals",
   },
   {
     eyebrow: "Business",
     title: "For Companies & Institutions",
     body: "Cash management, working capital, trade and payments engineered to keep a growing business moving.",
-    image: AUDIENCE_TILE.business,
+    image: BRAND.institutional,
     to: "/solutions/companies-institutions",
   },
   {
     eyebrow: "Wealth",
     title: "For Investors",
     body: "Managed portfolios, treasury and long-term planning. The disciplined way to build wealth that lasts.",
-    image: AUDIENCE_TILE.private,
+    image: BRAND.advisory,
     to: "/solutions/investors",
   },
 ];
@@ -104,13 +103,21 @@ export default function Home() {
         jsonLd={[organizationJsonLd(), websiteJsonLd(), breadcrumbJsonLd([{ name: "Home", path: "/" }])]}
       />
 
-      <ScrollSpine />
-
       {/* ── ONE-SCREEN HERO ────────────────────────────────────────── */}
       <div className="flex flex-col min-h-[calc(100svh-108px)] md:min-h-[calc(100svh-124px)]">
         <section className="relative flex-1 flex overflow-hidden bg-navy-900">
           <div className="absolute top-0 left-0 right-0 h-[2px] bg-orange-500 z-20" />
-          <RevealImage image={HERO.home} onMount className="absolute inset-0 bg-cover bg-center" />
+          <video
+            className="absolute inset-0 h-full w-full object-cover"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            poster={BRAND.heroPoster}
+          >
+            <source src={HERO_VIDEO} type="video/mp4" />
+          </video>
           <div className="absolute inset-0 hidden md:block bg-gradient-to-r from-navy-950/95 via-navy-900/60 to-navy-950/20" />
           <div className="absolute inset-0 md:hidden bg-gradient-to-t from-navy-950/92 via-navy-950/50 to-navy-950/30" />
 
