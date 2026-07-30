@@ -66,44 +66,43 @@ export default function Solution() {
         </div>
       </section>
 
-      {/* Capability blocks */}
-      <section className="bg-smoke border-t border-bone-200">
-        <div className="container-bank py-14 md:py-20">
-          <div className="flex flex-col divide-y divide-bone-200">
+      {/* Capability blocks — premium bold cards */}
+      <section className="section bg-cloud border-t border-bone-200">
+        <div className="container-bank">
+          <p className="eyebrow eyebrow-accent mb-4">What's included</p>
+          <h2 className="display-lg text-navy-600 text-balance max-w-2xl mb-10 md:mb-14">
+            Everything you need, in one place.
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
             {s.blocks.map((b, i) => (
               <motion.div
                 key={b.heading}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 22 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-                className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 py-9 md:py-12 first:pt-0"
+                transition={{ duration: 0.55, delay: (i % 2) * 0.06, ease: [0.16, 1, 0.3, 1] }}
+                className="bank-card bank-card-body lg:!p-10 flex flex-col"
               >
-                <div className="md:col-span-5">
-                  <div className="flex items-baseline gap-3 mb-3">
-                    <span className="font-display text-navy-400 text-[15px] font-medium">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <h2 className="font-display text-navy-600 text-[22px] md:text-[26px] leading-tight">
-                      {b.heading}
-                    </h2>
-                  </div>
-                  <p className="text-bone-600 text-[15px] md:text-[16px] leading-relaxed md:pr-6">
-                    {b.body}
-                  </p>
+                <div className="flex items-baseline gap-4 mb-4">
+                  <span className="font-display font-bold text-orange-500 text-[34px] leading-none tabular-nums">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="font-display text-navy-600 text-[22px] md:text-[24px] font-medium leading-tight">
+                    {b.heading}
+                  </h3>
                 </div>
-                <div className="md:col-span-7">
-                  <p className="eyebrow mb-4">Solutions include</p>
-                  <div className="flex flex-wrap gap-2.5">
-                    {b.items.map((it) => (
-                      <span
-                        key={it}
-                        className="inline-flex items-center rounded-md bg-white border border-bone-200 px-3.5 py-2 text-[14px] font-medium text-navy-700"
-                      >
-                        {it}
-                      </span>
-                    ))}
-                  </div>
+                <p className="text-bone-600 text-[15px] md:text-[16px] leading-relaxed mb-7">
+                  {b.body}
+                </p>
+                <div className="mt-auto flex flex-wrap gap-2.5">
+                  {b.items.map((it) => (
+                    <span
+                      key={it}
+                      className="inline-flex items-center rounded-full border-2 border-bone-300 bg-white px-4 py-2 text-[13.5px] font-medium text-navy-700"
+                    >
+                      {it}
+                    </span>
+                  ))}
                 </div>
               </motion.div>
             ))}
