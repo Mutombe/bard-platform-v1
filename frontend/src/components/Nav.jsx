@@ -364,13 +364,21 @@ export default function Nav() {
                   Log in
                 </span>
               </Link>
+              {/* Mobile login icon — left of the menu button */}
+              <Link
+                to="/login"
+                aria-label="Log in to Online Banking"
+                className="md:hidden w-10 h-10 flex items-center justify-center rounded-full bg-navy-700 text-white hover:bg-orange-500 transition-colors"
+              >
+                <LockIcon size={20} weight="bold" />
+              </Link>
               {/* Mobile hamburger */}
               <button
                 onClick={() => setMobileOpen(true)}
                 aria-label="Open menu"
-                className="md:hidden w-11 h-11 flex items-center justify-center text-navy-600 -mr-1 rounded-md hover:bg-smoke"
+                className="md:hidden w-10 h-10 flex items-center justify-center text-navy-700 -mr-1 rounded-md hover:bg-smoke"
               >
-                <ListIcon size={24} weight="bold" />
+                <ListIcon size={27} weight="bold" />
               </button>
             </div>
           </div>
