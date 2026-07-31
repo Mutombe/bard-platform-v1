@@ -30,6 +30,11 @@ const VALUES = [
 
 const STORY_FACTS = ["Founded 2022", "Diversified group to microfinance bank", "Digital-first"];
 
+// Bites a circular notch out of the card's bottom-right corner, so the
+// LinkedIn button nestles in a concave curve (deck founder-card design).
+const NOTCH_MASK =
+  "radial-gradient(circle 31px at calc(100% - 30px) calc(100% - 30px), transparent 0 31px, #000 32px)";
+
 export default function About() {
   return (
     <PageTransition>
@@ -54,51 +59,31 @@ export default function About() {
         overlayTint="navy"
       />
 
-      {/* ── Our Story — arched image + facts split (deck case-study layout) ── */}
+      {/* ── Our Story — editorial split, text only ─────────────────── */}
       <section id="our-story" className="section bg-milk scroll-mt-28">
-        <div className="container-bank grid grid-cols-12 gap-10 md:gap-14 items-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.97 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="col-span-12 md:col-span-5 relative"
-          >
-            <div className="relative aspect-[4/5] rounded-[6rem_2rem_2rem_2rem] overflow-hidden shadow-[var(--shadow-hero)]">
-              <div
-                className="absolute inset-0 bg-cover bg-center"
-                style={{ backgroundImage: `url(${BRAND.aboutStory})`, filter: "saturate(1.05) contrast(1.03)" }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink/45 via-transparent to-transparent" />
-            </div>
-            {/* Floating stat badge — deck signature */}
-            <div className="absolute -bottom-5 -right-2 md:-right-5 bg-orange-500 text-white rounded-2xl px-6 py-4 shadow-[var(--shadow-hero)]">
-              <p className="font-display font-bold text-white text-[30px] leading-none">2022</p>
-              <p className="text-[11px] tracking-[0.16em] uppercase text-white/85 mt-1">Founded</p>
-            </div>
-          </motion.div>
-
-          <div className="col-span-12 md:col-span-7">
+        <div className="container-bank grid grid-cols-12 gap-8 md:gap-12 items-start">
+          <div className="col-span-12 md:col-span-4">
             <p className="eyebrow eyebrow-accent mb-4">Our Story</p>
-            <h2 className="display-lg text-navy-600 text-balance mb-6">
+            <h2 className="display-lg text-navy-600 text-balance mb-7">
               We started with one belief: banking should help people move forward.
             </h2>
-            <div className="flex flex-wrap gap-2.5 mb-7">
+            <div className="flex flex-wrap gap-2.5">
               {STORY_FACTS.map((f) => (
                 <span key={f} className="inline-flex items-center rounded-full border-2 border-bone-300 bg-white px-4 py-2 text-[13px] font-semibold text-navy-700">
                   {f}
                 </span>
               ))}
             </div>
-            <div className="space-y-5 text-[16px] md:text-[18px] text-bone-600 leading-relaxed max-w-2xl">
-              <p className="font-display text-navy-600 text-[20px] md:text-[24px] leading-snug">
-                And from a diversified financial institution, we have evolved into a
-                microfinance bank.
-              </p>
-              {STORY.map((p, i) => (
-                <p key={i}>{p}</p>
-              ))}
-            </div>
+          </div>
+
+          <div className="col-span-12 md:col-span-8 space-y-5 text-[16px] md:text-[18px] text-bone-600 leading-relaxed">
+            <p className="font-display text-navy-600 text-[22px] md:text-[26px] leading-snug">
+              And from a diversified financial institution, we have evolved into a
+              microfinance bank.
+            </p>
+            {STORY.map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
           </div>
         </div>
       </section>
@@ -110,13 +95,12 @@ export default function About() {
           <div className="relative overflow-hidden rounded-[1.75rem] md:rounded-[2.5rem] shadow-[var(--shadow-hero)]">
             <div
               className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: `url(${BRAND.manifesto})`, filter: "saturate(1.05) brightness(0.55)" }}
+              style={{ backgroundImage: `url(${BRAND.manifesto})`, filter: "saturate(1.08) brightness(0.82)" }}
             />
             <div
               className="absolute inset-0"
-              style={{ background: "linear-gradient(120deg, rgba(14,9,3,0.94) 0%, rgba(14,9,3,0.74) 52%, rgba(24,16,46,0.62) 100%)" }}
+              style={{ background: "linear-gradient(110deg, rgba(14,9,3,0.88) 0%, rgba(14,9,3,0.55) 46%, rgba(20,13,40,0.2) 100%)" }}
             />
-            <div className="absolute top-0 left-0 right-0 h-[3px] bg-orange-500" />
             <div className="relative p-8 sm:p-12 md:p-16 lg:p-20 max-w-3xl">
               <p className="eyebrow eyebrow-on-dark mb-4">Our Manifesto</p>
               <h2 className="display-lg text-white text-balance mb-8 [text-shadow:0_2px_24px_rgba(0,0,0,0.5)]">
@@ -217,15 +201,20 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: (i % 3) * 0.06, ease: [0.16, 1, 0.3, 1] }}
-                className="group relative rounded-2xl overflow-hidden aspect-[4/5] shadow-[var(--shadow-card)]"
+                className="group relative drop-shadow-[0_12px_30px_rgba(12,10,20,0.14)]"
               >
+                {/* Card with a concave circular notch bitten out of the
+                    bottom-right corner (deck founder-card design). */}
                 <div
-                  className="absolute inset-0 bg-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                  style={{ backgroundImage: `url(${p.image})`, backgroundPosition: "center 12%" }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/25 to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 p-5 md:p-6 flex items-end justify-between gap-3">
-                  <div className="min-w-0">
+                  className="relative aspect-[4/5] rounded-2xl overflow-hidden"
+                  style={{ maskImage: NOTCH_MASK, WebkitMaskImage: NOTCH_MASK }}
+                >
+                  <div
+                    className="absolute inset-0 bg-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                    style={{ backgroundImage: `url(${p.image})`, backgroundPosition: "center 12%" }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/25 to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 p-5 md:p-6 pr-16">
                     <h3 className="font-display font-medium text-white text-[21px] md:text-[24px] leading-tight [text-shadow:0_1px_12px_rgba(0,0,0,0.5)]">
                       {p.name}
                     </h3>
@@ -233,18 +222,19 @@ export default function About() {
                       {p.role}
                     </p>
                   </div>
-                  {p.linkedin && (
-                    <a
-                      href={p.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`${p.name} on LinkedIn`}
-                      className="w-11 h-11 rounded-full bg-white text-navy-700 hover:bg-orange-500 hover:text-white flex items-center justify-center shrink-0 transition-colors shadow-[0_4px_14px_rgba(0,0,0,0.25)]"
-                    >
-                      <LinkedinLogoIcon size={20} weight="fill" />
-                    </a>
-                  )}
                 </div>
+                {/* LinkedIn button nestled in the notch */}
+                {p.linkedin && (
+                  <a
+                    href={p.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${p.name} on LinkedIn`}
+                    className="absolute bottom-2 right-2 w-11 h-11 rounded-full bg-white text-navy-700 hover:bg-orange-500 hover:text-white flex items-center justify-center transition-colors"
+                  >
+                    <LinkedinLogoIcon size={20} weight="fill" />
+                  </a>
+                )}
               </motion.div>
             ))}
           </div>
