@@ -93,7 +93,7 @@ export default function Footer() {
       <div className="absolute top-0 left-0 right-0 h-[3px] bg-orange-500" />
       {/* ─── Top — brand row + columns ─── */}
       <div className="container-bank pt-14 md:pt-24 pb-10 md:pb-12">
-        <div className="grid grid-cols-12 gap-8 md:gap-12">
+        <div className="grid grid-cols-12 gap-x-6 gap-y-10 md:gap-12">
           <div className="col-span-12 md:col-span-3">
             <Link to="/" aria-label="Bard Santner Microfinance Bank home" className="inline-flex items-center gap-3">
               <img src="/favicon.png" alt="" className="h-11 w-11 md:h-12 md:w-12 object-contain" />

@@ -181,8 +181,8 @@
        grid gutters             24 mobile / 32 desktop (gap-6 md:gap-8)
      Sizing: icons 14 (inline) / 16 (CTA) / 20 (UI) / 24 (feature); one button
      height scale via the pad-btn tokens; one card padding/radius. */
-  --section-pad-y:    clamp(5rem, 9vw, 10rem);    /* 80 → 160 */
-  --section-pad-y-lg: clamp(7rem, 13vw, 13rem);
+  --section-pad-y:    clamp(3.5rem, 9vw, 10rem);    /* 56 mobile → 160 desktop */
+  --section-pad-y-lg: clamp(4.5rem, 13vw, 13rem);   /* 72 mobile → 208 desktop */
   --container-pad-x:  clamp(1.5rem, 4vw, 2.75rem);
 
   /* ─── Component-interior padding tokens (Lloyds-grade) ───────────────

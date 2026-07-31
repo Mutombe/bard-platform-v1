@@ -210,7 +210,7 @@ export default function Home() {
       {/* ── 01 · Why we exist — top-aligned editorial split ────────── */}
       <section data-spine="Why we exist" data-spine-n="01" className="section bg-milk">
         <div className="container-bank">
-          <div className="grid grid-cols-12 gap-8 md:gap-12 items-start">
+          <div className="grid grid-cols-12 gap-y-8 md:gap-12 items-start">
             <motion.div {...reveal} className="col-span-12 md:col-span-6">
               <Index n="01" label="Why we exist" />
               <h2 className="display-xl text-navy-600 text-balance mt-6">
@@ -284,7 +284,7 @@ export default function Home() {
 
       {/* ── 03 · Digital-first — heading + tall photo cards ────────── */}
       <section data-spine="Digital-first" data-spine-n="03" className="section bg-milk border-t border-bone-200">
-        <div className="container-bank grid grid-cols-12 gap-10 md:gap-12 items-start">
+        <div className="container-bank grid grid-cols-12 gap-y-10 md:gap-12 items-start">
           {/* Left — heading + intro + CTA */}
           <motion.div {...reveal} className="col-span-12 lg:col-span-4">
             <Index n="03" label="Digital-first" />
@@ -370,7 +370,7 @@ export default function Home() {
         <div className="absolute top-0 left-0 right-0 h-[2px] bg-orange-500 z-10" />
         <div className="absolute inset-0 pattern-lattice bg-white opacity-[0.06] pointer-events-none" />
         <div className="container-bank py-24 md:py-32">
-          <div className="grid grid-cols-12 gap-10 md:gap-16">
+          <div className="grid grid-cols-12 gap-y-10 md:gap-16">
             <motion.div {...reveal} className="col-span-12 md:col-span-5">
               <Index n="05" label="Built for Africa" onDark />
               <h2 className="display-lg text-white text-balance mt-6">

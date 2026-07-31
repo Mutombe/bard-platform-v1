@@ -91,7 +91,7 @@ export default function Careers() {
 
       {/* What you can expect — icon-row list + arched image (deck layout) */}
       <section className="section bg-milk border-t border-bone-200">
-        <div className="container-bank grid grid-cols-12 gap-10 md:gap-14 items-center">
+        <div className="container-bank grid grid-cols-12 gap-y-10 md:gap-14 items-center">
           <div className="col-span-12 md:col-span-6 lg:col-span-7">
             <p className="eyebrow eyebrow-accent mb-4">What you can expect</p>
             <h2 className="display-lg text-navy-600 text-balance mb-8 md:mb-10">

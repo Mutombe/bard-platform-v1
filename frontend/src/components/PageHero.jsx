@@ -174,8 +174,8 @@ function FullBleedHero({
           )}
           {(primaryCTA || secondaryCTA) && (
             <div className="mt-8 md:mt-10 flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-3">
-              <HeroCTA cta={primaryCTA} withArrow className="btn btn-primary w-full sm:w-auto justify-center" />
-              <HeroCTA cta={secondaryCTA} className="btn btn-ghost-dark w-full sm:w-auto justify-center" />
+              <HeroCTA cta={primaryCTA} withArrow className="btn btn-primary w-full sm:w-auto justify-center whitespace-normal text-center" />
+              <HeroCTA cta={secondaryCTA} className="btn btn-ghost-dark w-full sm:w-auto justify-center whitespace-normal text-center" />
             </div>
           )}
           {noteUnderCTA && (

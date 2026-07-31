@@ -47,12 +47,12 @@ export default function Solution() {
 
       {/* Intro — editorial split: side label + lead statement */}
       <section className="section bg-milk">
-        <div className="container-bank grid grid-cols-12 gap-8 md:gap-12 items-start">
+        <div className="container-bank grid grid-cols-12 gap-y-8 md:gap-12 items-start">
           <div className="col-span-12 md:col-span-4">
             <p className="eyebrow eyebrow-accent mb-4">{s.title}</p>
             <span className="block h-[3px] w-14 bg-orange-500 mb-8 md:mb-10" />
             {s.cta && (
-              <Link to={s.cta.to} className="btn btn-outline">
+              <Link to={s.cta.to} className="btn btn-outline w-full sm:w-auto justify-center whitespace-normal text-center">
                 {s.cta.label}
                 <ArrowRightIcon size={15} weight="bold" />
               </Link>
@@ -130,7 +130,7 @@ export default function Solution() {
       <section className="relative overflow-hidden bg-navy-900 text-white">
         <div className="absolute inset-0 pattern-lattice bg-white opacity-[0.05] pointer-events-none" />
         <div className="relative container-bank section">
-          <div className="grid grid-cols-12 gap-8 md:gap-12 items-end mb-10 md:mb-14">
+          <div className="grid grid-cols-12 gap-y-6 md:gap-12 items-end mb-10 md:mb-14">
             <div className="col-span-12 md:col-span-8">
               <p className="eyebrow eyebrow-on-dark mb-4">Getting started</p>
               <h2 className="display-lg text-white text-balance">
