@@ -30,10 +30,10 @@ const VALUES = [
 
 const STORY_FACTS = ["Founded 2022", "Diversified group to microfinance bank", "Digital-first"];
 
-// Bites a circular notch out of the card's bottom-right corner, so the
-// LinkedIn button nestles in a concave curve (deck founder-card design).
+// Bites a small circular scoop out of the card's bottom-right corner, so the
+// LinkedIn button hugs the corner in a tight concave curve (deck design).
 const NOTCH_MASK =
-  "radial-gradient(circle 31px at calc(100% - 30px) calc(100% - 30px), transparent 0 31px, #000 32px)";
+  "radial-gradient(circle 26px at calc(100% - 18px) calc(100% - 18px), transparent 25px, #000 26px)";
 
 export default function About() {
   return (
@@ -214,7 +214,7 @@ export default function About() {
                     style={{ backgroundImage: `url(${p.image})`, backgroundPosition: "center 12%" }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/25 to-transparent" />
-                  <div className="absolute inset-x-0 bottom-0 p-5 md:p-6 pr-16">
+                  <div className="absolute inset-x-0 bottom-0 p-5 md:p-6 pr-14">
                     <h3 className="font-display font-medium text-white text-[21px] md:text-[24px] leading-tight [text-shadow:0_1px_12px_rgba(0,0,0,0.5)]">
                       {p.name}
                     </h3>
@@ -223,16 +223,16 @@ export default function About() {
                     </p>
                   </div>
                 </div>
-                {/* LinkedIn button nestled in the notch */}
+                {/* LinkedIn button hugging the corner scoop */}
                 {p.linkedin && (
                   <a
                     href={p.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`${p.name} on LinkedIn`}
-                    className="absolute bottom-2 right-2 w-11 h-11 rounded-full bg-white text-navy-700 hover:bg-orange-500 hover:text-white flex items-center justify-center transition-colors"
+                    className="absolute -bottom-[2px] -right-[2px] w-10 h-10 rounded-full bg-white text-navy-700 hover:bg-orange-500 hover:text-white flex items-center justify-center transition-colors shadow-[0_3px_10px_rgba(12,10,20,0.18)]"
                   >
-                    <LinkedinLogoIcon size={20} weight="fill" />
+                    <LinkedinLogoIcon size={18} weight="fill" />
                   </a>
                 )}
               </motion.div>
