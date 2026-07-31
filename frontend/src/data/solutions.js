@@ -153,7 +153,7 @@ export const SOLUTIONS = [
         items: ["Wealth Planning", "Portfolio Reviews", "Long-Term Investment Planning"],
       },
     ],
-    cta: { label: "Speak to an Investment Adviser", to: "/contact" },
+    cta: { label: "Speak to an Adviser", to: "/contact" },
   },
 ];
 
