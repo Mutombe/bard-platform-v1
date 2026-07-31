@@ -132,25 +132,33 @@ export default function About() {
             </div>
           </div>
 
-          <div className="rounded-xl border border-bone-200 bg-smoke p-6 md:p-8">
-            <p className="eyebrow mb-5">Our Values</p>
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-5">
-              {VALUES.map((v, i) => (
+          <p className="eyebrow eyebrow-accent mb-5">Our Values</p>
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-5">
+            {VALUES.map((v, i) => {
+              const variant = i % 3; // 0 orange · 1 navy · 2 white
+              const shell =
+                variant === 0
+                  ? "bg-orange-500 text-white"
+                  : variant === 1
+                  ? "bg-navy-700 text-white"
+                  : "bg-white text-navy-700 border-2 border-bone-200";
+              const light = variant === 2;
+              return (
                 <motion.div
                   key={v}
-                  initial={{ opacity: 0, y: 14 }}
+                  initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-40px" }}
                   transition={{ duration: 0.45, delay: i * 0.06, ease: [0.16, 1, 0.3, 1] }}
-                  className="flex flex-col gap-2"
+                  className={`rounded-2xl p-6 md:p-7 min-h-[150px] md:min-h-[168px] flex flex-col justify-between ${shell}`}
                 >
-                  <span className="font-display text-navy-400 text-[15px]">
+                  <span className={`font-display font-bold text-[15px] tabular-nums ${light ? "text-orange-500" : "text-white/85"}`}>
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className="font-display text-navy-600 text-[18px] md:text-[20px]">{v}</span>
+                  <span className="font-display font-medium text-[20px] md:text-[23px] leading-tight">{v}</span>
                 </motion.div>
-              ))}
-            </div>
+              );
+            })}
           </div>
         </div>
       </section>

@@ -123,8 +123,73 @@ export default function Solution() {
         </div>
       </section>
 
+      {/* Getting started — numbered steps on a dark band (deck layout) */}
+      <section className="relative overflow-hidden bg-navy-900 text-white">
+        <div className="absolute inset-0 pattern-lattice bg-white opacity-[0.05] pointer-events-none" />
+        <div className="relative container-bank section">
+          <div className="grid grid-cols-12 gap-8 md:gap-12 items-end mb-10 md:mb-14">
+            <div className="col-span-12 md:col-span-8">
+              <p className="eyebrow eyebrow-on-dark mb-4">Getting started</p>
+              <h2 className="display-lg text-white text-balance">
+                Up and running in three steps.
+              </h2>
+            </div>
+            <div className="col-span-12 md:col-span-4 md:text-right">
+              <HeroStartCTA cta={s.cta} />
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
+            {STEPS.map((step, i) => (
+              <motion.div
+                key={step.title}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                className={`rounded-2xl p-7 md:p-8 flex flex-col min-h-[190px] ${
+                  i === 1 ? "bg-orange-500" : "bg-white/[0.06] border border-white/12"
+                }`}
+              >
+                <span className={`font-display font-bold text-[34px] leading-none tabular-nums mb-6 ${i === 1 ? "text-white" : "text-orange-400"}`}>
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="font-display font-medium text-white text-[20px] md:text-[22px] leading-tight mb-2.5">
+                  {step.title}
+                </h3>
+                <p className={`text-[14.5px] leading-relaxed ${i === 1 ? "text-white/90" : "text-white/70"}`}>
+                  {step.body}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <AdvisoryBand />
       <TrustRibbon />
     </PageTransition>
+  );
+}
+
+const STEPS = [
+  { title: "Start online", body: "Apply and share a few details from your phone or your desk. It takes minutes." },
+  { title: "We get to know you", body: "A quick, secure verification and a short conversation about what you need." },
+  { title: "Start banking", body: "Accounts, payments and a banker who stays, live and ready to use." },
+];
+
+function HeroStartCTA({ cta }) {
+  if (!cta) return null;
+  const isExternal = /^https?:\/\//.test(cta.to);
+  const cls = "inline-flex items-center gap-2.5 bg-white text-navy-700 hover:bg-white/90 px-6 py-3.5 rounded-full font-medium text-[15px] transition-colors";
+  return isExternal ? (
+    <a href={cta.to} target="_blank" rel="noopener noreferrer" className={cls}>
+      {cta.label}
+      <ArrowRightIcon size={15} weight="bold" />
+    </a>
+  ) : (
+    <Link to={cta.to} className={cls}>
+      {cta.label}
+      <ArrowRightIcon size={15} weight="bold" />
+    </Link>
   );
 }
