@@ -13,6 +13,13 @@ import { BRAND } from "../data/images.js";
  * the manifesto values with a "no open roles yet / send your CV" posture.
  */
 
+const EXPECT = [
+  { title: "Real ownership", body: "Small teams, big mandates. You own outcomes, not tickets." },
+  { title: "Room to grow", body: "Learn across the business and move as fast as you can deliver." },
+  { title: "Work that matters", body: "Build a bank that measurably enriches lives, not just products." },
+  { title: "A named seat", body: "You are accountable and visible here, never an anonymous cog." },
+];
+
 const VALUES = [
   { name: "Bold", body: "We challenge how banking has always been done. We would rather build the better way than defend the old one." },
   { name: "Insight", body: "We look beyond the headline. Better decisions come from understanding where a person or a business is actually going." },
@@ -69,6 +76,41 @@ export default function Careers() {
                   {v.name}
                 </h3>
                 <p className="text-[15px] text-bone-600 leading-relaxed">{v.body}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* What you can expect — dark feature band */}
+      <section className="relative overflow-hidden bg-navy-900 text-white">
+        <div className="absolute inset-0 pattern-lattice bg-white opacity-[0.05] pointer-events-none" />
+        <div className="relative container-bank section">
+          <p className="eyebrow eyebrow-on-dark mb-4">What you can expect</p>
+          <h2 className="display-lg text-white text-balance max-w-2xl mb-10 md:mb-14">
+            More than a job. A seat at the table.
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+            {EXPECT.map((e, i) => (
+              <motion.div
+                key={e.title}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: (i % 4) * 0.07, ease: [0.16, 1, 0.3, 1] }}
+                className={`rounded-2xl p-7 flex flex-col min-h-[210px] ${
+                  i === 1 ? "bg-orange-500" : "bg-white/[0.06] border border-white/12"
+                }`}
+              >
+                <span className={`font-display font-bold text-[30px] leading-none tabular-nums mb-6 ${i === 1 ? "text-white" : "text-orange-400"}`}>
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="font-display font-medium text-white text-[19px] md:text-[21px] leading-tight mb-2.5">
+                  {e.title}
+                </h3>
+                <p className={`text-[14px] leading-relaxed ${i === 1 ? "text-white/90" : "text-white/70"}`}>
+                  {e.body}
+                </p>
               </motion.div>
             ))}
           </div>
