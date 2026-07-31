@@ -4,16 +4,9 @@ import PageTransition from "../components/PageTransition.jsx";
 import PageHero from "../components/PageHero.jsx";
 import SEO, { breadcrumbJsonLd } from "../components/SEO.jsx";
 import { BRAND } from "../data/images.js";
-import { PhoneIcon, EnvelopeSimpleIcon, ChatCircleIcon, MapPinIcon, ArrowRightIcon, CheckCircleIcon, ArrowSquareOutIcon } from "@phosphor-icons/react";
+import { PhoneIcon, EnvelopeSimpleIcon, ChatCircleIcon, MapPinIcon, ArrowRightIcon, CheckCircleIcon, ArrowSquareOutIcon, ClockIcon } from "@phosphor-icons/react";
 import { AUDIENCES } from "../data/audiences.js";
 import { StackedAside } from "../components/PageHeroAsides.jsx";
-
-const CHANNELS = [
-  { icon: PhoneIcon, title: "Telephone", lines: ["+263 861 200 0700", "Mon-Fri, 08:00-17:00 CAT"], href: "tel:+263861200700" },
-  { icon: EnvelopeSimpleIcon, title: "Email", lines: ["info@bardsantner.com", "Response within one business day"], href: "mailto:info@bardsantner.com" },
-  { icon: ChatCircleIcon, title: "WhatsApp", lines: ["+263 774 954 415", "For existing customers"], href: "https://wa.me/263774954415" },
-  { icon: MapPinIcon, title: "Visit a branch", lines: ["5th Floor Beverly Court", "100 Nelson Mandela Avenue, Harare"], href: "/locations" },
-];
 
 export default function Contact() {
   const [params] = useSearchParams();
@@ -60,37 +53,75 @@ export default function Contact() {
       {/* Channels grid */}
       <section className="bg-milk section">
         <div className="container-bank">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 md:gap-5 mb-12 md:mb-16">
-            {CHANNELS.map((c) => {
-              const Icon = c.icon;
-              const external = /^https?:\/\//.test(c.href);
-              return (
-                <a
-                  key={c.title}
-                  href={c.href}
-                  {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                  className="relative block p-5 md:p-9 rounded-xl border border-bone-200 hover:border-orange-500 hover:shadow-[var(--shadow-card)] transition-all"
-                >
-                  {external && (
-                    <ArrowSquareOutIcon
-                      size={15}
-                      weight="bold"
-                      className="absolute top-4 right-4 text-bone-400"
-                      aria-label="opens in a new tab"
-                    />
-                  )}
-                  <div className="w-11 h-11 rounded-lg bg-orange-50 flex items-center justify-center mb-4 md:mb-5">
-                    <Icon size={20} weight="regular" className="text-orange-600" />
-                  </div>
-                  <p className="font-display text-[17px] md:text-[18px] text-navy-600 mb-2">{c.title}</p>
-                  {c.lines.map((l, i) => (
-                    <p key={i} className={`text-[13px] md:text-[13.5px] ${i === 0 ? "text-navy-600 font-medium" : "text-bone-500"} leading-relaxed break-words`}>
-                      {l}
-                    </p>
-                  ))}
-                </a>
-              );
-            })}
+          {/* Channels — asymmetric bento (deck "table of content" layout) */}
+          <div className="grid grid-cols-1 md:grid-cols-12 md:auto-rows-fr gap-4 md:gap-5 mb-14 md:mb-20">
+            {/* Big — visit us, arched image */}
+            <a
+              href="/locations"
+              className="group md:col-span-6 md:row-span-2 relative rounded-2xl overflow-hidden min-h-[300px] md:min-h-[360px]"
+            >
+              <div
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                style={{ backgroundImage: `url(${BRAND.branchInterior})`, filter: "saturate(1.05) contrast(1.02)" }}
+              />
+              <div className="absolute inset-0" style={{ background: "linear-gradient(155deg, rgba(14,9,3,0.3) 0%, rgba(14,9,3,0.86) 100%)" }} />
+              <div className="absolute top-0 left-0 right-0 h-[2px] bg-orange-500" />
+              <div className="relative h-full p-7 md:p-9 flex flex-col justify-between">
+                <span className="w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center">
+                  <MapPinIcon size={22} weight="regular" className="text-white" />
+                </span>
+                <div>
+                  <p className="eyebrow eyebrow-on-dark mb-2">Visit us</p>
+                  <h3 className="font-display text-white text-[24px] md:text-[28px] leading-tight mb-2">
+                    Harare flagship branch
+                  </h3>
+                  <p className="text-white/80 text-[14.5px] leading-relaxed max-w-xs">
+                    5th Floor Beverly Court, 100 Nelson Mandela Avenue
+                  </p>
+                </div>
+              </div>
+            </a>
+
+            {/* Telephone — orange */}
+            <a href="tel:+263861200700" className="group md:col-span-3 rounded-2xl bg-orange-500 text-white p-6 md:p-7 flex flex-col justify-between min-h-[168px]">
+              <PhoneIcon size={26} weight="regular" className="text-white" />
+              <div>
+                <p className="font-display text-white text-[18px] md:text-[19px] mb-1.5">Telephone</p>
+                <p className="text-[14px] font-medium text-white/95">+263 861 200 0700</p>
+                <p className="text-[12.5px] text-white/75 mt-0.5">Mon–Fri, 08:00–17:00 CAT</p>
+              </div>
+            </a>
+
+            {/* WhatsApp — navy, external */}
+            <a href="https://wa.me/263774954415" target="_blank" rel="noopener noreferrer" className="group relative md:col-span-3 rounded-2xl bg-navy-700 text-white p-6 md:p-7 flex flex-col justify-between min-h-[168px]">
+              <ArrowSquareOutIcon size={15} weight="bold" className="absolute top-5 right-5 text-white/50" aria-label="opens in a new tab" />
+              <ChatCircleIcon size={26} weight="regular" className="text-white" />
+              <div>
+                <p className="font-display text-white text-[18px] md:text-[19px] mb-1.5">WhatsApp</p>
+                <p className="text-[14px] font-medium text-white/95">+263 774 954 415</p>
+                <p className="text-[12.5px] text-white/70 mt-0.5">For existing customers</p>
+              </div>
+            </a>
+
+            {/* Email — white */}
+            <a href="mailto:info@bardsantner.com" className="group md:col-span-3 rounded-2xl bg-white border-2 border-bone-200 hover:border-orange-500 p-6 md:p-7 flex flex-col justify-between min-h-[168px] transition-colors">
+              <EnvelopeSimpleIcon size={26} weight="regular" className="text-orange-600" />
+              <div>
+                <p className="font-display text-[18px] md:text-[19px] text-navy-600 mb-1.5">Email</p>
+                <p className="text-[14px] font-medium text-navy-600 break-words">info@bardsantner.com</p>
+                <p className="text-[12.5px] text-bone-500 mt-0.5">Reply within one business day</p>
+              </div>
+            </a>
+
+            {/* Hours — white */}
+            <div className="md:col-span-3 rounded-2xl bg-white border-2 border-bone-200 p-6 md:p-7 flex flex-col justify-between min-h-[168px]">
+              <ClockIcon size={26} weight="regular" className="text-orange-600" />
+              <div>
+                <p className="font-display text-[18px] md:text-[19px] text-navy-600 mb-1.5">Office hours</p>
+                <p className="text-[14px] font-medium text-navy-600">Mon–Fri, 08:00–17:00</p>
+                <p className="text-[12.5px] text-bone-500 mt-0.5">Central Africa Time</p>
+              </div>
+            </div>
           </div>
 
           {/* Request a banker — different layouts mobile vs desktop.
