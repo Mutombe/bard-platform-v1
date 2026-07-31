@@ -251,6 +251,8 @@ export const BRAND = {
   boardroom:     "/images/companies-boardroom.jpg", // exec presenting to a team
   careersTeam:   "/images/careers-team.jpg",    // diverse team in a modern office
   africaLandscape: "/images/about-africa.jpg",  // Kilimanjaro, acacia and giraffe
+  aboutStory:    "/images/about-story.jpg",      // savanna — rooted in Africa
+  careersSide:   "/images/careers-side.jpg",     // young professional at a laptop
 };
 
 export const HERO_VIDEO = "/images/hero-future.mp4"; // father + child, "the future"

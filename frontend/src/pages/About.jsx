@@ -21,7 +21,15 @@ const STORY = [
   "Whether you're opening your first account, growing a business, financing a new opportunity or moving money across borders, banking should help you move forward, not hold you back.",
 ];
 
-const VALUES = ["Bold", "Insight", "Execution", "Responsibility", "Impact"];
+const VALUES = [
+  { name: "Bold", body: "We build the better way rather than defend the old one." },
+  { name: "Insight", body: "We look beyond the headline to where you are actually going." },
+  { name: "Execution", body: "Ideas are cheap; we ship what we promise, on the day." },
+  { name: "Responsibility", body: "We hold customer money as customer money, and we name who is accountable." },
+  { name: "Impact", body: "We measure ourselves by lives enriched, not products sold." },
+];
+
+const STORY_FACTS = ["Founded 2022", "Diversified group to microfinance bank", "Digital-first"];
 
 export default function About() {
   return (
@@ -47,17 +55,43 @@ export default function About() {
         overlayTint="navy"
       />
 
-      {/* ── Our Story ─────────────────────────────────────────────── */}
+      {/* ── Our Story — arched image + facts split (deck case-study layout) ── */}
       <section id="our-story" className="section bg-milk scroll-mt-28">
-        <div className="container-bank">
-          <div className="grid grid-cols-12 gap-8 md:gap-12">
-            <div className="col-span-12 md:col-span-4">
-              <p className="eyebrow eyebrow-accent mb-4">Our Story</p>
-              <h2 className="display-lg text-navy-600 text-balance">
-                We started with one belief: banking should help people move forward.
-              </h2>
+        <div className="container-bank grid grid-cols-12 gap-10 md:gap-14 items-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.97 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="col-span-12 md:col-span-5 relative"
+          >
+            <div className="relative aspect-[4/5] rounded-[6rem_2rem_2rem_2rem] overflow-hidden shadow-[var(--shadow-hero)]">
+              <div
+                className="absolute inset-0 bg-cover bg-center"
+                style={{ backgroundImage: `url(${BRAND.aboutStory})`, filter: "saturate(1.05) contrast(1.03)" }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/45 via-transparent to-transparent" />
             </div>
-            <div className="col-span-12 md:col-span-8 max-w-2xl space-y-5 text-[16px] md:text-[18px] text-bone-600 leading-relaxed">
+            {/* Floating stat badge — deck signature */}
+            <div className="absolute -bottom-5 -right-2 md:-right-5 bg-orange-500 text-white rounded-2xl px-6 py-4 shadow-[var(--shadow-hero)]">
+              <p className="font-display font-bold text-white text-[30px] leading-none">2022</p>
+              <p className="text-[11px] tracking-[0.16em] uppercase text-white/85 mt-1">Founded</p>
+            </div>
+          </motion.div>
+
+          <div className="col-span-12 md:col-span-7">
+            <p className="eyebrow eyebrow-accent mb-4">Our Story</p>
+            <h2 className="display-lg text-navy-600 text-balance mb-6">
+              We started with one belief: banking should help people move forward.
+            </h2>
+            <div className="flex flex-wrap gap-2.5 mb-7">
+              {STORY_FACTS.map((f) => (
+                <span key={f} className="inline-flex items-center rounded-full border-2 border-bone-300 bg-white px-4 py-2 text-[13px] font-semibold text-navy-700">
+                  {f}
+                </span>
+              ))}
+            </div>
+            <div className="space-y-5 text-[16px] md:text-[18px] text-bone-600 leading-relaxed max-w-2xl">
               <p className="font-display text-navy-600 text-[20px] md:text-[24px] leading-snug">
                 And from a diversified financial institution, we have evolved into a
                 microfinance bank.
@@ -132,33 +166,28 @@ export default function About() {
             </div>
           </div>
 
-          <p className="eyebrow eyebrow-accent mb-5">Our Values</p>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-5">
-            {VALUES.map((v, i) => {
-              const variant = i % 3; // 0 orange · 1 navy · 2 white
-              const shell =
-                variant === 0
-                  ? "bg-orange-500 text-white"
-                  : variant === 1
-                  ? "bg-navy-700 text-white"
-                  : "bg-white text-navy-700 border-2 border-bone-200";
-              const light = variant === 2;
-              return (
-                <motion.div
-                  key={v}
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-40px" }}
-                  transition={{ duration: 0.45, delay: i * 0.06, ease: [0.16, 1, 0.3, 1] }}
-                  className={`rounded-2xl p-6 md:p-7 min-h-[150px] md:min-h-[168px] flex flex-col justify-between ${shell}`}
-                >
-                  <span className={`font-display font-bold text-[15px] tabular-nums ${light ? "text-orange-500" : "text-white/85"}`}>
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span className="font-display font-medium text-[20px] md:text-[23px] leading-tight">{v}</span>
-                </motion.div>
-              );
-            })}
+          <p className="eyebrow eyebrow-accent mb-2">Our Values</p>
+          <div className="border-t border-bone-200">
+            {VALUES.map((v, i) => (
+              <motion.div
+                key={v.name}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.45, delay: (i % 5) * 0.05, ease: [0.16, 1, 0.3, 1] }}
+                className="group grid grid-cols-12 gap-4 md:gap-6 items-baseline py-6 md:py-7 border-b border-bone-200 hover:bg-bone-50/60 transition-colors"
+              >
+                <span className="col-span-2 md:col-span-1 font-display font-bold text-orange-500 text-[19px] md:text-[22px] tabular-nums">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="col-span-10 md:col-span-3 font-display font-medium text-navy-600 text-[24px] md:text-[30px] leading-none">
+                  {v.name}
+                </h3>
+                <p className="col-span-12 md:col-span-8 text-bone-600 text-[15px] md:text-[17px] leading-relaxed">
+                  {v.body}
+                </p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>

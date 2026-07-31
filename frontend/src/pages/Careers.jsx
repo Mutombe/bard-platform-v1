@@ -1,6 +1,14 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRightIcon, EnvelopeSimpleIcon } from "@phosphor-icons/react";
+import {
+  ArrowRightIcon,
+  ArrowUpRightIcon,
+  EnvelopeSimpleIcon,
+  HandshakeIcon,
+  TrendUpIcon,
+  TargetIcon,
+  IdentificationBadgeIcon,
+} from "@phosphor-icons/react";
 
 import PageTransition from "../components/PageTransition.jsx";
 import PageHero from "../components/PageHero.jsx";
@@ -14,10 +22,10 @@ import { BRAND } from "../data/images.js";
  */
 
 const EXPECT = [
-  { title: "Real ownership", body: "Small teams, big mandates. You own outcomes, not tickets." },
-  { title: "Room to grow", body: "Learn across the business and move as fast as you can deliver." },
-  { title: "Work that matters", body: "Build a bank that measurably enriches lives, not just products." },
-  { title: "A named seat", body: "You are accountable and visible here, never an anonymous cog." },
+  { title: "Real ownership", body: "Small teams, big mandates. You own outcomes, not tickets.", Icon: HandshakeIcon },
+  { title: "Room to grow", body: "Learn across the business and move as fast as you can deliver.", Icon: TrendUpIcon },
+  { title: "Work that matters", body: "Build a bank that measurably enriches lives, not just products.", Icon: TargetIcon },
+  { title: "A named seat", body: "You are accountable and visible here, never an anonymous cog.", Icon: IdentificationBadgeIcon },
 ];
 
 const VALUES = [
@@ -82,37 +90,55 @@ export default function Careers() {
         </div>
       </section>
 
-      {/* What you can expect — dark feature band */}
-      <section className="relative overflow-hidden bg-navy-900 text-white">
-        <div className="absolute inset-0 pattern-lattice bg-white opacity-[0.05] pointer-events-none" />
-        <div className="relative container-bank section">
-          <p className="eyebrow eyebrow-on-dark mb-4">What you can expect</p>
-          <h2 className="display-lg text-white text-balance max-w-2xl mb-10 md:mb-14">
-            More than a job. A seat at the table.
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
-            {EXPECT.map((e, i) => (
-              <motion.div
-                key={e.title}
-                initial={{ opacity: 0, y: 18 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: (i % 4) * 0.07, ease: [0.16, 1, 0.3, 1] }}
-                className={`rounded-2xl p-7 flex flex-col min-h-[210px] ${
-                  i === 1 ? "bg-orange-500" : "bg-white/[0.06] border border-white/12"
-                }`}
-              >
-                <span className={`font-display font-bold text-[30px] leading-none tabular-nums mb-6 ${i === 1 ? "text-white" : "text-orange-400"}`}>
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <h3 className="font-display font-medium text-white text-[19px] md:text-[21px] leading-tight mb-2.5">
-                  {e.title}
-                </h3>
-                <p className={`text-[14px] leading-relaxed ${i === 1 ? "text-white/90" : "text-white/70"}`}>
-                  {e.body}
-                </p>
-              </motion.div>
-            ))}
+      {/* What you can expect — icon-row list + arched image (deck layout) */}
+      <section className="section bg-milk border-t border-bone-200">
+        <div className="container-bank grid grid-cols-12 gap-10 md:gap-14 items-center">
+          <div className="col-span-12 md:col-span-6 lg:col-span-7">
+            <p className="eyebrow eyebrow-accent mb-4">What you can expect</p>
+            <h2 className="display-lg text-navy-600 text-balance mb-8 md:mb-10">
+              More than a job. A seat at the table.
+            </h2>
+            <ul className="border-t border-bone-200">
+              {EXPECT.map((e) => (
+                <motion.li
+                  key={e.title}
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                  className="group flex items-center gap-5 py-5 border-b border-bone-200"
+                >
+                  <span className="w-12 h-12 rounded-full bg-navy-50 flex items-center justify-center shrink-0">
+                    <e.Icon size={22} weight="regular" className="text-navy-600" />
+                  </span>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-display text-navy-600 text-[18px] md:text-[20px] leading-tight">{e.title}</h3>
+                    <p className="text-[14px] text-bone-600 leading-snug mt-1">{e.body}</p>
+                  </div>
+                  <span className="w-9 h-9 rounded-full border-2 border-bone-300 group-hover:border-orange-500 flex items-center justify-center shrink-0 transition-colors">
+                    <ArrowUpRightIcon size={15} weight="bold" className="text-navy-500 group-hover:text-orange-500 transition-colors" />
+                  </span>
+                </motion.li>
+              ))}
+            </ul>
+          </div>
+          <div className="col-span-12 md:col-span-6 lg:col-span-5">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.97 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              className="relative aspect-[4/5] rounded-[2rem_2rem_2rem_6rem] overflow-hidden shadow-[var(--shadow-hero)]"
+            >
+              <div
+                className="absolute inset-0 bg-cover bg-center"
+                style={{ backgroundImage: `url(${BRAND.careersSide})`, filter: "saturate(1.02) contrast(1.02)" }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/55 via-transparent to-transparent" />
+              <span className="absolute bottom-5 right-5 w-12 h-12 rounded-full bg-orange-500 flex items-center justify-center">
+                <ArrowUpRightIcon size={20} weight="bold" className="text-white" />
+              </span>
+            </motion.div>
           </div>
         </div>
       </section>
