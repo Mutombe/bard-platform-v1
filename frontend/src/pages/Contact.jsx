@@ -57,7 +57,9 @@ export default function Contact() {
           <div className="grid grid-cols-1 md:grid-cols-12 md:auto-rows-fr gap-4 md:gap-5 mb-14 md:mb-20">
             {/* Big — visit us, arched image */}
             <a
-              href="/locations"
+              href="https://www.google.com/maps/search/?api=1&query=100+Nelson+Mandela+Avenue+Harare"
+              target="_blank"
+              rel="noopener noreferrer"
               className="group md:col-span-6 md:row-span-2 relative rounded-2xl overflow-hidden min-h-[300px] md:min-h-[360px]"
             >
               <div

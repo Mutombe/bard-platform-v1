@@ -5,6 +5,7 @@ import {
   ScalesIcon,
   ArrowUpRightIcon,
 } from "@phosphor-icons/react";
+import { Link } from "react-router-dom";
 import { BRAND } from "../data/images.js";
 
 /**
@@ -22,24 +23,28 @@ const TRUST_PILLARS = [
     title: "Regulated",
     body: "Licensed by the prudential authority and supervised to international banking standards.",
     tint: "orange",
+    to: "/regulatory",
   },
   {
     icon: ShieldCheckIcon,
     title: "Deposits protected",
     body: "Deposits held under the Deposit Protection framework. Coverage limits and terms apply.",
     tint: "navy",
+    to: "/security",
   },
   {
     icon: LockKeyIcon,
     title: "Security first",
     body: "End-to-end encryption. Biometric, device-bound and adaptive authentication on every channel.",
     tint: "navy",
+    to: "/security",
   },
   {
     icon: ScalesIcon,
     title: "AML compliant",
     body: "Due diligence, transaction monitoring and reporting to international AML / CFT standards.",
     tint: "orange",
+    to: "/regulatory",
   },
 ];
 
@@ -96,13 +101,14 @@ export default function TrustRibbon() {
               const isOrange = p.tint === "orange";
               const cardBg = isOrange ? "bg-orange-500" : "bg-navy-700";
               return (
-                <div
+                <Link
                   key={p.title}
-                  className={`${cardBg} text-white rounded-2xl p-6 md:p-7 flex flex-col`}
+                  to={p.to}
+                  className={`group ${cardBg} text-white rounded-2xl p-6 md:p-7 flex flex-col hover:-translate-y-1 transition-transform`}
                 >
                   <div className="flex items-start justify-between mb-6">
                     <Icon size={30} weight="regular" className="text-white" />
-                    <span className="w-9 h-9 rounded-full border-2 border-white/45 flex items-center justify-center shrink-0">
+                    <span className="w-9 h-9 rounded-full border-2 border-white/45 group-hover:border-white group-hover:bg-white/10 flex items-center justify-center shrink-0 transition-colors">
                       <ArrowUpRightIcon size={15} weight="bold" className="text-white" />
                     </span>
                   </div>
@@ -112,7 +118,7 @@ export default function TrustRibbon() {
                   <p className="text-[13.5px] md:text-[14px] text-white/85 leading-relaxed">
                     {p.body}
                   </p>
-                </div>
+                </Link>
               );
             })}
           </div>

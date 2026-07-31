@@ -8,6 +8,7 @@ import ScrollToTop from "./components/ScrollToTop.jsx";
 
 import Home from "./pages/Home.jsx";
 import Solution from "./pages/Solution.jsx";
+import SolutionDetail from "./pages/SolutionDetail.jsx";
 import WhoWeServe from "./pages/WhoWeServe.jsx";
 import About from "./pages/About.jsx";
 import Careers from "./pages/Careers.jsx";
@@ -73,6 +74,7 @@ export default function App() {
 
               {/* Nav dropdown destinations */}
               <Route path="/solutions/:slug" element={<Solution />} />
+              <Route path="/solutions/:slug/:capability" element={<SolutionDetail />} />
               <Route path="/who-we-serve/:slug" element={<WhoWeServe />} />
               <Route path="/about" element={<About />} />
               <Route path="/careers" element={<Careers />} />

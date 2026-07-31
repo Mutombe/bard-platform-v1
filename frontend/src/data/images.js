@@ -253,6 +253,7 @@ export const BRAND = {
   africaLandscape: "/images/about-africa.jpg",  // Kilimanjaro, acacia and giraffe
   aboutStory:    "/images/about-story.jpg",      // savanna — rooted in Africa
   careersSide:   "/images/careers-side.jpg",     // young professional at a laptop
+  manifesto:     "/images/manifesto.jpg",         // hands cupping a seedling — growth
 };
 
 export const HERO_VIDEO = "/images/hero-future.mp4"; // father + child, "the future"

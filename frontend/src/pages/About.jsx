@@ -105,39 +105,50 @@ export default function About() {
       </section>
 
       {/* ── Our Manifesto ─────────────────────────────────────────── */}
-      <section id="manifesto" className="section bg-navy-700 text-white scroll-mt-28 relative overflow-hidden">
-        <div className="absolute top-0 left-0 right-0 h-[2px] bg-orange-500" />
+      {/* Our Manifesto — big rounded picture-filled band with text on top */}
+      <section id="manifesto" className="section bg-milk scroll-mt-28">
         <div className="container-bank">
-          <div className="max-w-3xl">
-            <p className="eyebrow eyebrow-on-dark mb-4">Our Manifesto</p>
-            <h2 className="display-lg text-white text-balance mb-8">
-              Every institution has a history. Ours has a conviction.
-            </h2>
-            <div className="space-y-5 text-[16px] md:text-[18px] leading-relaxed">
-              <p className="text-white/80">
-                Bard Santner was founded in 2022 because we believed financial services
-                could be better. As we evolved from a diversified financial institution into
-                a digital-first microfinance bank, one thing never changed: our purpose.
-              </p>
-              <p className="text-white/80">
-                We exist to challenge the way banking has always been done, and to build
-                something that works better for the people and businesses we serve.
-              </p>
-              <p className="text-white/80">
-                Our manifesto is more than words on a page. It is the standard we hold
-                ourselves to. It shapes every product we build, every decision we make and
-                every relationship we form, because we believe banking should create
-                opportunity, build confidence and enrich lives.
-              </p>
-              <p className="text-white font-medium">This is what we stand for.</p>
+          <div className="relative overflow-hidden rounded-[1.75rem] md:rounded-[2.5rem] shadow-[var(--shadow-hero)]">
+            <div
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: `url(${BRAND.manifesto})`, filter: "saturate(1.05) brightness(0.55)" }}
+            />
+            <div
+              className="absolute inset-0"
+              style={{ background: "linear-gradient(120deg, rgba(14,9,3,0.94) 0%, rgba(14,9,3,0.74) 52%, rgba(24,16,46,0.62) 100%)" }}
+            />
+            <div className="absolute top-0 left-0 right-0 h-[3px] bg-orange-500" />
+            <div className="relative p-8 sm:p-12 md:p-16 lg:p-20 max-w-3xl">
+              <p className="eyebrow eyebrow-on-dark mb-4">Our Manifesto</p>
+              <h2 className="display-lg text-white text-balance mb-8 [text-shadow:0_2px_24px_rgba(0,0,0,0.5)]">
+                Every institution has a history. Ours has a conviction.
+              </h2>
+              <div className="space-y-5 text-[16px] md:text-[18px] leading-relaxed">
+                <p className="text-white/85">
+                  Bard Santner was founded in 2022 because we believed financial services
+                  could be better. As we evolved from a diversified financial institution into
+                  a digital-first microfinance bank, one thing never changed: our purpose.
+                </p>
+                <p className="text-white/85">
+                  We exist to challenge the way banking has always been done, and to build
+                  something that works better for the people and businesses we serve.
+                </p>
+                <p className="text-white/85">
+                  Our manifesto is more than words on a page. It is the standard we hold
+                  ourselves to. It shapes every product we build, every decision we make and
+                  every relationship we form, because we believe banking should create
+                  opportunity, build confidence and enrich lives.
+                </p>
+                <p className="text-white font-medium">This is what we stand for.</p>
+              </div>
+              <a
+                href="#manifesto"
+                className="mt-9 inline-flex items-center gap-2.5 bg-white text-navy-700 hover:bg-white/90 px-6 py-3.5 rounded-full font-medium text-[15px] transition-colors"
+              >
+                <DownloadSimpleIcon size={16} weight="bold" />
+                Download our manifesto
+              </a>
             </div>
-            <a
-              href="#manifesto"
-              className="mt-8 inline-flex items-center gap-2.5 bg-milk text-navy-700 hover:bg-paper px-6 py-3.5 rounded-full font-medium text-[15px] transition-colors"
-            >
-              <DownloadSimpleIcon size={16} weight="bold" />
-              Download our manifesto
-            </a>
           </div>
         </div>
       </section>
