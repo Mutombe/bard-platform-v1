@@ -5,7 +5,6 @@ import { ArrowRightIcon, ArrowUpRightIcon } from "@phosphor-icons/react";
 import PageTransition from "../components/PageTransition.jsx";
 import PageHero from "../components/PageHero.jsx";
 import AdvisoryBand from "../components/AdvisoryBand.jsx";
-import TrustRibbon from "../components/TrustRibbon.jsx";
 import SEO, { breadcrumbJsonLd } from "../components/SEO.jsx";
 import NotFound from "./NotFound.jsx";
 
@@ -126,7 +125,7 @@ export default function WhoWeServe() {
       <section className="relative overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${seg.image})`, filter: "saturate(1.05) brightness(0.5) sepia(0.15)" }}
+          style={{ backgroundImage: `url(${seg.image2 || seg.image})`, filter: "saturate(1.05) brightness(0.5) sepia(0.15)" }}
         />
         <div
           className="absolute inset-0"
@@ -144,7 +143,6 @@ export default function WhoWeServe() {
       </section>
 
       <AdvisoryBand />
-      <TrustRibbon />
     </PageTransition>
   );
 }

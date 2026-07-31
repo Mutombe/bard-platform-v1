@@ -1,10 +1,9 @@
 import { motion } from "framer-motion";
-import { DownloadSimpleIcon } from "@phosphor-icons/react";
+import { DownloadSimpleIcon, LinkedinLogoIcon } from "@phosphor-icons/react";
 
 import PageTransition from "../components/PageTransition.jsx";
 import PageHero from "../components/PageHero.jsx";
 import AdvisoryBand from "../components/AdvisoryBand.jsx";
-import TrustRibbon from "../components/TrustRibbon.jsx";
 import SEO, { breadcrumbJsonLd } from "../components/SEO.jsx";
 import { BRAND } from "../data/images.js";
 import { LEADERSHIP } from "../data/leadership.js";
@@ -212,26 +211,41 @@ export default function About() {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
             {LEADERSHIP.map((p, i) => (
-              <motion.article
+              <motion.div
                 key={p.slug}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: (i % 3) * 0.06, ease: [0.16, 1, 0.3, 1] }}
-                className="bank-card flex flex-col h-full"
+                className="group relative rounded-2xl overflow-hidden aspect-[4/5] shadow-[var(--shadow-card)]"
               >
                 <div
-                  className="aspect-[4/5] bg-cover bg-center bg-bone-200"
-                  style={{ backgroundImage: `url(${p.image})`, filter: "var(--img-grade)" }}
+                  className="absolute inset-0 bg-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                  style={{ backgroundImage: `url(${p.image})`, backgroundPosition: "center 12%" }}
                 />
-                <div className="bank-card-body flex flex-col flex-1">
-                  <h3 className="font-display text-navy-600 text-[20px] md:text-[22px] leading-tight">
-                    {p.name}
-                  </h3>
-                  <p className="eyebrow eyebrow-accent mt-2 mb-3">{p.role}</p>
-                  <p className="text-[14.5px] text-bone-600 leading-relaxed">{p.bio}</p>
+                <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/25 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-5 md:p-6 flex items-end justify-between gap-3">
+                  <div className="min-w-0">
+                    <h3 className="font-display font-medium text-white text-[21px] md:text-[24px] leading-tight [text-shadow:0_1px_12px_rgba(0,0,0,0.5)]">
+                      {p.name}
+                    </h3>
+                    <p className="text-[12.5px] tracking-[0.14em] uppercase text-white/75 mt-1.5">
+                      {p.role}
+                    </p>
+                  </div>
+                  {p.linkedin && (
+                    <a
+                      href={p.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${p.name} on LinkedIn`}
+                      className="w-11 h-11 rounded-full bg-white text-navy-700 hover:bg-orange-500 hover:text-white flex items-center justify-center shrink-0 transition-colors shadow-[0_4px_14px_rgba(0,0,0,0.25)]"
+                    >
+                      <LinkedinLogoIcon size={20} weight="fill" />
+                    </a>
+                  )}
                 </div>
-              </motion.article>
+              </motion.div>
             ))}
           </div>
           <p className="mt-8 text-[14px] text-bone-500 max-w-2xl">
@@ -242,7 +256,6 @@ export default function About() {
       </section>
 
       <AdvisoryBand />
-      <TrustRibbon />
     </PageTransition>
   );
 }

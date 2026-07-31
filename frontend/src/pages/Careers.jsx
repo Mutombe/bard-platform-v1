@@ -12,7 +12,6 @@ import {
 
 import PageTransition from "../components/PageTransition.jsx";
 import PageHero from "../components/PageHero.jsx";
-import TrustRibbon from "../components/TrustRibbon.jsx";
 import SEO, { breadcrumbJsonLd } from "../components/SEO.jsx";
 import { BRAND } from "../data/images.js";
 
@@ -166,8 +165,6 @@ export default function Careers() {
           </div>
         </div>
       </section>
-
-      <TrustRibbon />
     </PageTransition>
   );
 }

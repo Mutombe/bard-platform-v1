@@ -12,6 +12,7 @@ export const LEADERSHIP = [
     bio:
       "Senziwani leads Bard Santner Markets Inc and the establishment of Bard Santner Microfinance Bank. A capital markets professional by training, his work centres on building African financial institutions to international standards without losing what is African about them.",
     image: "/images/exec-sikhosana.jpg",
+    linkedin: "https://www.linkedin.com/in/senziwani-sikhosana",
   },
   {
     slug: "tatenda-hungwe",
@@ -21,6 +22,7 @@ export const LEADERSHIP = [
     bio:
       "Tatenda leads the group's market development, brand and the diaspora banking proposition. His remit is the connective tissue between the bank and the people it banks.",
     image: "/images/exec-tatenda.jpg",
+    linkedin: "https://www.linkedin.com/in/tatenda-hungwe",
   },
   {
     slug: "lucia-chingwaru-mutsunge",
@@ -30,6 +32,7 @@ export const LEADERSHIP = [
     bio:
       "Lucia oversees operational excellence, client relations and risk. She brings a rigorous analytical approach to how the bank is run day to day, so that discipline behind the scenes shows up as reliability for the customer.",
     image: "/images/exec-lucia.jpg",
+    linkedin: "https://www.linkedin.com/in/lucia-chingwaru-mutsunge",
   },
 ];
 

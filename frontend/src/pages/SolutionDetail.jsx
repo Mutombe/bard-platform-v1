@@ -5,7 +5,6 @@ import { CheckCircleIcon, ArrowUpRightIcon, ArrowLeftIcon } from "@phosphor-icon
 import PageTransition from "../components/PageTransition.jsx";
 import PageHero from "../components/PageHero.jsx";
 import AdvisoryBand from "../components/AdvisoryBand.jsx";
-import TrustRibbon from "../components/TrustRibbon.jsx";
 import SEO, { breadcrumbJsonLd } from "../components/SEO.jsx";
 import NotFound from "./NotFound.jsx";
 
@@ -128,7 +127,6 @@ export default function SolutionDetail() {
       </section>
 
       <AdvisoryBand />
-      <TrustRibbon />
     </PageTransition>
   );
 }
