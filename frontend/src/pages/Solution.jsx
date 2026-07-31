@@ -9,7 +9,7 @@ import TrustRibbon from "../components/TrustRibbon.jsx";
 import SEO, { breadcrumbJsonLd } from "../components/SEO.jsx";
 import NotFound from "./NotFound.jsx";
 
-import { findSolution } from "../data/solutions.js";
+import { findSolution, blockSlug } from "../data/solutions.js";
 
 /**
  * /solutions/:slug — a client-outcome solutions page (For Companies and
@@ -91,32 +91,36 @@ export default function Solution() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.55, delay: (i % 2) * 0.06, ease: [0.16, 1, 0.3, 1] }}
-                className="group bank-card bank-card-body lg:!p-10 flex flex-col"
               >
-                <div className="flex items-center justify-between mb-5">
-                  <span className="font-display font-bold text-orange-500 text-[34px] leading-none tabular-nums">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span className="w-10 h-10 rounded-full border-2 border-bone-300 group-hover:border-orange-500 flex items-center justify-center transition-colors">
-                    <ArrowUpRightIcon size={16} weight="bold" className="text-navy-500 group-hover:text-orange-500 transition-colors" />
-                  </span>
-                </div>
-                <h3 className="font-display text-navy-600 text-[22px] md:text-[24px] font-medium leading-tight mb-4">
-                  {b.heading}
-                </h3>
-                <p className="text-bone-600 text-[15px] md:text-[16px] leading-relaxed mb-7">
-                  {b.body}
-                </p>
-                <div className="mt-auto flex flex-wrap gap-2.5">
-                  {b.items.map((it) => (
-                    <span
-                      key={it}
-                      className="inline-flex items-center rounded-full border-2 border-bone-300 bg-white px-4 py-2 text-[13.5px] font-medium text-navy-700"
-                    >
-                      {it}
+                <Link
+                  to={`/solutions/${s.slug}/${blockSlug(b.heading)}`}
+                  className="group bank-card bank-card-body lg:!p-10 h-full flex flex-col hover:-translate-y-1 transition-transform"
+                >
+                  <div className="flex items-center justify-between mb-5">
+                    <span className="font-display font-bold text-orange-500 text-[34px] leading-none tabular-nums">
+                      {String(i + 1).padStart(2, "0")}
                     </span>
-                  ))}
-                </div>
+                    <span className="w-10 h-10 rounded-full border-2 border-bone-300 group-hover:border-orange-500 group-hover:bg-orange-500 flex items-center justify-center transition-colors">
+                      <ArrowUpRightIcon size={16} weight="bold" className="text-navy-500 group-hover:text-white transition-colors" />
+                    </span>
+                  </div>
+                  <h3 className="font-display text-navy-600 group-hover:text-orange-700 text-[22px] md:text-[24px] font-medium leading-tight mb-4 transition-colors">
+                    {b.heading}
+                  </h3>
+                  <p className="text-bone-600 text-[15px] md:text-[16px] leading-relaxed mb-7">
+                    {b.body}
+                  </p>
+                  <div className="mt-auto flex flex-wrap gap-2.5">
+                    {b.items.map((it) => (
+                      <span
+                        key={it}
+                        className="inline-flex items-center rounded-full border-2 border-bone-300 bg-white px-4 py-2 text-[13.5px] font-medium text-navy-700"
+                      >
+                        {it}
+                      </span>
+                    ))}
+                  </div>
+                </Link>
               </motion.div>
             ))}
           </div>

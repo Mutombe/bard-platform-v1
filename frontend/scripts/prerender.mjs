@@ -13,7 +13,7 @@
 
 import { promises as fs, existsSync } from "node:fs";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import { spawn } from "node:child_process";
 import puppeteer from "puppeteer";
 
@@ -90,9 +90,25 @@ async function main() {
     extractSlugs(path.join(SRC, "data/solutions.js")),
     extractSlugs(path.join(SRC, "data/whoWeServe.js")),
   ]);
+  // Capability detail routes — import the solutions data and slugify each
+  // block heading exactly as the app does, so every "What's included" card
+  // has a real prerendered page behind it.
+  const blockRoutes = [];
+  try {
+    const solMod = await import(pathToFileURL(path.join(SRC, "data/solutions.js")).href);
+    for (const s of solMod.SOLUTIONS) {
+      for (const b of s.blocks) {
+        blockRoutes.push(`/solutions/${s.slug}/${solMod.blockSlug(b.heading)}`);
+      }
+    }
+  } catch (e) {
+    console.warn("[prerender] could not derive capability routes:", e.message);
+  }
+
   const dynamic = [
     ...solutions.map((s) => `/solutions/${s}`),
     ...segments.map((s) => `/who-we-serve/${s}`),
+    ...blockRoutes,
   ];
   const routes = [...new Set([...STATIC_ROUTES, ...dynamic])];
 

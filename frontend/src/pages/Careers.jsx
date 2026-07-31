@@ -115,9 +115,6 @@ export default function Careers() {
                     <h3 className="font-display text-navy-600 text-[18px] md:text-[20px] leading-tight">{e.title}</h3>
                     <p className="text-[14px] text-bone-600 leading-snug mt-1">{e.body}</p>
                   </div>
-                  <span className="w-9 h-9 rounded-full border-2 border-bone-300 group-hover:border-orange-500 flex items-center justify-center shrink-0 transition-colors">
-                    <ArrowUpRightIcon size={15} weight="bold" className="text-navy-500 group-hover:text-orange-500 transition-colors" />
-                  </span>
                 </motion.li>
               ))}
             </ul>

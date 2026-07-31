@@ -98,19 +98,23 @@ export default function WhoWeServe() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-40px" }}
                   transition={{ duration: 0.5, delay: (i % 3) * 0.06, ease: [0.16, 1, 0.3, 1] }}
-                  className={`group rounded-2xl p-7 md:p-8 min-h-[180px] md:min-h-[210px] flex flex-col justify-between ${shell}`}
                 >
-                  <div className="flex items-start justify-between">
-                    <span className={`font-display font-bold text-[15px] tabular-nums ${light ? "text-orange-500" : "text-white/85"}`}>
-                      {String(i + 1).padStart(2, "0")}
+                  <Link
+                    to={seg.cta.to}
+                    className={`group block rounded-2xl p-7 md:p-8 h-full min-h-[180px] md:min-h-[210px] flex flex-col justify-between hover:-translate-y-1 transition-transform ${shell}`}
+                  >
+                    <div className="flex items-start justify-between">
+                      <span className={`font-display font-bold text-[15px] tabular-nums ${light ? "text-orange-500" : "text-white/85"}`}>
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span className={`w-9 h-9 rounded-full border-2 flex items-center justify-center transition-colors ${light ? "border-bone-300 group-hover:border-orange-500" : "border-white/45 group-hover:border-white"}`}>
+                        <ArrowUpRightIcon size={15} weight="bold" className={light ? "text-navy-500" : "text-white"} />
+                      </span>
+                    </div>
+                    <span className="font-display font-medium text-[21px] md:text-[25px] leading-tight">
+                      {it}
                     </span>
-                    <span className={`w-9 h-9 rounded-full border-2 flex items-center justify-center transition-colors ${light ? "border-bone-300 group-hover:border-orange-500" : "border-white/45 group-hover:border-white"}`}>
-                      <ArrowUpRightIcon size={15} weight="bold" className={light ? "text-navy-500" : "text-white"} />
-                    </span>
-                  </div>
-                  <span className="font-display font-medium text-[21px] md:text-[25px] leading-tight">
-                    {it}
-                  </span>
+                  </Link>
                 </motion.div>
               );
             })}

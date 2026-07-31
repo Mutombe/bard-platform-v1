@@ -8,7 +8,7 @@
 
 import { promises as fs } from "node:fs";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
@@ -74,9 +74,21 @@ async function main() {
     extractSlugs(path.join(SRC, "data/whoWeServe.js")),
   ]);
 
+  // Capability detail routes, derived from the solutions data.
+  const blockRoutes = [];
+  try {
+    const solMod = await import(pathToFileURL(path.join(SRC, "data/solutions.js")).href);
+    for (const s of solMod.SOLUTIONS) {
+      for (const b of s.blocks) {
+        blockRoutes.push({ path: `/solutions/${s.slug}/${solMod.blockSlug(b.heading)}`, priority: "0.6", changefreq: "monthly" });
+      }
+    }
+  } catch { /* non-critical */ }
+
   const dynamic = [
     ...solutionSlugs.map((s) => ({ path: `/solutions/${s}`,    priority: "0.8", changefreq: "monthly" })),
     ...segmentSlugs.map((s)  => ({ path: `/who-we-serve/${s}`, priority: "0.8", changefreq: "monthly" })),
+    ...blockRoutes,
   ];
 
   const all = [...STATIC_ROUTES, ...dynamic];

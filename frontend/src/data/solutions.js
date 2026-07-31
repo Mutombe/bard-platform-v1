@@ -160,3 +160,20 @@ export const SOLUTIONS = [
 export function findSolution(slug) {
   return SOLUTIONS.find((s) => s.slug === slug);
 }
+
+// Each capability block gets a stable URL slug derived from its heading, so
+// "What's included" cards can open a dedicated detail page.
+export function blockSlug(heading) {
+  return heading
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
+
+export function findSolutionBlock(slug, capSlug) {
+  const solution = findSolution(slug);
+  if (!solution) return null;
+  const index = solution.blocks.findIndex((b) => blockSlug(b.heading) === capSlug);
+  if (index === -1) return null;
+  return { solution, block: solution.blocks[index], index };
+}
