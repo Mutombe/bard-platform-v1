@@ -136,9 +136,13 @@ export default function Home() {
         jsonLd={[organizationJsonLd(), websiteJsonLd(), breadcrumbJsonLd([{ name: "Home", path: "/" }])]}
       />
 
-      {/* ── ONE-SCREEN HERO ────────────────────────────────────────── */}
-      <div className="flex flex-col min-h-[calc(100svh-108px)] md:min-h-[calc(100svh-124px)]">
-        <section className="relative flex-1 flex overflow-hidden bg-navy-900">
+      {/* ── ONE-SCREEN HERO ─────────────────────────────────────────
+          Desktop: hero + quick-action strip fill exactly one viewport.
+          Mobile: the hero itself is sized so it breathes and only the
+          FIRST row of the strip sits above the fold (the second row is
+          revealed on scroll). */}
+      <div className="flex flex-col md:min-h-[calc(100svh-124px)]">
+        <section className="relative flex-1 flex overflow-hidden bg-navy-900 min-h-[calc(100svh-172px)] md:min-h-0">
           <div className="absolute top-0 left-0 right-0 h-[2px] bg-orange-500 z-20" />
           <video
             className="absolute inset-0 h-full w-full object-cover"

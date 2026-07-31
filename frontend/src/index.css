@@ -152,7 +152,7 @@
        lg    28 → 40   (H2 / Section heading)
        md    24 → 32   (H3 / Sub heading)
      Card headings (24 / 20) and labels are applied inline where used. */
-  --text-display-hero:  clamp(2.5rem, 5.2vw, 4.5rem);    /* 40 → 72 */
+  --text-display-hero:  clamp(1.8rem, 5.2vw, 4.5rem);    /* 29 mobile → 72 desktop */
   --text-display-xl:    clamp(2rem, 4vw, 3.5rem);        /* 32 → 56 */
   --text-display-lg:    clamp(1.75rem, 3vw, 2.5rem);     /* 28 → 40 */
   --text-display-md:    clamp(1.5rem, 2.2vw, 2rem);      /* 24 → 32 */
