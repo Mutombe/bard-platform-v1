@@ -67,7 +67,7 @@ export default function PolicyPage({
 
       <section className="bg-milk">
         <div className="container-bank section">
-          <div className="grid grid-cols-12 gap-8 md:gap-12">
+          <div className="grid grid-cols-12 gap-y-8 md:gap-12">
             {/* Desktop meta sidebar — hidden on mobile (replaced by the
                 horizontal pill strip above in the hero section). */}
             <aside className="hidden md:block md:col-span-4 lg:col-span-3">

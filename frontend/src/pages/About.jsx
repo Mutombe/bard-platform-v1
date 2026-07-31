@@ -61,7 +61,7 @@ export default function About() {
 
       {/* ── Our Story — editorial split, text only ─────────────────── */}
       <section id="our-story" className="section bg-milk scroll-mt-28">
-        <div className="container-bank grid grid-cols-12 gap-8 md:gap-12 items-start">
+        <div className="container-bank grid grid-cols-12 gap-y-8 md:gap-12 items-start">
           <div className="col-span-12 md:col-span-4">
             <p className="eyebrow eyebrow-accent mb-4">Our Story</p>
             <h2 className="display-lg text-navy-600 text-balance mb-7">

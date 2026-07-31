@@ -128,7 +128,7 @@ export default function Contact() {
               Mobile: stacked, but with a tighter manifesto (no bullet list — those
               three points are inline pill-tags instead) so the form gets to
               be the focal point quickly. */}
-          <div className="grid grid-cols-12 gap-8 md:gap-16 max-w-6xl mx-auto mt-10 md:mt-20">
+          <div className="grid grid-cols-12 gap-y-8 md:gap-16 max-w-6xl mx-auto mt-10 md:mt-20">
             <div className="col-span-12 md:col-span-5">
               <div className="flex items-center gap-3 md:gap-4 mb-5 md:mb-6">
                 <span className="h-[2px] w-10 md:w-12 bg-orange-500" />
