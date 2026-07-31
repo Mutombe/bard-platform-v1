@@ -254,6 +254,14 @@ export const BRAND = {
   aboutStory:    "/images/about-story.jpg",      // savanna — rooted in Africa
   careersSide:   "/images/careers-side.jpg",     // young professional at a laptop
   manifesto:     "/images/manifesto.jpg",         // hands cupping a seedling — growth
+  contactHero:   "/images/contact-hero.jpg",      // person on the phone at home
+
+  // Second image per segment, so a page never repeats a photo (hero vs band)
+  diaspora2:     "/images/diaspora-2.jpg",        // professional on the phone
+  mining2:       "/images/mining-2.jpg",          // underground mine conveyor
+  agriculture2:  "/images/agriculture-2.jpg",     // crop field at sunset
+  finance2:      "/images/finance-2.jpg",         // analytics / dashboards
+  technology2:   "/images/technology-2.jpg",      // tablet at night
 };
 
 export const HERO_VIDEO = "/images/hero-future.mp4"; // father + child, "the future"

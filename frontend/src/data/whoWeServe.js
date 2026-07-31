@@ -29,6 +29,7 @@ export const SEGMENTS = [
     closing: "Wherever life takes you, we're your financial partner back home.",
     cta: { label: "Talk to our Diaspora Banking team", to: "/contact" },
     image: BRAND.diaspora,
+    image2: BRAND.diaspora2,
   },
   {
     slug: "business-industry-mining",
@@ -52,6 +53,7 @@ export const SEGMENTS = [
     closing: null,
     cta: { label: "Speak to a Business Banker", to: "/contact" },
     image: BRAND.mining,
+    image2: BRAND.mining2,
   },
   {
     slug: "agriculture",
@@ -74,6 +76,7 @@ export const SEGMENTS = [
     closing: "Because when agriculture grows, Zimbabwe grows.",
     cta: { label: "Talk to our Agriculture Banking specialists", to: "/contact" },
     image: BRAND.agriculture,
+    image2: BRAND.agriculture2,
   },
   {
     slug: "financial-institutions",
@@ -96,6 +99,7 @@ export const SEGMENTS = [
     closing: null,
     cta: { label: "Connect with our Institutional Banking team", to: "/contact" },
     image: BRAND.institutional,
+    image2: BRAND.finance2,
   },
   {
     slug: "technology-innovation",
@@ -118,6 +122,7 @@ export const SEGMENTS = [
     closing: "Helping great ideas become successful businesses.",
     cta: { label: "Talk to our Innovation Banking team", to: "/contact" },
     image: BRAND.technology,
+    image2: BRAND.technology2,
   },
   {
     slug: "public-institutions",
@@ -139,6 +144,7 @@ export const SEGMENTS = [
     closing: "Building stronger institutions through better banking.",
     cta: { label: "Speak to our Public Sector specialists", to: "/contact" },
     image: BRAND.relationship,
+    image2: BRAND.boardroom,
   },
   {
     slug: "non-profit-development",
@@ -161,6 +167,7 @@ export const SEGMENTS = [
     closing: "Helping those who help others.",
     cta: { label: "Talk to our Development Banking team", to: "/contact" },
     image: BRAND.nonProfit,
+    image2: BRAND.manifesto,
   },
 ];
 

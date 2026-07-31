@@ -6,7 +6,6 @@ import SEO, { breadcrumbJsonLd } from "../components/SEO.jsx";
 import { BRAND } from "../data/images.js";
 import { PhoneIcon, EnvelopeSimpleIcon, ChatCircleIcon, MapPinIcon, ArrowRightIcon, CheckCircleIcon, ArrowSquareOutIcon, ClockIcon } from "@phosphor-icons/react";
 import { AUDIENCES } from "../data/audiences.js";
-import { StackedAside } from "../components/PageHeroAsides.jsx";
 
 export default function Contact() {
   const [params] = useSearchParams();
@@ -41,13 +40,11 @@ export default function Contact() {
       />
 
       <PageHero
-        eyebrow="§ Contact"
+        eyebrow="Contact"
         headline="Open a conversation. It commits nothing."
         body="The first call tells us if we are the right bank for you, and tells you if we are a partner worth a decade."
-        image={BRAND.branchInterior}
-        overlayTint="navy"
-        variant="editorial"
-        aside={<StackedAside />}
+        image={BRAND.contactHero}
+        imagePosition="center 25%"
       />
 
       {/* Channels grid */}
