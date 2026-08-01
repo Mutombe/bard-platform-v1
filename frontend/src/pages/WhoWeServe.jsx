@@ -73,6 +73,28 @@ export default function WhoWeServe() {
         </div>
       </section>
 
+      {/* Statement — full-bleed image quote band (placed here so two
+          photo-backed sections never sit next to each other). */}
+      <section className="relative overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${seg.image2 || seg.image})`, filter: "saturate(1.05) brightness(0.5) sepia(0.15)" }}
+        />
+        <div
+          className="absolute inset-0"
+          style={{ background: "linear-gradient(115deg, rgba(14,9,3,0.92) 0%, rgba(14,9,3,0.72) 55%, rgba(14,9,3,0.5) 100%)" }}
+        />
+        <div className="absolute top-0 left-0 right-0 h-[2px] bg-orange-500" />
+        <div className="relative container-bank py-24 md:py-32">
+          <div className="max-w-3xl">
+            <span className="block h-[2px] w-12 bg-orange-500 mb-6" />
+            <h2 className="display-lg text-white text-balance [text-shadow:0_2px_24px_rgba(0,0,0,0.5)]">
+              {seg.closing || "Whatever your mission, we're ready to help."}
+            </h2>
+          </div>
+        </div>
+      </section>
+
       {/* Segment list — bold colour-blocked tiles (scannable, deck style) */}
       <section className="section bg-smoke border-t border-bone-200">
         <div className="container-bank">
@@ -117,27 +139,6 @@ export default function WhoWeServe() {
                 </motion.div>
               );
             })}
-          </div>
-        </div>
-      </section>
-
-      {/* Closing — full-bleed image quote band (deck "Partnerships" layout) */}
-      <section className="relative overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${seg.image2 || seg.image})`, filter: "saturate(1.05) brightness(0.5) sepia(0.15)" }}
-        />
-        <div
-          className="absolute inset-0"
-          style={{ background: "linear-gradient(115deg, rgba(14,9,3,0.92) 0%, rgba(14,9,3,0.72) 55%, rgba(14,9,3,0.5) 100%)" }}
-        />
-        <div className="absolute top-0 left-0 right-0 h-[2px] bg-orange-500" />
-        <div className="relative container-bank py-24 md:py-32">
-          <div className="max-w-3xl">
-            <span className="block h-[2px] w-12 bg-orange-500 mb-6" />
-            <h2 className="display-lg text-white text-balance [text-shadow:0_2px_24px_rgba(0,0,0,0.5)]">
-              {seg.closing || "Whatever your mission, we're ready to help."}
-            </h2>
           </div>
         </div>
       </section>
