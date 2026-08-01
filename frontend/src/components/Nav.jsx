@@ -336,7 +336,7 @@ export default function Nav() {
                 <button
                   onClick={() => setSearchOpen(true)}
                   aria-label="Search Bard Santner"
-                  className="flex-1 text-left text-[16px] font-semibold text-navy-600 truncate"
+                  className="flex-1 text-left text-[16px] font-medium text-bone-500 truncate"
                 >
                   Search Bard Santner…
                 </button>
