@@ -26,8 +26,6 @@ export default function AdvisoryBand() {
         className="absolute inset-0"
         style={{ background: "radial-gradient(120% 90% at 16% 22%, rgba(238,125,54,0.22), transparent 55%)" }}
       />
-      {/* Orange top rule */}
-      <div className="absolute top-0 left-0 right-0 h-[2px] bg-orange-500" />
 
       <div className="relative container-bank section">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
