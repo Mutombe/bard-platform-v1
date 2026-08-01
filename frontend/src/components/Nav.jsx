@@ -252,7 +252,6 @@ export default function Nav() {
               onMouseEnter={() => openNow(activeItem.label)}
               className="hidden md:block overflow-hidden bg-white border-b border-bone-200 relative"
             >
-              <div className="absolute top-0 left-0 right-0 h-[2px] bg-orange-500" />
               <div className="container-bank">
                 <motion.div
                   key={activeItem.label}
@@ -284,7 +283,7 @@ export default function Nav() {
                           {...linkProps}
                           className="group flex h-full items-center justify-between gap-3 rounded-xl border-2 border-bone-200 bg-white hover:border-orange-500 hover:bg-orange-50/60 px-4 py-3.5 transition-colors"
                         >
-                          <span className="text-[13.5px] xl:text-[15px] font-semibold text-navy-700 group-hover:text-orange-700 leading-snug transition-colors">
+                          <span className="text-[13px] xl:text-[13.5px] font-semibold text-navy-700 group-hover:text-orange-700 leading-snug transition-colors">
                             {c.label}
                           </span>
                           <Icon

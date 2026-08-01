@@ -184,7 +184,7 @@ export default function Home() {
               className="max-w-3xl"
             >
               <p className="eyebrow eyebrow-on-dark mb-6 md:mb-7 [text-shadow:0_1px_10px_rgba(0,0,0,0.35)]">Bard Santner Microfinance Bank</p>
-              <h1 className="display-hero text-white [text-shadow:0_2px_28px_rgba(0,0,0,0.5)]">
+              <h1 className="display-hero text-white max-md:text-[clamp(1.72rem,7.5vw,2.6rem)] [text-shadow:0_2px_28px_rgba(0,0,0,0.5)]">
                 <span className="block">Banking that helps you</span>
                 <span className="block font-bold">
                   <Typewriter phrases={HERO_PHRASES} />

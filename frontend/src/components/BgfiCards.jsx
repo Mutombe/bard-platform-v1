@@ -98,11 +98,11 @@ export default function BgfiCards() {
               {a.title}
             </h3>
             {a.excerpt && (
-              <p className="text-[16px] text-bone-600 leading-relaxed flex-1 line-clamp-3">
+              <p className="text-[15px] text-bone-600 leading-relaxed flex-1 line-clamp-3">
                 {a.excerpt}
               </p>
             )}
-            <span className="mt-6 inline-flex items-center gap-2 text-[15.5px] font-medium text-navy-600 group-hover:text-orange-600 transition-colors">
+            <span className="mt-6 inline-flex items-center gap-2 text-[14.5px] font-medium text-navy-600 group-hover:text-orange-600 transition-colors">
               Read on BGFI
               <ArrowSquareOutIcon
                 size={14}
