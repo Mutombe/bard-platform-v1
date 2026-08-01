@@ -74,7 +74,7 @@ export default function Contact() {
                   <h3 className="font-display text-white text-[24px] md:text-[28px] leading-tight mb-2">
                     Harare flagship branch
                   </h3>
-                  <p className="text-white/80 text-[14.5px] leading-relaxed max-w-xs">
+                  <p className="text-white/80 text-[15.5px] leading-relaxed max-w-xs">
                     5th Floor Beverly Court, 100 Nelson Mandela Avenue
                   </p>
                 </div>
@@ -85,8 +85,8 @@ export default function Contact() {
             <a href="tel:+263861200700" className="group md:col-span-3 rounded-2xl bg-orange-500 text-white p-6 md:p-7 flex flex-col justify-between min-h-[168px]">
               <PhoneIcon size={26} weight="regular" className="text-white" />
               <div>
-                <p className="font-display text-white text-[18px] md:text-[19px] mb-1.5">Telephone</p>
-                <p className="text-[14px] font-medium text-white/95">+263 861 200 0700</p>
+                <p className="font-display text-white text-[19px] md:text-[20px] mb-1.5">Telephone</p>
+                <p className="text-[15px] font-medium text-white/95">+263 861 200 0700</p>
                 <p className="text-[12.5px] text-white/75 mt-0.5">Mon–Fri, 08:00–17:00 CAT</p>
               </div>
             </a>
@@ -96,8 +96,8 @@ export default function Contact() {
               <ArrowSquareOutIcon size={15} weight="bold" className="absolute top-5 right-5 text-white/50" aria-label="opens in a new tab" />
               <ChatCircleIcon size={26} weight="regular" className="text-white" />
               <div>
-                <p className="font-display text-white text-[18px] md:text-[19px] mb-1.5">WhatsApp</p>
-                <p className="text-[14px] font-medium text-white/95">+263 774 954 415</p>
+                <p className="font-display text-white text-[19px] md:text-[20px] mb-1.5">WhatsApp</p>
+                <p className="text-[15px] font-medium text-white/95">+263 774 954 415</p>
                 <p className="text-[12.5px] text-white/70 mt-0.5">For existing customers</p>
               </div>
             </a>
@@ -106,8 +106,8 @@ export default function Contact() {
             <a href="mailto:info@bardsantner.com" className="group md:col-span-3 rounded-2xl bg-white border-2 border-bone-200 hover:border-orange-500 p-6 md:p-7 flex flex-col justify-between min-h-[168px] transition-colors">
               <EnvelopeSimpleIcon size={26} weight="regular" className="text-orange-600" />
               <div>
-                <p className="font-display text-[18px] md:text-[19px] text-navy-600 mb-1.5">Email</p>
-                <p className="text-[14px] font-medium text-navy-600 break-words">info@bardsantner.com</p>
+                <p className="font-display text-[19px] md:text-[20px] text-navy-600 mb-1.5">Email</p>
+                <p className="text-[15px] font-medium text-navy-600 break-words">info@bardsantner.com</p>
                 <p className="text-[12.5px] text-bone-500 mt-0.5">Reply within one business day</p>
               </div>
             </a>
@@ -116,8 +116,8 @@ export default function Contact() {
             <div className="md:col-span-3 rounded-2xl bg-white border-2 border-bone-200 p-6 md:p-7 flex flex-col justify-between min-h-[168px]">
               <ClockIcon size={26} weight="regular" className="text-orange-600" />
               <div>
-                <p className="font-display text-[18px] md:text-[19px] text-navy-600 mb-1.5">Office hours</p>
-                <p className="text-[14px] font-medium text-navy-600">Mon–Fri, 08:00–17:00</p>
+                <p className="font-display text-[19px] md:text-[20px] text-navy-600 mb-1.5">Office hours</p>
+                <p className="text-[15px] font-medium text-navy-600">Mon–Fri, 08:00–17:00</p>
                 <p className="text-[12.5px] text-bone-500 mt-0.5">Central Africa Time</p>
               </div>
             </div>
@@ -137,7 +137,7 @@ export default function Contact() {
               <h2 className="display-xl text-navy-600 text-balance mb-5 md:mb-7 leading-[1.05]">
                 Tell us what you are looking for.
               </h2>
-              <p className="text-[15.5px] md:text-[17px] text-bone-600 leading-relaxed mb-6 md:mb-9 max-w-md">
+              <p className="text-[16.5px] md:text-[18px] text-bone-600 leading-relaxed mb-6 md:mb-9 max-w-md">
                 A relationship banker will call you back within one business day. If your enquiry is urgent, please use the telephone channel above.
               </p>
 
@@ -151,7 +151,7 @@ export default function Contact() {
                 <Pill>Same banker</Pill>
               </div>
 
-              <ul className="hidden md:block space-y-5 text-[14.5px] text-bone-600">
+              <ul className="hidden md:block space-y-5 text-[15.5px] text-bone-600">
                 <li className="flex items-start gap-4">
                   <CheckCircleIcon size={20} weight="regular" className="text-orange-600 mt-0.5 shrink-0" />
                   <span>No commitment. No automated chase sequence.</span>
@@ -172,7 +172,7 @@ export default function Contact() {
                 <div className="p-7 md:p-14 rounded-xl bg-orange-50 border border-orange-200 text-center">
                   <CheckCircleIcon size={40} weight="regular" className="text-orange-600 mx-auto mb-4 md:mb-5" />
                   <h3 className="font-display text-[22px] md:text-[28px] text-navy-600 mb-3 md:mb-4">Thank you.</h3>
-                  <p className="text-[14.5px] md:text-[15px] text-bone-600 max-w-md mx-auto leading-relaxed">
+                  <p className="text-[15.5px] md:text-[16px] text-bone-600 max-w-md mx-auto leading-relaxed">
                     A relationship banker has been notified and will be in touch within one business day. We have sent a confirmation to <strong className="text-navy-600">{form.email}</strong>.
                   </p>
                 </div>
@@ -192,7 +192,7 @@ export default function Contact() {
                       <select
                         value={form.audience}
                         onChange={(e) => update("audience", e.target.value)}
-                        className="w-full px-4 md:px-5 py-3.5 text-[15px] md:text-[15.5px] bg-white border border-bone-300 rounded-md focus:outline-none focus:border-orange-500 appearance-none bg-[url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%228%22 viewBox=%220 0 12 8%22 fill=%22none%22><path d=%22M1 1L6 6L11 1%22 stroke=%22%234a4942%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/></svg>')] bg-no-repeat bg-[right_16px_center]"
+                        className="w-full px-4 md:px-5 py-3.5 text-[16px] md:text-[16.5px] bg-white border border-bone-300 rounded-md focus:outline-none focus:border-orange-500 appearance-none bg-[url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%228%22 viewBox=%220 0 12 8%22 fill=%22none%22><path d=%22M1 1L6 6L11 1%22 stroke=%22%234a4942%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/></svg>')] bg-no-repeat bg-[right_16px_center]"
                       >
                         {AUDIENCES.map((a) => (
                           <option key={a.id} value={a.id}>{a.label_full}</option>
@@ -207,7 +207,7 @@ export default function Contact() {
                       onChange={(e) => update("message", e.target.value)}
                       rows={4}
                       required
-                      className="w-full px-4 md:px-5 py-3.5 text-[15px] md:text-[15.5px] bg-white border border-bone-300 rounded-md focus:outline-none focus:border-orange-500 resize-none min-h-[120px] md:min-h-[140px]"
+                      className="w-full px-4 md:px-5 py-3.5 text-[16px] md:text-[16.5px] bg-white border border-bone-300 rounded-md focus:outline-none focus:border-orange-500 resize-none min-h-[120px] md:min-h-[140px]"
                       placeholder="What product, what stage, what timeline."
                     />
                   </div>
@@ -242,7 +242,7 @@ function Field({ label, value, onChange, type = "text", required = false }) {
         value={value}
         onChange={(e) => onChange(e.target.value)}
         required={required}
-        className="w-full px-4 md:px-5 py-3.5 text-[15px] md:text-[15.5px] bg-white border border-bone-300 rounded-md focus:outline-none focus:border-orange-500"
+        className="w-full px-4 md:px-5 py-3.5 text-[16px] md:text-[16.5px] bg-white border border-bone-300 rounded-md focus:outline-none focus:border-orange-500"
       />
     </div>
   );

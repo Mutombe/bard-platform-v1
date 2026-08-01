@@ -50,7 +50,7 @@ export default function SolutionDetail() {
         <div className="container-bank">
           <Link
             to={`/solutions/${solution.slug}`}
-            className="inline-flex items-center gap-2 text-[14px] font-medium text-navy-600 hover:text-orange-600 transition-colors"
+            className="inline-flex items-center gap-2 text-[15px] font-medium text-navy-600 hover:text-orange-600 transition-colors"
           >
             <ArrowLeftIcon size={15} weight="bold" />
             Back to {solution.title}
@@ -78,7 +78,7 @@ export default function SolutionDetail() {
                 <span className="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center shrink-0">
                   <CheckCircleIcon size={22} weight="regular" className="text-orange-600" />
                 </span>
-                <span className="font-display text-navy-600 text-[16px] md:text-[18px] leading-tight">
+                <span className="font-display text-navy-600 text-[17px] md:text-[19px] leading-tight">
                   {it}
                 </span>
               </motion.div>
@@ -115,10 +115,10 @@ export default function SolutionDetail() {
                       <ArrowUpRightIcon size={15} weight="bold" className="text-navy-500 group-hover:text-orange-500 transition-colors" />
                     </span>
                   </div>
-                  <h3 className="font-display text-navy-600 text-[19px] md:text-[21px] font-medium leading-tight mb-2">
+                  <h3 className="font-display text-navy-600 text-[20px] md:text-[21px] font-medium leading-tight mb-2">
                     {b.heading}
                   </h3>
-                  <p className="text-bone-600 text-[14.5px] leading-relaxed line-clamp-3">{b.body}</p>
+                  <p className="text-bone-600 text-[15.5px] leading-relaxed line-clamp-3">{b.body}</p>
                 </Link>
               </motion.div>
             ))}

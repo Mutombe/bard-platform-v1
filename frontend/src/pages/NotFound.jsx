@@ -14,7 +14,7 @@ export default function NotFound() {
           <h1 className="display-xl text-navy-600 mb-5 md:mb-6">
             We could not find that page.
           </h1>
-          <p className="text-[15px] md:text-[16px] text-bone-600 mb-8 md:mb-10 leading-relaxed">
+          <p className="text-[16px] md:text-[17px] text-bone-600 mb-8 md:mb-10 leading-relaxed">
             The link may be out of date, the page may have moved, or the URL may have a typo.
             Either way: the door is still open.
           </p>

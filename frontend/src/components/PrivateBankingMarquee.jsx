@@ -41,7 +41,7 @@ export default function PrivateBankingMarquee() {
                   <p className="font-display text-[10px] md:text-[10.5px] tracking-[0.22em] uppercase font-medium text-white/70">
                     Bard Santner
                   </p>
-                  <p className="font-display text-[17px] md:text-[19px] tracking-[0.08em] uppercase font-medium text-white mt-1.5">
+                  <p className="font-display text-[18px] md:text-[20px] tracking-[0.08em] uppercase font-medium text-white mt-1.5">
                     Private Banking
                   </p>
                 </div>
@@ -53,17 +53,17 @@ export default function PrivateBankingMarquee() {
               <h2 className="display-md text-white mb-4 md:mb-5">
                 This is Bard Santner <span className="font-bold">Private Banking</span>
               </h2>
-              <p className="text-[16px] md:text-[17px] text-white/85 leading-relaxed mb-3 md:mb-4 italic font-light">
+              <p className="text-[17px] md:text-[18px] text-white/85 leading-relaxed mb-3 md:mb-4 italic font-light">
                 Relationship-led. Discreet. Patient.
               </p>
-              <p className="text-[14.5px] md:text-[15px] text-white/70 leading-relaxed mb-7 md:mb-8 max-w-md">
+              <p className="text-[15.5px] md:text-[16px] text-white/70 leading-relaxed mb-7 md:mb-8 max-w-md">
                 Discretionary mandates, advisory portfolios and the long counsel of an
                 international house, for established wealth anchored in Africa.
               </p>
 
               <Link
                 to="/solutions/investors"
-                className="inline-flex items-center justify-center gap-2.5 bg-milk text-navy-700 hover:bg-paper px-7 py-4 rounded-lg font-medium text-[14.5px] md:text-[15px] transition-colors w-full md:w-auto"
+                className="inline-flex items-center justify-center gap-2.5 bg-milk text-navy-700 hover:bg-paper px-7 py-4 rounded-lg font-medium text-[15.5px] md:text-[16px] transition-colors w-full md:w-auto"
               >
                 Explore Private Banking
                 <ArrowRightIcon size={14} weight="bold" />

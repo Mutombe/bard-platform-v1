@@ -81,7 +81,7 @@ export default function Login() {
               <button
                 onClick={() => go("google")}
                 disabled={!!loading}
-                className="w-full flex items-center justify-center gap-3 px-5 py-3 rounded-lg bg-white border border-bone-300 hover:border-navy-600 hover:shadow-[0_4px_14px_rgba(12,10,20,0.08)] disabled:opacity-60 transition-all text-[14px] font-medium text-navy-700"
+                className="w-full flex items-center justify-center gap-3 px-5 py-3 rounded-lg bg-white border border-bone-300 hover:border-navy-600 hover:shadow-[0_4px_14px_rgba(12,10,20,0.08)] disabled:opacity-60 transition-all text-[15px] font-medium text-navy-700"
               >
                 <GoogleLogoIcon size={17} weight="bold" className="text-[#4285F4]" />
                 {loading === "google" ? "Signing you in…" : "Continue with Google"}
@@ -89,7 +89,7 @@ export default function Login() {
               <button
                 onClick={() => go("apple")}
                 disabled={!!loading}
-                className="w-full flex items-center justify-center gap-3 px-5 py-3 rounded-lg bg-ink text-white hover:bg-coal disabled:opacity-60 transition-all text-[14px] font-medium"
+                className="w-full flex items-center justify-center gap-3 px-5 py-3 rounded-lg bg-ink text-white hover:bg-coal disabled:opacity-60 transition-all text-[15px] font-medium"
               >
                 <AppleLogoIcon size={17} weight="fill" />
                 {loading === "apple" ? "Signing you in…" : "Continue with Apple"}
@@ -114,7 +114,7 @@ export default function Login() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="you@example.com"
-                  className="w-full px-3.5 py-2.5 text-[14.5px] bg-white border border-bone-300 rounded-md focus:outline-none focus:border-orange-500 placeholder:text-bone-400"
+                  className="w-full px-3.5 py-2.5 text-[15.5px] bg-white border border-bone-300 rounded-md focus:outline-none focus:border-orange-500 placeholder:text-bone-400"
                 />
               </div>
               <div>
@@ -130,7 +130,7 @@ export default function Login() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="••••••••"
-                    className="w-full px-3.5 py-2.5 pr-11 text-[14.5px] bg-white border border-bone-300 rounded-md focus:outline-none focus:border-orange-500 placeholder:text-bone-400"
+                    className="w-full px-3.5 py-2.5 pr-11 text-[15.5px] bg-white border border-bone-300 rounded-md focus:outline-none focus:border-orange-500 placeholder:text-bone-400"
                   />
                   <button
                     type="button"
@@ -156,7 +156,7 @@ export default function Login() {
               <button
                 type="submit"
                 disabled={!!loading}
-                className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-orange-500 hover:bg-orange-600 text-white font-medium text-[14.5px] transition-colors disabled:opacity-60"
+                className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-orange-500 hover:bg-orange-600 text-white font-medium text-[15.5px] transition-colors disabled:opacity-60"
               >
                 {loading === "email" ? "Signing you in…" : "Log in"}
                 <ArrowRightIcon size={13} weight="bold" />
@@ -212,7 +212,7 @@ export default function Login() {
               <h2 className="font-display text-[36px] xl:text-[44px] font-medium text-white text-balance leading-[1.04] mb-4 tracking-[-0.022em]">
                 Banking that travels with you.
               </h2>
-              <p className="text-white/80 text-[14.5px] leading-relaxed">
+              <p className="text-white/80 text-[15.5px] leading-relaxed">
                 The same bank, the same banker, without the queue.
               </p>
             </div>

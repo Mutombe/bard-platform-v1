@@ -76,7 +76,7 @@ export default function About() {
             </div>
           </div>
 
-          <div className="col-span-12 md:col-span-8 space-y-5 text-[16px] md:text-[18px] text-bone-600 leading-relaxed">
+          <div className="col-span-12 md:col-span-8 space-y-5 text-[17px] md:text-[19px] text-bone-600 leading-relaxed">
             <p className="font-display text-navy-600 text-[22px] md:text-[26px] leading-snug">
               And from a diversified financial institution, we have evolved into a
               microfinance bank.
@@ -106,7 +106,7 @@ export default function About() {
               <h2 className="display-lg text-white text-balance mb-8 [text-shadow:0_2px_24px_rgba(0,0,0,0.5)]">
                 Every institution has a history. Ours has a conviction.
               </h2>
-              <div className="space-y-5 text-[16px] md:text-[18px] leading-relaxed">
+              <div className="space-y-5 text-[17px] md:text-[19px] leading-relaxed">
                 <p className="text-white/85">
                   Bard Santner was founded in 2022 because we believed financial services
                   could be better. As we evolved from a diversified financial institution into
@@ -126,7 +126,7 @@ export default function About() {
               </div>
               <a
                 href="#manifesto"
-                className="mt-9 inline-flex items-center gap-2.5 bg-white text-navy-700 hover:bg-white/90 px-6 py-3.5 rounded-full font-medium text-[15px] transition-colors"
+                className="mt-9 inline-flex items-center gap-2.5 bg-white text-navy-700 hover:bg-white/90 px-6 py-3.5 rounded-full font-medium text-[16px] transition-colors"
               >
                 <DownloadSimpleIcon size={16} weight="bold" />
                 Download our manifesto
@@ -171,13 +171,13 @@ export default function About() {
                 transition={{ duration: 0.45, delay: (i % 5) * 0.05, ease: [0.16, 1, 0.3, 1] }}
                 className="group grid grid-cols-12 gap-4 md:gap-6 items-baseline py-6 md:py-7 border-b border-bone-200 hover:bg-bone-50/60 transition-colors"
               >
-                <span className="col-span-2 md:col-span-1 font-display font-bold text-orange-500 text-[19px] md:text-[22px] tabular-nums">
+                <span className="col-span-2 md:col-span-1 font-display font-bold text-orange-500 text-[20px] md:text-[22px] tabular-nums">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <h3 className="col-span-10 md:col-span-3 font-display font-medium text-navy-600 text-[24px] md:text-[30px] leading-none">
                   {v.name}
                 </h3>
-                <p className="col-span-12 md:col-span-8 text-bone-600 text-[15px] md:text-[17px] leading-relaxed">
+                <p className="col-span-12 md:col-span-8 text-bone-600 text-[16px] md:text-[18px] leading-relaxed">
                   {v.body}
                 </p>
               </motion.div>
@@ -238,7 +238,7 @@ export default function About() {
               </motion.div>
             ))}
           </div>
-          <p className="mt-8 text-[14px] text-bone-500 max-w-2xl">
+          <p className="mt-8 text-[15px] text-bone-500 max-w-2xl">
             Full Board profiles are published as the Bank formalises its governance
             disclosures.
           </p>

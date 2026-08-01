@@ -42,7 +42,7 @@ export default function AdvisoryBand() {
             <h2 className="display-xl text-white text-balance">
               Let's build your <span className="font-bold">future</span> together.
             </h2>
-            <p className="mt-6 text-[17px] md:text-[19px] text-white/85 leading-relaxed max-w-xl">
+            <p className="mt-6 text-[18px] md:text-[20px] text-white/85 leading-relaxed max-w-xl">
               We're not trying to be another bank. We want to be the financial partner you
               trust at every stage of life and business. Open an account, or start a
               conversation with a banker who will still be here in a decade.
@@ -50,7 +50,7 @@ export default function AdvisoryBand() {
             <div className="mt-10 flex flex-col sm:flex-row gap-3.5">
               <Link
                 to="/solutions/individuals"
-                className="group inline-flex items-center justify-between gap-5 bg-orange-500 hover:bg-orange-600 text-white pl-7 pr-2 py-2 rounded-full font-bold text-[16px] transition-colors"
+                className="group inline-flex items-center justify-between gap-5 bg-orange-500 hover:bg-orange-600 text-white pl-7 pr-2 py-2 rounded-full font-bold text-[17px] transition-colors"
               >
                 Open an account
                 <span className="w-11 h-11 rounded-full bg-white/20 group-hover:bg-white/30 flex items-center justify-center transition-colors">
@@ -59,7 +59,7 @@ export default function AdvisoryBand() {
               </Link>
               <Link
                 to="/contact"
-                className="inline-flex items-center justify-center gap-2.5 border-2 border-white/70 hover:border-white text-white px-7 py-4 rounded-full font-bold text-[16px] transition-colors"
+                className="inline-flex items-center justify-center gap-2.5 border-2 border-white/70 hover:border-white text-white px-7 py-4 rounded-full font-bold text-[17px] transition-colors"
               >
                 Talk to a banker
               </Link>
@@ -106,7 +106,7 @@ function ChannelRow({ href, Icon, primary, secondary, truncate = false, external
         <Icon size={18} weight="regular" className="text-orange-400" />
       </span>
       <div className="min-w-0 flex-1">
-        <p className={`text-[14.5px] font-medium text-white leading-tight ${truncate ? "truncate" : ""}`}>
+        <p className={`text-[15.5px] font-medium text-white leading-tight ${truncate ? "truncate" : ""}`}>
           {primary}
         </p>
         <p className="text-[12px] text-white/60 mt-0.5 leading-snug">{secondary}</p>

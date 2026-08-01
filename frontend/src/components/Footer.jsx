@@ -98,15 +98,15 @@ export default function Footer() {
             <Link to="/" aria-label="Bard Santner Microfinance Bank home" className="inline-flex items-center gap-3">
               <img src="/favicon.png" alt="" className="h-11 w-11 md:h-12 md:w-12 object-contain" />
               <span className="flex flex-col leading-none">
-                <span className="font-display text-[16px] md:text-[17px] tracking-[0.04em] uppercase">Bard Santner</span>
+                <span className="font-display text-[17px] md:text-[18px] tracking-[0.04em] uppercase">Bard Santner</span>
                 <span className="text-[10px] tracking-[0.18em] text-white/55 uppercase mt-1">Microfinance Bank</span>
               </span>
             </Link>
-            <p className="mt-6 md:mt-8 text-[15px] text-white/65 leading-relaxed max-w-xs">
+            <p className="mt-6 md:mt-8 text-[16px] text-white/65 leading-relaxed max-w-xs">
               A digital-first microfinance bank, built for the way Africa works.
             </p>
             <p className="mt-6 md:mt-8 eyebrow eyebrow-on-dark mb-3">Open an account</p>
-            <Link to="/solutions/individuals" className="btn btn-primary text-[14px] py-3 px-5">
+            <Link to="/solutions/individuals" className="btn btn-primary text-[15px] py-3 px-5">
               Get started
             </Link>
 
@@ -131,13 +131,13 @@ export default function Footer() {
               key={col.title}
               className={`col-span-6 ${col.title === "Who We Serve" ? "md:col-span-3" : "md:col-span-2"}`}
             >
-              <p className="font-display text-[16px] text-white mb-4 md:mb-5">{col.title}</p>
+              <p className="font-display text-[17px] text-white mb-4 md:mb-5">{col.title}</p>
               <ul className="space-y-2.5 md:space-y-3">
                 {col.links.map((l) => (
                   <li key={l.label}>
                     <FooterLink
                       to={l.to}
-                      className="text-[14px] text-white/70 hover:text-white hover-line"
+                      className="text-[15px] text-white/70 hover:text-white hover-line"
                     >
                       {l.label}
                     </FooterLink>
@@ -156,7 +156,7 @@ export default function Footer() {
         <div className="grid grid-cols-12 gap-6 md:gap-8">
           <div className="col-span-12 md:col-span-3">
             <p className="eyebrow eyebrow-on-dark mb-1">Where we operate</p>
-            <p className="font-display text-[18px] md:text-[20px] text-white">Offices and desks</p>
+            <p className="font-display text-[19px] md:text-[21px] text-white">Offices and desks</p>
           </div>
           {LOCATIONS.map((loc) => (
             <div key={loc.city} className="col-span-6 md:col-span-2 lg:col-span-2">

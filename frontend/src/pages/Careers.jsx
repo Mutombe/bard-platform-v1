@@ -76,13 +76,13 @@ export default function Careers() {
                 transition={{ duration: 0.5, delay: (i % 3) * 0.06, ease: [0.16, 1, 0.3, 1] }}
                 className="bank-card bank-card-body flex flex-col h-full"
               >
-                <span className="w-10 h-10 rounded-full border-2 border-orange-500 text-orange-600 font-display font-bold text-[14px] tabular-nums flex items-center justify-center mb-5">
+                <span className="w-10 h-10 rounded-full border-2 border-orange-500 text-orange-600 font-display font-bold text-[15px] tabular-nums flex items-center justify-center mb-5">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <h3 className="font-display text-navy-600 text-[22px] md:text-[24px] mb-3 leading-tight">
                   {v.name}
                 </h3>
-                <p className="text-[15px] text-bone-600 leading-relaxed">{v.body}</p>
+                <p className="text-[16px] text-bone-600 leading-relaxed">{v.body}</p>
               </motion.div>
             ))}
           </div>
@@ -111,8 +111,8 @@ export default function Careers() {
                     <e.Icon size={22} weight="regular" className="text-navy-600" />
                   </span>
                   <div className="flex-1 min-w-0">
-                    <h3 className="font-display text-navy-600 text-[18px] md:text-[20px] leading-tight">{e.title}</h3>
-                    <p className="text-[14px] text-bone-600 leading-snug mt-1">{e.body}</p>
+                    <h3 className="font-display text-navy-600 text-[19px] md:text-[21px] leading-tight">{e.title}</h3>
+                    <p className="text-[15px] text-bone-600 leading-snug mt-1">{e.body}</p>
                   </div>
                 </motion.li>
               ))}
@@ -147,7 +147,7 @@ export default function Careers() {
             <h2 className="display-md text-navy-600 text-balance mb-5">
               We're always looking for exceptional people.
             </h2>
-            <p className="text-[16px] md:text-[18px] text-bone-600 leading-relaxed mb-9">
+            <p className="text-[17px] md:text-[19px] text-bone-600 leading-relaxed mb-9">
               We don't have public vacancies listed right now, but we hire ahead of need for
               people who are unmistakably right. Send us your CV and a short note on the work
               you want to do, and we'll be in touch when there's a fit.

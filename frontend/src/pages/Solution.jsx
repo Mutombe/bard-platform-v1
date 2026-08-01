@@ -65,7 +65,7 @@ export default function Solution() {
                 className={
                   i === 0
                     ? "font-display text-navy-600 text-[24px] md:text-[31px] leading-snug text-balance"
-                    : "text-bone-600 text-[16px] md:text-[18px] leading-relaxed"
+                    : "text-bone-600 text-[17px] md:text-[19px] leading-relaxed"
                 }
               >
                 {p}
@@ -106,7 +106,7 @@ export default function Solution() {
                   <h3 className="font-display text-navy-600 group-hover:text-orange-700 text-[22px] md:text-[24px] font-medium leading-tight mb-4 transition-colors">
                     {b.heading}
                   </h3>
-                  <p className="text-bone-600 text-[15px] md:text-[16px] leading-relaxed mb-7">
+                  <p className="text-bone-600 text-[16px] md:text-[17px] leading-relaxed mb-7">
                     {b.body}
                   </p>
                   <div className="mt-auto flex flex-wrap gap-2.5">
@@ -156,10 +156,10 @@ export default function Solution() {
                 <span className={`font-display font-bold text-[34px] leading-none tabular-nums mb-6 ${i === 1 ? "text-white" : "text-orange-400"}`}>
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <h3 className="font-display font-medium text-white text-[20px] md:text-[22px] leading-tight mb-2.5">
+                <h3 className="font-display font-medium text-white text-[21px] md:text-[22px] leading-tight mb-2.5">
                   {step.title}
                 </h3>
-                <p className={`text-[14.5px] leading-relaxed ${i === 1 ? "text-white/90" : "text-white/70"}`}>
+                <p className={`text-[15.5px] leading-relaxed ${i === 1 ? "text-white/90" : "text-white/70"}`}>
                   {step.body}
                 </p>
               </motion.div>
@@ -182,7 +182,7 @@ const STEPS = [
 function HeroStartCTA({ cta }) {
   if (!cta) return null;
   const isExternal = /^https?:\/\//.test(cta.to);
-  const cls = "inline-flex items-center gap-2.5 bg-white text-navy-700 hover:bg-white/90 px-6 py-3.5 rounded-full font-medium text-[15px] transition-colors";
+  const cls = "inline-flex items-center gap-2.5 bg-white text-navy-700 hover:bg-white/90 px-6 py-3.5 rounded-full font-medium text-[16px] transition-colors";
   return isExternal ? (
     <a href={cta.to} target="_blank" rel="noopener noreferrer" className={cls}>
       {cta.label}

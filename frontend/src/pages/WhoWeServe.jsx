@@ -63,7 +63,7 @@ export default function WhoWeServe() {
                 className={
                   i === 0
                     ? "font-display text-navy-600 text-[24px] md:text-[31px] leading-snug text-balance"
-                    : "text-bone-600 text-[16px] md:text-[18px] leading-relaxed"
+                    : "text-bone-600 text-[17px] md:text-[19px] leading-relaxed"
                 }
               >
                 {p}
@@ -103,7 +103,7 @@ export default function WhoWeServe() {
                     className={`group block rounded-2xl p-7 md:p-8 h-full min-h-[180px] md:min-h-[210px] flex flex-col justify-between hover:-translate-y-1 transition-transform ${shell}`}
                   >
                     <div className="flex items-start justify-between">
-                      <span className={`font-display font-bold text-[15px] tabular-nums ${light ? "text-orange-500" : "text-white/85"}`}>
+                      <span className={`font-display font-bold text-[16px] tabular-nums ${light ? "text-orange-500" : "text-white/85"}`}>
                         {String(i + 1).padStart(2, "0")}
                       </span>
                       <span className={`w-9 h-9 rounded-full border-2 flex items-center justify-center transition-colors ${light ? "border-bone-300 group-hover:border-orange-500" : "border-white/45 group-hover:border-white"}`}>

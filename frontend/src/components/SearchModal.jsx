@@ -240,7 +240,7 @@ export default function SearchModal({ open, onClose, initialQuery = "" }) {
                 onChange={(e) => setQuery(e.target.value)}
                 type="text"
                 placeholder="Search solutions, segments and pages…"
-                className="w-full pl-16 pr-14 py-5 md:py-6 text-[16px] md:text-[18px] text-navy-700 placeholder:text-bone-400 bg-transparent outline-none"
+                className="w-full pl-16 pr-14 py-5 md:py-6 text-[17px] md:text-[19px] text-navy-700 placeholder:text-bone-400 bg-transparent outline-none"
                 aria-label="Search query"
               />
               <button
@@ -293,7 +293,7 @@ export default function SearchModal({ open, onClose, initialQuery = "" }) {
                                   }`}
                                 >
                                   <div className="min-w-0 flex-1">
-                                    <p className={`text-[14.5px] font-medium leading-tight truncate ${
+                                    <p className={`text-[15.5px] font-medium leading-tight truncate ${
                                       active ? "text-orange-700" : "text-navy-700"
                                     }`}>
                                       {it.title}
@@ -387,7 +387,7 @@ function EmptyState({ onPick, recents = [], onPickRecent, onClearRecents }) {
             >
               <span className="flex items-center gap-3 min-w-0">
                 <ArrowUpRightIcon size={13} weight="bold" className="text-orange-500 shrink-0" />
-                <span className="text-[14.5px] text-navy-700 group-hover:text-orange-700 transition-colors truncate">
+                <span className="text-[15.5px] text-navy-700 group-hover:text-orange-700 transition-colors truncate">
                   {s.label}
                 </span>
               </span>
@@ -416,7 +416,7 @@ function EmptyState({ onPick, recents = [], onPickRecent, onClearRecents }) {
 function NoResults({ query }) {
   return (
     <div className="px-6 py-12 text-center">
-      <p className="font-display text-[20px] text-navy-700 mb-2">
+      <p className="font-display text-[21px] text-navy-700 mb-2">
         No results for "{query}"
       </p>
       <p className="text-[13.5px] text-bone-600 leading-relaxed max-w-md mx-auto">

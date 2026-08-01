@@ -165,7 +165,7 @@ export default function AppDashboard() {
             <Link to="/" className="flex items-center gap-2.5">
               <img src="/favicon.png" alt="" className="h-9 w-9 object-contain" />
               <span className="hidden sm:flex flex-col leading-none">
-                <span className="font-display text-[14px] tracking-[0.04em] uppercase font-medium text-navy-600">
+                <span className="font-display text-[15px] tracking-[0.04em] uppercase font-medium text-navy-600">
                   Bard Santner
                 </span>
                 <span className="text-[9.5px] tracking-[0.18em] text-bone-500 uppercase mt-0.5">
@@ -261,7 +261,7 @@ export default function AppDashboard() {
                 <h1 className="display-md text-navy-600 leading-tight">
                   {USER.name.split(" ")[0]}.
                 </h1>
-                <p className="text-[14px] text-bone-600 mt-2 max-w-md">
+                <p className="text-[15px] text-bone-600 mt-2 max-w-md">
                   Three accounts on one screen. Send, receive, save, and speak to your banker.
                 </p>
               </div>
@@ -300,7 +300,7 @@ export default function AppDashboard() {
                       "•••••"
                     ) : (
                       <>
-                        <span className={`text-[18px] ${a.subText} font-normal mr-1`}>$</span>
+                        <span className={`text-[19px] ${a.subText} font-normal mr-1`}>$</span>
                         {fmt(a.balance)}
                       </>
                     )}
@@ -342,7 +342,7 @@ export default function AppDashboard() {
               {/* Recent transactions */}
               <div className="lg:col-span-2 bg-white rounded-xl border border-bone-200 overflow-hidden">
                 <div className="px-5 md:px-7 py-5 flex items-center justify-between border-b border-bone-200">
-                  <p className="font-display text-[15px] md:text-[16px] font-medium text-navy-600">
+                  <p className="font-display text-[16px] md:text-[17px] font-medium text-navy-600">
                     Recent transactions
                   </p>
                   <button className="text-[12px] font-medium text-orange-600 hover:underline inline-flex items-center gap-1">
@@ -374,7 +374,7 @@ export default function AppDashboard() {
                         </p>
                       </div>
                       <p
-                        className={`font-display text-[14.5px] font-medium tabular-nums ${
+                        className={`font-display text-[15.5px] font-medium tabular-nums ${
                           t.amount > 0 ? "text-emerald-600" : "text-navy-700"
                         }`}
                       >
@@ -389,13 +389,13 @@ export default function AppDashboard() {
               <div className="space-y-5 md:space-y-6">
                 <div className="bg-white rounded-xl border border-bone-200 p-5 md:p-6">
                   <div className="flex items-baseline justify-between mb-5">
-                    <p className="font-display text-[15px] md:text-[16px] font-medium text-navy-600">
+                    <p className="font-display text-[16px] md:text-[17px] font-medium text-navy-600">
                       Spending this month
                     </p>
                     <p className="text-[11.5px] text-bone-500">May</p>
                   </div>
                   <p className="font-display text-[26px] md:text-[28px] font-medium text-navy-700 tracking-[-0.02em] mb-4">
-                    {hideBalances ? "•••••" : <><span className="text-[16px] text-bone-500 font-normal mr-1">$</span>1,472.00</>}
+                    {hideBalances ? "•••••" : <><span className="text-[17px] text-bone-500 font-normal mr-1">$</span>1,472.00</>}
                   </p>
                   {/* Segmented bar */}
                   <div className="flex h-2 rounded-full overflow-hidden mb-5">
@@ -478,7 +478,7 @@ function SidebarBody({ onNavigate }) {
 
       {/* "Need help?" card */}
       <div className="mt-auto p-4 rounded-lg bg-bone-50 border border-bone-200">
-        <p className="font-display text-[14px] font-medium text-navy-600 mb-1.5">
+        <p className="font-display text-[15px] font-medium text-navy-600 mb-1.5">
           Need a real banker?
         </p>
         <p className="text-[12px] text-bone-600 leading-relaxed mb-3">

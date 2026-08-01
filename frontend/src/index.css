@@ -152,10 +152,10 @@
        lg    28 → 40   (H2 / Section heading)
        md    24 → 32   (H3 / Sub heading)
      Card headings (24 / 20) and labels are applied inline where used. */
-  --text-display-hero:  clamp(1.8rem, 5.2vw, 4.5rem);    /* 29 mobile → 72 desktop */
-  --text-display-xl:    clamp(2rem, 4vw, 3.5rem);        /* 32 → 56 */
-  --text-display-lg:    clamp(1.75rem, 3vw, 2.5rem);     /* 28 → 40 */
-  --text-display-md:    clamp(1.5rem, 2.2vw, 2rem);      /* 24 → 32 */
+  --text-display-hero:  clamp(1.8rem, 5.5vw, 4.75rem);   /* 29 mobile → 76 desktop */
+  --text-display-xl:    clamp(2.1rem, 4.2vw, 3.75rem);   /* 34 → 60 */
+  --text-display-lg:    clamp(1.85rem, 3.1vw, 2.65rem);  /* 30 → 42 */
+  --text-display-md:    clamp(1.6rem, 2.3vw, 2.15rem);   /* 26 → 34 */
 
   /* Body scale — 16px reading default (never below 16 on mobile), with an
      18px "large" for lead paragraphs and 20px for the occasional standfirst. */
@@ -306,7 +306,7 @@
 
   /* Eyebrow — Gellix uppercase with generous tracking. The institutional
      gesture is the spacing and the case, not a different typeface. */
-  .eyebrow { font-family: var(--font-mono); font-size: 0.75rem; line-height: 1; letter-spacing: 0.22em; text-transform: uppercase; color: var(--color-bone-500); font-weight: 500; }
+  .eyebrow { font-family: var(--font-mono); font-size: 0.8rem; line-height: 1; letter-spacing: 0.22em; text-transform: uppercase; color: var(--color-bone-500); font-weight: 500; }
 
   /* Active audience tab — sharp rectangular block, navy strip → white
      tab, no curves, no flares, no under-rule. The white pulled out of
