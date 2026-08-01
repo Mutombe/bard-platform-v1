@@ -17,11 +17,12 @@ export default function AdvisoryBand() {
         className="absolute inset-0 bg-cover bg-center"
         style={{
           backgroundImage: `url(${BRAND.gallery})`,
-          filter: "saturate(1.15) brightness(0.42) sepia(0.28) contrast(1.05)",
+          filter: "saturate(1.12) brightness(0.66) sepia(0.2) contrast(1.03)",
         }}
       />
-      {/* Warm overlay — amber-brown wash + an orange glow */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-[#140d05]/95 via-[#2a190c]/82 to-navy-950/82" />
+      {/* Warm overlay — amber-brown wash on the copy side, clearing to the
+          right so the photograph reads through. */}
+      <div className="absolute inset-0 bg-gradient-to-tr from-[#140d05]/92 via-[#2a190c]/66 to-navy-950/45" />
       <div
         className="absolute inset-0"
         style={{ background: "radial-gradient(120% 90% at 16% 22%, rgba(238,125,54,0.22), transparent 55%)" }}
@@ -37,10 +38,10 @@ export default function AdvisoryBand() {
                 Advisory
               </p>
             </div>
-            <h2 className="display-xl text-white text-balance">
+            <h2 className="display-xl text-white text-balance [text-shadow:0_2px_20px_rgba(0,0,0,0.5)]">
               Let's build your <span className="font-bold">future</span> together.
             </h2>
-            <p className="mt-6 text-[18px] md:text-[20px] text-white/85 leading-relaxed max-w-xl">
+            <p className="mt-6 text-[18px] md:text-[20px] text-white/90 leading-relaxed max-w-xl [text-shadow:0_1px_14px_rgba(0,0,0,0.5)]">
               We're not trying to be another bank. We want to be the financial partner you
               trust at every stage of life and business. Open an account, or start a
               conversation with a banker who will still be here in a decade.

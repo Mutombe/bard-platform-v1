@@ -62,22 +62,22 @@ export default function TrustRibbon() {
               className="absolute inset-0 bg-cover bg-center"
               style={{
                 backgroundImage: `url(${BRAND.trustArchitecture})`,
-                filter: "saturate(0.6) brightness(0.5) contrast(1.05)",
+                filter: "saturate(0.85) brightness(0.72) contrast(1.04)",
               }}
             />
             <div
               className="absolute inset-0"
               style={{
                 background:
-                  "linear-gradient(165deg, rgba(17,16,28,0.72) 0%, rgba(17,16,28,0.86) 48%, rgba(8,7,15,0.95) 100%)",
+                  "linear-gradient(165deg, rgba(17,16,28,0.5) 0%, rgba(17,16,28,0.62) 45%, rgba(8,7,15,0.82) 100%)",
               }}
             />
             <div className="relative flex flex-col h-full">
             <p className="eyebrow eyebrow-on-dark mb-5">Trust architecture</p>
-            <h2 className="display-md text-white text-balance">
+            <h2 className="display-md text-white text-balance [text-shadow:0_2px_18px_rgba(0,0,0,0.55)]">
               The obligations a bank inherits the moment it opens its first account.
             </h2>
-            <p className="mt-5 text-[16px] md:text-[17px] text-white/75 leading-relaxed">
+            <p className="mt-5 text-[16px] md:text-[17px] text-white/80 leading-relaxed [text-shadow:0_1px_12px_rgba(0,0,0,0.5)]">
               Regulation, protection and security are not features. They are the
               foundation everything else is built on.
             </p>
