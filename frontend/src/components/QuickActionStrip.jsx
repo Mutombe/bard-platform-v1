@@ -11,7 +11,9 @@ export default function QuickActionStrip({ actions = [], tint = "navy" }) {
 
   return (
     <section className={`${tintBg} text-white border-t border-white/25`}>
-      <div className="container-bank">
+      {/* Full-bleed on mobile so the divider between the two decks runs edge
+          to edge; container-aligned from md up. */}
+      <div className="w-full md:mx-auto md:max-w-[1440px] px-0 md:px-[var(--container-pad-x)]">
         <div className="grid grid-cols-2 md:grid-cols-4 md:divide-x divide-white/30">
           {actions.map((a) => {
             const Comp = a.external ? "a" : Link;
@@ -22,13 +24,13 @@ export default function QuickActionStrip({ actions = [], tint = "navy" }) {
               <Comp
                 key={a.label}
                 {...linkProps}
-                className="group flex items-center justify-between gap-3 px-4 md:px-7 py-4 md:py-5 hover:bg-white/[0.07] transition-colors border-b border-white/25 md:border-b-0"
+                className="group flex items-center justify-between gap-3 h-14 md:h-auto px-5 md:px-7 md:py-5 hover:bg-white/[0.07] transition-colors border-b border-white/25 md:border-b-0"
               >
-                <span className="text-[13.5px] md:text-[15px] font-bold leading-tight">
+                <span className="text-[14.5px] md:text-[16.5px] font-bold leading-tight">
                   {a.label}
                 </span>
                 <CaretRightIcon
-                  size={14}
+                  size={15}
                   weight="bold"
                   className="shrink-0 opacity-70 group-hover:translate-x-1 transition-transform"
                 />

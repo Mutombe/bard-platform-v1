@@ -212,7 +212,7 @@ export function MondrianAside() {
                 <p className="font-mono text-[10px] tracking-[0.22em] uppercase opacity-80">
                   § Reach
                 </p>
-                <p className="font-display text-[18px] md:text-[20px] font-medium leading-tight mt-1">
+                <p className="font-display text-[19px] md:text-[21px] font-medium leading-tight mt-1">
                   Three continents
                 </p>
               </div>

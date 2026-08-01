@@ -34,7 +34,7 @@ export default function PolicyPage({
           <div className="max-w-4xl">
             <p className="eyebrow eyebrow-accent mb-3 md:mb-4">§ Legal & regulatory</p>
             <h1 className="display-xl text-navy-600 mb-5 md:mb-6">{title}</h1>
-            <p className="text-[15.5px] md:text-[17px] text-bone-600 leading-relaxed max-w-3xl">
+            <p className="text-[16.5px] md:text-[18px] text-bone-600 leading-relaxed max-w-3xl">
               {description}
             </p>
           </div>
@@ -116,7 +116,7 @@ export default function PolicyPage({
                   <h2 className="font-display text-[22px] md:text-[28px] text-navy-600 mb-4 md:mb-5 leading-tight">
                     {s.heading}
                   </h2>
-                  <div className="space-y-3.5 md:space-y-4 text-[14.5px] md:text-[15px] text-bone-700 leading-relaxed">
+                  <div className="space-y-3.5 md:space-y-4 text-[15.5px] md:text-[16px] text-bone-700 leading-relaxed">
                     {s.body.split("\n\n").map((para, j) => (
                       <p key={j}>{para}</p>
                     ))}

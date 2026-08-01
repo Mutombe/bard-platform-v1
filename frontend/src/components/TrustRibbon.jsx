@@ -77,7 +77,7 @@ export default function TrustRibbon() {
             <h2 className="display-md text-white text-balance">
               The obligations a bank inherits the moment it opens its first account.
             </h2>
-            <p className="mt-5 text-[15px] md:text-[16px] text-white/75 leading-relaxed">
+            <p className="mt-5 text-[16px] md:text-[17px] text-white/75 leading-relaxed">
               Regulation, protection and security are not features. They are the
               foundation everything else is built on.
             </p>
@@ -112,10 +112,10 @@ export default function TrustRibbon() {
                       <ArrowUpRightIcon size={15} weight="bold" className="text-white" />
                     </span>
                   </div>
-                  <p className="font-display font-medium text-white text-[19px] md:text-[20px] leading-tight mb-2">
+                  <p className="font-display font-medium text-white text-[20px] md:text-[21px] leading-tight mb-2">
                     {p.title}
                   </p>
-                  <p className="text-[13.5px] md:text-[14px] text-white/85 leading-relaxed">
+                  <p className="text-[13.5px] md:text-[15px] text-white/85 leading-relaxed">
                     {p.body}
                   </p>
                 </Link>

@@ -167,7 +167,7 @@ function FullBleedHero({
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.25 }}
-              className="mt-6 md:mt-9 text-white/90 max-w-xl text-[16px] md:text-[19px] leading-relaxed [text-shadow:0_1px_16px_rgba(0,0,0,0.45)]"
+              className="mt-6 md:mt-9 text-white/90 max-w-xl text-[17px] md:text-[20px] leading-relaxed [text-shadow:0_1px_16px_rgba(0,0,0,0.45)]"
             >
               {body}
             </motion.p>
@@ -220,7 +220,7 @@ function EditorialDesktopHero({
               )}
             </motion.h1>
             {body && (
-              <p className="mt-10 text-[20px] text-bone-600 max-w-xl leading-relaxed">
+              <p className="mt-10 text-[21px] text-bone-600 max-w-xl leading-relaxed">
                 {body}
               </p>
             )}
@@ -277,7 +277,7 @@ function SplitDesktopHero({
               )}
             </h1>
             {body && (
-              <p className="mt-7 text-white/80 max-w-md text-[18px] leading-relaxed">
+              <p className="mt-7 text-white/80 max-w-md text-[19px] leading-relaxed">
                 {body}
               </p>
             )}

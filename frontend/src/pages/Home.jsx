@@ -142,7 +142,7 @@ export default function Home() {
           FIRST row of the strip sits above the fold (the second row is
           revealed on scroll). */}
       <div className="flex flex-col md:min-h-[calc(100svh-124px)]">
-        <section className="relative flex-1 flex overflow-hidden bg-navy-900 min-h-[calc(100svh-172px)] md:min-h-0">
+        <section className="relative flex-1 flex overflow-hidden bg-navy-900 min-h-[calc(100svh-165px)] md:min-h-0">
           <div className="absolute top-0 left-0 right-0 h-[2px] bg-orange-500 z-20" />
           <video
             className="absolute inset-0 h-full w-full object-cover"
@@ -191,7 +191,7 @@ export default function Home() {
                 </span>
                 <span className="sr-only">move forward.</span>
               </h1>
-              <p className="mt-7 md:mt-9 text-white/90 max-w-xl text-[17px] md:text-[20px] leading-relaxed [text-shadow:0_1px_16px_rgba(0,0,0,0.45)]">
+              <p className="mt-7 md:mt-9 text-white/90 max-w-xl text-[18px] md:text-[21px] leading-relaxed [text-shadow:0_1px_16px_rgba(0,0,0,0.45)]">
                 A digital-first bank built for the way Africa works. Simple enough for
                 everyday life, powerful enough for a growing business.
               </p>
@@ -222,7 +222,7 @@ export default function Home() {
                 other way around.
               </h2>
             </motion.div>
-            <motion.p {...reveal} className="col-span-12 md:col-span-5 md:col-start-8 text-[17px] md:text-[19px] text-bone-600 leading-relaxed">
+            <motion.p {...reveal} className="col-span-12 md:col-span-5 md:col-start-8 text-[18px] md:text-[20px] text-bone-600 leading-relaxed">
               For too long, banking expected people to fit around its systems. Long queues,
               slow approvals, endless paperwork. We set out to build a different kind of
               institution, one that pairs trusted financial expertise with modern technology
@@ -244,7 +244,7 @@ export default function Home() {
                 Built around <span className="font-bold">people</span>, not products.
               </h2>
             </div>
-            <p className="text-[16px] md:text-[17px] text-bone-600 leading-relaxed max-w-sm">
+            <p className="text-[17px] md:text-[18px] text-bone-600 leading-relaxed max-w-sm">
               Every customer has a different goal. Choose the context your next conversation
               belongs in.
             </p>
@@ -271,7 +271,7 @@ export default function Home() {
                     <h3 className="font-display text-navy-600 text-[24px] md:text-[26px] leading-tight mb-4">
                       {c.title}
                     </h3>
-                    <p className="text-[15.5px] text-bone-600 leading-relaxed flex-1">{c.body}</p>
+                    <p className="text-[16.5px] text-bone-600 leading-relaxed flex-1">{c.body}</p>
                     <span className="btn btn-outline w-full justify-center mt-8 group-hover:bg-navy-700 group-hover:text-white group-hover:border-navy-700">
                       Explore {c.title.replace("For ", "")}
                     </span>
@@ -295,7 +295,7 @@ export default function Home() {
             <h2 className="display-lg text-navy-600 text-balance mt-6">
               Digital where it matters. <span className="font-bold">Human</span> when it counts.
             </h2>
-            <p className="mt-6 text-[17px] md:text-[19px] text-bone-600 leading-relaxed">
+            <p className="mt-6 text-[18px] md:text-[20px] text-bone-600 leading-relaxed">
               Technology should remove complexity, not create it. Bank whenever and
               wherever you choose, and reach a real person the moment you need one.
             </p>
@@ -325,7 +325,7 @@ export default function Home() {
                   }}
                 />
                 <div className="absolute inset-0 p-5 md:p-6 flex flex-col justify-end">
-                  <h3 className="font-display font-medium text-white text-[19px] md:text-[20px] leading-tight mb-2">
+                  <h3 className="font-display font-medium text-white text-[20px] md:text-[21px] leading-tight mb-2">
                     {c.title}
                   </h3>
                   <p className="text-[13px] md:text-[13.5px] text-white/80 leading-relaxed mb-5">
@@ -358,7 +358,7 @@ export default function Home() {
               href="https://bgfi.global"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-[15px] font-medium text-navy-600 hover:text-orange-600 transition-colors"
+              className="inline-flex items-center gap-2 text-[16px] font-medium text-navy-600 hover:text-orange-600 transition-colors"
             >
               All research on BGFI
               <ArrowSquareOutIcon size={15} weight="bold" aria-label="opens in a new tab" />
@@ -380,7 +380,7 @@ export default function Home() {
               <h2 className="display-lg text-white text-balance mt-6">
                 Built for the way <span className="font-bold">Africa</span> works.
               </h2>
-              <p className="mt-6 text-[17px] md:text-[19px] text-white/80 leading-relaxed">
+              <p className="mt-6 text-[18px] md:text-[20px] text-white/80 leading-relaxed">
                 Entrepreneurs are building businesses. Families are creating wealth across
                 generations. Trade is expanding across borders. We build for the people
                 driving that ambition.
@@ -394,7 +394,7 @@ export default function Home() {
                     to={a.to}
                     className="group flex items-center justify-between gap-3 rounded-xl border-2 border-white/15 hover:border-orange-400 bg-white/[0.04] hover:bg-white/[0.07] px-5 py-5 transition-colors"
                   >
-                    <span className="font-display font-medium text-[17px] md:text-[18px] text-white leading-tight">
+                    <span className="font-display font-medium text-[18px] md:text-[19px] text-white leading-tight">
                       {a.label}
                     </span>
                     <span className="w-9 h-9 rounded-full bg-orange-500 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">

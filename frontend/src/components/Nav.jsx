@@ -214,9 +214,15 @@ export default function Nav() {
             </nav>
 
             {/* Mobile label filler (triggers live in the drawer on mobile) */}
-            <span className="md:hidden flex items-center text-[11px] tracking-[0.18em] text-white/60 uppercase">
+            <a
+              href="https://bardsantner.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="md:hidden flex items-center gap-1.5 text-[11px] tracking-[0.18em] text-white/60 hover:text-white uppercase transition-colors"
+            >
               Bard Santner Markets Inc
-            </span>
+              <ArrowSquareOutIcon size={11} weight="bold" className="opacity-70" aria-label="opens in a new tab" />
+            </a>
 
             {/* Utility links — right */}
             <div className="ml-auto hidden md:flex items-center gap-7 text-[13px] font-semibold text-white/75 pr-1">
@@ -278,7 +284,7 @@ export default function Nav() {
                           {...linkProps}
                           className="group flex h-full items-center justify-between gap-3 rounded-xl border-2 border-bone-200 bg-white hover:border-orange-500 hover:bg-orange-50/60 px-4 py-3.5 transition-colors"
                         >
-                          <span className="text-[13.5px] xl:text-[14px] font-semibold text-navy-700 group-hover:text-orange-700 leading-snug transition-colors">
+                          <span className="text-[13.5px] xl:text-[15px] font-semibold text-navy-700 group-hover:text-orange-700 leading-snug transition-colors">
                             {c.label}
                           </span>
                           <Icon
@@ -331,7 +337,7 @@ export default function Nav() {
                 <button
                   onClick={() => setSearchOpen(true)}
                   aria-label="Search Bard Santner"
-                  className="flex-1 text-left text-[15px] font-semibold text-navy-600 truncate"
+                  className="flex-1 text-left text-[16px] font-semibold text-navy-600 truncate"
                 >
                   Search Bard Santner…
                 </button>
@@ -360,7 +366,7 @@ export default function Nav() {
                 <span className="w-9 h-9 rounded-full bg-navy-700 group-hover:bg-orange-500 flex items-center justify-center transition-colors duration-300 shadow-[inset_0_-1px_0_rgba(0,0,0,0.12)]">
                   <LockIcon size={17} weight="duotone" className="text-white" />
                 </span>
-                <span className="text-[16px] font-medium text-navy-700 group-hover:text-navy-900 transition-colors">
+                <span className="text-[17px] font-medium text-navy-700 group-hover:text-navy-900 transition-colors">
                   Log in
                 </span>
               </Link>
@@ -421,7 +427,7 @@ export default function Nav() {
                 className="w-full mb-7 flex items-center gap-3 px-4 py-3.5 rounded-md border border-bone-200 bg-paper hover:border-orange-500 transition-colors text-left"
               >
                 <MagnifyingGlassIcon size={17} weight="regular" className="text-bone-500" />
-                <span className="text-[14px] text-bone-500 flex-1">Search Bard Santner</span>
+                <span className="text-[15px] text-bone-500 flex-1">Search Bard Santner</span>
                 <ArrowRightIcon size={12} weight="bold" className="text-bone-400" />
               </button>
 
@@ -434,7 +440,7 @@ export default function Nav() {
                       <button
                         onClick={() => setMobileSection(expanded ? null : item.label)}
                         aria-expanded={expanded}
-                        className="w-full flex items-center justify-between py-4 text-[16.5px] font-medium text-navy-600"
+                        className="w-full flex items-center justify-between py-4 text-[17.5px] font-medium text-navy-600"
                       >
                         <span>{item.label}</span>
                         <CaretDownIcon
@@ -458,7 +464,7 @@ export default function Nav() {
                                   key={c.label}
                                   to={c.to}
                                   onClick={() => setMobileOpen(false)}
-                                  className="py-2.5 pl-4 text-[14px] text-bone-600 hover:text-orange-600 border-l-2 border-bone-200 hover:border-orange-500 transition-colors"
+                                  className="py-2.5 pl-4 text-[15px] text-bone-600 hover:text-orange-600 border-l-2 border-bone-200 hover:border-orange-500 transition-colors"
                                 >
                                   {c.label}
                                 </NavItem>
@@ -480,7 +486,7 @@ export default function Nav() {
                     key={u.to}
                     to={u.to}
                     onClick={() => setMobileOpen(false)}
-                    className="text-[14.5px] text-bone-600 hover:text-navy-600 transition-colors"
+                    className="text-[15.5px] text-bone-600 hover:text-navy-600 transition-colors"
                   >
                     {u.label}
                   </NavItem>
