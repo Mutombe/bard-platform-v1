@@ -7,7 +7,7 @@ import { CaretRightIcon } from "@phosphor-icons/react";
  * row on desktop, 2×2 on mobile), sitting on the brand colour band.
  */
 export default function QuickActionStrip({ actions = [], tint = "navy" }) {
-  const tintBg = tint === "orange" ? "bg-orange-600" : "bg-navy-600";
+  const tintBg = tint === "orange" ? "bg-orange-600" : "bg-navy-700";
 
   return (
     <section className={`${tintBg} text-white border-t border-white/25`}>

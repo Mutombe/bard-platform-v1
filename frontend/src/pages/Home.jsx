@@ -372,7 +372,11 @@ export default function Home() {
       {/* ── 05 · Built for Africa — ruled audience index ───────────── */}
       <section data-spine="Built for Africa" data-spine-n="05" data-spine-dark="true" className="bg-navy-700 text-white relative overflow-hidden">
         <div className="absolute top-0 left-0 right-0 h-[2px] bg-orange-500 z-10" />
-        <div className="absolute inset-0 pattern-lattice bg-white opacity-[0.06] pointer-events-none" />
+        {/* Argyle lattice — the golf-site footer texture, white-on-navy */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{ backgroundImage: "url(/pattern-argyle.svg)", backgroundSize: "44px 44px" }}
+        />
         <div className="container-bank py-24 md:py-32">
           <div className="grid grid-cols-12 gap-y-10 md:gap-16">
             <motion.div {...reveal} className="col-span-12 md:col-span-5">

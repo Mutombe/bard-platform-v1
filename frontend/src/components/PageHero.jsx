@@ -265,7 +265,7 @@ function SplitDesktopHero({
     <section className="bg-milk">
       <div className="container-bank pt-10 pb-0">
         <div className="grid grid-cols-12 gap-0 rounded-xl overflow-hidden min-h-[calc(100svh-276px)]">
-          <div className="col-span-6 bg-navy-600 text-white p-14 lg:p-16 flex flex-col justify-center">
+          <div className="col-span-6 bg-navy-700 text-white p-14 lg:p-16 flex flex-col justify-center">
             {eyebrow && <p className="eyebrow eyebrow-on-dark mb-6">{eyebrow}</p>}
             <h1 className="display-xl text-white">
               {headline}
