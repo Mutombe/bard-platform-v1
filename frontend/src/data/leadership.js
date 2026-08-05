@@ -12,6 +12,7 @@ export const LEADERSHIP = [
     bio:
       "Vinod chairs the Board of Bard Santner Microfinance Bank, providing independent leadership and governance oversight. He brings long experience in financial services to the stewardship of the Bank.",
     image: "/images/exec-bussawah.jpg",
+    linkedin: "https://www.linkedin.com/in/vinod-bussawah",
   },
   {
     slug: "roger-bennett",
@@ -21,6 +22,7 @@ export const LEADERSHIP = [
     bio:
       "A lawyer by training, Roger serves as a Non-Executive Director, bringing legal and commercial judgement to the Board's oversight of the Bank's strategy, risk and governance.",
     image: "/images/exec-bennett.jpg",
+    linkedin: "https://www.linkedin.com/in/roger-bennett",
   },
   {
     slug: "senziwani-sikhosana",
@@ -60,6 +62,7 @@ export const LEADERSHIP = [
     bio:
       "Monika is the Company Secretary, responsible for the Bank's corporate governance, board administration and statutory compliance. She is a qualified lawyer.",
     image: "/images/exec-bhatt.jpg",
+    linkedin: "https://www.linkedin.com/in/monika-bhatt",
   },
 ];
 

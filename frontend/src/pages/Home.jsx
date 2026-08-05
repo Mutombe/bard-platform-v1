@@ -181,11 +181,11 @@ export default function Home() {
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="max-w-3xl"
+              className="max-w-4xl"
             >
               <p className="eyebrow eyebrow-on-dark mb-6 md:mb-7 [text-shadow:0_1px_10px_rgba(0,0,0,0.35)]">Bard Santner Microfinance Bank</p>
               <h1 className="display-hero text-white max-md:text-[clamp(1.72rem,7.5vw,2.6rem)] [text-shadow:0_2px_28px_rgba(0,0,0,0.5)]">
-                <span className="block">Banking that helps you</span>
+                <span className="block md:whitespace-nowrap">Banking that helps you</span>
                 <span className="block font-bold">
                   <Typewriter phrases={HERO_PHRASES} />
                 </span>
