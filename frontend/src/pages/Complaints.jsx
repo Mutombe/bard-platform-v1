@@ -11,7 +11,7 @@ export default function Complaints() {
       sections={[
         {
           heading: "How to make a complaint",
-          body: "If something has gone wrong, we want to hear about it. Three channels:\n\n1. Email: complaints@bardsantner.com. Please include your account number (if relevant) and a clear description of what happened.\n2. Telephone: +263 861 200 0700, option 4 for complaints.\n3. In writing: 5th Floor Beverly Court, 100 Nelson Mandela Avenue, Harare, attn. Complaints Officer.",
+          body: "If something has gone wrong, we want to hear about it. Three channels:\n\n1. Email: complaints@bardsantner.com. Please include your account number (if relevant) and a clear description of what happened.\n2. Telephone: +263 861 200 0700, option 4 for complaints.\n3. In writing: 5th Floor, Beverly Court, 100 Nelson Mandela Avenue, Harare, attn. Complaints Officer.",
         },
         {
           heading: "What we do with it",
