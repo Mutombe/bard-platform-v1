@@ -78,11 +78,11 @@ export default function WhoWeServe() {
       <section className="relative overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${seg.image2 || seg.image})`, filter: "saturate(1.05) brightness(0.5) sepia(0.15)" }}
+          style={{ backgroundImage: `url(${seg.image2 || seg.image})`, filter: "saturate(1.08) brightness(0.72) sepia(0.12)" }}
         />
         <div
           className="absolute inset-0"
-          style={{ background: "linear-gradient(115deg, rgba(14,9,3,0.92) 0%, rgba(14,9,3,0.72) 55%, rgba(14,9,3,0.5) 100%)" }}
+          style={{ background: "linear-gradient(115deg, rgba(14,9,3,0.72) 0%, rgba(14,9,3,0.5) 55%, rgba(14,9,3,0.28) 100%)" }}
         />
         <div className="absolute top-0 left-0 right-0 h-[2px] bg-orange-500" />
         <div className="relative container-bank py-24 md:py-32">
