@@ -72,10 +72,10 @@ export default function Contact() {
                 <div>
                   <p className="eyebrow eyebrow-on-dark mb-2">Visit us</p>
                   <h3 className="font-display text-white text-[24px] md:text-[28px] leading-tight mb-2">
-                    Harare flagship branch
+                    Head Office — Harare
                   </h3>
                   <p className="text-white/80 text-[15.5px] leading-relaxed max-w-xs">
-                    5th Floor Beverly Court, 100 Nelson Mandela Avenue
+                    5th Floor, Beverly Court, 100 Nelson Mandela Avenue, Harare
                   </p>
                 </div>
               </div>
@@ -103,11 +103,11 @@ export default function Contact() {
             </a>
 
             {/* Email — white */}
-            <a href="mailto:info@bardsantner.com" className="group md:col-span-3 rounded-2xl bg-white border-2 border-bone-200 hover:border-orange-500 p-6 md:p-7 flex flex-col justify-between min-h-[168px] transition-colors">
+            <a href="mailto:bank@bardsantner.co.zw" className="group md:col-span-3 rounded-2xl bg-white border-2 border-bone-200 hover:border-orange-500 p-6 md:p-7 flex flex-col justify-between min-h-[168px] transition-colors">
               <EnvelopeSimpleIcon size={26} weight="regular" className="text-orange-600" />
               <div>
                 <p className="font-display text-[19px] md:text-[20px] text-navy-600 mb-1.5">Email</p>
-                <p className="text-[15px] font-medium text-navy-600 break-words">info@bardsantner.com</p>
+                <p className="text-[15px] font-medium text-navy-600 break-words">bank@bardsantner.co.zw</p>
                 <p className="text-[12.5px] text-bone-500 mt-0.5">Reply within one business day</p>
               </div>
             </a>

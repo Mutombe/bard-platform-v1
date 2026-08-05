@@ -14,8 +14,12 @@
     <title>Bard Santner Markets Inc</title>
     <meta name="description" content="Bard Santner Markets Inc — a modern African financial platform. Banking, wealth management, trade finance, treasury and advisory." />
 
-    <!-- Fonts are self-hosted via @fontsource imports in main.jsx.
-         No third-party CDN, no leak of client IP to fonts.googleapis.com. -->
+    <!-- GT Ultra (Grilli Type) is self-hosted (@font-face in index.css).
+         No third-party CDN, no leak of client IP. Preload the faces the
+         first paint needs — body text + display headings. -->
+    <link rel="preload" href="/fonts/GTUltra-Regular.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/GTUltraFine-Regular.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/GTUltraFine-Light.woff2" as="font" type="font/woff2" crossorigin />
 
     <script type="module" src="/src/main.jsx"></script>
   </head>

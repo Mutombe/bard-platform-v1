@@ -5,6 +5,24 @@
 
 export const LEADERSHIP = [
   {
+    slug: "vinod-bussawah",
+    name: "Vinod Bussawah",
+    role: "Non-Executive Chairman",
+    short_role: "Chairman",
+    bio:
+      "Vinod chairs the Board of Bard Santner Microfinance Bank, providing independent leadership and governance oversight. He brings long experience in financial services to the stewardship of the Bank.",
+    image: "/images/exec-bussawah.jpg",
+  },
+  {
+    slug: "roger-bennett",
+    name: "Roger Bennett, L.L.B",
+    role: "Non-Executive Director",
+    short_role: "Non-Exec Director",
+    bio:
+      "A lawyer by training, Roger serves as a Non-Executive Director, bringing legal and commercial judgement to the Board's oversight of the Bank's strategy, risk and governance.",
+    image: "/images/exec-bennett.jpg",
+  },
+  {
     slug: "senziwani-sikhosana",
     name: "Senziwani Sikhosana",
     role: "Chief Executive Officer",
@@ -33,6 +51,15 @@ export const LEADERSHIP = [
       "Lucia oversees operational excellence, client relations and risk. She brings a rigorous analytical approach to how the bank is run day to day, so that discipline behind the scenes shows up as reliability for the customer.",
     image: "/images/exec-lucia.jpg",
     linkedin: "https://www.linkedin.com/in/lucia-chingwaru-mutsunge",
+  },
+  {
+    slug: "monika-bhatt",
+    name: "Monika Bhatt, L.L.B",
+    role: "Company Secretary",
+    short_role: "Company Secretary",
+    bio:
+      "Monika is the Company Secretary, responsible for the Bank's corporate governance, board administration and statutory compliance. She is a qualified lawyer.",
+    image: "/images/exec-bhatt.jpg",
   },
 ];
 

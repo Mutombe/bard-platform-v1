@@ -10,7 +10,7 @@ export default function Legal() {
       sections={[
         {
           heading: "Entity",
-          body: "This website is operated by Bard Santner Markets Inc, a financial services institution incorporated in the Republic of Zimbabwe with its registered office at 5th Floor Beverly Court, 100 Nelson Mandela Avenue, Harare.\n\nBard Santner Microfinance Bank (BSMFB) is a wholly-owned subsidiary of Bard Santner Markets Inc, operating under licence from the relevant prudential authority.",
+          body: "This website is operated by Bard Santner Markets Inc, a financial services institution incorporated in the Republic of Zimbabwe with its registered office at 5th Floor, Beverly Court, 100 Nelson Mandela Avenue, Harare.\n\nBard Santner Microfinance Bank (BSMFB) is a wholly-owned subsidiary of Bard Santner Markets Inc, operating under licence from the relevant prudential authority.",
         },
         {
           heading: "Regulator",

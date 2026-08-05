@@ -14,58 +14,73 @@
       mostly as IDENTIFIER accents (CTAs, audience strip, sub-brand chips)
       rather than flooding the canvas.
 
-   Gellix is the only typeface, body to display, micro to hero. The
-   only differentiators across the system are size, weight, letter-
-   spacing and case. Per the Lloyds canon — one family, governed
-   visually by hierarchy alone. Inter sits in the fallback stack so
-   weights 500/600/700 resolve cleanly when Gellix (Light + Regular)
-   doesn't ship those faces.
+   GT Ultra (Grilli Type) is the only typeface, body to display, micro
+   to hero — "GT Ultra Fine" for display, "GT Ultra" for text. The only
+   differentiators across the system are size, weight, letter-spacing
+   and case. One family, governed visually by hierarchy alone. Weights
+   500/600 resolve to Regular/Bold via CSS weight-matching since GT Ultra
+   ships discrete Light/Regular/Bold faces.
 
    Token bumps applied 2026-05-30 per direction:
    strategic — body 17px, headings +10%, hero unchanged.
    Lloyds-grade interior padding — pills 18/28, cards 32/40, buttons 18/28.
    Applied at @theme + @layer components level only so symmetry holds. */
 
-/* ─── Self-hosted Gellix ──────────────────────────────────────────────
-   Gellix shipped only as Light (300) and Regular (400). Declaring the
-   Regular face under each weight (400, 500, 600, 700) the design system
-   asks for lets the browser pick it without synthesizing bold — the
-   weight-range syntax was confusing some browsers and the font wasn't
-   resolving at all. */
+/* ─── Self-hosted GT Ultra (Grilli Type) ─────────────────────────────
+   GT Ultra is a serif with three optical sizes. We ship two:
+     • "GT Ultra Fine"  → display / headline sizes
+     • "GT Ultra"       → text / body / UI sizes
+   GT Ultra ships discrete weights (Light 300, Regular 400, Bold 700).
+   Only these three are declared per family, so CSS weight-matching
+   resolves the design system's 500 → Regular and 600 → Bold naturally. */
+
+/* GT Ultra Fine — display */
 @font-face {
-  font-family: "Gellix";
-  src: url("/fonts/Gellix-Light.ttf") format("truetype");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
+  font-family: "GT Ultra Fine";
+  src: url("/fonts/GTUltraFine-Light.woff2") format("woff2");
+  font-weight: 300; font-style: normal; font-display: swap;
 }
 @font-face {
-  font-family: "Gellix";
-  src: url("/fonts/Gellix-Regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+  font-family: "GT Ultra Fine";
+  src: url("/fonts/GTUltraFine-LightItalic.woff2") format("woff2");
+  font-weight: 300; font-style: italic; font-display: swap;
 }
 @font-face {
-  font-family: "Gellix";
-  src: url("/fonts/Gellix-Regular.ttf") format("truetype");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
+  font-family: "GT Ultra Fine";
+  src: url("/fonts/GTUltraFine-Regular.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap;
 }
 @font-face {
-  font-family: "Gellix";
-  src: url("/fonts/Gellix-Regular.ttf") format("truetype");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
+  font-family: "GT Ultra Fine";
+  src: url("/fonts/GTUltraFine-RegularItalic.woff2") format("woff2");
+  font-weight: 400; font-style: italic; font-display: swap;
 }
 @font-face {
-  font-family: "Gellix";
-  src: url("/fonts/Gellix-Regular.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
+  font-family: "GT Ultra Fine";
+  src: url("/fonts/GTUltraFine-Bold.woff2") format("woff2");
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+
+/* GT Ultra — text / UI */
+@font-face {
+  font-family: "GT Ultra";
+  src: url("/fonts/GTUltra-Light.woff2") format("woff2");
+  font-weight: 300; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "GT Ultra";
+  src: url("/fonts/GTUltra-Regular.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "GT Ultra";
+  src: url("/fonts/GTUltra-RegularItalic.woff2") format("woff2");
+  font-weight: 400; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: "GT Ultra";
+  src: url("/fonts/GTUltra-Bold.woff2") format("woff2");
+  font-weight: 700; font-style: normal; font-display: swap;
 }
 
 @theme {
@@ -130,17 +145,17 @@
   --color-error:   #88120e;
   --color-warn:    #c9a04d;
 
-  /* ─── Typography ─── Roboto everywhere — the Bard Santner Group face
-     (bardsantner.com), so the Microfinance Bank reads as part of the family.
-     One family across body and display, governed by size, weight and case. */
-  --font-display: "Roboto", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
-  --font-display-alt: "Roboto", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
-  --font-body: "Roboto", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
-  --font-mono: "Roboto", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  /* ─── Typography ─── GT Ultra (Grilli Type) everywhere. A contemporary
+     serif with optical sizes: "GT Ultra Fine" carries the display/headline
+     tiers, "GT Ultra" carries body, UI, buttons and eyebrows. Governed by
+     size, weight and case across the whole site. */
+  --font-display: "GT Ultra Fine", Georgia, "Times New Roman", serif;
+  --font-display-alt: "GT Ultra Fine", Georgia, "Times New Roman", serif;
+  --font-body: "GT Ultra", Georgia, "Times New Roman", serif;
+  --font-mono: "GT Ultra", Georgia, "Times New Roman", serif;
 
-  /* Display tiers now share the one family (Roboto), lighter at large sizes
-     per the group's headline style. */
-  --font-hero-display: "Roboto", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  /* Display tiers wear GT Ultra Fine — lighter at large sizes. */
+  --font-hero-display: "GT Ultra Fine", Georgia, "Times New Roman", serif;
 
   /* ─── Type scale — Fortune-500 premium sizing ────────────────────────
      Mapped to the 8-point enterprise scale used by Apple / JPMorgan /
@@ -226,7 +241,7 @@
   /* Body — 16px / 1.7 line-height, the premium reading default. Every
      paragraph inherits; components pick it up through em-based sizing. */
   body { font-family: var(--font-body); color: var(--color-bone-700); background: var(--color-milk); font-feature-settings: "kern","liga","calt","ss01"; font-size: var(--text-body-base); line-height: 1.7; margin: 0; }
-  /* Headings — Roboto medium, tightening letter-spacing as size climbs. */
+  /* Headings — GT Ultra Fine, tightening letter-spacing as size climbs. */
   h1, h2, h3, h4 { font-family: var(--font-display); color: var(--color-navy-600); font-weight: 500; letter-spacing: -0.018em; line-height: 1.15; margin: 0; }
   h1 { font-weight: 500; letter-spacing: -0.022em; }
   p  { color: var(--color-bone-600); margin: 0; }
@@ -304,7 +319,7 @@
      italic emphasis in their canonical headlines. */
   .italic-accent { font-style: normal; }
 
-  /* Eyebrow — Gellix uppercase with generous tracking. The institutional
+  /* Eyebrow — GT Ultra uppercase with generous tracking. The institutional
      gesture is the spacing and the case, not a different typeface. */
   .eyebrow { font-family: var(--font-mono); font-size: 0.8rem; line-height: 1; letter-spacing: 0.22em; text-transform: uppercase; color: var(--color-bone-500); font-weight: 500; }
 

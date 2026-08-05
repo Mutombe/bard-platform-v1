@@ -81,10 +81,7 @@ const SOCIALS = [
 ];
 
 const LOCATIONS = [
-  { city: "Harare", line: "5th Floor Beverly Court, 100 Nelson Mandela Avenue" },
-  { city: "Bulawayo", line: "Branch coming 2026 Q3" },
-  { city: "Johannesburg", line: "Representative office, Sandton" },
-  { city: "London", line: "Diaspora desk, Canary Wharf" },
+  { city: "Harare", line: "5th Floor, Beverly Court, 100 Nelson Mandela Avenue, Harare" },
 ];
 
 export default function Footer() {
@@ -157,13 +154,13 @@ export default function Footer() {
       <div className="container-bank py-8 md:py-10">
         <div className="grid grid-cols-12 gap-6 md:gap-8">
           <div className="col-span-12 md:col-span-3">
-            <p className="eyebrow eyebrow-on-dark mb-1">Where we operate</p>
-            <p className="font-display text-[19px] md:text-[21px] text-white">Offices and desks</p>
+            <p className="eyebrow eyebrow-on-dark mb-1">Where to find us</p>
+            <p className="font-display text-[19px] md:text-[21px] text-white">Head Office</p>
           </div>
           {LOCATIONS.map((loc) => (
-            <div key={loc.city} className="col-span-6 md:col-span-2 lg:col-span-2">
+            <div key={loc.city} className="col-span-12 md:col-span-6">
               <p className="text-[13px] text-white font-medium mb-1">{loc.city}</p>
-              <p className="text-[12px] text-white/55 leading-relaxed">{loc.line}</p>
+              <p className="text-[13px] text-white/60 leading-relaxed">{loc.line}</p>
             </div>
           ))}
         </div>
@@ -202,17 +199,6 @@ export default function Footer() {
           the relevant prudential authorities. Eligibility, terms and conditions apply to all
           products. Information on this site is provided for general guidance and does not
           constitute financial advice.
-        </p>
-        <p className="mt-6 md:mt-7 pt-5 border-t border-white/10 text-[12px] text-white/45">
-          Developed by{" "}
-          <a
-            href="https://bitstudio.co.zw"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-white/75 hover:text-white font-medium hover-line"
-          >
-            Bit Studio
-          </a>
         </p>
       </div>
     </footer>
