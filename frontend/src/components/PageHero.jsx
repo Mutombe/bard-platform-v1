@@ -108,7 +108,7 @@ function FullBleedHero({
         style={{
           backgroundImage: image ? `url(${image})` : undefined,
           backgroundPosition: imagePosition,
-          filter: image ? "saturate(1.05) contrast(1.03) brightness(0.92) sepia(0.14)" : undefined,
+          filter: image ? "saturate(1.06) contrast(1.03) brightness(1.02) sepia(0.12)" : undefined,
           y: photoY,
           scale: photoScale,
         }}
@@ -117,19 +117,19 @@ function FullBleedHero({
       {/* Warm overlay only (matching the home hero): an even warm veil keeps
           the whole photo visible, then a gentle warm lift on the copy side
           plus an orange glow carries legibility — no cold navy scrim. */}
-      <div className="absolute inset-0 pointer-events-none" style={{ background: "rgba(18,11,4,0.30)" }} />
+      <div className="absolute inset-0 pointer-events-none" style={{ background: "rgba(18,11,4,0.15)" }} />
       <div
         className="absolute inset-0 hidden md:block pointer-events-none"
         style={{
           background:
-            "linear-gradient(to right, rgba(14,9,3,0.64) 0%, rgba(14,9,3,0.3) 38%, rgba(14,9,3,0.04) 68%, transparent 100%), linear-gradient(to top, rgba(14,9,3,0.5) 0%, rgba(14,9,3,0.12) 44%, transparent 74%), radial-gradient(92% 96% at 18% 52%, rgba(238,125,54,0.15), transparent 60%)",
+            "linear-gradient(to right, rgba(14,9,3,0.5) 0%, rgba(14,9,3,0.2) 38%, rgba(14,9,3,0.02) 68%, transparent 100%), linear-gradient(to top, rgba(14,9,3,0.38) 0%, rgba(14,9,3,0.08) 44%, transparent 74%), radial-gradient(92% 96% at 18% 52%, rgba(238,125,54,0.13), transparent 60%)",
         }}
       />
       <div
         className="absolute inset-0 md:hidden pointer-events-none"
         style={{
           background:
-            "linear-gradient(to top, rgba(14,9,3,0.9) 0%, rgba(14,9,3,0.55) 40%, rgba(14,9,3,0.25) 100%), radial-gradient(110% 70% at 50% 82%, rgba(238,125,54,0.14), transparent 66%)",
+            "linear-gradient(to top, rgba(14,9,3,0.78) 0%, rgba(14,9,3,0.4) 40%, rgba(14,9,3,0.12) 100%), radial-gradient(110% 70% at 50% 82%, rgba(238,125,54,0.14), transparent 66%)",
         }}
       />
 
