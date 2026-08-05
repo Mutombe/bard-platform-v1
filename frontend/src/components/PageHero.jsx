@@ -108,7 +108,7 @@ function FullBleedHero({
         style={{
           backgroundImage: image ? `url(${image})` : undefined,
           backgroundPosition: imagePosition,
-          filter: image ? "saturate(1.06) contrast(1.03) brightness(1.02) sepia(0.12)" : undefined,
+          filter: image ? "saturate(1.14) contrast(1.03) brightness(1.0) sepia(0.24)" : undefined,
           y: photoY,
           scale: photoScale,
         }}
@@ -117,19 +117,22 @@ function FullBleedHero({
       {/* Warm overlay only (matching the home hero): an even warm veil keeps
           the whole photo visible, then a gentle warm lift on the copy side
           plus an orange glow carries legibility — no cold navy scrim. */}
-      <div className="absolute inset-0 pointer-events-none" style={{ background: "rgba(18,11,4,0.15)" }} />
+      {/* Warm wash — a golden-hour amber cast blended over the photo so the
+          image reads warm (not cool/neutral) without losing brightness. */}
+      <div className="absolute inset-0 pointer-events-none" style={{ background: "rgba(226,122,50,0.42)", mixBlendMode: "soft-light" }} />
+      <div className="absolute inset-0 pointer-events-none" style={{ background: "rgba(24,14,5,0.12)" }} />
       <div
         className="absolute inset-0 hidden md:block pointer-events-none"
         style={{
           background:
-            "linear-gradient(to right, rgba(14,9,3,0.5) 0%, rgba(14,9,3,0.2) 38%, rgba(14,9,3,0.02) 68%, transparent 100%), linear-gradient(to top, rgba(14,9,3,0.38) 0%, rgba(14,9,3,0.08) 44%, transparent 74%), radial-gradient(92% 96% at 18% 52%, rgba(238,125,54,0.13), transparent 60%)",
+            "linear-gradient(to right, rgba(14,9,3,0.5) 0%, rgba(14,9,3,0.2) 38%, rgba(14,9,3,0.02) 68%, transparent 100%), linear-gradient(to top, rgba(14,9,3,0.38) 0%, rgba(14,9,3,0.08) 44%, transparent 74%), radial-gradient(92% 96% at 18% 52%, rgba(238,125,54,0.24), transparent 60%)",
         }}
       />
       <div
         className="absolute inset-0 md:hidden pointer-events-none"
         style={{
           background:
-            "linear-gradient(to top, rgba(14,9,3,0.78) 0%, rgba(14,9,3,0.4) 40%, rgba(14,9,3,0.12) 100%), radial-gradient(110% 70% at 50% 82%, rgba(238,125,54,0.14), transparent 66%)",
+            "linear-gradient(to top, rgba(14,9,3,0.78) 0%, rgba(14,9,3,0.4) 40%, rgba(14,9,3,0.12) 100%), radial-gradient(110% 70% at 50% 82%, rgba(238,125,54,0.22), transparent 66%)",
         }}
       />
 
