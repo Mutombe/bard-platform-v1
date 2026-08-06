@@ -31,6 +31,11 @@ const VALUES = [
 
 const STORY_FACTS = ["Founded 2022", "Diversified group to microfinance bank", "Digital-first"];
 
+// Bites a circular scoop out of the card's bottom-right corner, so the big
+// LinkedIn button hugs the corner in a tight concave curve (deck design).
+const NOTCH_MASK =
+  "radial-gradient(circle 38px at calc(100% - 24px) calc(100% - 24px), transparent 37px, #000 38px)";
+
 export default function About() {
   // The board member whose full profile is open in the modal (null = closed).
   const [active, setActive] = useState(null);
@@ -211,48 +216,64 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: (i % 3) * 0.06, ease: [0.16, 1, 0.3, 1] }}
-                className="group relative flex flex-col rounded-2xl bg-white overflow-hidden shadow-[0_12px_30px_rgba(12,10,20,0.10)] hover:shadow-[0_20px_44px_rgba(12,10,20,0.16)] transition-shadow"
+                className="group relative drop-shadow-[0_12px_30px_rgba(12,10,20,0.12)] hover:drop-shadow-[0_20px_44px_rgba(12,10,20,0.18)] transition-[filter] duration-300"
               >
-                {/* Portrait with name + role laid over a bottom scrim. */}
-                <div className="relative aspect-[4/5] overflow-hidden">
-                  <Portrait member={p} />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/25 to-transparent" />
-                  <div className="absolute inset-x-0 bottom-0 p-5 md:p-6">
-                    <h3 className="font-display font-medium text-white text-[20px] md:text-[23px] leading-tight [text-shadow:0_1px_12px_rgba(0,0,0,0.5)]">
-                      {p.name}
-                    </h3>
-                    <p className="text-[11.5px] tracking-[0.14em] uppercase text-white/80 mt-1.5">
-                      {p.role}
-                    </p>
+                {/* Card body — clickable; a concave circular notch is bitten out
+                    of the bottom-right corner so the big LinkedIn button hugs it.
+                    (The LinkedIn button is a sibling, so it stays independent.) */}
+                <div
+                  onClick={() => setActive(p)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      setActive(p);
+                    }
+                  }}
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`Read ${p.name}'s profile`}
+                  className="flex flex-col h-full rounded-2xl bg-white overflow-hidden cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500"
+                  style={{ maskImage: NOTCH_MASK, WebkitMaskImage: NOTCH_MASK }}
+                >
+                  <div className="relative aspect-[4/5] overflow-hidden">
+                    <Portrait member={p} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/25 to-transparent" />
+                    <div className="absolute inset-x-0 bottom-0 p-5 md:p-6">
+                      <h3 className="font-display font-medium text-white text-[20px] md:text-[23px] leading-tight [text-shadow:0_1px_12px_rgba(0,0,0,0.5)]">
+                        {p.name}
+                      </h3>
+                      <p className="text-[11.5px] tracking-[0.14em] uppercase text-white/80 mt-1.5">
+                        {p.role}
+                      </p>
+                    </div>
                   </div>
-                </div>
-                {/* Truncated bio, then a footer row: See more (left) · LinkedIn (bottom-right corner). */}
-                <div className="flex flex-1 flex-col p-5 md:p-6 pt-4">
-                  <p className="text-[14px] text-bone-600 leading-relaxed line-clamp-3">
-                    <RichText text={p.bio} />
-                  </p>
-                  <div className="mt-auto flex items-center justify-between gap-3 pt-4">
+                  {/* Truncated bio + See more (left; the corner is reserved for LinkedIn). */}
+                  <div className="flex flex-1 flex-col p-5 md:p-6 pt-4">
+                    <p className="text-[14px] text-bone-600 leading-relaxed line-clamp-3">
+                      <RichText text={p.bio} />
+                    </p>
                     <button
                       type="button"
                       onClick={() => setActive(p)}
-                      className="inline-flex items-center gap-1.5 text-[13.5px] font-medium text-orange-600 hover:text-orange-700 hover-line"
+                      className="mt-auto self-start inline-flex items-center gap-1.5 pt-4 pr-16 text-[13.5px] font-medium text-orange-600 hover:text-orange-700 hover-line"
                     >
                       See more
                       <ArrowRightIcon size={13} weight="bold" className="group-hover:translate-x-0.5 transition-transform" />
                     </button>
-                    {p.linkedin && (
-                      <a
-                        href={p.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`${p.name} on LinkedIn`}
-                        className="w-9 h-9 rounded-full bg-navy-700 text-white hover:bg-orange-500 flex items-center justify-center shrink-0 transition-colors"
-                      >
-                        <LinkedinLogoIcon size={18} weight="fill" />
-                      </a>
-                    )}
                   </div>
                 </div>
+                {/* Big LinkedIn button hugging the corner scoop. */}
+                {p.linkedin && (
+                  <a
+                    href={p.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${p.name} on LinkedIn`}
+                    className="absolute -bottom-[4px] -right-[4px] w-14 h-14 rounded-full bg-white text-navy-700 hover:bg-orange-500 hover:text-white flex items-center justify-center transition-colors shadow-[0_4px_14px_rgba(12,10,20,0.22)]"
+                  >
+                    <LinkedinLogoIcon size={28} weight="fill" />
+                  </a>
+                )}
               </motion.article>
             ))}
           </div>
@@ -282,11 +303,10 @@ export default function About() {
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Portrait — full column on desktop, a compact banner on mobile */}
-              <div className="relative shrink-0 h-40 sm:h-52 md:h-auto md:min-h-full">
+              {/* Portrait — full column on desktop, a clear, tall image on mobile
+                  (viewport-scaled so the bio always keeps a scrollable area). */}
+              <div className="relative shrink-0 h-[40vh] min-h-[240px] max-h-[340px] md:h-auto md:min-h-full md:max-h-none">
                 <Portrait member={active} />
-                <div className="absolute top-0 left-0 right-0 h-[3px] bg-orange-500 md:hidden" />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink/50 to-transparent md:hidden" />
               </div>
 
               {/* Content column — fixed header, fade-masked scrolling bio, fixed footer */}
