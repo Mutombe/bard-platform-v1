@@ -31,11 +31,6 @@ const VALUES = [
 
 const STORY_FACTS = ["Founded 2022", "Diversified group to microfinance bank", "Digital-first"];
 
-// Bites a small circular scoop out of the card's bottom-right corner, so the
-// LinkedIn button hugs the corner in a tight concave curve (deck design).
-const NOTCH_MASK =
-  "radial-gradient(circle 38px at calc(100% - 24px) calc(100% - 24px), transparent 37px, #000 38px)";
-
 export default function About() {
   // The board member whose full profile is open in the modal (null = closed).
   const [active, setActive] = useState(null);
@@ -218,49 +213,45 @@ export default function About() {
                 transition={{ duration: 0.5, delay: (i % 3) * 0.06, ease: [0.16, 1, 0.3, 1] }}
                 className="group relative flex flex-col rounded-2xl bg-white overflow-hidden shadow-[0_12px_30px_rgba(12,10,20,0.10)] hover:shadow-[0_20px_44px_rgba(12,10,20,0.16)] transition-shadow"
               >
-                {/* Portrait with a concave circular notch bitten out of the
-                    bottom-right corner (deck founder-card design). */}
-                <div className="relative">
-                  <div
-                    className="relative aspect-[4/5] overflow-hidden"
-                    style={{ maskImage: NOTCH_MASK, WebkitMaskImage: NOTCH_MASK }}
-                  >
-                    <Portrait member={p} />
-                    <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/25 to-transparent" />
-                    <div className="absolute inset-x-0 bottom-0 p-5 md:p-6 pr-20">
-                      <h3 className="font-display font-medium text-white text-[20px] md:text-[23px] leading-tight [text-shadow:0_1px_12px_rgba(0,0,0,0.5)]">
-                        {p.name}
-                      </h3>
-                      <p className="text-[11.5px] tracking-[0.14em] uppercase text-white/80 mt-1.5">
-                        {p.role}
-                      </p>
-                    </div>
+                {/* Portrait with name + role laid over a bottom scrim. */}
+                <div className="relative aspect-[4/5] overflow-hidden">
+                  <Portrait member={p} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/25 to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 p-5 md:p-6">
+                    <h3 className="font-display font-medium text-white text-[20px] md:text-[23px] leading-tight [text-shadow:0_1px_12px_rgba(0,0,0,0.5)]">
+                      {p.name}
+                    </h3>
+                    <p className="text-[11.5px] tracking-[0.14em] uppercase text-white/80 mt-1.5">
+                      {p.role}
+                    </p>
                   </div>
-                  {p.linkedin && (
-                    <a
-                      href={p.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`${p.name} on LinkedIn`}
-                      className="absolute -bottom-[4px] -right-[4px] w-14 h-14 rounded-full bg-white text-navy-700 hover:bg-orange-500 hover:text-white flex items-center justify-center transition-colors shadow-[0_4px_14px_rgba(12,10,20,0.22)]"
-                    >
-                      <LinkedinLogoIcon size={28} weight="fill" />
-                    </a>
-                  )}
                 </div>
-                {/* Truncated bio + See more */}
+                {/* Truncated bio, then a footer row: See more (left) · LinkedIn (bottom-right corner). */}
                 <div className="flex flex-1 flex-col p-5 md:p-6 pt-4">
                   <p className="text-[14px] text-bone-600 leading-relaxed line-clamp-3">
-                    {p.bio}
+                    <RichText text={p.bio} />
                   </p>
-                  <button
-                    type="button"
-                    onClick={() => setActive(p)}
-                    className="mt-3 self-start inline-flex items-center gap-1.5 text-[13.5px] font-medium text-orange-600 hover:text-orange-700 hover-line"
-                  >
-                    See more
-                    <ArrowRightIcon size={13} weight="bold" className="group-hover:translate-x-0.5 transition-transform" />
-                  </button>
+                  <div className="mt-auto flex items-center justify-between gap-3 pt-4">
+                    <button
+                      type="button"
+                      onClick={() => setActive(p)}
+                      className="inline-flex items-center gap-1.5 text-[13.5px] font-medium text-orange-600 hover:text-orange-700 hover-line"
+                    >
+                      See more
+                      <ArrowRightIcon size={13} weight="bold" className="group-hover:translate-x-0.5 transition-transform" />
+                    </button>
+                    {p.linkedin && (
+                      <a
+                        href={p.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${p.name} on LinkedIn`}
+                        className="w-9 h-9 rounded-full bg-navy-700 text-white hover:bg-orange-500 flex items-center justify-center shrink-0 transition-colors"
+                      >
+                        <LinkedinLogoIcon size={18} weight="fill" />
+                      </a>
+                    )}
+                  </div>
                 </div>
               </motion.article>
             ))}
@@ -284,42 +275,72 @@ export default function About() {
             aria-label={`${active.name} — ${active.role}`}
           >
             <motion.div
-              className="relative w-full max-w-3xl max-h-[88vh] bg-white rounded-2xl overflow-hidden shadow-[0_40px_120px_rgba(0,0,0,0.5)] grid md:grid-cols-[minmax(0,300px)_1fr]"
+              className="relative w-full max-w-3xl max-h-[90vh] md:max-h-[86vh] bg-white rounded-2xl overflow-hidden shadow-[0_40px_120px_rgba(0,0,0,0.5)] flex flex-col md:grid md:grid-cols-[minmax(0,300px)_1fr]"
               initial={{ opacity: 0, y: 24, scale: 0.98 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 16, scale: 0.98 }}
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="relative aspect-[4/5] md:aspect-auto md:min-h-full min-h-[220px]">
+              {/* Portrait — full column on desktop, a compact banner on mobile */}
+              <div className="relative shrink-0 h-40 sm:h-52 md:h-auto md:min-h-full">
                 <Portrait member={active} />
                 <div className="absolute top-0 left-0 right-0 h-[3px] bg-orange-500 md:hidden" />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/50 to-transparent md:hidden" />
               </div>
-              <div className="relative p-6 md:p-9 overflow-y-auto">
+
+              {/* Content column — fixed header, fade-masked scrolling bio, fixed footer */}
+              <div className="relative flex flex-1 flex-col min-h-0">
                 <button
                   type="button"
                   onClick={() => setActive(null)}
                   aria-label="Close profile"
-                  className="absolute top-4 right-4 w-9 h-9 rounded-full bg-bone-100 hover:bg-orange-500 text-navy-600 hover:text-white flex items-center justify-center transition-colors"
+                  className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-bone-100/90 backdrop-blur hover:bg-orange-500 text-navy-600 hover:text-white flex items-center justify-center transition-colors"
                 >
                   <XIcon size={18} weight="bold" />
                 </button>
-                <p className="eyebrow eyebrow-accent mb-3 pr-10">{active.role}</p>
-                <h3 className="font-display text-navy-600 text-[27px] md:text-[31px] leading-tight mb-4">
-                  {active.name}
-                </h3>
-                <p className="text-[15.5px] text-bone-600 leading-relaxed">{active.bio}</p>
-                {active.linkedin && (
-                  <a
-                    href={active.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-6 inline-flex items-center gap-2 text-[14px] font-medium text-navy-600 hover:text-orange-600 transition-colors"
-                  >
-                    <LinkedinLogoIcon size={20} weight="fill" className="text-orange-600" />
-                    Connect on LinkedIn
-                  </a>
-                )}
+
+                <div className="shrink-0 px-6 md:px-9 pt-6 md:pt-9 pb-3">
+                  <p className="eyebrow eyebrow-accent mb-2.5 pr-12">{active.role}</p>
+                  <h3 className="font-display text-navy-600 text-[26px] md:text-[31px] leading-tight">
+                    {active.name}
+                  </h3>
+                </div>
+
+                {/* Scrolling bio: text fades in at the bottom edge and out at the
+                    top as you read, with momentum scrolling on touch. */}
+                <div
+                  className="flex-1 min-h-0 overflow-y-auto overscroll-contain px-6 md:px-9 py-2 [scrollbar-width:thin] [-webkit-overflow-scrolling:touch]"
+                  style={{
+                    scrollBehavior: "smooth",
+                    WebkitMaskImage:
+                      "linear-gradient(to bottom, transparent 0, #000 22px, #000 calc(100% - 26px), transparent 100%)",
+                    maskImage:
+                      "linear-gradient(to bottom, transparent 0, #000 22px, #000 calc(100% - 26px), transparent 100%)",
+                  }}
+                >
+                  <p className="text-[15.5px] md:text-[16px] text-bone-600 leading-[1.75]">
+                    <RichText text={active.bio} />
+                  </p>
+                </div>
+
+                <div className="shrink-0 px-6 md:px-9 py-4 border-t border-bone-200">
+                  {active.linkedin ? (
+                    <a
+                      href={active.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2.5 text-[14px] font-medium text-navy-600 hover:text-orange-600 transition-colors"
+                    >
+                      <span className="w-9 h-9 rounded-full bg-navy-700 text-white flex items-center justify-center">
+                        <LinkedinLogoIcon size={18} weight="fill" />
+                      </span>
+                      Connect on LinkedIn
+                    </a>
+                  ) : (
+                    <span className="text-[13px] text-bone-500">Board of Directors · Bard Santner Microfinance Bank</span>
+                  )}
+                </div>
               </div>
             </motion.div>
           </motion.div>
@@ -353,4 +374,27 @@ function Portrait({ member }) {
       />
     </div>
   );
+}
+
+// Lightweight inline-emphasis renderer for bios: **bold** and _italic_.
+// Bold key credentials pop in navy; italic carries the human phrasing.
+function RichText({ text }) {
+  const parts = text.split(/(\*\*[^*]+\*\*|_[^_]+_)/g);
+  return parts.map((part, i) => {
+    if (part.startsWith("**") && part.endsWith("**")) {
+      return (
+        <strong key={i} className="font-bold text-navy-600">
+          {part.slice(2, -2)}
+        </strong>
+      );
+    }
+    if (part.startsWith("_") && part.endsWith("_")) {
+      return (
+        <em key={i} className="italic text-bone-700">
+          {part.slice(1, -1)}
+        </em>
+      );
+    }
+    return part;
+  });
 }
