@@ -296,33 +296,48 @@ export default function About() {
             aria-label={`${active.name} — ${active.role}`}
           >
             <motion.div
-              className="relative w-full max-w-3xl max-h-[90vh] md:max-h-[86vh] bg-white rounded-2xl overflow-hidden shadow-[0_40px_120px_rgba(0,0,0,0.5)] flex flex-col md:grid md:grid-cols-[minmax(0,300px)_1fr]"
+              className="relative w-full max-w-3xl h-[86vh] md:h-auto md:max-h-[86vh] rounded-2xl overflow-hidden shadow-[0_40px_120px_rgba(0,0,0,0.5)] bg-ink md:bg-white flex flex-col md:grid md:grid-cols-[minmax(0,300px)_1fr]"
               initial={{ opacity: 0, y: 24, scale: 0.98 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 16, scale: 0.98 }}
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Portrait — full column on desktop, a clear, tall image on mobile
-                  (viewport-scaled so the bio always keeps a scrollable area). */}
-              <div className="relative shrink-0 h-[40vh] min-h-[240px] max-h-[340px] md:h-auto md:min-h-full md:max-h-none">
+              {/* MOBILE — the portrait blended full-bleed behind everything, with a
+                  dark scrim rising over the lower half where the text sits. */}
+              <div className="absolute inset-0 md:hidden">
+                <Portrait member={active} />
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    background:
+                      "linear-gradient(to top, #08070f 0%, rgba(8,7,15,0.96) 42%, rgba(8,7,15,0.74) 56%, rgba(8,7,15,0.24) 78%, transparent 96%)",
+                  }}
+                />
+              </div>
+
+              {/* DESKTOP — portrait column */}
+              <div className="relative shrink-0 hidden md:block md:min-h-full">
                 <Portrait member={active} />
               </div>
 
               {/* Content column — fixed header, fade-masked scrolling bio, fixed footer */}
-              <div className="relative flex flex-1 flex-col min-h-0">
+              <div className="relative z-[1] flex flex-1 flex-col min-h-0">
                 <button
                   type="button"
                   onClick={() => setActive(null)}
                   aria-label="Close profile"
-                  className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-bone-100/90 backdrop-blur hover:bg-orange-500 text-navy-600 hover:text-white flex items-center justify-center transition-colors"
+                  className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-white/15 md:bg-bone-100/90 backdrop-blur hover:bg-orange-500 text-white md:text-navy-600 hover:text-white flex items-center justify-center transition-colors"
                 >
                   <XIcon size={18} weight="bold" />
                 </button>
 
-                <div className="shrink-0 px-6 md:px-9 pt-6 md:pt-9 pb-3">
-                  <p className="eyebrow eyebrow-accent mb-2.5 pr-12">{active.role}</p>
-                  <h3 className="font-display text-navy-600 text-[26px] md:text-[31px] leading-tight">
+                {/* Mobile spacer — reveals the blended portrait above the text. */}
+                <div className="flex-1 md:hidden" />
+
+                <div className="shrink-0 px-6 md:px-9 pt-5 md:pt-9 pb-3">
+                  <p className="eyebrow mb-2.5 pr-12 text-orange-400 md:text-orange-600">{active.role}</p>
+                  <h3 className="font-display text-white md:text-navy-600 text-[26px] md:text-[31px] leading-tight [text-shadow:0_1px_12px_rgba(0,0,0,0.5)] md:[text-shadow:none]">
                     {active.name}
                   </h3>
                 </div>
@@ -330,7 +345,7 @@ export default function About() {
                 {/* Scrolling bio: text fades in at the bottom edge and out at the
                     top as you read, with momentum scrolling on touch. */}
                 <div
-                  className="flex-1 min-h-0 overflow-y-auto overscroll-contain px-6 md:px-9 py-2 [scrollbar-width:thin] [-webkit-overflow-scrolling:touch]"
+                  className="shrink-0 max-h-[26vh] md:max-h-none md:flex-1 min-h-0 overflow-y-auto overscroll-contain px-6 md:px-9 py-2 [scrollbar-width:thin] [-webkit-overflow-scrolling:touch]"
                   style={{
                     scrollBehavior: "smooth",
                     WebkitMaskImage:
@@ -339,26 +354,29 @@ export default function About() {
                       "linear-gradient(to bottom, transparent 0, #000 22px, #000 calc(100% - 26px), transparent 100%)",
                   }}
                 >
-                  <p className="text-[15.5px] md:text-[16px] text-bone-600 leading-[1.75]">
-                    <RichText text={active.bio} />
+                  <p className="md:hidden text-[15.5px] leading-[1.75] text-white/90">
+                    <RichText text={active.bio} tone="light" />
+                  </p>
+                  <p className="hidden md:block text-[16px] leading-[1.75] text-bone-600">
+                    <RichText text={active.bio} tone="dark" />
                   </p>
                 </div>
 
-                <div className="shrink-0 px-6 md:px-9 py-4 border-t border-bone-200">
+                <div className="shrink-0 px-6 md:px-9 py-4 border-t border-white/15 md:border-bone-200">
                   {active.linkedin ? (
                     <a
                       href={active.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2.5 text-[14px] font-medium text-navy-600 hover:text-orange-600 transition-colors"
+                      className="inline-flex items-center gap-2.5 text-[14px] font-medium text-white md:text-navy-600 hover:text-orange-400 md:hover:text-orange-600 transition-colors"
                     >
-                      <span className="w-9 h-9 rounded-full bg-navy-700 text-white flex items-center justify-center">
+                      <span className="w-9 h-9 rounded-full bg-white/15 md:bg-navy-700 text-white flex items-center justify-center">
                         <LinkedinLogoIcon size={18} weight="fill" />
                       </span>
                       Connect on LinkedIn
                     </a>
                   ) : (
-                    <span className="text-[13px] text-bone-500">Board of Directors · Bard Santner Microfinance Bank</span>
+                    <span className="text-[13px] text-white/70 md:text-bone-500">Board of Directors · Bard Santner Microfinance Bank</span>
                   )}
                 </div>
               </div>
@@ -397,20 +415,23 @@ function Portrait({ member }) {
 }
 
 // Lightweight inline-emphasis renderer for bios: **bold** and _italic_.
-// Bold key credentials pop in navy; italic carries the human phrasing.
-function RichText({ text }) {
+// Bold key credentials pop; italic carries the human phrasing. `tone`
+// switches the emphasis colours for light text on a dark background.
+function RichText({ text, tone = "dark" }) {
+  const boldClass = tone === "light" ? "font-bold text-white" : "font-bold text-navy-600";
+  const emClass = tone === "light" ? "italic text-white/85" : "italic text-bone-700";
   const parts = text.split(/(\*\*[^*]+\*\*|_[^_]+_)/g);
   return parts.map((part, i) => {
     if (part.startsWith("**") && part.endsWith("**")) {
       return (
-        <strong key={i} className="font-bold text-navy-600">
+        <strong key={i} className={boldClass}>
           {part.slice(2, -2)}
         </strong>
       );
     }
     if (part.startsWith("_") && part.endsWith("_")) {
       return (
-        <em key={i} className="italic text-bone-700">
+        <em key={i} className={emClass}>
           {part.slice(1, -1)}
         </em>
       );
