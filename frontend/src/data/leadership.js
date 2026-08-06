@@ -1,66 +1,117 @@
-// Leadership. Named, not abstracted to "our team." Per the inspiration
+// Board of Directors. Named, not abstracted to "our team." Per the inspiration
 // brief: Lloyds names Charlie Nunn. Investec names Fani Titi. AfrAsia names
-// Thierry Vallet. We name ours. Portraits are the real, commissioned
-// photographs of the named executives.
+// Thierry Vallet. We name ours. Profiles and roles are taken from the
+// "Bard Santner Bank Board Profiles 2026" document. Members without a
+// commissioned portrait fall back to the inverted brand monogram.
 
 export const LEADERSHIP = [
   {
     slug: "vinod-bussawah",
     name: "Vinod Bussawah",
-    role: "Non-Executive Chairman",
+    role: "Independent Non-Executive Chairman",
     short_role: "Chairman",
     bio:
-      "Vinod chairs the Board of Bard Santner Microfinance Bank, providing independent leadership and governance oversight. He brings long experience in financial services to the stewardship of the Bank.",
+      "Vinod has spent over 25 years proving that governance and ambition aren't opposites. An FCCA with an MBA in Finance and a Diploma in Corporate Governance, he has held senior management roles across Mauritius and the region, building a reputation for exacting standards without losing the commercial edge. His membership of the Mauritius Institute of Directors and registration with the Mauritius Institute of Public Accountants aren't just credentials but a signal that the Chairman of the Board holds himself, and everyone around the table, to the highest standards.",
     image: "/images/exec-bussawah.jpg",
     linkedin: "https://www.linkedin.com/in/vinod-bussawah",
   },
   {
     slug: "roger-bennett",
-    name: "Roger Bennett, L.L.B",
-    role: "Non-Executive Director",
-    short_role: "Non-Exec Director",
+    name: "Roger Bennett",
+    role: "Independent Non-Executive Director",
+    short_role: "Independent Director",
     bio:
-      "A lawyer by training, Roger serves as a Non-Executive Director, bringing legal and commercial judgement to the Board's oversight of the Bank's strategy, risk and governance.",
+      "Roger Bennett has spent 40 years turning trust into an institution. He founded Fortress Management Services on the Isle of Man in 1994 with just two staff and built it into an international firm with real UK reach. He cut his teeth at Lloyds Bank and later ran trust operations across the Bahamas for Canada Trust and CIBC. A qualified lawyer since 1973, his loyal, worldwide client base is proof that old-school integrity still wins new business. And with his son now shaping Fortress' next chapter, the legacy continues.",
     image: "/images/exec-bennett.jpg",
     linkedin: "https://www.linkedin.com/in/roger-bennett",
   },
   {
+    slug: "peter-wood",
+    name: "Peter Wood",
+    role: "Independent Non-Executive Director",
+    short_role: "Independent Director",
+    bio:
+      "Peter Wood has spent 40 years where most bankers fear to tread — deep in corporate banking, precious metal mining and offshore structuring that most would call too complex to touch. A Commissioner of Oaths who has chaired a bank holding company, he built his reputation solving the funding puzzles that stalled others, unlocking major mining developments in the process. Peter is a big-picture thinker, unafraid of complexity and is armed with a network few can match. He is the kind of director who opens doors others didn't know existed.",
+    image: null,
+    linkedin: "https://www.linkedin.com/in/peter-wood",
+  },
+  {
+    slug: "roshan-boodhoo",
+    name: "Dr. Roshan Boodhoo",
+    role: "Independent Non-Executive Director",
+    short_role: "Independent Director",
+    bio:
+      "Few directors arrive with a regulator's rulebook and a dealmaker's instinct. Dr. Roshan Boodhoo does both, having begun his career at Barclays Bank before rising to lead Mauritius' Financial Services Commission, where he represented Africa on the IOSCO Board and sat on the National Sanctions Committee. He now sits as a Director of NASDAQ-listed StoneBridge Acquisition Corp. II, having steered its USD 50 million IPO. He also has board seats at Clarence International Bank and Gulf Investment. He possesses a Doctorate in Management, an Executive MBA and Singapore's 2025 Leadership in Financial Compliance Award which summarise a career built on discipline, not luck.",
+    image: null,
+    linkedin: "https://www.linkedin.com/in/roshan-boodhoo",
+  },
+  {
+    slug: "niazi-hoolash",
+    name: "Niazi Hoolash",
+    role: "Independent Non-Executive Director",
+    short_role: "Independent Director",
+    bio:
+      "Niazi Hoolash built his name inside the 'Big Four', then decided the real work happens outside it. After completing his role as Senior Manager and Head of Special Situations at KPMG and having spent time at PwC, he founded his own boutique deals advisory firm in 2023 with a focus on energy, banking, telecoms, healthcare and mining. His focus — helping the giants through restructuring, forensic investigations and high-stakes strategy. Six years as CFO of an international airline sharpened his instinct for pressure. A Fellow of the ACCA and voice on its Mauritius Network Panel, he now pushes clients toward AI and distributed ledger technology before their competitors catch on.",
+    image: null,
+    linkedin: "https://www.linkedin.com/in/niazi-hoolash",
+  },
+  {
     slug: "senziwani-sikhosana",
     name: "Senziwani Sikhosana",
-    role: "Chief Executive Officer",
-    short_role: "CEO",
+    role: "Non-Executive Director",
+    short_role: "Non-Exec Director",
     bio:
-      "Senziwani leads Bard Santner Markets Inc and the establishment of Bard Santner Microfinance Bank. A capital markets professional by training, his work centres on building African financial institutions to international standards without losing what is African about them.",
+      "Senziwani has spent over two decades in the trenches of treasury, forex and fixed income. These are the parts of banking where instinct meets discipline. An Associate Chartered Management Accountant with a Master's in Finance, he doesn't just understand markets, he reads them. His specialised grounding in Asset Liability Management makes him the kind of director boards call on when the numbers get complicated and the stakes get real.",
     image: "/images/exec-sikhosana.jpg",
     linkedin: "https://www.linkedin.com/in/senziwani-sikhosana",
   },
   {
     slug: "tatenda-hungwe",
     name: "Tatenda Hungwe",
-    role: "Executive Director",
-    short_role: "ED",
+    role: "Non-Executive Director",
+    short_role: "Non-Exec Director",
     bio:
-      "Tatenda leads the group's market development, brand and the diaspora banking proposition. His remit is the connective tissue between the bank and the people it banks.",
+      "Tatenda has chased returns across three countries and never slowed down. Over 15 years in Wealth Management, Derivatives Trading and Private Equity, spanning Zimbabwe, South Africa and the UAE, have given him a trader's nerve and a strategist's patience. An Associate of the Chartered Institute for Securities and Investment, he holds himself to standards most only claim to meet, bringing sharp, market-tested thinking to every table he joins.",
     image: "/images/exec-tatenda.jpg",
     linkedin: "https://www.linkedin.com/in/tatenda-hungwe",
   },
   {
     slug: "lucia-chingwaru-mutsunge",
     name: "Lucia Chingwaru-Mutsunge",
-    role: "Executive Director",
-    short_role: "ED",
+    role: "Non-Executive Director",
+    short_role: "Non-Exec Director",
     bio:
-      "Lucia oversees operational excellence, client relations and risk. She brings a rigorous analytical approach to how the bank is run day to day, so that discipline behind the scenes shows up as reliability for the customer.",
+      "Lucia has built her career where precision matters most: conventional banking, money transfer operations and the accounting detail that keeps institutions honest. A Chartered Accountant with 15 years in the field, she holds a Bachelor of Financial Management and an ACCA qualification — credentials that back up a reputation for getting the numbers right when it counts. Her governance instincts make her a steady hand in a fast-moving industry.",
     image: "/images/exec-lucia.jpg",
     linkedin: "https://www.linkedin.com/in/lucia-chingwaru-mutsunge",
   },
   {
-    slug: "monika-bhatt",
-    name: "Monika Bhatt, L.L.B",
-    role: "Company Secretary",
-    short_role: "Company Secretary",
+    slug: "ngonidzashe-chikowore",
+    name: "Ngonidzashe Chikowore",
+    role: "Managing Director",
+    short_role: "Managing Director",
     bio:
-      "Monika is the Company Secretary, responsible for the Bank's corporate governance, board administration and statutory compliance. She is a qualified lawyer.",
+      "Ngoni has spent 20 years in capital markets where deals are made or broken. He has led IPOs, secondary offerings, private placements and complex debt structuring for government and private clients alike, building the kind of network that turns ambition into execution. A Master of Science in Finance and Investment from NUST and a Bachelor's from the University of Zimbabwe back a career built on relationships as much as results, with quasi-government and public-sector players trusting him precisely because he delivers.",
+    image: null,
+    linkedin: "https://www.linkedin.com/in/ngonidzashe-chikowore",
+  },
+  {
+    slug: "givemore-gomo",
+    name: "Givemore Gomo",
+    role: "Finance Director",
+    short_role: "Finance Director",
+    bio:
+      "Givemore doesn't just report the numbers, he defends them. With 15 years across banking and FMCG, he's built a reputation for clean audits, tight budget discipline and financial insight sharp enough to guide a boardroom's biggest decisions. Deep knowledge of IFRS, RBZ Prudential Guidelines and ZIMRA requirements sits alongside a Bachelor of Accountancy Honours and certifications from the Institute of Bankers, ICSAZ and CAZ. Currently advancing through CIMA's Finance Leadership Programme, Givemore is building not just a career, but a culture of control others can rely on.",
+    image: null,
+    linkedin: "https://www.linkedin.com/in/givemore-gomo",
+  },
+  {
+    slug: "monika-bhatt",
+    name: "Monika Bhatt",
+    role: "Independent Non-Executive Director",
+    short_role: "Independent Director",
+    bio:
+      "Monika Bhatt does more than just advise on corporate law. She builds the infrastructure companies stand on. Founder of M/s Monika Bhatt and Associates, she has spent over eight years constructing a formidable network across India's corporate legal landscape. Her experience runs deep across Corporate Insolvency Resolution Advisory, Legal and Secretarial Audit, and Corporate Governance Advisory. A postgraduate in Commerce and a law degree from Devi Ahilya Vishwavidyalaya back her expertise, while her association with Zimbabwe's Corporate Governance Institute extends her reach into new markets. She brings precision where most see paperwork.",
     image: "/images/exec-bhatt.jpg",
     linkedin: "https://www.linkedin.com/in/monika-bhatt",
   },

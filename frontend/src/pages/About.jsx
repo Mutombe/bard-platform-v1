@@ -1,5 +1,6 @@
-import { motion } from "framer-motion";
-import { DownloadSimpleIcon, LinkedinLogoIcon } from "@phosphor-icons/react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { DownloadSimpleIcon, LinkedinLogoIcon, XIcon, ArrowRightIcon } from "@phosphor-icons/react";
 
 import PageTransition from "../components/PageTransition.jsx";
 import PageHero from "../components/PageHero.jsx";
@@ -36,6 +37,20 @@ const NOTCH_MASK =
   "radial-gradient(circle 38px at calc(100% - 24px) calc(100% - 24px), transparent 37px, #000 38px)";
 
 export default function About() {
+  // The board member whose full profile is open in the modal (null = closed).
+  const [active, setActive] = useState(null);
+
+  // Close on Escape and lock body scroll while the modal is open.
+  useEffect(() => {
+    const onKey = (e) => e.key === "Escape" && setActive(null);
+    window.addEventListener("keydown", onKey);
+    document.body.style.overflow = active ? "hidden" : "";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [active]);
+
   return (
     <PageTransition>
       <SEO
@@ -195,57 +210,147 @@ export default function About() {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
             {LEADERSHIP.map((p, i) => (
-              <motion.div
+              <motion.article
                 key={p.slug}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: (i % 3) * 0.06, ease: [0.16, 1, 0.3, 1] }}
-                className="group relative drop-shadow-[0_12px_30px_rgba(12,10,20,0.14)]"
+                className="group relative flex flex-col rounded-2xl bg-white overflow-hidden shadow-[0_12px_30px_rgba(12,10,20,0.10)] hover:shadow-[0_20px_44px_rgba(12,10,20,0.16)] transition-shadow"
               >
-                {/* Card with a concave circular notch bitten out of the
+                {/* Portrait with a concave circular notch bitten out of the
                     bottom-right corner (deck founder-card design). */}
-                <div
-                  className="relative aspect-[4/5] rounded-2xl overflow-hidden"
-                  style={{ maskImage: NOTCH_MASK, WebkitMaskImage: NOTCH_MASK }}
-                >
+                <div className="relative">
                   <div
-                    className="absolute inset-0 bg-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                    style={{ backgroundImage: `url(${p.image})`, backgroundPosition: "center 12%" }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/25 to-transparent" />
-                  <div className="absolute inset-x-0 bottom-0 p-5 md:p-6 pr-20">
-                    <h3 className="font-display font-medium text-white text-[21px] md:text-[24px] leading-tight [text-shadow:0_1px_12px_rgba(0,0,0,0.5)]">
-                      {p.name}
-                    </h3>
-                    <p className="text-[12.5px] tracking-[0.14em] uppercase text-white/75 mt-1.5">
-                      {p.role}
-                    </p>
-                  </div>
-                </div>
-                {/* LinkedIn button hugging the corner scoop */}
-                {p.linkedin && (
-                  <a
-                    href={p.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`${p.name} on LinkedIn`}
-                    className="absolute -bottom-[4px] -right-[4px] w-14 h-14 rounded-full bg-white text-navy-700 hover:bg-orange-500 hover:text-white flex items-center justify-center transition-colors shadow-[0_4px_14px_rgba(12,10,20,0.22)]"
+                    className="relative aspect-[4/5] overflow-hidden"
+                    style={{ maskImage: NOTCH_MASK, WebkitMaskImage: NOTCH_MASK }}
                   >
-                    <LinkedinLogoIcon size={28} weight="fill" />
-                  </a>
-                )}
-              </motion.div>
+                    <Portrait member={p} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/25 to-transparent" />
+                    <div className="absolute inset-x-0 bottom-0 p-5 md:p-6 pr-20">
+                      <h3 className="font-display font-medium text-white text-[20px] md:text-[23px] leading-tight [text-shadow:0_1px_12px_rgba(0,0,0,0.5)]">
+                        {p.name}
+                      </h3>
+                      <p className="text-[11.5px] tracking-[0.14em] uppercase text-white/80 mt-1.5">
+                        {p.role}
+                      </p>
+                    </div>
+                  </div>
+                  {p.linkedin && (
+                    <a
+                      href={p.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${p.name} on LinkedIn`}
+                      className="absolute -bottom-[4px] -right-[4px] w-14 h-14 rounded-full bg-white text-navy-700 hover:bg-orange-500 hover:text-white flex items-center justify-center transition-colors shadow-[0_4px_14px_rgba(12,10,20,0.22)]"
+                    >
+                      <LinkedinLogoIcon size={28} weight="fill" />
+                    </a>
+                  )}
+                </div>
+                {/* Truncated bio + See more */}
+                <div className="flex flex-1 flex-col p-5 md:p-6 pt-4">
+                  <p className="text-[14px] text-bone-600 leading-relaxed line-clamp-3">
+                    {p.bio}
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => setActive(p)}
+                    className="mt-3 self-start inline-flex items-center gap-1.5 text-[13.5px] font-medium text-orange-600 hover:text-orange-700 hover-line"
+                  >
+                    See more
+                    <ArrowRightIcon size={13} weight="bold" className="group-hover:translate-x-0.5 transition-transform" />
+                  </button>
+                </div>
+              </motion.article>
             ))}
           </div>
-          <p className="mt-8 text-[15px] text-bone-500 max-w-2xl">
-            Full Board profiles are published as the Bank formalises its governance
-            disclosures.
-          </p>
         </div>
       </section>
 
+      {/* Board member profile modal */}
+      <AnimatePresence>
+        {active && (
+          <motion.div
+            key="board-modal"
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6 bg-ink/70 backdrop-blur-[6px]"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.22 }}
+            onClick={() => setActive(null)}
+            role="dialog"
+            aria-modal="true"
+            aria-label={`${active.name} — ${active.role}`}
+          >
+            <motion.div
+              className="relative w-full max-w-3xl max-h-[88vh] bg-white rounded-2xl overflow-hidden shadow-[0_40px_120px_rgba(0,0,0,0.5)] grid md:grid-cols-[minmax(0,300px)_1fr]"
+              initial={{ opacity: 0, y: 24, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 16, scale: 0.98 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="relative aspect-[4/5] md:aspect-auto md:min-h-full min-h-[220px]">
+                <Portrait member={active} />
+                <div className="absolute top-0 left-0 right-0 h-[3px] bg-orange-500 md:hidden" />
+              </div>
+              <div className="relative p-6 md:p-9 overflow-y-auto">
+                <button
+                  type="button"
+                  onClick={() => setActive(null)}
+                  aria-label="Close profile"
+                  className="absolute top-4 right-4 w-9 h-9 rounded-full bg-bone-100 hover:bg-orange-500 text-navy-600 hover:text-white flex items-center justify-center transition-colors"
+                >
+                  <XIcon size={18} weight="bold" />
+                </button>
+                <p className="eyebrow eyebrow-accent mb-3 pr-10">{active.role}</p>
+                <h3 className="font-display text-navy-600 text-[27px] md:text-[31px] leading-tight mb-4">
+                  {active.name}
+                </h3>
+                <p className="text-[15.5px] text-bone-600 leading-relaxed">{active.bio}</p>
+                {active.linkedin && (
+                  <a
+                    href={active.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-6 inline-flex items-center gap-2 text-[14px] font-medium text-navy-600 hover:text-orange-600 transition-colors"
+                  >
+                    <LinkedinLogoIcon size={20} weight="fill" className="text-orange-600" />
+                    Connect on LinkedIn
+                  </a>
+                )}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <AdvisoryBand />
     </PageTransition>
+  );
+}
+
+// Portrait fill — the commissioned photograph, or the inverted brand
+// monogram on navy for members without a portrait yet.
+function Portrait({ member }) {
+  if (member.image) {
+    return (
+      <div
+        className="absolute inset-0 bg-cover transition-transform duration-700 group-hover:scale-[1.03]"
+        style={{ backgroundImage: `url(${member.image})`, backgroundPosition: "center 12%" }}
+      />
+    );
+  }
+  return (
+    <div className="absolute inset-0 bg-navy-700 flex items-center justify-center">
+      <img
+        src="/favicon.png"
+        alt=""
+        aria-hidden="true"
+        className="w-2/5 max-w-[120px] object-contain opacity-90"
+        style={{ filter: "brightness(0) invert(1)" }}
+      />
+    </div>
   );
 }
