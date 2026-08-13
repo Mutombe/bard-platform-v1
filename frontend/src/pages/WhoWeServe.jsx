@@ -37,10 +37,11 @@ export default function WhoWeServe() {
       />
 
       <PageHero
-        eyebrow="Who we serve"
+        eyebrow={seg.eyebrow || "Who we serve"}
         headline={seg.headline}
         body={seg.intro[0]}
         primaryCTA={seg.cta}
+        secondaryCTA={seg.secondaryCTA}
         image={seg.image}
         overlayTint="navy"
       />
