@@ -24,6 +24,11 @@ import Regulatory from "./pages/Regulatory.jsx";
 import Accessibility from "./pages/Accessibility.jsx";
 import Complaints from "./pages/Complaints.jsx";
 import NotFound from "./pages/NotFound.jsx";
+import ComingSoon from "./pages/ComingSoon.jsx";
+
+// Temporary site-wide holding page while licensed photography is finalised.
+// Flip to false (and redeploy) to restore the full site — nothing else changes.
+const COMING_SOON = true;
 
 class ErrorBoundary extends Component {
   constructor(props) { super(props); this.state = { hasError: false }; }
@@ -54,6 +59,8 @@ class ErrorBoundary extends Component {
 }
 
 export default function App() {
+  if (COMING_SOON) return <ComingSoon />;
+
   const location = useLocation();
 
   // Routes that run their own application shell (own topbar / sidebar /
