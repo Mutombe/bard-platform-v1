@@ -37,7 +37,7 @@ export const LEADERSHIP = [
     short_role: "Independent Director",
     bio:
       "Peter Wood has spent **40 years** where most bankers fear to tread — deep in **corporate banking**, **precious metal mining** and **offshore structuring** that most would call too complex to touch. A **Commissioner of Oaths** who has chaired a bank holding company, he built his reputation solving the funding puzzles that stalled others, _unlocking major mining developments_ in the process. Peter is a big-picture thinker, unafraid of complexity and armed with a network few can match. He is _the kind of director who opens doors others didn't know existed_.",
-    image: null,
+    image: "/images/exec-wood.jpg",
     linkedin: "https://www.linkedin.com/in/peter-wood",
   },
   {
@@ -47,7 +47,7 @@ export const LEADERSHIP = [
     short_role: "Independent Director",
     bio:
       "Few directors arrive with a regulator's rulebook and a dealmaker's instinct. **Dr. Roshan Boodhoo** does both, having begun his career at **Barclays Bank** before rising to lead **Mauritius' Financial Services Commission**, where he represented Africa on the **IOSCO Board** and sat on the **National Sanctions Committee**. He now sits as a Director of **NASDAQ-listed StoneBridge Acquisition Corp. II**, having steered its **USD 50 million IPO**. He also holds board seats at **Clarence International Bank** and **Gulf Investment**. A **Doctorate in Management**, an **Executive MBA** and **Singapore's 2025 Leadership in Financial Compliance Award** summarise a career built on _discipline, not luck_.",
-    image: null,
+    image: "/images/exec-boodhoo.jpg",
     linkedin: "https://www.linkedin.com/in/roshan-boodhoo",
   },
   {
@@ -57,7 +57,7 @@ export const LEADERSHIP = [
     short_role: "Independent Director",
     bio:
       "Niazi Hoolash built his name inside the '**Big Four**', then decided the real work happens outside it. After serving as **Senior Manager and Head of Special Situations at KPMG** and spending time at **PwC**, he founded his own boutique deals advisory firm in **2023**, focused on energy, banking, telecoms, healthcare and mining. His work — _helping the giants through restructuring, forensic investigations and high-stakes strategy_. **Six years as CFO of an international airline** sharpened his instinct for pressure. A **Fellow of the ACCA** and a voice on its Mauritius Network Panel, he now pushes clients toward **AI and distributed ledger technology** before their competitors catch on.",
-    image: null,
+    image: "/images/exec-hoolash.jpg",
     linkedin: "https://www.linkedin.com/in/niazi-hoolash",
   },
   {
@@ -97,7 +97,7 @@ export const LEADERSHIP = [
     short_role: "Managing Director",
     bio:
       "Ngoni has spent **20 years** in capital markets where deals are made or broken. He has led **IPOs**, **secondary offerings**, **private placements** and **complex debt structuring** for government and private clients alike, building the kind of network that _turns ambition into execution_. A **Master of Science in Finance and Investment from NUST** and a Bachelor's from the **University of Zimbabwe** back a career built on relationships as much as results — with quasi-government and public-sector players trusting him precisely because _he delivers_.",
-    image: null,
+    image: "/images/exec-chikowore.jpg",
     linkedin: "https://www.linkedin.com/in/ngonidzashe-chikowore",
   },
   {
@@ -107,7 +107,7 @@ export const LEADERSHIP = [
     short_role: "Finance Director",
     bio:
       "Givemore doesn't just report the numbers, _he defends them_. With **15 years** across **banking and FMCG**, he's built a reputation for clean audits, tight budget discipline and financial insight sharp enough to guide a boardroom's biggest decisions. Deep knowledge of **IFRS**, **RBZ Prudential Guidelines** and **ZIMRA requirements** sits alongside a **Bachelor of Accountancy Honours** and certifications from the **Institute of Bankers, ICSAZ and CAZ**. Currently advancing through **CIMA's Finance Leadership Programme**, Givemore is building not just a career, but _a culture of control others can rely on_.",
-    image: null,
+    image: "/images/exec-gomo.jpg",
     linkedin: "https://www.linkedin.com/in/givemore-gomo",
   },
   {
