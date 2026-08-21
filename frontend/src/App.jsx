@@ -28,7 +28,7 @@ import ComingSoon from "./pages/ComingSoon.jsx";
 
 // Temporary site-wide holding page while licensed photography is finalised.
 // Flip to false (and redeploy) to restore the full site — nothing else changes.
-const COMING_SOON = true;
+const COMING_SOON = false;
 
 class ErrorBoundary extends Component {
   constructor(props) { super(props); this.state = { hasError: false }; }
