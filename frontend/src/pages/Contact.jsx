@@ -75,7 +75,7 @@ export default function Contact() {
                     Head Office — Harare
                   </h3>
                   <p className="text-white/80 text-[15.5px] leading-relaxed max-w-xs">
-                    5th Floor, Beverly Court, 100 Nelson Mandela Avenue, Harare
+                    7th Floor, Beverly Court, 100 Nelson Mandela Avenue, Harare
                   </p>
                 </div>
               </div>

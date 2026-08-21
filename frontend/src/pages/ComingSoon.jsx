@@ -87,7 +87,7 @@ export default function ComingSoon() {
       <div className="relative border-t border-white/12">
         <div className="max-w-[880px] mx-auto px-6 sm:px-10 py-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-[12.5px] text-white/50 text-center">
           <span>© {new Date().getFullYear()} Bard Santner Microfinance Bank</span>
-          <span>Head Office · 5th Floor, Beverly Court, 100 Nelson Mandela Avenue, Harare</span>
+          <span>Head Office · 7th Floor, Beverly Court, 100 Nelson Mandela Avenue, Harare</span>
         </div>
       </div>
     </main>

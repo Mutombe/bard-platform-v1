@@ -75,7 +75,7 @@ export function organizationJsonLd() {
       "Bard Santner Markets Inc is a modern African financial platform. Banking, wealth management, trade finance, treasury and advisory across personal, business, private, international and institutional clients.",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "5th Floor, Beverly Court, 100 Nelson Mandela Avenue",
+      streetAddress: "7th Floor, Beverly Court, 100 Nelson Mandela Avenue",
       addressLocality: "Harare",
       addressCountry: "ZW",
     },

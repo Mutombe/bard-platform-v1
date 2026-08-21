@@ -81,7 +81,7 @@ const SOCIALS = [
 ];
 
 const LOCATIONS = [
-  { city: "Harare", line: "5th Floor, Beverly Court, 100 Nelson Mandela Avenue, Harare" },
+  { city: "Harare", line: "7th Floor, Beverly Court, 100 Nelson Mandela Avenue, Harare" },
 ];
 
 export default function Footer() {
