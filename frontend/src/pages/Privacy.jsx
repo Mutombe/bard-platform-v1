@@ -7,7 +7,7 @@ export default function Privacy() {
       path="/privacy"
       description="How Bard Santner collects, uses, retains and protects your personal information. Your rights under data-protection law and how to exercise them."
       lastUpdated="30 May 2026"
-      contactEmail="privacy@bardsantner.com"
+      contactEmail="dpo@bardsantner.com"
       sections={[
         {
           heading: "What we collect",
@@ -23,7 +23,7 @@ export default function Privacy() {
         },
         {
           heading: "Your rights",
-          body: "You have the right to access your data, correct it, request deletion of data we are not required to keep, object to processing for marketing, and complain to the data-protection authority if you believe we have mishandled your information.\n\nTo exercise any of these rights, email privacy@bardsantner.com with a description of what you are asking for and identifying information. We will respond within thirty days.",
+          body: "You have the right to access your data, correct it, request deletion of data we are not required to keep, object to processing for marketing, and complain to the data-protection authority if you believe we have mishandled your information.\n\nTo exercise any of these rights, email dpo@bardsantner.com with a description of what you are asking for and identifying information. We will respond within thirty days.",
         },
       ]}
     />
