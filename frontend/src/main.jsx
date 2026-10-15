@@ -7,12 +7,15 @@ import { HelmetProvider } from "react-helmet-async";
 // (public/fonts/*.woff2) — no third-party CDN, no client-IP leak.
 import "./index.css";
 import App from "./App.jsx";
+import { ToastProvider } from "./components/Toast.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <HelmetProvider>
       <BrowserRouter>
-        <App />
+        <ToastProvider>
+          <App />
+        </ToastProvider>
       </BrowserRouter>
     </HelmetProvider>
   </StrictMode>

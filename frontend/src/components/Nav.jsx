@@ -14,6 +14,7 @@ import {
 } from "@phosphor-icons/react";
 import { NAV_MENU, NAV_UTILITY } from "../data/nav.js";
 import SearchModal from "./SearchModal.jsx";
+import { useComingSoon } from "./Toast.jsx";
 
 // ─── Dropdown motion — a premium, unhurried reveal ─────────────────────
 // The bar eases open on an expo-out curve; its sub-links then cascade in
@@ -87,6 +88,7 @@ export default function Nav() {
   const [voiceQuery, setVoiceQuery] = useState("");     // transcript seeded into modal
   const closeTimer = useRef(null);
   const loc = useLocation();
+  const comingSoon = useComingSoon();
 
   // Voice ("record") search — Web Speech API. Falls back to opening the modal.
   const startVoice = () => {
@@ -357,8 +359,9 @@ export default function Nav() {
 
             {/* Trailing actions */}
             <div className="flex items-center gap-2 md:gap-3 shrink-0">
-              <Link
-                to="/login"
+              <button
+                type="button"
+                onClick={comingSoon}
                 aria-label="Log in to Online Banking"
                 className="group hidden md:inline-flex items-center gap-3 h-12 pl-2 pr-6 rounded-full bg-white border-2 border-navy-600 hover:border-orange-500 transition-all duration-300 shadow-[0_1px_2px_rgba(12,10,20,0.04)] hover:shadow-[0_6px_18px_rgba(12,10,20,0.12)] hover:-translate-y-[1px]"
               >
@@ -368,15 +371,16 @@ export default function Nav() {
                 <span className="text-[17px] font-medium text-navy-700 group-hover:text-navy-900 transition-colors">
                   Log in
                 </span>
-              </Link>
+              </button>
               {/* Mobile login icon — left of the menu button */}
-              <Link
-                to="/login"
+              <button
+                type="button"
+                onClick={comingSoon}
                 aria-label="Log in to Online Banking"
                 className="md:hidden w-10 h-10 flex items-center justify-center rounded-full border-2 border-navy-600 text-navy-700 hover:border-orange-500 hover:text-orange-500 transition-colors"
               >
                 <LockIcon size={20} weight="bold" />
-              </Link>
+              </button>
               {/* Mobile hamburger */}
               <button
                 onClick={() => setMobileOpen(true)}
@@ -495,13 +499,13 @@ export default function Nav() {
 
             {/* Drawer foot */}
             <div className="px-6 py-5 border-t border-bone-200 bg-bone-50/60 space-y-3">
-              <Link
-                to="/login"
-                onClick={() => setMobileOpen(false)}
+              <button
+                type="button"
+                onClick={(e) => { setMobileOpen(false); comingSoon(e); }}
                 className="btn btn-navy w-full justify-center"
               >
                 <LockIcon size={14} weight="bold" /> Log in to Online Banking
-              </Link>
+              </button>
               <Link
                 to="/contact"
                 onClick={() => setMobileOpen(false)}

@@ -1,11 +1,12 @@
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowUpRightIcon, ArrowRightIcon } from "@phosphor-icons/react";
+import { ArrowUpRightIcon, ArrowRightIcon, DiamondIcon } from "@phosphor-icons/react";
 
 import PageTransition from "../components/PageTransition.jsx";
 import PageHero from "../components/PageHero.jsx";
 import AdvisoryBand from "../components/AdvisoryBand.jsx";
 import SEO, { breadcrumbJsonLd } from "../components/SEO.jsx";
+import { useComingSoon, isPortalPath } from "../components/Toast.jsx";
 import NotFound from "./NotFound.jsx";
 
 import { findSolution, blockSlug } from "../data/solutions.js";
@@ -19,6 +20,7 @@ import { findSolution, blockSlug } from "../data/solutions.js";
  */
 export default function Solution() {
   const { slug } = useParams();
+  const comingSoon = useComingSoon();
   const s = findSolution(slug);
   if (!s) return <NotFound />;
 
@@ -50,12 +52,19 @@ export default function Solution() {
         <div className="container-bank grid grid-cols-12 gap-y-8 md:gap-12 items-start">
           <div className="col-span-12 md:col-span-4">
             <p className="eyebrow eyebrow-accent mb-4">{s.title}</p>
-            <span className="block h-[3px] w-14 bg-orange-500 mb-8 md:mb-10" />
+            <DiamondIcon size={14} weight="fill" className="block text-orange-500 mb-8 md:mb-10" />
             {s.cta && (
-              <Link to={s.cta.to} className="btn btn-outline w-full sm:w-auto justify-center whitespace-normal text-center">
-                {s.cta.label}
-                <ArrowRightIcon size={15} weight="bold" />
-              </Link>
+              isPortalPath(s.cta.to) ? (
+                <button type="button" onClick={comingSoon} className="btn btn-outline w-full sm:w-auto justify-center whitespace-normal text-center">
+                  {s.cta.label}
+                  <ArrowRightIcon size={15} weight="bold" />
+                </button>
+              ) : (
+                <Link to={s.cta.to} className="btn btn-outline w-full sm:w-auto justify-center whitespace-normal text-center">
+                  {s.cta.label}
+                  <ArrowRightIcon size={15} weight="bold" />
+                </Link>
+              )
             )}
           </div>
           <div className="col-span-12 md:col-span-8 space-y-5">
@@ -180,18 +189,22 @@ const STEPS = [
 ];
 
 function HeroStartCTA({ cta }) {
+  const comingSoon = useComingSoon();
   if (!cta) return null;
   const isExternal = /^https?:\/\//.test(cta.to);
   const cls = "inline-flex items-center gap-2.5 bg-white text-navy-700 hover:bg-white/90 px-6 py-3.5 rounded-full font-medium text-[16px] transition-colors";
+  const inner = (
+    <>
+      {cta.label}
+      <ArrowRightIcon size={15} weight="bold" />
+    </>
+  );
+  if (isPortalPath(cta.to)) {
+    return <button type="button" onClick={comingSoon} className={cls}>{inner}</button>;
+  }
   return isExternal ? (
-    <a href={cta.to} target="_blank" rel="noopener noreferrer" className={cls}>
-      {cta.label}
-      <ArrowRightIcon size={15} weight="bold" />
-    </a>
+    <a href={cta.to} target="_blank" rel="noopener noreferrer" className={cls}>{inner}</a>
   ) : (
-    <Link to={cta.to} className={cls}>
-      {cta.label}
-      <ArrowRightIcon size={15} weight="bold" />
-    </Link>
+    <Link to={cta.to} className={cls}>{inner}</Link>
   );
 }

@@ -5,6 +5,7 @@ import {
   GlobeIcon,
   ArrowSquareOutIcon,
 } from "@phosphor-icons/react";
+import { useComingSoon, isPortalPath } from "./Toast.jsx";
 
 /**
  * Institutional footer, aligned to the current information architecture:
@@ -14,6 +15,7 @@ import {
 
 const isExternal = (to) => /^https?:\/\//.test(to);
 function FooterLink({ to, className, children }) {
+  const comingSoon = useComingSoon();
   if (isExternal(to)) {
     return (
       <a href={to} target="_blank" rel="noopener noreferrer" className={className}>
@@ -25,6 +27,14 @@ function FooterLink({ to, className, children }) {
           aria-label="opens in a new tab"
         />
       </a>
+    );
+  }
+  // Online Banking portal isn't live yet — surface the toast instead of routing.
+  if (isPortalPath(to)) {
+    return (
+      <button type="button" onClick={comingSoon} className={`${className} text-left`}>
+        {children}
+      </button>
     );
   }
   return <Link to={to} className={className}>{children}</Link>;

@@ -1,11 +1,16 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import PageTransition from "../components/PageTransition.jsx";
 import PageHero from "../components/PageHero.jsx";
 import SEO, { breadcrumbJsonLd } from "../components/SEO.jsx";
 import { BRAND } from "../data/images.js";
-import { PhoneIcon, EnvelopeSimpleIcon, ChatCircleIcon, MapPinIcon, ArrowRightIcon, CheckCircleIcon, ArrowSquareOutIcon, ClockIcon } from "@phosphor-icons/react";
+import { PhoneIcon, EnvelopeSimpleIcon, ChatCircleIcon, MapPinIcon, CheckCircleIcon, ArrowSquareOutIcon, ClockIcon, DiamondIcon } from "@phosphor-icons/react";
 import { AUDIENCES } from "../data/audiences.js";
+
+// Where enquiries are routed. The form composes a pre-filled message and hands
+// it off to the client's WhatsApp or email app, per the channel the user picks.
+const WHATSAPP_NUMBER = "263774954415";
+const ENQUIRY_EMAIL = "bank@bardsantner.co.zw";
 
 export default function Contact() {
   const [params] = useSearchParams();
@@ -21,12 +26,43 @@ export default function Contact() {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [sentVia, setSentVia] = useState("email");
+  // Which channel the pressed button chose — read synchronously in onSubmit,
+  // after native "required" validation has passed.
+  const channelRef = useRef("email");
 
   function update(k, v) { setForm((f) => ({ ...f, [k]: v })); }
 
+  function audienceLabel(id) {
+    return AUDIENCES.find((a) => a.id === id)?.label_full || id;
+  }
+
+  // Compose a tidy, human-readable enquiry from the form fields.
+  function buildMessage() {
+    const lines = [
+      `Name: ${form.name}`,
+      `Email: ${form.email}`,
+      form.phone && `Phone: ${form.phone}`,
+      `Enquiry type: ${audienceLabel(form.audience)}`,
+      form.product && `Product: ${form.product}`,
+      "",
+      form.message,
+    ].filter((l) => l !== false && l !== undefined);
+    return lines.join("\n");
+  }
+
   function onSubmit(e) {
     e.preventDefault();
-    // Client-only submission marker. A real backend handler is wired post-launch.
+    const channel = channelRef.current;
+    const body = buildMessage();
+    if (channel === "whatsapp") {
+      const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(body)}`;
+      window.open(url, "_blank", "noopener,noreferrer");
+    } else {
+      const subject = `Banker enquiry — ${form.name || "new enquiry"}`;
+      window.location.href = `mailto:${ENQUIRY_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    }
+    setSentVia(channel);
     setSubmitted(true);
   }
 
@@ -131,14 +167,16 @@ export default function Contact() {
           <div className="grid grid-cols-12 gap-y-8 md:gap-16 max-w-6xl mx-auto mt-10 md:mt-20">
             <div className="col-span-12 md:col-span-5">
               <div className="flex items-center gap-3 md:gap-4 mb-5 md:mb-6">
-                <span className="h-[2px] w-10 md:w-12 bg-orange-500" />
+                <DiamondIcon size={16} weight="fill" className="text-orange-500 shrink-0" />
                 <p className="eyebrow eyebrow-accent">§ Request a banker</p>
               </div>
               <h2 className="display-xl text-navy-600 text-balance mb-5 md:mb-7 leading-[1.05]">
                 Tell us what you are looking for.
               </h2>
               <p className="text-[16.5px] md:text-[18px] text-bone-600 leading-relaxed mb-6 md:mb-9 max-w-md">
-                A relationship banker will call you back within one business day. If your enquiry is urgent, please use the telephone channel above.
+                Fill in your details, then choose how you'd like to reach us — send
+                straight to our team on <strong className="text-navy-600">WhatsApp</strong> or by
+                <strong className="text-navy-600"> email</strong>. A relationship banker replies within one business day.
               </p>
 
               {/* Mobile-only: collapse the three commitments into a row of
@@ -171,10 +209,17 @@ export default function Contact() {
               {submitted ? (
                 <div className="p-7 md:p-14 rounded-xl bg-orange-50 border border-orange-200 text-center">
                   <CheckCircleIcon size={40} weight="regular" className="text-orange-600 mx-auto mb-4 md:mb-5" />
-                  <h3 className="font-display text-[22px] md:text-[28px] text-navy-600 mb-3 md:mb-4">Thank you.</h3>
+                  <h3 className="font-display text-[22px] md:text-[28px] text-navy-600 mb-3 md:mb-4">Almost there.</h3>
                   <p className="text-[15.5px] md:text-[16px] text-bone-600 max-w-md mx-auto leading-relaxed">
-                    A relationship banker has been notified and will be in touch within one business day. We have sent a confirmation to <strong className="text-navy-600">{form.email}</strong>.
+                    We've opened <strong className="text-navy-600">{sentVia === "whatsapp" ? "WhatsApp" : "your email app"}</strong> with your enquiry pre-filled — just press send and a relationship banker will be in touch within one business day.
                   </p>
+                  <button
+                    type="button"
+                    onClick={() => setSubmitted(false)}
+                    className="mt-6 text-[14px] font-medium text-orange-600 hover:text-orange-700 underline underline-offset-4"
+                  >
+                    Back to the form
+                  </button>
                 </div>
               ) : (
                 <form
@@ -211,17 +256,33 @@ export default function Contact() {
                       placeholder="What product, what stage, what timeline."
                     />
                   </div>
-                  {/* Submit row — on mobile the button is full-width and
-                      placed above the privacy note (the verb is the
-                      thing, the disclosure is the footnote). On desktop
-                      they sit on the same row. */}
-                  <div className="flex flex-col-reverse md:flex-row md:items-center md:justify-between gap-3 md:gap-4 pt-1">
-                    <p className="text-[11.5px] text-bone-500 leading-relaxed md:max-w-sm">
+                  {/* Channel choice — the user picks where their enquiry is
+                      sent. Both buttons submit the form (so native "required"
+                      validation runs first); the pressed one sets the channel
+                      the handler reads. */}
+                  <div className="pt-1 space-y-3">
+                    <p className="text-[12.5px] font-medium text-navy-600">Choose how to send your enquiry</p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      <button
+                        type="submit"
+                        onClick={() => { channelRef.current = "whatsapp"; }}
+                        className="inline-flex items-center justify-center gap-2.5 w-full px-6 py-3.5 rounded-full bg-navy-700 hover:bg-navy-900 text-white font-medium text-[15.5px] transition-colors"
+                      >
+                        <ChatCircleIcon size={18} weight="fill" />
+                        Send via WhatsApp
+                      </button>
+                      <button
+                        type="submit"
+                        onClick={() => { channelRef.current = "email"; }}
+                        className="inline-flex items-center justify-center gap-2.5 w-full px-6 py-3.5 rounded-full bg-orange-500 hover:bg-orange-600 text-white font-medium text-[15.5px] transition-colors"
+                      >
+                        <EnvelopeSimpleIcon size={18} weight="fill" />
+                        Send via Email
+                      </button>
+                    </div>
+                    <p className="text-[11.5px] text-bone-500 leading-relaxed">
                       We use your details only to respond to this enquiry. See <a href="/privacy" className="underline hover:text-navy-600">Privacy</a>.
                     </p>
-                    <button type="submit" className="btn btn-primary w-full md:w-auto justify-center">
-                      Request a banker <ArrowRightIcon size={14} weight="bold" />
-                    </button>
                   </div>
                 </form>
               )}

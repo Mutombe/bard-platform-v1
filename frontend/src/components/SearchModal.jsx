@@ -16,6 +16,7 @@ import {
 } from "@phosphor-icons/react";
 import { SOLUTIONS } from "../data/solutions.js";
 import { SEGMENTS } from "../data/whoWeServe.js";
+import { useComingSoon, isPortalPath } from "./Toast.jsx";
 
 /**
  * Institutional search modal — the "command-K" pattern, ours.
@@ -117,6 +118,18 @@ export default function SearchModal({ open, onClose, initialQuery = "" }) {
   const [recents, setRecents] = useState(loadRecents);
   const inputRef = useRef(null);
   const navigate = useNavigate();
+  const comingSoon = useComingSoon();
+
+  // Route to a destination, unless it's the not-yet-live Online Banking portal
+  // — then show the "coming soon" toast and close the modal instead.
+  const goTo = (path) => {
+    if (isPortalPath(path)) {
+      comingSoon();
+      onClose();
+      return true;
+    }
+    return false;
+  };
 
   const index = useMemo(() => buildIndex(), []);
 
@@ -130,7 +143,7 @@ export default function SearchModal({ open, onClose, initialQuery = "" }) {
       return next;
     });
   };
-  const go = (path) => { record(query); navigate(path); onClose(); };
+  const go = (path) => { record(query); if (goTo(path)) return; navigate(path); onClose(); };
   const clearRecents = () => {
     setRecents([]);
     try { localStorage.removeItem(RECENT_KEY); } catch { /* ignore */ }
@@ -192,6 +205,7 @@ export default function SearchModal({ open, onClose, initialQuery = "" }) {
         if (target) {
           e.preventDefault();
           record(query);
+          if (goTo(target.path)) return;
           navigate(target.path);
           onClose();
         }
@@ -256,7 +270,7 @@ export default function SearchModal({ open, onClose, initialQuery = "" }) {
             <div className="flex-1 overflow-y-auto">
               {query.trim() === "" ? (
                 <EmptyState
-                  onPick={(path) => { navigate(path); onClose(); }}
+                  onPick={(path) => { if (goTo(path)) return; navigate(path); onClose(); }}
                   recents={recents}
                   onPickRecent={(term) => { setQuery(term); inputRef.current?.focus(); }}
                   onClearRecents={clearRecents}

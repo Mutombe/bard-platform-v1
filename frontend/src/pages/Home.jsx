@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRightIcon, ArrowUpRightIcon, ArrowSquareOutIcon } from "@phosphor-icons/react";
+import { ArrowRightIcon, ArrowUpRightIcon, ArrowSquareOutIcon, DiamondIcon } from "@phosphor-icons/react";
 
 import PageTransition from "../components/PageTransition.jsx";
 import QuickActionStrip from "../components/QuickActionStrip.jsx";
+import { useComingSoon } from "../components/Toast.jsx";
 import PrivateBankingMarquee from "../components/PrivateBankingMarquee.jsx";
 import RevealImage from "../components/RevealImage.jsx";
 import Typewriter from "../components/Typewriter.jsx";
@@ -109,7 +110,7 @@ function Index({ n, label, onDark = false }) {
   return (
     <p className={`eyebrow flex items-center gap-3 ${onDark ? "text-white/80" : "text-navy-500"}`}>
       <span className={`font-display font-bold not-italic ${onDark ? "text-orange-400" : "text-orange-600"}`}>{n}</span>
-      <span className={`w-6 h-px ${onDark ? "bg-orange-400/70" : "bg-orange-500/60"}`} />
+      <DiamondIcon size={9} weight="fill" className={onDark ? "text-orange-400" : "text-orange-500"} />
       {label}
     </p>
   );
@@ -123,6 +124,7 @@ const reveal = {
 };
 
 export default function Home() {
+  const comingSoon = useComingSoon();
   return (
     <PageTransition>
       <SEO
@@ -299,10 +301,10 @@ export default function Home() {
               Technology should remove complexity, not create it. Bank whenever and
               wherever you choose, and reach a real person the moment you need one.
             </p>
-            <Link to="/login" className="btn btn-navy mt-9">
+            <button type="button" onClick={comingSoon} className="btn btn-navy mt-9">
               Explore Online Banking
               <ArrowRightIcon size={16} weight="bold" />
-            </Link>
+            </button>
           </motion.div>
 
           {/* Right — three tall photo cards */}

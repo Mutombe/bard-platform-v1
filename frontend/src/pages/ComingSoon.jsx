@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { DiamondIcon } from "@phosphor-icons/react";
 
 /**
  * Temporary site-wide holding page. Shown while the licensed photography is
@@ -50,11 +51,11 @@ export default function ComingSoon() {
           />
 
           <div className="mt-10 md:mt-14 flex items-center justify-center gap-3.5">
-            <span className="h-[2px] w-10 bg-orange-500" />
+            <DiamondIcon size={13} weight="fill" className="text-orange-500 shrink-0" />
             <p className="font-mono text-[11px] md:text-[12px] tracking-[0.28em] uppercase text-orange-300">
               Coming soon
             </p>
-            <span className="h-[2px] w-10 bg-orange-500" />
+            <DiamondIcon size={13} weight="fill" className="text-orange-500 shrink-0" />
           </div>
 
           <h1 className="mt-7 font-display text-white text-balance leading-[1.04] text-[clamp(2.3rem,7vw,4.75rem)] [text-shadow:0_2px_28px_rgba(0,0,0,0.45)]">

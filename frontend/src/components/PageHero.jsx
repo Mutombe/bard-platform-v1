@@ -2,12 +2,14 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRightIcon, ArrowSquareOutIcon } from "@phosphor-icons/react";
+import { useComingSoon, isPortalPath } from "./Toast.jsx";
 
 // CTA helper — when the destination starts with http(s) we render an
 // anchor (and open it in a new tab); otherwise the standard Router Link.
 // Lets pages pass external URLs (e.g. the online-banking portal) in
 // the same shape as internal routes.
 function HeroCTA({ cta, className, withArrow = false }) {
+  const comingSoon = useComingSoon();
   if (!cta) return null;
   const isExternal = /^https?:\/\//.test(cta.to);
   const inner = (
@@ -20,6 +22,14 @@ function HeroCTA({ cta, className, withArrow = false }) {
       )}
     </>
   );
+  // Online Banking portal isn't live yet — toast instead of routing.
+  if (isPortalPath(cta.to)) {
+    return (
+      <button type="button" onClick={comingSoon} className={className}>
+        {inner}
+      </button>
+    );
+  }
   if (isExternal) {
     return (
       <a href={cta.to} target="_blank" rel="noopener noreferrer" className={className}>

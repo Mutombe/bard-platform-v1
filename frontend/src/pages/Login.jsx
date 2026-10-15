@@ -9,6 +9,7 @@ import {
   ArrowRightIcon,
   ArrowLeftIcon,
   ShieldCheckIcon,
+  DiamondIcon,
 } from "@phosphor-icons/react";
 
 import PageTransition from "../components/PageTransition.jsx";
@@ -204,7 +205,7 @@ export default function Login() {
 
             <div className="max-w-md">
               <div className="flex items-center gap-3 mb-4">
-                <span className="h-[2px] w-10 bg-orange-500" />
+                <DiamondIcon size={13} weight="fill" className="text-orange-500 shrink-0" />
                 <p className="font-mono text-[10px] tracking-[0.22em] uppercase text-orange-400">
                   Online Banking
                 </p>
