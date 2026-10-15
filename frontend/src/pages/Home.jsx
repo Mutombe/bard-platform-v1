@@ -1,6 +1,15 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRightIcon, ArrowUpRightIcon, ArrowSquareOutIcon, DiamondIcon } from "@phosphor-icons/react";
+import {
+  ArrowRightIcon,
+  ArrowUpRightIcon,
+  ArrowSquareOutIcon,
+  CompassIcon,
+  UsersThreeIcon,
+  DeviceMobileIcon,
+  LightbulbIcon,
+  GlobeHemisphereWestIcon,
+} from "@phosphor-icons/react";
 
 import PageTransition from "../components/PageTransition.jsx";
 import QuickActionStrip from "../components/QuickActionStrip.jsx";
@@ -106,11 +115,11 @@ const AUDIENCES = [
 
 // Numbered section eyebrow — the "prospectus index" that gives the page a
 // considered, institutional through-line.
-function Index({ n, label, onDark = false }) {
+function Index({ n, label, icon: Icon, onDark = false }) {
   return (
     <p className={`eyebrow flex items-center gap-3 ${onDark ? "text-white/80" : "text-navy-500"}`}>
       <span className={`font-display font-bold not-italic ${onDark ? "text-orange-400" : "text-orange-600"}`}>{n}</span>
-      <DiamondIcon size={9} weight="fill" className={onDark ? "text-orange-400" : "text-orange-500"} />
+      {Icon && <Icon size={15} weight="regular" className={onDark ? "text-orange-400" : "text-orange-500"} />}
       {label}
     </p>
   );
@@ -218,7 +227,7 @@ export default function Home() {
         <div className="container-bank">
           <div className="grid grid-cols-12 gap-y-8 md:gap-12 items-start">
             <motion.div {...reveal} className="col-span-12 md:col-span-6">
-              <Index n="01" label="Why we exist" />
+              <Index n="01" label="Why we exist" icon={CompassIcon} />
               <h2 className="display-xl text-navy-600 text-balance mt-6">
                 Banking should <span className="italic font-light">move with you</span>, not the
                 other way around.
@@ -241,7 +250,7 @@ export default function Home() {
         <div className="container-bank relative">
           <motion.div {...reveal} className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 md:mb-16">
             <div className="max-w-2xl">
-              <Index n="02" label="Built around people" />
+              <Index n="02" label="Built around people" icon={UsersThreeIcon} />
               <h2 className="display-lg text-navy-600 text-balance mt-6">
                 Built around <span className="font-bold">people</span>, not products.
               </h2>
@@ -293,7 +302,7 @@ export default function Home() {
         <div className="container-bank grid grid-cols-12 gap-y-10 md:gap-12 items-start">
           {/* Left — heading + intro + CTA */}
           <motion.div {...reveal} className="col-span-12 lg:col-span-4">
-            <Index n="03" label="Digital-first" />
+            <Index n="03" label="Digital-first" icon={DeviceMobileIcon} />
             <h2 className="display-lg text-navy-600 text-balance mt-6">
               Digital where it matters. <span className="font-bold">Human</span> when it counts.
             </h2>
@@ -351,7 +360,7 @@ export default function Home() {
         <div className="container-bank">
           <motion.div {...reveal} className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 md:mb-16">
             <div className="max-w-2xl">
-              <Index n="04" label="Insights" />
+              <Index n="04" label="Insights" icon={LightbulbIcon} />
               <h2 className="display-lg text-navy-600 text-balance mt-6">
                 From the Bard Global Finance Institute.
               </h2>
@@ -382,7 +391,7 @@ export default function Home() {
         <div className="container-bank py-24 md:py-32">
           <div className="grid grid-cols-12 gap-y-10 md:gap-16">
             <motion.div {...reveal} className="col-span-12 md:col-span-5">
-              <Index n="05" label="Built for Africa" onDark />
+              <Index n="05" label="Built for Africa" icon={GlobeHemisphereWestIcon} onDark />
               <h2 className="display-lg text-white text-balance mt-6">
                 Built for the way <span className="font-bold">Africa</span> works.
               </h2>

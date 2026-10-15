@@ -1,6 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowUpRightIcon, ArrowRightIcon, DiamondIcon } from "@phosphor-icons/react";
+import { ArrowUpRightIcon, ArrowRightIcon, BriefcaseIcon, UserIcon, ChartLineUpIcon } from "@phosphor-icons/react";
 
 import PageTransition from "../components/PageTransition.jsx";
 import PageHero from "../components/PageHero.jsx";
@@ -10,6 +10,13 @@ import { useComingSoon, isPortalPath } from "../components/Toast.jsx";
 import NotFound from "./NotFound.jsx";
 
 import { findSolution, blockSlug } from "../data/solutions.js";
+
+// A contextual icon per solution grouping — replaces the old decorative dash.
+const SOLUTION_ICONS = {
+  "companies-institutions": BriefcaseIcon,
+  individuals: UserIcon,
+  investors: ChartLineUpIcon,
+};
 
 /**
  * /solutions/:slug — a client-outcome solutions page (For Companies and
@@ -23,6 +30,7 @@ export default function Solution() {
   const comingSoon = useComingSoon();
   const s = findSolution(slug);
   if (!s) return <NotFound />;
+  const SolutionIcon = SOLUTION_ICONS[s.slug] || BriefcaseIcon;
 
   return (
     <PageTransition>
@@ -52,7 +60,7 @@ export default function Solution() {
         <div className="container-bank grid grid-cols-12 gap-y-8 md:gap-12 items-start">
           <div className="col-span-12 md:col-span-4">
             <p className="eyebrow eyebrow-accent mb-4">{s.title}</p>
-            <DiamondIcon size={14} weight="fill" className="block text-orange-500 mb-8 md:mb-10" />
+            <SolutionIcon size={30} weight="duotone" className="block text-orange-500 mb-8 md:mb-10" />
             {s.cta && (
               isPortalPath(s.cta.to) ? (
                 <button type="button" onClick={comingSoon} className="btn btn-outline w-full sm:w-auto justify-center whitespace-normal text-center">

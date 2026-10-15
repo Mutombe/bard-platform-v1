@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { PhoneIcon, EnvelopeSimpleIcon, ChatCircleIcon, ArrowRightIcon, ArrowSquareOutIcon, DiamondIcon } from "@phosphor-icons/react";
+import { PhoneIcon, EnvelopeSimpleIcon, ChatCircleIcon, ArrowRightIcon, ArrowSquareOutIcon, CompassIcon } from "@phosphor-icons/react";
 import { BRAND } from "../data/images.js";
 
 /**
@@ -33,7 +33,7 @@ export default function AdvisoryBand() {
           {/* Left — the aspiration (folded from "Looking ahead") */}
           <div className="lg:col-span-7">
             <div className="flex items-center gap-3.5 mb-6">
-              <DiamondIcon size={15} weight="fill" className="text-orange-500 shrink-0" />
+              <CompassIcon size={20} weight="duotone" className="text-orange-400 shrink-0" />
               <p className="font-mono text-[11px] tracking-[0.24em] uppercase text-orange-300">
                 Advisory
               </p>
@@ -69,7 +69,7 @@ export default function AdvisoryBand() {
           <div className="lg:col-span-5">
             <div className="rounded-2xl border border-white/20 bg-white/[0.05] backdrop-blur-sm p-6 md:p-8 shadow-[0_24px_60px_rgba(0,0,0,0.38)]">
               <div className="flex items-center gap-3 mb-6">
-                <DiamondIcon size={13} weight="fill" className="text-orange-500 shrink-0" />
+                <ChatCircleIcon size={18} weight="duotone" className="text-orange-400 shrink-0" />
                 <p className="font-mono text-[10px] tracking-[0.22em] uppercase text-white/70">
                   Open a conversation
                 </p>

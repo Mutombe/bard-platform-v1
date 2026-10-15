@@ -1,6 +1,18 @@
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRightIcon, ArrowUpRightIcon, DiamondIcon } from "@phosphor-icons/react";
+import {
+  ArrowRightIcon,
+  ArrowUpRightIcon,
+  QuotesIcon,
+  SquaresFourIcon,
+  GlobeHemisphereWestIcon,
+  FactoryIcon,
+  PlantIcon,
+  BankIcon,
+  CpuIcon,
+  BuildingsIcon,
+  HandHeartIcon,
+} from "@phosphor-icons/react";
 
 import PageTransition from "../components/PageTransition.jsx";
 import PageHero from "../components/PageHero.jsx";
@@ -9,6 +21,18 @@ import SEO, { breadcrumbJsonLd } from "../components/SEO.jsx";
 import NotFound from "./NotFound.jsx";
 
 import { findSegment } from "../data/whoWeServe.js";
+
+// A contextual icon per client segment — replaces the old decorative dash in
+// the section header so each page reads to its own subject.
+const SEGMENT_ICONS = {
+  "diaspora-international": GlobeHemisphereWestIcon,
+  "business-industry-mining": FactoryIcon,
+  agriculture: PlantIcon,
+  "financial-institutions": BankIcon,
+  "technology-innovation": CpuIcon,
+  "public-institutions": BuildingsIcon,
+  "non-profit-development": HandHeartIcon,
+};
 
 /**
  * /who-we-serve/:slug — a client-segment page (Diaspora, Business/Industry/
@@ -21,6 +45,7 @@ export default function WhoWeServe() {
   const { slug } = useParams();
   const seg = findSegment(slug);
   if (!seg) return <NotFound />;
+  const SegmentIcon = SEGMENT_ICONS[seg.slug] || GlobeHemisphereWestIcon;
 
   return (
     <PageTransition>
@@ -51,7 +76,7 @@ export default function WhoWeServe() {
         <div className="container-bank grid grid-cols-12 gap-y-8 md:gap-12 items-start">
           <div className="col-span-12 md:col-span-4">
             <p className="eyebrow eyebrow-accent mb-4">{seg.title}</p>
-            <DiamondIcon size={14} weight="fill" className="block text-orange-500 mb-8 md:mb-10" />
+            <SegmentIcon size={30} weight="duotone" className="block text-orange-500 mb-8 md:mb-10" />
             <Link to={seg.cta.to} className="btn btn-outline w-full sm:w-auto justify-center whitespace-normal text-center">
               {seg.cta.label}
               <ArrowRightIcon size={15} weight="bold" />
@@ -90,7 +115,7 @@ export default function WhoWeServe() {
         <div className="absolute top-0 left-0 right-0 h-[2px] bg-orange-500" />
         <div className="relative container-bank py-24 md:py-32">
           <div className="max-w-3xl">
-            <DiamondIcon size={14} weight="fill" className="block text-orange-500 mb-6" />
+            <QuotesIcon size={30} weight="fill" className="block text-orange-500 mb-6" />
             <h2 className="display-lg text-white text-balance [text-shadow:0_2px_24px_rgba(0,0,0,0.5)]">
               {seg.closing || "Whatever your mission, we're ready to help."}
             </h2>
@@ -102,7 +127,7 @@ export default function WhoWeServe() {
       <section className="section bg-smoke border-t border-bone-200">
         <div className="container-bank">
           <div className="flex items-center gap-4 mb-8 md:mb-12">
-            <DiamondIcon size={16} weight="fill" className="text-orange-500 shrink-0" />
+            <SquaresFourIcon size={24} weight="duotone" className="text-orange-500 shrink-0" />
             <h2 className="display-md text-navy-600">{seg.listTitle}</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">

@@ -4,7 +4,7 @@ import PageTransition from "../components/PageTransition.jsx";
 import PageHero from "../components/PageHero.jsx";
 import SEO, { breadcrumbJsonLd } from "../components/SEO.jsx";
 import { BRAND } from "../data/images.js";
-import { PhoneIcon, EnvelopeSimpleIcon, ChatCircleIcon, MapPinIcon, CheckCircleIcon, ArrowSquareOutIcon, ClockIcon, DiamondIcon } from "@phosphor-icons/react";
+import { PhoneIcon, EnvelopeSimpleIcon, ChatCircleIcon, MapPinIcon, CheckCircleIcon, ArrowSquareOutIcon, ClockIcon, HeadsetIcon } from "@phosphor-icons/react";
 import { AUDIENCES } from "../data/audiences.js";
 
 // Where enquiries are routed. The form composes a pre-filled message and hands
@@ -167,7 +167,7 @@ export default function Contact() {
           <div className="grid grid-cols-12 gap-y-8 md:gap-16 max-w-6xl mx-auto mt-10 md:mt-20">
             <div className="col-span-12 md:col-span-5">
               <div className="flex items-center gap-3 md:gap-4 mb-5 md:mb-6">
-                <DiamondIcon size={16} weight="fill" className="text-orange-500 shrink-0" />
+                <HeadsetIcon size={22} weight="duotone" className="text-orange-500 shrink-0" />
                 <p className="eyebrow eyebrow-accent">§ Request a banker</p>
               </div>
               <h2 className="display-xl text-navy-600 text-balance mb-5 md:mb-7 leading-[1.05]">
