@@ -173,8 +173,6 @@ function RotatingThemes() {
       onFocusCapture={() => setPaused(true)}
       onBlurCapture={() => setPaused(false)}
     >
-      <div className="absolute top-0 left-0 right-0 h-[2px] bg-orange-500 z-20" />
-
       {/* Crossfading background photograph */}
       <AnimatePresence>
         <motion.div
@@ -290,6 +288,9 @@ function BrandInterlude() {
       <div
         className="absolute inset-0 pointer-events-none bg-repeat bg-center [background-image:url(/pattern-argyle.svg)] [background-size:calc(100%/8)] md:[background-size:calc(100%/24)]"
       />
+      {/* Orange brand rules — top and bottom edges */}
+      <div className="absolute top-0 left-0 right-0 h-[2px] bg-orange-500 z-10" />
+      <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-orange-500 z-10" />
     </section>
   );
 }
