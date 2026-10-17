@@ -97,8 +97,23 @@ const LOCATIONS = [
 
 export default function Footer() {
   return (
-    <footer className="relative bg-ink text-white">
-      <div className="absolute top-0 left-0 right-0 h-[3px] bg-orange-500" />
+    <footer className="relative isolate bg-ink text-white">
+      {/* Brand grid "wave" — the argyle pattern washed diagonally behind the
+          footer content (same subtle treatment as the trust cards). Sits on
+          -z-10 under an isolated stacking context, so the copy stays on top. */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 -z-10 pointer-events-none"
+        style={{
+          backgroundImage: "url(/pattern-argyle.svg)",
+          backgroundSize: "32px 32px",
+          backgroundRepeat: "repeat",
+          opacity: 0.7,
+          WebkitMaskImage: "linear-gradient(125deg, transparent 10%, #000 58%, rgba(0,0,0,0.28) 100%)",
+          maskImage: "linear-gradient(125deg, transparent 10%, #000 58%, rgba(0,0,0,0.28) 100%)",
+        }}
+      />
+      <div className="absolute top-0 left-0 right-0 h-[3px] bg-orange-500 z-10" />
       {/* ─── Top — brand row + columns ─── */}
       <div className="container-bank pt-14 md:pt-24 pb-10 md:pb-12">
         <div className="grid grid-cols-12 gap-x-6 gap-y-10 md:gap-12">
