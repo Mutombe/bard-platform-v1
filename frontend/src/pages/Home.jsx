@@ -273,18 +273,23 @@ function RotatingThemes() {
 }
 
 // Brand interlude — a clean solid navy band carrying only the argyle brand
-// pattern. It sits between the two photographic bands (rotating themes and the
-// Advisory CTA) so the eye never jumps photo-to-photo: photo → pattern → photo.
+// pattern, between the two photographic bands (rotating themes and the Advisory
+// CTA) so the eye never jumps photo-to-photo: photo → pattern → photo.
+//
+// The grid is symmetric and flush to every edge at any width: the band's
+// aspect-ratio equals cols/rows and the tile is sized to 100%/cols, so exactly
+// cols × rows whole square cells fill it — no partial cells at any border.
+//   mobile : aspect 4/1  · 8 cols  → 8 × 2 cells
+//   md+    : aspect 12/1 · 24 cols → 24 × 2 cells
 function BrandInterlude() {
   return (
-    <section aria-hidden="true" className="relative bg-navy-700 overflow-hidden">
-      <div className="absolute top-0 left-0 right-0 h-[2px] bg-orange-500 z-10" />
-      {/* Argyle brand pattern — white-on-navy, the golf-site/footer texture */}
+    <section
+      aria-hidden="true"
+      className="relative bg-navy-700 overflow-hidden aspect-[4/1] md:aspect-[12/1]"
+    >
       <div
-        className="absolute inset-0 pointer-events-none"
-        style={{ backgroundImage: "url(/pattern-argyle.svg)", backgroundSize: "44px 44px" }}
+        className="absolute inset-0 pointer-events-none bg-repeat bg-center [background-image:url(/pattern-argyle.svg)] [background-size:calc(100%/8)] md:[background-size:calc(100%/24)]"
       />
-      <div className="container-bank py-14 md:py-20" />
     </section>
   );
 }

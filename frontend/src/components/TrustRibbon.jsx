@@ -30,6 +30,7 @@ const TRUST_PILLARS = [
     title: "Deposits protected",
     body: "Deposits held under the Deposit Protection framework. Coverage limits and terms apply.",
     tint: "navy",
+    pattern: true,
     to: "/security",
   },
   {
@@ -44,6 +45,7 @@ const TRUST_PILLARS = [
     title: "AML compliant",
     body: "Due diligence, transaction monitoring and reporting to international AML / CFT standards.",
     tint: "orange",
+    pattern: true,
     to: "/regulatory",
   },
 ];
@@ -104,20 +106,41 @@ export default function TrustRibbon() {
                 <Link
                   key={p.title}
                   to={p.to}
-                  className={`group ${cardBg} text-white rounded-2xl p-6 md:p-7 flex flex-col hover:-translate-y-1 transition-transform`}
+                  className={`group relative overflow-hidden ${cardBg} text-white rounded-2xl p-6 md:p-7 flex flex-col hover:-translate-y-1 transition-transform`}
                 >
-                  <div className="flex items-start justify-between mb-6">
-                    <Icon size={30} weight="regular" className="text-white" />
-                    <span className="w-9 h-9 rounded-full border-2 border-white/45 group-hover:border-white group-hover:bg-white/10 flex items-center justify-center shrink-0 transition-colors">
-                      <ArrowUpRightIcon size={15} weight="bold" className="text-white" />
-                    </span>
+                  {/* Brand grid "wave" — the argyle pattern washed diagonally
+                      across the card (clear top-left → full bottom-right), so it
+                      reads as flowing texture behind the copy, not a flat fill. */}
+                  {p.pattern && (
+                    <div
+                      aria-hidden="true"
+                      className="absolute inset-0 pointer-events-none transition-transform duration-700 group-hover:scale-110"
+                      style={{
+                        backgroundImage: "url(/pattern-argyle.svg)",
+                        backgroundSize: "30px 30px",
+                        backgroundRepeat: "repeat",
+                        opacity: 0.8,
+                        WebkitMaskImage:
+                          "linear-gradient(125deg, transparent 12%, #000 58%, rgba(0,0,0,0.35) 100%)",
+                        maskImage:
+                          "linear-gradient(125deg, transparent 12%, #000 58%, rgba(0,0,0,0.35) 100%)",
+                      }}
+                    />
+                  )}
+                  <div className="relative flex flex-col flex-1">
+                    <div className="flex items-start justify-between mb-6">
+                      <Icon size={30} weight="regular" className="text-white" />
+                      <span className="w-9 h-9 rounded-full border-2 border-white/45 group-hover:border-white group-hover:bg-white/10 flex items-center justify-center shrink-0 transition-colors">
+                        <ArrowUpRightIcon size={15} weight="bold" className="text-white" />
+                      </span>
+                    </div>
+                    <p className="font-display font-medium text-white text-[20px] md:text-[21px] leading-tight mb-2">
+                      {p.title}
+                    </p>
+                    <p className="text-[13.5px] md:text-[15px] text-white/85 leading-relaxed">
+                      {p.body}
+                    </p>
                   </div>
-                  <p className="font-display font-medium text-white text-[20px] md:text-[21px] leading-tight mb-2">
-                    {p.title}
-                  </p>
-                  <p className="text-[13.5px] md:text-[15px] text-white/85 leading-relaxed">
-                    {p.body}
-                  </p>
                 </Link>
               );
             })}
