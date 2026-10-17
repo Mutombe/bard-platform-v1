@@ -274,20 +274,19 @@ function RotatingThemes() {
 // pattern, between the two photographic bands (rotating themes and the Advisory
 // CTA) so the eye never jumps photo-to-photo: photo → pattern → photo.
 //
-// The grid is symmetric and flush to every edge at any width: the band's
-// aspect-ratio equals cols/rows and the tile is sized to 100%/cols, so exactly
-// cols × rows whole square cells fill it — no partial cells at any border.
-// Cell count is tuned so cells land ~30px (as dense as the trust cards):
-//   mobile : aspect 4/1  · 12 cols → 12 × 3 cells
-//   md+    : aspect 12/1 · 48 cols → 48 × 4 cells
+// Height matches the hero's quick-action bar (mobile 2×h-14 = 112px; desktop
+// one ~60px row). The grid stays flush to all four edges: whole columns via
+// 100%/cols, whole rows via a fixed cell height that divides the band height.
+//   mobile : h-28 (112px) · 14 cols × 4 rows (28px cell)
+//   md+    : 60px        · 48 cols × 2 rows (30px cell)
 function BrandInterlude() {
   return (
     <section
       aria-hidden="true"
-      className="relative bg-navy-700 overflow-hidden aspect-[4/1] md:aspect-[12/1]"
+      className="relative bg-navy-700 overflow-hidden h-28 md:h-[60px]"
     >
       <div
-        className="absolute inset-0 pointer-events-none bg-repeat bg-center [background-image:url(/pattern-argyle.svg)] [background-size:calc(100%/12)] md:[background-size:calc(100%/48)]"
+        className="absolute inset-0 pointer-events-none bg-repeat bg-center [background-image:url(/pattern-argyle.svg)] [background-size:calc(100%/14)_28px] md:[background-size:calc(100%/48)_30px]"
       />
       {/* Orange brand rules — thin and subtle, top and bottom edges */}
       <div className="absolute top-0 left-0 right-0 h-px bg-orange-500/50 z-10" />
