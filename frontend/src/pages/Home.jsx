@@ -16,6 +16,7 @@ import {
 import PageTransition from "../components/PageTransition.jsx";
 import QuickActionStrip from "../components/QuickActionStrip.jsx";
 import { useComingSoon } from "../components/Toast.jsx";
+import Monogram from "../components/Monogram.jsx";
 import Typewriter from "../components/Typewriter.jsx";
 import AdvisoryBand from "../components/AdvisoryBand.jsx";
 import TrustRibbon from "../components/TrustRibbon.jsx";
@@ -272,6 +273,36 @@ function RotatingThemes() {
   );
 }
 
+// Brand interlude — a solid navy band carrying the argyle brand pattern and the
+// BS monogram. It sits between the two photographic bands (rotating themes and
+// the Advisory CTA) so the eye never jumps photo-to-photo: photo → pattern →
+// photo. Pure brand texture, no imagery.
+function BrandInterlude() {
+  return (
+    <section className="relative bg-navy-700 overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 h-[2px] bg-orange-500 z-10" />
+      {/* Argyle brand pattern — white-on-navy, the golf-site/footer texture */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{ backgroundImage: "url(/pattern-argyle.svg)", backgroundSize: "44px 44px" }}
+      />
+      {/* Warm centre glow so the monogram sits in a pool of light */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{ background: "radial-gradient(55% 140% at 50% 50%, rgba(238,125,54,0.14), transparent 70%)" }}
+      />
+      <div className="relative container-bank py-16 md:py-24 flex flex-col items-center text-center">
+        <span className="w-16 h-16 md:w-[72px] md:h-[72px] rounded-full border border-white/20 bg-white/[0.05] backdrop-blur-sm flex items-center justify-center shadow-[0_10px_34px_rgba(0,0,0,0.4)]">
+          <Monogram size={34} color="#EE7D36" />
+        </span>
+        <p className="mt-5 font-mono text-[10.5px] md:text-[11px] tracking-[0.32em] uppercase text-white/55">
+          Bard Santner Microfinance Bank
+        </p>
+      </div>
+    </section>
+  );
+}
+
 export default function Home() {
   return (
     <PageTransition>
@@ -355,6 +386,9 @@ export default function Home() {
 
       {/* ── Rotating themes — the five ideas, condensed into one banner ── */}
       <RotatingThemes />
+
+      {/* ── Brand interlude — pattern band between the two photo sections ── */}
+      <BrandInterlude />
 
       {/* ── Closing CTA + trust ribbon ───────────────────────────────── */}
       <AdvisoryBand />
