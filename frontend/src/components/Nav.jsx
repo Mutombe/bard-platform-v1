@@ -182,8 +182,22 @@ export default function Nav() {
         className="bg-navy-700 text-white relative z-50"
         onMouseLeave={closeSoon}
       >
+        {/* Subtle argyle brand texture behind the top strip */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 pointer-events-none"
+          style={{
+            backgroundImage: "url(/pattern-argyle.svg)",
+            backgroundSize: "26px 26px",
+            backgroundRepeat: "repeat",
+            opacity: 0.5,
+            WebkitMaskImage: "linear-gradient(to right, rgba(0,0,0,0.2) 0%, #000 45%)",
+            maskImage: "linear-gradient(to right, rgba(0,0,0,0.2) 0%, #000 45%)",
+          }}
+        />
         <div className="container-bank">
-          <div className="flex items-stretch h-11">
+          {/* Thinner on mobile so the white nav rides up a touch; full height from md up */}
+          <div className="flex items-stretch h-8 md:h-11">
             {/* Desktop triggers */}
             <nav className="hidden md:flex items-stretch" aria-label="Primary">
               {NAV_MENU.map((item) => {
