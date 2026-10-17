@@ -277,8 +277,9 @@ function RotatingThemes() {
 // The grid is symmetric and flush to every edge at any width: the band's
 // aspect-ratio equals cols/rows and the tile is sized to 100%/cols, so exactly
 // cols × rows whole square cells fill it — no partial cells at any border.
-//   mobile : aspect 4/1  · 8 cols  → 8 × 2 cells
-//   md+    : aspect 12/1 · 24 cols → 24 × 2 cells
+// Cell count is tuned so cells land ~30px (as dense as the trust cards):
+//   mobile : aspect 4/1  · 12 cols → 12 × 3 cells
+//   md+    : aspect 12/1 · 48 cols → 48 × 4 cells
 function BrandInterlude() {
   return (
     <section
@@ -286,11 +287,11 @@ function BrandInterlude() {
       className="relative bg-navy-700 overflow-hidden aspect-[4/1] md:aspect-[12/1]"
     >
       <div
-        className="absolute inset-0 pointer-events-none bg-repeat bg-center [background-image:url(/pattern-argyle.svg)] [background-size:calc(100%/8)] md:[background-size:calc(100%/24)]"
+        className="absolute inset-0 pointer-events-none bg-repeat bg-center [background-image:url(/pattern-argyle.svg)] [background-size:calc(100%/12)] md:[background-size:calc(100%/48)]"
       />
-      {/* Orange brand rules — top and bottom edges */}
-      <div className="absolute top-0 left-0 right-0 h-[2px] bg-orange-500 z-10" />
-      <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-orange-500 z-10" />
+      {/* Orange brand rules — thin and subtle, top and bottom edges */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-orange-500/50 z-10" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-orange-500/50 z-10" />
     </section>
   );
 }
