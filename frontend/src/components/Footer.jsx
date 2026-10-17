@@ -75,6 +75,7 @@ const COLUMNS = [
   {
     title: "Help & legal",
     links: [
+      { label: "FAQ", to: "/faq" },
       { label: "Security", to: "/security" },
       { label: "Complaints", to: "/complaints" },
       { label: "Accessibility", to: "/accessibility" },

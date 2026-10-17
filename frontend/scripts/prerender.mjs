@@ -27,7 +27,7 @@ const ORIGIN = `http://localhost:${PORT}`;
 
 const STATIC_ROUTES = [
   "/",
-  "/about", "/careers", "/contact",
+  "/about", "/careers", "/contact", "/faq",
   "/security", "/legal", "/privacy", "/cookies", "/terms",
   "/regulatory", "/accessibility", "/complaints",
 ];

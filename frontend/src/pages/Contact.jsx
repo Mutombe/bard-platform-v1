@@ -134,7 +134,7 @@ export default function Contact() {
               <div>
                 <p className="font-display text-white text-[19px] md:text-[20px] mb-1.5">WhatsApp</p>
                 <p className="text-[15px] font-medium text-white/95">+263 774 954 415</p>
-                <p className="text-[12.5px] text-white/70 mt-0.5">For existing customers</p>
+                <p className="text-[12.5px] text-white/70 mt-0.5">Chat with our team</p>
               </div>
             </a>
 
@@ -144,7 +144,7 @@ export default function Contact() {
               <div>
                 <p className="font-display text-[19px] md:text-[20px] text-navy-600 mb-1.5">Email</p>
                 <p className="text-[15px] font-medium text-navy-600 break-words">bank@bardsantner.co.zw</p>
-                <p className="text-[12.5px] text-bone-500 mt-0.5">Reply within one business day</p>
+                <p className="text-[12.5px] text-bone-500 mt-0.5">We will respond within one business day</p>
               </div>
             </a>
 
@@ -231,9 +231,9 @@ export default function Contact() {
                     <Field label="Email" type="email" value={form.email} onChange={(v) => update("email", v)} required />
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <Field label="Telephone" type="tel" value={form.phone} onChange={(v) => update("phone", v)} />
+                    <Field label="Telephone" type="tel" value={form.phone} onChange={(v) => update("phone", v)} placeholder="+263 77 123 4567" />
                     <div>
-                      <label className="block text-[12.5px] font-medium text-navy-600 mb-1.5">Audience</label>
+                      <label className="block text-[12.5px] font-medium text-navy-600 mb-1.5">Area of interest</label>
                       <select
                         value={form.audience}
                         onChange={(e) => update("audience", e.target.value)}
@@ -294,7 +294,7 @@ export default function Contact() {
   );
 }
 
-function Field({ label, value, onChange, type = "text", required = false }) {
+function Field({ label, value, onChange, type = "text", required = false, placeholder }) {
   return (
     <div>
       <label className="block text-[12.5px] font-medium text-navy-600 mb-1.5">{label}</label>
@@ -303,7 +303,8 @@ function Field({ label, value, onChange, type = "text", required = false }) {
         value={value}
         onChange={(e) => onChange(e.target.value)}
         required={required}
-        className="w-full px-4 md:px-5 py-3.5 text-[16px] md:text-[16.5px] bg-white border border-bone-300 rounded-md focus:outline-none focus:border-orange-500"
+        placeholder={placeholder}
+        className="w-full px-4 md:px-5 py-3.5 text-[16px] md:text-[16.5px] bg-white border border-bone-300 rounded-md focus:outline-none focus:border-orange-500 placeholder:text-bone-400"
       />
     </div>
   );

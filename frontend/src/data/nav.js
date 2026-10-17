@@ -11,14 +11,20 @@
 // (/insights, /about, /leadership, /group/golf, /contact) so they resolve
 // today.
 
+// Order (left → right) follows staff feedback: people read left-to-right, so
+// "About Us" leads, then "Who We Serve", "Solutions", and "Insights".
 export const NAV_MENU = [
   {
-    label: "Solutions",
-    to: "/solutions",
+    label: "About Us",
+    to: "/about",
     children: [
-      { label: "For Companies and Institutions", to: "/solutions/companies-institutions" },
-      { label: "For Individuals", to: "/solutions/individuals" },
-      { label: "For Investors", to: "/solutions/investors" },
+      { label: "Our Story", to: "/about#our-story" },
+      { label: "Our Manifesto", to: "/about#manifesto" },
+      { label: "Vision, Purpose, Values", to: "/about#vision-purpose-values" },
+      { label: "Board of Directors", to: "/about#board-of-directors" },
+      { label: "FAQ", to: "/faq" },
+      { label: "Golf", to: "https://bardsantnergolf.com/" },
+      { label: "Contact", to: "/contact" },
     ],
   },
   {
@@ -35,23 +41,20 @@ export const NAV_MENU = [
     ],
   },
   {
+    label: "Solutions",
+    to: "/solutions",
+    children: [
+      { label: "For Companies and Institutions", to: "/solutions/companies-institutions" },
+      { label: "For Individuals", to: "/solutions/individuals" },
+      { label: "For Investors", to: "/solutions/investors" },
+    ],
+  },
+  {
     label: "Insights",
     to: "https://bgfi.global",
     children: [
       { label: "Bard Global Finance Institute (BGFI)", to: "https://bgfi.global" },
       { label: "Finance Africa Quarterly", to: "https://bgfi.global/publications/finance-africa-quarterly" },
-    ],
-  },
-  {
-    label: "About Us",
-    to: "/about",
-    children: [
-      { label: "Our Story", to: "/about#our-story" },
-      { label: "Our Manifesto", to: "/about#manifesto" },
-      { label: "Vision, Purpose, Values", to: "/about#vision-purpose-values" },
-      { label: "Board of Directors", to: "/about#board-of-directors" },
-      { label: "Golf", to: "https://bardsantnergolf.com/" },
-      { label: "Contact", to: "/contact" },
     ],
   },
 ];
