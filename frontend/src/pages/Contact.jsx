@@ -123,7 +123,7 @@ export default function Contact() {
               <div>
                 <p className="font-display text-white text-[19px] md:text-[20px] mb-1.5">Telephone</p>
                 <p className="text-[15px] font-medium text-white/95">+263 861 200 0700</p>
-                <p className="text-[12.5px] text-white/75 mt-0.5">Mon–Fri, 08:00–17:00 CAT</p>
+                <p className="text-[12.5px] text-white/75 mt-0.5">Mon–Fri, 08:00–15:30 CAT</p>
               </div>
             </a>
 
@@ -153,7 +153,7 @@ export default function Contact() {
               <ClockIcon size={26} weight="regular" className="text-orange-600" />
               <div>
                 <p className="font-display text-[19px] md:text-[20px] text-navy-600 mb-1.5">Office hours</p>
-                <p className="text-[15px] font-medium text-navy-600">Mon–Fri, 08:00–17:00</p>
+                <p className="text-[15px] font-medium text-navy-600">Mon–Fri, 08:00–15:30</p>
                 <p className="text-[12.5px] text-bone-500 mt-0.5">Central Africa Time</p>
               </div>
             </div>

@@ -70,7 +70,7 @@ const FAQ_GROUPS = [
       },
       {
         q: "What are your banking hours?",
-        a: "Our team is available Monday to Friday, 08:00–17:00 (Central Africa Time). You can reach us by telephone on +263 861 200 0700, by email at bank@bardsantner.co.zw, or on WhatsApp.",
+        a: "Our team is available Monday to Friday, 08:00–15:30 (Central Africa Time). You can reach us by telephone on +263 861 200 0700, by email at bank@bardsantner.co.zw, or on WhatsApp.",
       },
       {
         q: "How do I make a complaint?",
