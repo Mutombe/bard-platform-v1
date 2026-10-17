@@ -427,27 +427,26 @@ export default function Nav() {
               <Link to="/" onClick={() => setMobileOpen(false)} className="flex items-center">
                 <img src="/logo-bsmfb.png" alt="Bard Santner Microfinance Bank" className="h-9 w-auto object-contain" />
               </Link>
-              <button
-                onClick={() => setMobileOpen(false)}
-                aria-label="Close menu"
-                className="w-11 h-11 flex items-center justify-center -mr-2 rounded-md hover:bg-smoke text-navy-600"
-              >
-                <XIcon size={22} weight="bold" />
-              </button>
+              <div className="flex items-center gap-1 -mr-2">
+                <button
+                  onClick={() => { setMobileOpen(false); setSearchOpen(true); }}
+                  aria-label="Search Bard Santner"
+                  className="w-11 h-11 flex items-center justify-center rounded-md hover:bg-smoke text-navy-600"
+                >
+                  <MagnifyingGlassIcon size={21} weight="bold" />
+                </button>
+                <button
+                  onClick={() => setMobileOpen(false)}
+                  aria-label="Close menu"
+                  className="w-11 h-11 flex items-center justify-center rounded-md hover:bg-smoke text-navy-600"
+                >
+                  <XIcon size={22} weight="bold" />
+                </button>
+              </div>
             </div>
 
             {/* Drawer body */}
             <div className="flex-1 overflow-y-auto px-6 py-7">
-              {/* Search */}
-              <button
-                onClick={() => { setMobileOpen(false); setSearchOpen(true); }}
-                className="w-full mb-7 flex items-center gap-3 px-4 py-3.5 rounded-md border border-bone-200 bg-paper hover:border-orange-500 transition-colors text-left"
-              >
-                <MagnifyingGlassIcon size={17} weight="regular" className="text-bone-500" />
-                <span className="text-[15px] text-bone-500 flex-1">Search Bard Santner</span>
-                <ArrowRightIcon size={12} weight="bold" className="text-bone-400" />
-              </button>
-
               {/* Menu accordions */}
               <nav className="flex flex-col border-y border-bone-200 mb-8">
                 {NAV_MENU.map((item) => {
