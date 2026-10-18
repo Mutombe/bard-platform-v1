@@ -57,6 +57,7 @@ const THEMES = [
     icon: CompassIcon,
     image: BRAND.individual,
     pos: "center 30%",
+    posMobile: "58% 30%", // frame her + the phone/card, drop the empty left glass
     title: (
       <>
         Banking should <span className="italic font-light">move with you</span>, not the other way around.
@@ -71,6 +72,7 @@ const THEMES = [
     icon: UsersThreeIcon,
     image: BRAND.relationship,
     pos: "center 35%",
+    posMobile: "46% 35%", // center the two faces + handshake, drop the blurred third person
     title: (
       <>
         Built around <span className="font-bold">people</span>, not products.
@@ -85,6 +87,7 @@ const THEMES = [
     icon: DeviceMobileIcon,
     image: BRAND.mobileBanking,
     pos: "54% 42%",
+    posMobile: "57% 42%", // keep her + the folder in frame, drop the empty left plaza
     title: (
       <>
         Digital where it matters. <span className="font-bold">Human</span> when it counts.
@@ -181,10 +184,11 @@ function RotatingThemes() {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          className="absolute inset-0 bg-cover"
+          className="absolute inset-0 bg-cover bg-focus"
           style={{
             backgroundImage: `url(${theme.image})`,
-            backgroundPosition: theme.pos,
+            "--focus": theme.posMobile || theme.pos,
+            "--focus-md": theme.pos,
             filter: "saturate(1.14) contrast(1.03) brightness(0.9) sepia(0.2)",
           }}
         />

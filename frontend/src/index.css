@@ -480,6 +480,18 @@
      without changing the desktop rhythm. */
   .mb-confident { margin-bottom: 2.5rem; }
   @media (min-width: 768px) { .mb-confident { margin-bottom: 4rem; } }
+
+  /* Responsive focal point for cover images — "frame the subject, not the
+     file". A photo keeps its own crop per breakpoint via two CSS variables:
+       --focus     the mobile crop (used below md)
+       --focus-md  the desktop crop (used from md up; falls back to --focus)
+     Mobile heroes are portrait while the photos are landscape, so on mobile
+     the horizontal half of the value does the real work. Set the variables
+     inline per image; this utility only wires them to background-position. */
+  .bg-focus { background-position: var(--focus, center); }
+  @media (min-width: 768px) {
+    .bg-focus { background-position: var(--focus-md, var(--focus, center)); }
+  }
 }
 
 /* ─── Mobile polish — global rules that apply only to small viewports.

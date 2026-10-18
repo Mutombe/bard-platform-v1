@@ -94,6 +94,7 @@ function FullBleedHero({
   secondaryCTA,
   image,
   imagePosition = "center 28%",
+  imagePositionMobile,
   align = "left",
   noteUnderCTA,
 }) {
@@ -114,10 +115,11 @@ function FullBleedHero({
 
       {/* L2 — photograph, warmed (not cooled) + parallax */}
       <motion.div
-        className="absolute inset-0 bg-cover"
+        className="absolute inset-0 bg-cover bg-focus"
         style={{
           backgroundImage: image ? `url(${image})` : undefined,
-          backgroundPosition: imagePosition,
+          "--focus": imagePositionMobile || imagePosition,
+          "--focus-md": imagePosition,
           filter: image ? "saturate(1.14) contrast(1.03) brightness(1.0) sepia(0.24)" : undefined,
           y: photoY,
           scale: photoScale,
