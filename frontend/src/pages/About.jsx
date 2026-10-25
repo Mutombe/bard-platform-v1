@@ -119,25 +119,27 @@ export default function About() {
             <div className="relative p-8 sm:p-12 md:p-16 lg:p-20 max-w-3xl">
               <p className="eyebrow eyebrow-on-dark mb-4">Our Manifesto</p>
               <h2 className="display-lg text-white text-balance mb-8 [text-shadow:0_2px_24px_rgba(0,0,0,0.5)]">
-                Every institution has a history. Ours has a conviction.
+                Financially enriching lives differently.
               </h2>
               <div className="space-y-5 text-[17px] md:text-[19px] leading-relaxed">
                 <p className="text-white/85">
-                  Bard Santner was founded in 2022 because we believed financial services
-                  could be better. As we evolved from a diversified financial institution into
-                  a digital-first microfinance bank, one thing never changed: our purpose.
+                  For years, the financial sector has faced significant challenges — unmet
+                  promises, diminishing trust, and systems that too often fall short of serving
+                  the people they are designed to support.
                 </p>
+                <div className="space-y-1.5 text-white/90 border-l-2 border-orange-500/70 pl-5">
+                  <p>Systems that have created barriers rather than opportunities.</p>
+                  <p>Savings that get eroded rather than gain interest.</p>
+                  <p>Transactions that take too long, cost too much, and offer too little in return.</p>
+                </div>
                 <p className="text-white/85">
-                  We exist to challenge the way banking has always been done, and to build
-                  something that works better for the people and businesses we serve.
+                  At Bard Santner, we refuse to accept that as the status quo. For those who
+                  seek more, for those who demand a world-class standard, for those who believe
+                  banking should work for them — there is only one path.
                 </p>
-                <p className="text-white/85">
-                  Our manifesto is more than words on a page. It is the standard we hold
-                  ourselves to. It shapes every product we build, every decision we make and
-                  every relationship we form, because we believe banking should create
-                  opportunity, build confidence and enrich lives.
+                <p className="text-white font-medium">
+                  The path of the pioneers. The path of the pathfinders. The path of Bard Santner.
                 </p>
-                <p className="text-white font-medium">This is what we stand for.</p>
               </div>
               <a
                 href="#manifesto"

@@ -120,6 +120,24 @@ export const LEADERSHIP = [
     image: "/images/exec-bhatt.jpg",
     linkedin: "https://www.linkedin.com/in/monika-bhatt",
   },
+  {
+    slug: "scott-trimble",
+    name: "Scott Trimble",
+    role: "Independent Non-Executive Director",
+    short_role: "Independent Director",
+    bio:
+      "Scott has spent **30 years** on both sides of the regulatory fence — inside the regulator as well as inside the companies it regulates. Senior and board-level roles at **HSBC**, **HBOS**, **Grant Thornton**, **Moore Global** and the **Isle of Man's financial regulator** have given him a rare dual perspective of how compliance actually works, _not just how it's written_. He steers corporate strategy and governance with a pragmatic edge, backed by an authoritative grip on **financial crime prevention** — earning him **UK Anti-Money Laundering Advisor of the Year** at the Finance Monthly FinTech Awards twice, in **2022 and 2023**. Scott holds a **BSc (Hons) from Alliance Manchester Business School**, a **Fellowship of the International Compliance Association** and postgraduate diplomas in governance, risk, compliance and anti-money laundering. _Scott doesn't just meet the standard — he sets it._",
+    image: "/images/exec-trimble.jpg",
+  },
+  {
+    slug: "brad-shorkend",
+    name: "Brad Shorkend",
+    role: "Independent Non-Executive Director",
+    short_role: "Independent Director",
+    bio:
+      "Brad has spent **37 years** building and leading businesses across industries that have almost nothing in common — **architecture, telecommunications, fashion, construction, beauty, FMCG and technology**. For over **20 of those years** he has worked as a consultant and trusted advisor to _thousands of leaders and teams worldwide_, helping them build organisations people actually want to work in. That work has taken him across **Europe, the United States, Asia, the Emirates, Australia and Africa**. Co-author of _'We Are Still Human (and work shouldn't suck!)'_ and a **TEDx speaker**, Brad is as comfortable on a stage as he is in the boardroom. Trained as an architect before a second career in the people sciences, he now sits as **adjunct faculty at GIBS and Duke CE Business School**, teaching what he practises — and was named in the **Global Gurus Top 30 Organisational Culture Professionals for 2026**. _Brad is the authority clients bring in when they want to build a business that will withstand the test of time._",
+    image: "/images/exec-shorkend.jpg",
+  },
 ];
 
 export function findLeader(slug) {
