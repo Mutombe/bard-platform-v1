@@ -142,7 +142,10 @@ export default function About() {
                 </p>
               </div>
               <a
-                href="#manifesto"
+                href="/bard-santner-manifesto.pdf"
+                download="Bard-Santner-Manifesto.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="mt-9 inline-flex items-center gap-2.5 bg-white text-navy-700 hover:bg-white/90 px-6 py-3.5 rounded-full font-medium text-[16px] transition-colors"
               >
                 <DownloadSimpleIcon size={16} weight="bold" />
