@@ -127,10 +127,10 @@ export default function About() {
                   promises, diminishing trust, and systems that too often fall short of serving
                   the people they are designed to support.
                 </p>
-                <div className="space-y-1.5 text-white/90 border-l-2 border-orange-500/70 pl-5">
-                  <p>Systems that have created barriers rather than opportunities.</p>
-                  <p>Savings that get eroded rather than gain interest.</p>
-                  <p>Transactions that take too long, cost too much, and offer too little in return.</p>
+                <div className="space-y-1.5 border-l-2 border-orange-500/70 pl-5">
+                  <p className="text-white/75">Systems that have created barriers rather than opportunities.</p>
+                  <p className="text-white/75">Savings that get eroded rather than gain interest.</p>
+                  <p className="text-white/75">Transactions that take too long, cost too much, and offer too little in return.</p>
                 </div>
                 <p className="text-white/85">
                   At Bard Santner, we refuse to accept that as the status quo. For those who
