@@ -69,8 +69,8 @@ const FAQ_GROUPS = [
         a: "We apply bank-grade protection: identity verification (KYC), anti-money-laundering and sanctions screening, and encryption of your information. We will never ask you for your full password, PIN or one-time code by phone, email or SMS.",
       },
       {
-        q: "What are your banking hours?",
-        a: "Our team is available Monday to Friday, 08:00–15:30 (Central Africa Time). You can reach us by telephone on +263 861 200 0700, by email at bank@bardsantner.co.zw, or on WhatsApp.",
+        q: "Are you open yet?",
+        a: "Not yet — Bard Santner is not operational at this stage. You're welcome to send an early enquiry through the contact form and we'll file it, or reach us on +263 71 297 6761 by call or WhatsApp, or by email at bank@bardsantner.co.zw. A banker will be in touch the moment we open.",
       },
       {
         q: "How do I make a complaint?",

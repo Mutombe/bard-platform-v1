@@ -4,12 +4,12 @@ import PageTransition from "../components/PageTransition.jsx";
 import PageHero from "../components/PageHero.jsx";
 import SEO, { breadcrumbJsonLd } from "../components/SEO.jsx";
 import { BRAND } from "../data/images.js";
-import { PhoneIcon, EnvelopeSimpleIcon, ChatCircleIcon, MapPinIcon, CheckCircleIcon, ArrowSquareOutIcon, ClockIcon, HeadsetIcon } from "@phosphor-icons/react";
+import { PhoneIcon, EnvelopeSimpleIcon, ChatCircleIcon, MapPinIcon, CheckCircleIcon, ArrowSquareOutIcon, HeadsetIcon } from "@phosphor-icons/react";
 import { AUDIENCES } from "../data/audiences.js";
 
 // Where enquiries are routed. The form composes a pre-filled message and hands
 // it off to the client's WhatsApp or email app, per the channel the user picks.
-const WHATSAPP_NUMBER = "263774954415";
+const WHATSAPP_NUMBER = "263712976761";
 const ENQUIRY_EMAIL = "bank@bardsantner.co.zw";
 
 export default function Contact() {
@@ -118,22 +118,22 @@ export default function Contact() {
             </a>
 
             {/* Telephone — orange */}
-            <a href="tel:+263861200700" className="group md:col-span-3 rounded-2xl bg-orange-500 text-white p-6 md:p-7 flex flex-col justify-between min-h-[168px]">
+            <a href="tel:+263712976761" className="group md:col-span-3 rounded-2xl bg-orange-500 text-white p-6 md:p-7 flex flex-col justify-between min-h-[168px]">
               <PhoneIcon size={26} weight="regular" className="text-white" />
               <div>
                 <p className="font-display text-white text-[19px] md:text-[20px] mb-1.5">Telephone</p>
-                <p className="text-[15px] font-medium text-white/95">+263 861 200 0700</p>
-                <p className="text-[12.5px] text-white/75 mt-0.5">Mon–Fri, 08:00–15:30 CAT</p>
+                <p className="text-[15px] font-medium text-white/95">+263 71 297 6761</p>
+                <p className="text-[12.5px] text-white/75 mt-0.5">Call or WhatsApp us</p>
               </div>
             </a>
 
             {/* WhatsApp — navy, external */}
-            <a href="https://wa.me/263774954415" target="_blank" rel="noopener noreferrer" className="group relative md:col-span-3 rounded-2xl bg-navy-700 text-white p-6 md:p-7 flex flex-col justify-between min-h-[168px]">
+            <a href="https://wa.me/263712976761" target="_blank" rel="noopener noreferrer" className="group relative md:col-span-3 rounded-2xl bg-navy-700 text-white p-6 md:p-7 flex flex-col justify-between min-h-[168px]">
               <ArrowSquareOutIcon size={15} weight="bold" className="absolute top-5 right-5 text-white/50" aria-label="opens in a new tab" />
               <ChatCircleIcon size={26} weight="regular" className="text-white" />
               <div>
                 <p className="font-display text-white text-[19px] md:text-[20px] mb-1.5">WhatsApp</p>
-                <p className="text-[15px] font-medium text-white/95">+263 774 954 415</p>
+                <p className="text-[15px] font-medium text-white/95">+263 71 297 6761</p>
                 <p className="text-[12.5px] text-white/70 mt-0.5">Chat with our team</p>
               </div>
             </a>
@@ -148,13 +148,17 @@ export default function Contact() {
               </div>
             </a>
 
-            {/* Hours — white */}
-            <div className="md:col-span-3 rounded-2xl bg-white border-2 border-bone-200 p-6 md:p-7 flex flex-col justify-between min-h-[168px]">
-              <ClockIcon size={26} weight="regular" className="text-orange-600" />
+            {/* Status — pre-launch notice (the bank is not yet operational) */}
+            <div className="md:col-span-3 rounded-2xl bg-navy-700 text-white p-6 md:p-7 flex flex-col justify-between min-h-[168px]">
+              <span className="relative flex h-3 w-3" aria-hidden="true">
+                <span className="absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75 animate-ping" />
+                <span className="relative inline-flex h-3 w-3 rounded-full bg-orange-500" />
+              </span>
               <div>
-                <p className="font-display text-[19px] md:text-[20px] text-navy-600 mb-1.5">Office hours</p>
-                <p className="text-[15px] font-medium text-navy-600">Mon–Fri, 08:00–15:30</p>
-                <p className="text-[12.5px] text-bone-500 mt-0.5">Central Africa Time</p>
+                <p className="font-display text-white text-[19px] md:text-[20px] mb-1.5">Not yet open</p>
+                <p className="text-[12.5px] text-white/75 leading-snug">
+                  We're not operational yet — send an early enquiry below and we'll file it ready for the day we open.
+                </p>
               </div>
             </div>
           </div>
@@ -164,7 +168,7 @@ export default function Contact() {
               Mobile: stacked, but with a tighter manifesto (no bullet list — those
               three points are inline pill-tags instead) so the form gets to
               be the focal point quickly. */}
-          <div className="grid grid-cols-12 gap-y-8 md:gap-16 max-w-6xl mx-auto mt-10 md:mt-20">
+          <div className="grid grid-cols-12 gap-y-8 md:gap-16 mt-16 md:mt-32">
             <div className="col-span-12 md:col-span-5">
               <div className="flex items-center gap-3 md:gap-4 mb-5 md:mb-6">
                 <HeadsetIcon size={22} weight="duotone" className="text-orange-500 shrink-0" />

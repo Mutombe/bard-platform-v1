@@ -164,7 +164,7 @@ export default function About() {
             What drives us, and how we hold ourselves.
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 mb-6 md:mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 mb-16 md:mb-24">
             <div className="bank-card bank-card-body">
               <p className="eyebrow mb-3">Vision</p>
               <p className="font-display text-navy-600 text-[22px] md:text-[26px] leading-snug">

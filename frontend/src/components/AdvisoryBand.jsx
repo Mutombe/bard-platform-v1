@@ -75,9 +75,9 @@ export default function AdvisoryBand() {
                 </p>
               </div>
               <div className="space-y-2.5">
-                <ChannelRow href="tel:+263861200700" Icon={PhoneIcon} primary="+263 861 200 0700" secondary="Mon–Fri, 08:00–15:30 CAT" />
+                <ChannelRow href="tel:+263712976761" Icon={PhoneIcon} primary="+263 71 297 6761" secondary="Call or WhatsApp us" />
                 <ChannelRow href="mailto:bank@bardsantner.co.zw" Icon={EnvelopeSimpleIcon} primary="bank@bardsantner.co.zw" secondary="We will respond within one business day" truncate />
-                <ChannelRow href="https://wa.me/263774954415" external Icon={ChatCircleIcon} primary="WhatsApp the desk" secondary="Chat with our team" />
+                <ChannelRow href="https://wa.me/263712976761" external Icon={ChatCircleIcon} primary="WhatsApp the desk" secondary="Chat with our team" />
               </div>
               <Link
                 to="/contact"
