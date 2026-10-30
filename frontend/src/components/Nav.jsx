@@ -448,7 +448,7 @@ export default function Nav() {
             {/* Drawer body */}
             <div className="flex-1 overflow-y-auto px-6 py-7">
               {/* Menu accordions */}
-              <nav className="flex flex-col border-y border-bone-200 mb-8">
+              <nav className="flex flex-col border-b border-bone-200 mb-8">
                 {NAV_MENU.map((item) => {
                   const expanded = mobileSection === item.label;
                   return (

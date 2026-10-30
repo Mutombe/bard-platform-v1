@@ -316,7 +316,6 @@ export default function Home() {
       {/* ── ONE-SCREEN HERO ───────────────────────────────────────── */}
       <div className="flex flex-col md:min-h-[calc(100svh-124px)]">
         <section className="relative flex-1 flex overflow-hidden bg-navy-900 min-h-[calc(100svh-165px)] md:min-h-0">
-          <div className="absolute top-0 left-0 right-0 h-[2px] bg-orange-500 z-20" />
           <video
             className="absolute inset-0 h-full w-full object-cover"
             autoPlay

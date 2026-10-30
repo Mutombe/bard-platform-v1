@@ -12,7 +12,7 @@ export default function QuickActionStrip({ actions = [], tint = "navy" }) {
   const comingSoon = useComingSoon();
 
   const cellClass =
-    "group flex items-center justify-between gap-3 h-14 md:h-auto px-5 md:px-7 md:py-5 hover:bg-white/[0.07] transition-colors border-b border-white/25 md:border-b-0";
+    "group flex items-center justify-between gap-3 h-28 md:h-auto px-5 md:px-7 md:py-5 hover:bg-white/[0.07] transition-colors border-b border-white/25 md:border-b-0";
 
   return (
     <section className={`${tintBg} text-white border-t border-white/25`}>

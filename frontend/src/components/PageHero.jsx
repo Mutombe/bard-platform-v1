@@ -110,9 +110,6 @@ function FullBleedHero({
 
   return (
     <section ref={heroRef} className="relative overflow-hidden bg-[#140d05]">
-      {/* L1 — orange accent rule at the top edge */}
-      <div className="absolute top-0 left-0 right-0 h-[2px] bg-orange-500 z-20" />
-
       {/* L2 — photograph, warmed (not cooled) + parallax */}
       <motion.div
         className="absolute inset-0 bg-cover bg-focus"
