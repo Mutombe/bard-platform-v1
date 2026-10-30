@@ -278,16 +278,16 @@ function RotatingThemes() {
 // pattern, between the two photographic bands (rotating themes and the Advisory
 // CTA) so the eye never jumps photo-to-photo: photo → pattern → photo.
 //
-// Height matches the hero's quick-action bar (mobile 2×h-14 = 112px; desktop
-// one ~60px row). The grid stays flush to all four edges: whole columns via
+// Height matches a single quick-action deck (mobile h-14 = 56px; desktop one
+// ~60px row). The grid stays flush to all four edges: whole columns via
 // 100%/cols, whole rows via a fixed cell height that divides the band height.
-//   mobile : h-28 (112px) · 14 cols × 4 rows (28px cell)
+//   mobile : h-14 (56px) · 14 cols × 2 rows (28px cell)
 //   md+    : 60px        · 48 cols × 2 rows (30px cell)
 function BrandInterlude() {
   return (
     <section
       aria-hidden="true"
-      className="relative bg-navy-700 overflow-hidden h-28 md:h-[60px]"
+      className="relative bg-navy-700 overflow-hidden h-14 md:h-[60px]"
     >
       <div
         className="absolute inset-0 pointer-events-none bg-repeat bg-center [background-image:url(/pattern-argyle.svg)] [background-size:calc(100%/14)_28px] md:[background-size:calc(100%/48)_30px]"
